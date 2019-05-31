@@ -1,0 +1,16 @@
+language: java
+jdk:
+  - oraclejdk8
+
+
+install: ant
+
+script:
+  - ant integracion-continua
+
+
+notifications:
+  email:
+    recipients:
+      - mparafati@fi.uba.ar
+    on_failure: always

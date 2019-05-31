@@ -1,4 +1,4 @@
-<project xmlns:ivy="antlib:org.apache.ivy.ant" name="fiuba.algo3.pokemon" basedir="." default="test">
+<project xmlns:ivy="antlib:org.apache.ivy.ant" name="fiuba.algo3.algocraft" basedir="." default="test">
 	<property name="build" location="build" />
 	<property name="libs" location="libs" />
 	<property name="classes.dir" location="build" />

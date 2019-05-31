@@ -1,8 +1,8 @@
-public class Hacha {
+public class HachaDePrueba {
 
     private int durabilidad;
 
-    public Hacha(){ //Constructor
+    public HachaDePrueba(){ //Constructor
         this.durabilidad = 100;
     }
 

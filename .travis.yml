@@ -13,4 +13,5 @@ notifications:
   email:
     recipients:
       - mparafati@fi.uba.ar
+      - naguerre@fi.uba.ar
     on_failure: always

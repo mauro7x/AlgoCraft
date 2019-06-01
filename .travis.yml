@@ -15,4 +15,5 @@ notifications:
     recipients:
       - mparafati@fi.uba.ar
       - naguerre@fi.uba.ar
+      - sklein@fi.uba.ar
     on_failure: always

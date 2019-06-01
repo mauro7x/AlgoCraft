@@ -1,20 +1,22 @@
 package modelo.herramientas;
+import modelo.herramientas.desgastes.*;
 
 public abstract class Herramienta {
 
-    protected int durabilidad;
-    protected int fuerza;
+    protected Desgaste desgaste;
+    protected float durabilidad;
+    protected float fuerza;
 
 
-    public int getDurabilidad() {
+    public float getDurabilidad() {
         return durabilidad;
     }
-
-    public int getFuerza() {
+    public float getFuerza() {
         return fuerza;
     }
 
     public void usar(){
-        durabilidad -= fuerza;
+        this.durabilidad = this.desgaste.usar(this.durabilidad, this.fuerza);
     }
+
 }

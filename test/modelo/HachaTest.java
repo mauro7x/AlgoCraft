@@ -1,4 +1,7 @@
 import org.junit.Test;
+import modelo.herramientas.*;
+import modelo.materiales.*;
+
 
 import static org.junit.Assert.*;
 
@@ -21,7 +24,7 @@ public class HachaTest {
     public void test03HachaDeMaderaSeDesgastaEnSuFuerza() {
         Hacha hachaDeMadera = new Hacha(new Madera());
         int fuerza = hachaDeMadera.getFuerza();
-        int durabilidadInicial = hachaDeMadera.getDurabildiad();
+        int durabilidadInicial = hachaDeMadera.getDurabilidad();
         hachaDeMadera.usar();
         assertEquals(durabilidadInicial-fuerza, hachaDeMadera.getDurabilidad());
         hachaDeMadera.usar();
@@ -50,7 +53,7 @@ public class HachaTest {
     public void test03HachaDePiedraSeDesgastaEnSuFuerza() {
         Hacha hachaDePiedra = new Hacha(new Piedra());
         int fuerza = hachaDePiedra.getFuerza();
-        int durabilidadInicial = hachaDePiedra.getDurabildiad();
+        int durabilidadInicial = hachaDePiedra.getDurabilidad();
         hachaDePiedra.usar();
         assertEquals(durabilidadInicial-fuerza, hachaDePiedra.getDurabilidad());
         hachaDePiedra.usar();
@@ -79,7 +82,7 @@ public class HachaTest {
     public void test03HachaDeMetalSeDesgastaEnLaMitadDeSuFuerza() {
         Hacha hachaDeMetal = new Hacha(new Metal());
         int mitadFuerza = (hachaDeMetal.getFuerza())/2;
-        int durabilidadInicial = hachaDeMetal.getDurabildiad();
+        int durabilidadInicial = hachaDeMetal.getDurabilidad();
         hachaDeMetal.usar();
         assertEquals(durabilidadInicial-mitadFuerza, hachaDeMetal.getDurabilidad());
         hachaDeMetal.usar();

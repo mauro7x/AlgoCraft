@@ -200,7 +200,7 @@
 
 
 		<target name="empaquetar.con.imagenes" depends="compilar.paquete">
-			<copydir src="src/gui/imagess"
+			<copydir src="src/interfaz/imagess"
 				dest="${build}/classes/gui/imagess"
 				includes="**/*.png"/>
 		<jar destfile="${build}/dist/algo3.jar" basedir="${build}/classes"/>

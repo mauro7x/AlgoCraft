@@ -1,5 +1,6 @@
 package modelo.herramientas;
 import modelo.herramientas.desgastes.*;
+import modelo.materiales.Material;
 
 public abstract class Herramienta {
 
@@ -15,8 +16,10 @@ public abstract class Herramienta {
         return fuerza;
     }
 
-    public void usar(){
+
+    public void usar(Material material){
         this.durabilidad = this.desgaste.usar(this.durabilidad, this.fuerza);
     }
+
 
 }

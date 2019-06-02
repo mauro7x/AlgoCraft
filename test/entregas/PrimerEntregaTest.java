@@ -136,7 +136,7 @@ public class PrimerEntregaTest {
 
 
 
-    //Tests de Jugador:
+    //Tests de jugador:
 
     @Test
     public void test01CorrectaCreacionEInicializacionDelJugador() {

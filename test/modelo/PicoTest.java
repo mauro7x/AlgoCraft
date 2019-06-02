@@ -76,7 +76,7 @@ public class PicoTest {
     @Test
     public void test04PicoDeMetalSeRompeAlDecimoGolpeContraCualquierMaterial() {
         Pico picoDeMetal = new Pico(new Metal());
-        for(float i =0; i <= 9; i++){
+        for(int i =0; i <= 9; i++){
             picoDeMetal.usar(new Madera());
         }
         assertEquals(0, picoDeMetal.getDurabilidad(),0.0001);

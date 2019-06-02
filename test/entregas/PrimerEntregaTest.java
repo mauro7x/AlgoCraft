@@ -108,7 +108,7 @@ public class PrimerEntregaTest {
         assertEquals(durabilidadPicoMetal, picoDeMetal.getDurabilidad(),0);
         assertEquals(durabilidadPicoPiedra-4*((float)(fuerzaPicoPiedra/1.5)), picoDePiedra.getDurabilidad(),0.001);
 
-        for(float i =0; i <= 6; i++){
+        for(int i =0; i <= 6; i++){
             picoDeMetal.usar(new Madera());
         }
         assertEquals(0, picoDeMetal.getDurabilidad(),0);

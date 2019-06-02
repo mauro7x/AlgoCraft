@@ -1,8 +1,8 @@
+package modelo.jugador;
+
 import org.junit.Test;
-import modelo.jugador.Jugador;
-
-
 import static org.junit.Assert.*;
+
 
 public class JugadorTest {
     //Tests de inicializacion del jugador

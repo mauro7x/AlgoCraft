@@ -1,8 +1,8 @@
-import org.junit.Test;
-import modelo.herramientas.*;
+package modelo.herramientas;
+
 import modelo.materiales.*;
 
-
+import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class HachaTest {

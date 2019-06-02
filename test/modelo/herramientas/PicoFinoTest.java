@@ -1,11 +1,10 @@
-import modelo.materiales.Madera;
-import modelo.materiales.Metal;
-import modelo.materiales.Piedra;
-import org.junit.Test;
-import modelo.herramientas.*;
-import modelo.materiales.Diamante;
+package modelo.herramientas;
 
+import modelo.materiales.*;
+
+import org.junit.Test;
 import static org.junit.Assert.*;
+
 
 public class PicoFinoTest {
 

@@ -10,7 +10,7 @@ TP2 - Algoritmos y Programación III - FIUBA
   - KLEIN, Santiago.
   - PARAFATI, Mauro.
 
-- Link para editar el informe: https://www.overleaf.com/project/5cf3f02f8a48086e11475056
+- Link para editar el informe: https://www.overleaf.com/8746758456pyzgmhgnqdqm
 
 ## Pruebas de integración - Estado
 

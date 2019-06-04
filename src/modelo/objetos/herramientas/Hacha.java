@@ -28,7 +28,7 @@ public class Hacha extends Herramienta {
     }
 
     public void golpear(Recurso recurso){
-        recurso.serGolpeadoPorHacha(this, this.material, this.fuerza);
+        recurso.serGolpeadoPor(this, this.material, this.fuerza);
     }
 
 }

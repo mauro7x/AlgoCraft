@@ -151,20 +151,41 @@ public class PrimerEntregaTest {
 
     @Test
     public void test01MaderaSeGolpeaConHachaDeMaderaYReduceDurabilidadEn2() {
+        BloqueMadera madera = new BloqueMadera();
+        Hacha hachaDeMadera = new Hacha(new Madera());
+        float durabilidadInicialMadera = madera.getDurabilidad();
+
+        hachaDeMadera.golpear(madera);
+        assertEquals(durabilidadInicialMadera-2, madera.getDurabilidad(),0.0001);
 
     }
 
     @Test
     public void test02PiedraSeGolpeaConHachaYNoReduceDurabilidad() {
+        BloquePiedra piedra = new BloquePiedra();
+        Hacha hachaDeMadera = new Hacha(new Madera());
+        Hacha hachaDePiedra = new Hacha(new Piedra());
+        Hacha hachaDeMetal = new Hacha(new Metal());
 
+        float durabilidadInicialPiedra = piedra.getDurabilidad();
+
+        hachaDeMadera.golpear(piedra);
+        hachaDePiedra.golpear(piedra);
+        hachaDeMetal.golpear(piedra);
+
+        assertEquals(durabilidadInicialPiedra, piedra.getDurabilidad(),0.0001);
     }
 
     @Test
     public void test03MetalSeGolpeaConPicoDeMaderaYNoReduceDurabilidad() {
+        BloqueMetal metal = new BloqueMetal();
+        Pico picoDeMadera = new Pico(new Madera());
+        float durabilidadInicialMetal = metal.getDurabilidad();
 
+        picoDeMadera.golpear(metal);
+
+        assertEquals(durabilidadInicialMetal, metal.getDurabilidad(), 0.0001);
     }
 
 
-
-    //eof
 }

@@ -10,9 +10,9 @@ public abstract class Recurso {
         return durabilidad;
     }
 
-    public abstract void serGolpeadoPorHacha(Hacha hacha, Material material, float fuerza);
-    public abstract void serGolpeadoPorPico(Pico pico, Material material, float fuerza);
-    public abstract void serGolpeadoPorPicoFino(PicoFino picoFino, Material material, float fuerza);
+    public abstract void serGolpeadoPor(Hacha hacha, Material material, float fuerza);
+    public abstract void serGolpeadoPor(Pico pico, Material material, float fuerza);
+    public abstract void serGolpeadoPor(PicoFino picoFino, Material material, float fuerza);
 
     public void desgastar(float fuerza){
         durabilidad -= fuerza;

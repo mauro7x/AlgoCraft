@@ -14,6 +14,6 @@ public class PicoFino extends Herramienta {
     }
 
     public void golpear(Recurso recurso){
-        recurso.serGolpeadoPorPicoFino(this, this.material, this.fuerza);
+        recurso.serGolpeadoPor(this, this.material, this.fuerza);
     }
 }

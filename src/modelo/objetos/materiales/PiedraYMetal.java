@@ -18,8 +18,4 @@ public class PiedraYMetal extends Material {
         // no existe pico de piedra y metal
     }
 
-    @Override
-    public void gastarDiamanteConPicoFino(BloqueDiamante diamante, float fuerza) {
-        diamante.desgastar(fuerza);
-    }
 }

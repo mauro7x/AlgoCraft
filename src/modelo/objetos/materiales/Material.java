@@ -5,9 +5,17 @@ import modelo.recursos.*;
 
 public abstract class Material implements Objeto {
 
-    public abstract void gastarMaderaConHacha(BloqueMadera madera, float fuerza);
-    public abstract void gastarPiedraConPico(BloquePiedra piedra, float fuerza);
-    public abstract void gastarMetalConPico(BloqueMetal metal, float fuerza);
-    public abstract void gastarDiamanteConPicoFino(BloqueDiamante diamante, float fuerza);
+    public void gastarMaderaConHacha(BloqueMadera madera, float fuerza){
+        madera.desgastar(fuerza);
+    }
+    public void gastarPiedraConPico(BloquePiedra piedra, float fuerza){
+        piedra.desgastar(fuerza);
+    }
+    public void gastarMetalConPico(BloqueMetal metal, float fuerza){
+        metal.desgastar(fuerza);
+    }
+    public void gastarDiamanteConPicoFino(BloqueDiamante diamante, float fuerza){
+        diamante.desgastar(fuerza);
+    }
 
 }

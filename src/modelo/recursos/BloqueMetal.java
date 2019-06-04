@@ -5,6 +5,10 @@ import modelo.objetos.materiales.Material;
 
 public class BloqueMetal extends Recurso {
 
+    public BloqueMetal(){
+        this.durabilidad = 50;
+    }
+
     public void serGolpeadoPorHacha(Hacha hacha, Material material, float fuerza){
         hacha.gastar();
     }

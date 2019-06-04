@@ -1,8 +1,11 @@
+package entregas;
+
+import modelo.objetos.materiales.*;
+import modelo.objetos.herramientas.*;
+import modelo.recursos.*;
+
 import org.junit.Test;
 import static org.junit.Assert.*;
-
-import modelo.herramientas.*;
-import modelo.materiales.*;
 
 public class PrimerEntregaTest {
 
@@ -58,20 +61,20 @@ public class PrimerEntregaTest {
         float fuerzaHachaMetal = hachaDeMetal.getFuerza();
         float fuerzaHachaPiedra = hachaDePiedra.getFuerza();
 
-        hachaDeMadera.usar(new Madera());
-        hachaDeMadera.usar(new Piedra());
-        hachaDeMadera.usar(new Metal());
-        hachaDeMadera.usar(new Diamante());
+        hachaDeMadera.golpear(new BloqueMadera());
+        hachaDeMadera.golpear(new BloquePiedra());
+        hachaDeMadera.golpear(new BloqueMetal());
+        hachaDeMadera.golpear(new BloqueDiamante());
 
-        hachaDeMetal.usar(new Madera());
-        hachaDeMetal.usar(new Piedra());
-        hachaDeMetal.usar(new Metal());
-        hachaDeMetal.usar(new Diamante());
+        hachaDeMetal.golpear(new BloqueMadera());
+        hachaDeMetal.golpear(new BloquePiedra());
+        hachaDeMetal.golpear(new BloqueMetal());
+        hachaDeMetal.golpear(new BloqueDiamante());
 
-        hachaDePiedra.usar(new Madera());
-        hachaDePiedra.usar(new Piedra());
-        hachaDePiedra.usar(new Metal());
-        hachaDePiedra.usar(new Diamante());
+        hachaDePiedra.golpear(new BloqueMadera());
+        hachaDePiedra.golpear(new BloquePiedra());
+        hachaDePiedra.golpear(new BloqueMetal());
+        hachaDePiedra.golpear(new BloqueDiamante());
 
         assertEquals(durabilidadHachaMadera-4*(fuerzaHachaMadera), hachaDeMadera.getDurabilidad(),0);
         assertEquals(durabilidadHachaMetal-4*(fuerzaHachaMetal/2), hachaDeMetal.getDurabilidad(),0);
@@ -89,27 +92,27 @@ public class PrimerEntregaTest {
         float fuerzaPicoMadera = picoDeMadera.getFuerza();
         float fuerzaPicoPiedra = picoDePiedra.getFuerza();
 
-        picoDeMadera.usar(new Madera());
-        picoDeMadera.usar(new Piedra());
-        picoDeMadera.usar(new Metal());
-        picoDeMadera.usar(new Diamante());
+        picoDeMadera.golpear(new BloqueMadera());
+        picoDeMadera.golpear(new BloquePiedra());
+        picoDeMadera.golpear(new BloqueMetal());
+        picoDeMadera.golpear(new BloqueDiamante());
 
-        picoDeMetal.usar(new Madera());
-        picoDeMetal.usar(new Piedra());
-        picoDeMetal.usar(new Metal());
-        picoDeMetal.usar(new Diamante());
+        picoDeMetal.golpear(new BloqueMadera());
+        picoDeMetal.golpear(new BloquePiedra());
+        picoDeMetal.golpear(new BloqueMetal());
+        picoDeMetal.golpear(new BloqueDiamante());
 
-        picoDePiedra.usar(new Madera());
-        picoDePiedra.usar(new Piedra());
-        picoDePiedra.usar(new Metal());
-        picoDePiedra.usar(new Diamante());
+        picoDePiedra.golpear(new BloqueMadera());
+        picoDePiedra.golpear(new BloquePiedra());
+        picoDePiedra.golpear(new BloqueMetal());
+        picoDePiedra.golpear(new BloqueDiamante());
 
         assertEquals(durabilidadPicoMadera-4*(fuerzaPicoMadera), picoDeMadera.getDurabilidad(),0);
         assertEquals(durabilidadPicoMetal, picoDeMetal.getDurabilidad(),0);
         assertEquals(durabilidadPicoPiedra-4*((float)(fuerzaPicoPiedra/1.5)), picoDePiedra.getDurabilidad(),0.001);
 
         for(int i =0; i <= 6; i++){
-            picoDeMetal.usar(new Madera());
+            picoDeMetal.golpear(new BloqueMadera());
         }
         assertEquals(0, picoDeMetal.getDurabilidad(),0);
 
@@ -119,7 +122,7 @@ public class PrimerEntregaTest {
     public void test08PicoFinoSeUsaContraDiamanteYReduceSuDurabilidadUn10PorCiento() {
         PicoFino picoFino = new PicoFino();
         float durabilidad = picoFino.getDurabilidad();
-        picoFino.usar(new Diamante());
+        picoFino.golpear(new BloqueDiamante());
         assertEquals(durabilidad-(float)(durabilidad*0.1), picoFino.getDurabilidad(),0.0001);
     }
 
@@ -127,9 +130,9 @@ public class PrimerEntregaTest {
     public void test09PicoFinoSeUsaContraMaterialQueNoSeaDiamanteYNoReduceDurabilidad() {
         PicoFino picoFino = new PicoFino();
         float durabilidadInicial = picoFino.getDurabilidad();
-        picoFino.usar(new Metal());
-        picoFino.usar(new Madera());
-        picoFino.usar(new Piedra());
+        picoFino.golpear(new BloqueMetal());
+        picoFino.golpear(new BloqueMadera());
+        picoFino.golpear(new BloquePiedra());
         assertEquals(durabilidadInicial, picoFino.getDurabilidad(),0.0001);
 
     }
@@ -144,24 +147,45 @@ public class PrimerEntregaTest {
     }
 
 
-    //Tests de Material:
+    //Tests de Recurso:
 
     @Test
     public void test01MaderaSeGolpeaConHachaDeMaderaYReduceDurabilidadEn2() {
+        BloqueMadera madera = new BloqueMadera();
+        Hacha hachaDeMadera = new Hacha(new Madera());
+        float durabilidadInicialMadera = madera.getDurabilidad();
+
+        hachaDeMadera.golpear(madera);
+        assertEquals(durabilidadInicialMadera-2, madera.getDurabilidad(),0.0001);
 
     }
 
     @Test
     public void test02PiedraSeGolpeaConHachaYNoReduceDurabilidad() {
+        BloquePiedra piedra = new BloquePiedra();
+        Hacha hachaDeMadera = new Hacha(new Madera());
+        Hacha hachaDePiedra = new Hacha(new Piedra());
+        Hacha hachaDeMetal = new Hacha(new Metal());
 
+        float durabilidadInicialPiedra = piedra.getDurabilidad();
+
+        hachaDeMadera.golpear(piedra);
+        hachaDePiedra.golpear(piedra);
+        hachaDeMetal.golpear(piedra);
+
+        assertEquals(durabilidadInicialPiedra, piedra.getDurabilidad(),0.0001);
     }
 
     @Test
     public void test03MetalSeGolpeaConPicoDeMaderaYNoReduceDurabilidad() {
+        BloqueMetal metal = new BloqueMetal();
+        Pico picoDeMadera = new Pico(new Madera());
+        float durabilidadInicialMetal = metal.getDurabilidad();
 
+        picoDeMadera.golpear(metal);
+
+        assertEquals(durabilidadInicialMetal, metal.getDurabilidad(), 0.0001);
     }
 
 
-
-    //eof
 }

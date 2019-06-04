@@ -1,6 +1,7 @@
-package modelo.herramientas;
+package modelo.objetos.herramientas;
 
-import modelo.materiales.*;
+import modelo.objetos.materiales.*;
+import modelo.recursos.*;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -25,7 +26,7 @@ public class HachaTest {
         Hacha hachaDeMadera = new Hacha(new Madera());
         float fuerza = hachaDeMadera.getFuerza();
         float durabilidadInicial = hachaDeMadera.getDurabilidad();
-        hachaDeMadera.usar(new Madera());
+        hachaDeMadera.golpear(new BloqueMadera());
         assertEquals(durabilidadInicial-fuerza, hachaDeMadera.getDurabilidad(),0.0001);
     }
 
@@ -47,7 +48,7 @@ public class HachaTest {
         Hacha hachaDePiedra = new Hacha(new Piedra());
         float fuerza = hachaDePiedra.getFuerza();
         float durabilidadInicial = hachaDePiedra.getDurabilidad();
-        hachaDePiedra.usar(new Madera());
+        hachaDePiedra.golpear(new BloqueMadera());
         assertEquals(durabilidadInicial-fuerza, hachaDePiedra.getDurabilidad(),0.0001);
     }
 
@@ -69,7 +70,7 @@ public class HachaTest {
         Hacha hachaDeMetal = new Hacha(new Metal());
         float fuerza = hachaDeMetal.getFuerza();
         float durabilidadInicial = hachaDeMetal.getDurabilidad();
-        hachaDeMetal.usar(new Madera());
+        hachaDeMetal.golpear(new BloqueMadera());
         assertEquals(durabilidadInicial-(fuerza/2), hachaDeMetal.getDurabilidad(),0.0001);
     }
 }

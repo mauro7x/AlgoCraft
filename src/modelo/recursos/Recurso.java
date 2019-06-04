@@ -14,7 +14,7 @@ public abstract class Recurso {
     public abstract void serGolpeadoPor(Pico pico, Material material, float fuerza);
     public abstract void serGolpeadoPor(PicoFino picoFino, Material material, float fuerza);
 
-    public void desgastar(float fuerza){
+    public void gastar(float fuerza){
         durabilidad -= fuerza;
     }
 }

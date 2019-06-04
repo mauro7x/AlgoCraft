@@ -1,6 +1,6 @@
-package modelo.herramientas;
+package modelo.objetos.herramientas;
 
-import modelo.materiales.*;
+import modelo.recursos.*;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -24,7 +24,7 @@ public class PicoFinoTest {
     public void test03PicoFinoSeDesgastaEnUnDiezPorcientoContraDiamante() {
         PicoFino picoFino = new PicoFino();
         float durabilidadInicial = picoFino.getDurabilidad();
-        picoFino.usar(new Diamante());
+        picoFino.golpear(new BloqueDiamante());
         assertEquals(durabilidadInicial-(durabilidadInicial*(float)(0.1)), picoFino.getDurabilidad(),0.0001);
     }
 
@@ -32,9 +32,9 @@ public class PicoFinoTest {
     public void test04PicoFinoNoSeDesgastaContraMaterialQueNoSeaDiamante() {
         PicoFino picoFino = new PicoFino();
         float durabilidadInicial = picoFino.getDurabilidad();
-        picoFino.usar(new Metal());
-        picoFino.usar(new Madera());
-        picoFino.usar(new Piedra());
+        picoFino.golpear(new BloqueMetal());
+        picoFino.golpear(new BloqueMadera());
+        picoFino.golpear(new BloquePiedra());
         assertEquals(durabilidadInicial, picoFino.getDurabilidad(),0.0001);
     }
 

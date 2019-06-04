@@ -1,4 +1,4 @@
-package modelo.herramientas.desgastes;
+package modelo.objetos.herramientas.desgastes;
 
 public class DesgasteDiezPorciento implements Desgaste {
     @Override

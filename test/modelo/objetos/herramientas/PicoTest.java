@@ -1,6 +1,7 @@
-package modelo.herramientas;
+package modelo.objetos.herramientas;
 
-import modelo.materiales.*;
+import modelo.objetos.materiales.*;
+import modelo.recursos.*;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -26,7 +27,7 @@ public class PicoTest {
         Pico picoDeMadera = new Pico(new Madera());
         float fuerza = picoDeMadera.getFuerza();
         float durabilidadInicial = picoDeMadera.getDurabilidad();
-        picoDeMadera.usar(new Madera());
+        picoDeMadera.golpear(new BloqueMadera());
         assertEquals(durabilidadInicial-fuerza, picoDeMadera.getDurabilidad(),0.0001);
     }
 
@@ -48,7 +49,7 @@ public class PicoTest {
         Pico picoDePiedra = new Pico(new Piedra());
         float fuerza = picoDePiedra.getFuerza();
         float durabilidadInicial = picoDePiedra.getDurabilidad();
-        picoDePiedra.usar(new Madera());
+        picoDePiedra.golpear(new BloqueMadera());
         assertEquals(durabilidadInicial-(float)(fuerza/1.5), picoDePiedra.getDurabilidad(),0.0001);
 
     }
@@ -70,7 +71,7 @@ public class PicoTest {
     public void test03PicoDeMetalNoSeDesgasta() {
         Pico picoDeMetal = new Pico(new Metal());
         float durabilidadInicial = picoDeMetal.getDurabilidad();
-        picoDeMetal.usar(new Madera());
+        picoDeMetal.golpear(new BloqueMadera());
         assertEquals(durabilidadInicial, picoDeMetal.getDurabilidad(),0.0001);
     }
 
@@ -78,7 +79,7 @@ public class PicoTest {
     public void test04PicoDeMetalSeRompeAlDecimoGolpeContraCualquierMaterial() {
         Pico picoDeMetal = new Pico(new Metal());
         for(int i =0; i <= 9; i++){
-            picoDeMetal.usar(new Madera());
+            picoDeMetal.golpear(new BloqueMadera());
         }
         assertEquals(0, picoDeMetal.getDurabilidad(),0.0001);
     }

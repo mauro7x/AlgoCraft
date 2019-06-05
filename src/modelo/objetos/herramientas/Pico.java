@@ -9,14 +9,14 @@ public class Pico extends Herramienta {
     public Pico(Madera madera){
         this.durabilidad = 100;
         this.fuerza = 2;
-        this.desgaste = new DesgasteEnFuerza();
+        this.desgaste = new DesgasteEnFuerza(1);
         this.material = madera;
     }
 
     public Pico(Piedra piedra){
         this.durabilidad = 200;
         this.fuerza = 4;
-        this.desgaste = new DesgasteEnFuerzaSobreTresMedios();
+        this.desgaste = new DesgasteEnFuerza(1.5f);
         this.material = piedra;
     }
 

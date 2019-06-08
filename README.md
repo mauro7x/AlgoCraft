@@ -11,6 +11,7 @@ TP2 - Algoritmos y Programación III - FIUBA
   - PARAFATI, Mauro.
 
 - Link para editar el informe: https://www.overleaf.com/8746758456pyzgmhgnqdqm
+- Link del enunciado: https://docs.google.com/document/d/1uT1NYcKcZytVY5hD31TXFGuXLqgSXLUc488Tv7DOxIw/edit#heading=h.yxmoczo35tm5
 
 ## Pruebas de integración - Estado
 

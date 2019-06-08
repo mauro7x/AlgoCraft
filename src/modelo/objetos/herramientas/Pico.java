@@ -28,7 +28,7 @@ public class Pico extends Herramienta {
     }
 
     public void golpear(Recurso recurso){
-        recurso.serGolpeadoPor(this, this.material, this.fuerza);
+        recurso.serGolpeadoPor(this);
     }
 
 }

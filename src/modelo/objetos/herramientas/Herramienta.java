@@ -19,6 +19,10 @@ public abstract class Herramienta implements Objeto {
         return fuerza;
     }
 
+    public Material getMaterial(){
+        return this.material;
+    }
+
     public void gastar(){
         this.durabilidad.gastar(this.fuerza);
     }

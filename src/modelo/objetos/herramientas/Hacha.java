@@ -1,29 +1,29 @@
 package modelo.objetos.herramientas;
 
-import modelo.objetos.herramientas.desgastes.*;
+import modelo.objetos.herramientas.durabilidades.*;
 import modelo.objetos.materiales.*;
 import modelo.recursos.Recurso;
 
 public class Hacha extends Herramienta {
 
     public Hacha(Madera madera){
-        this.durabilidad = 100;
+        this.durabilidad = new DurabilidadEnFuerza(1);
+        this.durabilidad.setDurabilidad(100);
         this.fuerza = 2;
-        this.desgaste = new DesgasteEnFuerza(1);
         this.material = madera;
     }
 
     public Hacha(Piedra piedra){
-        this.durabilidad = 200;
+        this.durabilidad = new DurabilidadEnFuerza(1);
+        this.durabilidad.setDurabilidad(200);
         this.fuerza = 5;
-        this.desgaste = new DesgasteEnFuerza(1);
         this.material = piedra;
     }
 
     public Hacha(Metal metal){
-        this.durabilidad = 400;
+        this.durabilidad = new DurabilidadEnFuerza(2);
+        this.durabilidad.setDurabilidad(400);
         this.fuerza = 10;
-        this.desgaste = new DesgasteEnFuerza(2);
         this.material = metal;
     }
 

@@ -18,7 +18,7 @@ public class BloqueMadera extends Recurso {
     public void serGolpeadoPor(Pico pico){
         pico.gastar();
     }
-
+    
     public void serGolpeadoPor(PicoFino picoFino){
     }
 }

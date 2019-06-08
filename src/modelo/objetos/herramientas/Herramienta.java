@@ -1,11 +1,10 @@
 package modelo.objetos.herramientas;
 
-import modelo.objetos.Objeto;
 import modelo.objetos.materiales.Material;
 import modelo.objetos.herramientas.durabilidades.*;
 import modelo.recursos.Recurso;
 
-public abstract class Herramienta implements Objeto {
+public abstract class Herramienta {
 
     protected Durabilidad durabilidad;
     protected float fuerza;

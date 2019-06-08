@@ -1,9 +1,8 @@
 package modelo.objetos.materiales;
 
-import modelo.objetos.Objeto;
 import modelo.recursos.*;
 
-public abstract class Material implements Objeto {
+public abstract class Material {
 
     public void gastarMaderaConHacha(BloqueMadera madera, float fuerza){
         madera.gastar(fuerza);

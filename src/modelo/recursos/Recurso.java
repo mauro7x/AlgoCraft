@@ -1,6 +1,5 @@
 package modelo.recursos;
 import modelo.objetos.herramientas.*;
-import modelo.objetos.materiales.Material;
 
 public abstract class Recurso {
 

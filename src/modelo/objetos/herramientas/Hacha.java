@@ -2,7 +2,8 @@ package modelo.objetos.herramientas;
 
 import modelo.objetos.herramientas.durabilidades.*;
 import modelo.objetos.materiales.*;
-import modelo.recursos.Recurso;
+import modelo.recursos.*;
+
 
 public class Hacha extends Herramienta {
 
@@ -27,8 +28,24 @@ public class Hacha extends Herramienta {
         this.material = metal;
     }
 
-    public void golpear(Recurso recurso){
-        recurso.serGolpeadoPor(this);
+    @Override
+    public void golpear(BloqueMadera madera) {
+        gastar();
+        madera.gastar(this.fuerza);
     }
 
+    @Override
+    public void golpear(BloquePiedra piedra) {
+        gastar();
+    }
+
+    @Override
+    public void golpear(BloqueMetal metal) {
+        gastar();
+    }
+
+    @Override
+    public void golpear(BloqueDiamante diamante) {
+        gastar();
+    }
 }

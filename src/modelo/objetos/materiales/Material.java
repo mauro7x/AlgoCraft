@@ -1,20 +1,9 @@
 package modelo.objetos.materiales;
 
-import modelo.recursos.*;
+import modelo.recursos.BloqueMetal;
 
 public abstract class Material {
 
-    public void gastarMaderaConHacha(BloqueMadera madera, float fuerza){
-        madera.gastar(fuerza);
-    }
-    public void gastarPiedraConPico(BloquePiedra piedra, float fuerza){
-        piedra.gastar(fuerza);
-    }
-    public void gastarMetalConPico(BloqueMetal metal, float fuerza){
-        metal.gastar(fuerza);
-    }
-    public void gastarDiamanteConPicoFino(BloqueDiamante diamante, float fuerza){
-        diamante.gastar(fuerza);
-    }
-
+    public void gastar(BloqueMetal metal, float fuerza){ // por defecto no lo gasta
+        }
 }

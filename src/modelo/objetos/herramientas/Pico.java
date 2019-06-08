@@ -2,7 +2,7 @@ package modelo.objetos.herramientas;
 
 import modelo.objetos.herramientas.durabilidades.*;
 import modelo.objetos.materiales.*;
-import modelo.recursos.Recurso;
+import modelo.recursos.*;
 
 public class Pico extends Herramienta {
 
@@ -27,8 +27,26 @@ public class Pico extends Herramienta {
         this.material = metal;
     }
 
-    public void golpear(Recurso recurso){
-        recurso.serGolpeadoPor(this);
+
+    @Override
+    public void golpear(BloqueMadera madera) {
+        gastar();
     }
 
+    @Override
+    public void golpear(BloquePiedra piedra) {
+        gastar();
+        piedra.gastar(this.fuerza);
+    }
+
+    @Override
+    public void golpear(BloqueMetal metal) {
+        gastar();
+        material.gastar(metal, this.fuerza);
+    }
+
+    @Override
+    public void golpear(BloqueDiamante diamante) {
+        gastar();
+    }
 }

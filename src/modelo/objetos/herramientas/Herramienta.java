@@ -2,7 +2,7 @@ package modelo.objetos.herramientas;
 
 import modelo.objetos.materiales.Material;
 import modelo.objetos.herramientas.durabilidades.*;
-import modelo.recursos.Recurso;
+import modelo.recursos.*;
 
 public abstract class Herramienta {
 
@@ -26,6 +26,11 @@ public abstract class Herramienta {
         this.durabilidad.gastar(this.fuerza);
     }
 
-    public abstract void golpear(Recurso recurso);
-
+    public void golpear(Recurso recurso){
+        recurso.serGolpeadoPor(this);
+    }
+    public abstract void golpear(BloqueMadera madera);
+    public abstract void golpear(BloquePiedra piedra);
+    public abstract void golpear(BloqueMetal metal);
+    public abstract void golpear(BloqueDiamante diamante);
 }

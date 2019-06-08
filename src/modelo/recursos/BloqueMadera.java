@@ -1,7 +1,7 @@
 package modelo.recursos;
 
-import modelo.objetos.herramientas.*;
-import modelo.objetos.materiales.Material;
+import modelo.objetos.herramientas.Herramienta;
+
 
 public class BloqueMadera extends Recurso {
 
@@ -9,16 +9,8 @@ public class BloqueMadera extends Recurso {
         this.durabilidad = 10;
     }
 
-    public void serGolpeadoPor(Hacha hacha){
-        hacha.gastar();
-        Material material = hacha.getMaterial();
-        material.gastarMaderaConHacha(this, hacha.getFuerza());
-    }
-
-    public void serGolpeadoPor(Pico pico){
-        pico.gastar();
-    }
-    
-    public void serGolpeadoPor(PicoFino picoFino){
+    @Override
+    public void serGolpeadoPor(Herramienta herramienta) {
+        herramienta.golpear(this);
     }
 }

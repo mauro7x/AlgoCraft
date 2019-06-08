@@ -9,15 +9,16 @@ public class BloqueMadera extends Recurso {
         this.durabilidad = 10;
     }
 
-    public void serGolpeadoPor(Hacha hacha, Material material, float fuerza){
+    public void serGolpeadoPor(Hacha hacha){
         hacha.gastar();
-        material.gastarMaderaConHacha(this, fuerza);
+        Material material = hacha.getMaterial();
+        material.gastarMaderaConHacha(this, hacha.getFuerza());
     }
 
-    public void serGolpeadoPor(Pico pico, Material material, float fuerza){
+    public void serGolpeadoPor(Pico pico){
         pico.gastar();
     }
-
-    public void serGolpeadoPor(PicoFino picoFino, Material material, float fuerza){
+    
+    public void serGolpeadoPor(PicoFino picoFino){
     }
 }

@@ -1,6 +1,5 @@
 package modelo.recursos;
 import modelo.objetos.herramientas.*;
-import modelo.objetos.materiales.Material;
 
 public abstract class Recurso {
 
@@ -10,9 +9,9 @@ public abstract class Recurso {
         return durabilidad;
     }
 
-    public abstract void serGolpeadoPor(Hacha hacha, Material material, float fuerza);
-    public abstract void serGolpeadoPor(Pico pico, Material material, float fuerza);
-    public abstract void serGolpeadoPor(PicoFino picoFino, Material material, float fuerza);
+    public abstract void serGolpeadoPor(Hacha hacha);
+    public abstract void serGolpeadoPor(Pico pico);
+    public abstract void serGolpeadoPor(PicoFino picoFino);
 
     public void gastar(float fuerza){
         durabilidad -= fuerza;

@@ -9,16 +9,17 @@ public class BloquePiedra extends Recurso {
         this.durabilidad = 30;
     }
 
-    public void serGolpeadoPor(Hacha hacha, Material material, float fuerza){
+    public void serGolpeadoPor(Hacha hacha){
         hacha.gastar();
     }
 
-    public void serGolpeadoPor(Pico pico, Material material, float fuerza){
+    public void serGolpeadoPor(Pico pico){
         pico.gastar();
-        material.gastarPiedraConPico(this, fuerza);
+        Material material = pico.getMaterial();
+        material.gastarPiedraConPico(this, pico.getFuerza());
     }
 
-    public void serGolpeadoPor(PicoFino picoFino, Material material, float fuerza){
+    public void serGolpeadoPor(PicoFino picoFino){
 
     }
 }

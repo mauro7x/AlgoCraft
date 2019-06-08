@@ -9,17 +9,18 @@ public class BloqueDiamante extends Recurso {
         this.durabilidad = 100;
     }
 
-    public void serGolpeadoPor(Hacha hacha, Material material, float fuerza){
+    public void serGolpeadoPor(Hacha hacha){
         hacha.gastar();
     }
 
-    public void serGolpeadoPor(Pico pico, Material material, float fuerza){
+    public void serGolpeadoPor(Pico pico){
         pico.gastar();
     }
 
-    public void serGolpeadoPor(PicoFino picoFino, Material material, float fuerza){
+    public void serGolpeadoPor(PicoFino picoFino){
         picoFino.gastar();
-        material.gastarDiamanteConPicoFino(this, fuerza);
+        Material material = picoFino.getMaterial();
+        material.gastarDiamanteConPicoFino(this, picoFino.getFuerza());
     }
 
 }

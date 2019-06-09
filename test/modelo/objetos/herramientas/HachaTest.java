@@ -1,5 +1,6 @@
 package modelo.objetos.herramientas;
 
+import modelo.objetos.GuardableEnInventario;
 import modelo.objetos.materiales.*;
 import modelo.recursos.*;
 
@@ -72,5 +73,12 @@ public class HachaTest {
         float durabilidadInicial = hachaDeMetal.getDurabilidad();
         hachaDeMetal.golpear(new BloqueMadera());
         assertEquals(durabilidadInicial-(fuerza/2), hachaDeMetal.getDurabilidad(),0.0001);
+    }
+
+    //Test de id
+    @Test
+    public void test01CrearHachaIDEs11(){
+        GuardableEnInventario hacha = new Hacha(new Madera());
+        assertEquals(22,hacha.getId());
     }
 }

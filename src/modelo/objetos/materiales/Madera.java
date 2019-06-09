@@ -1,6 +1,10 @@
 package modelo.objetos.materiales;
 
-public class Madera {
+import modelo.objetos.GuardableEnInventario;
 
-
+public class Madera implements GuardableEnInventario {
+    @Override
+    public int getId() {
+        return 1;
+    }
 }

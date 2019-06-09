@@ -1,10 +1,11 @@
 package modelo.objetos.herramientas;
 
+import modelo.objetos.GuardableEnInventario;
 import modelo.objetos.herramientas.reglas.*;
 import modelo.objetos.herramientas.durabilidades.*;
 import modelo.recursos.*;
 
-public abstract class Herramienta {
+public abstract class Herramienta implements GuardableEnInventario {
 
     protected Durabilidad durabilidad;
     protected float fuerza;

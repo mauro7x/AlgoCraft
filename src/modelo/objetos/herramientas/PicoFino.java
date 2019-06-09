@@ -8,12 +8,14 @@ import modelo.recursos.*;
 
 
 public class PicoFino extends Herramienta {
+    private int id;
 
     public PicoFino(Piedra piedra, Metal metal){
         this.durabilidad = new DurabilidadDiezPorciento();
         this.durabilidad.setDurabilidad(1000);
         this.fuerza = 20;
         this.reglasDeDesgaste = new ReglasEstandarPicoFino();
+        this.id = 16;
     }
 
     @Override
@@ -35,5 +37,10 @@ public class PicoFino extends Herramienta {
     public void golpear(BloqueDiamante diamante) {
         gastar();
         reglasDeDesgaste.gastar(diamante, fuerza);
+    }
+
+    @Override
+    public int getId() {
+        return this.id;
     }
 }

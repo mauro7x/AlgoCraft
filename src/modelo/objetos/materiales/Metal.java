@@ -1,6 +1,10 @@
 package modelo.objetos.materiales;
 
-public class Metal {
+import modelo.objetos.GuardableEnInventario;
 
-
+public class Metal implements GuardableEnInventario {
+    @Override
+    public int getId() {
+        return 3;
+    }
 }

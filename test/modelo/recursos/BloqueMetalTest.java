@@ -45,7 +45,7 @@ public class BloqueMetalTest {
     @Test
     public void test04BloqueMetalSeGolpeaConUnPicoFinoYNoSeReduceSuDurabilidad() {
         BloqueMetal metal = new BloqueMetal();
-        PicoFino picoFino = new PicoFino();
+        PicoFino picoFino = new PicoFino(new Piedra(), new Metal());
         float durabilidadInicialBloqueMetal = metal.getDurabilidad();
 
         picoFino.golpear(metal);

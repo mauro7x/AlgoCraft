@@ -8,7 +8,6 @@ public class BloqueDiamante extends Recurso {
         this.durabilidad = 100;
     }
 
-
     @Override
     public void serGolpeadoPor(Herramienta herramienta) {
         herramienta.golpear(this);

@@ -1,6 +1,6 @@
 package modelo.objetos.materiales;
 
-public class Metal {
+public class Diamante {
 
 
 }

@@ -1,8 +1,10 @@
 package modelo.objetos.herramientas;
 
 import modelo.objetos.herramientas.durabilidades.*;
+import modelo.objetos.herramientas.reglas.ReglasEstandarPico;
+import modelo.objetos.herramientas.reglas.ReglasPicoPiedra;
 import modelo.objetos.materiales.*;
-import modelo.recursos.*;
+
 
 public class Pico extends Herramienta {
 
@@ -10,43 +12,22 @@ public class Pico extends Herramienta {
         this.durabilidad = new DurabilidadEnFuerza(1);
         this.durabilidad.setDurabilidad(100);
         this.fuerza = 2;
-        this.material = madera;
+        this.reglasDeDesgaste = new ReglasEstandarPico();
     }
 
     public Pico(Piedra piedra){
         this.durabilidad = new DurabilidadEnFuerza(1.5f);
         this.durabilidad.setDurabilidad(200);
         this.fuerza = 4;
-        this.material = piedra;
+        this.reglasDeDesgaste = new ReglasPicoPiedra(new ReglasEstandarPico());
     }
 
     public Pico(Metal metal){
         this.durabilidad = new DurabilidadTrasDiezUsos();
         this.durabilidad.setDurabilidad(400);
         this.fuerza = 12;
-        this.material = metal;
+        this.reglasDeDesgaste = new ReglasEstandarPico();
     }
 
 
-    @Override
-    public void golpear(BloqueMadera madera) {
-        gastar();
-    }
-
-    @Override
-    public void golpear(BloquePiedra piedra) {
-        gastar();
-        piedra.gastar(this.fuerza);
-    }
-
-    @Override
-    public void golpear(BloqueMetal metal) {
-        gastar();
-        material.gastar(metal, this.fuerza);
-    }
-
-    @Override
-    public void golpear(BloqueDiamante diamante) {
-        gastar();
-    }
 }

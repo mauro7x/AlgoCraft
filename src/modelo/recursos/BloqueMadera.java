@@ -2,7 +2,6 @@ package modelo.recursos;
 
 import modelo.objetos.herramientas.Herramienta;
 
-
 public class BloqueMadera extends Recurso {
 
     public BloqueMadera(){

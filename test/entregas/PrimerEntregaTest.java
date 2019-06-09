@@ -45,7 +45,7 @@ public class PrimerEntregaTest {
 
     @Test
     public void test05SeCreaPicoFinoConDurabilidad1000YFuerza20() {
-        PicoFino picoFino = new PicoFino();
+        PicoFino picoFino = new PicoFino(new Piedra(), new Metal());
         assertEquals(1000, picoFino.getDurabilidad(),0.0001);
         assertEquals(20, picoFino.getFuerza(),0.0001);
     }
@@ -121,7 +121,7 @@ public class PrimerEntregaTest {
 
     @Test
     public void test08PicoFinoSeUsaContraDiamanteYReduceSuDurabilidadUn10PorCiento() {
-        PicoFino picoFino = new PicoFino();
+        PicoFino picoFino = new PicoFino(new Piedra(), new Metal());
         float durabilidad = picoFino.getDurabilidad();
         picoFino.golpear(new BloqueDiamante());
         assertEquals(durabilidad-(float)(durabilidad*0.1), picoFino.getDurabilidad(),0.0001);
@@ -129,7 +129,7 @@ public class PrimerEntregaTest {
 
     @Test
     public void test09PicoFinoSeUsaContraMaterialQueNoSeaDiamanteYNoReduceDurabilidad() {
-        PicoFino picoFino = new PicoFino();
+        PicoFino picoFino = new PicoFino(new Piedra(), new Metal());
         float durabilidadInicial = picoFino.getDurabilidad();
         picoFino.golpear(new BloqueMetal());
         picoFino.golpear(new BloqueMadera());

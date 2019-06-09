@@ -1,9 +1,12 @@
 package modelo.objetos.herramientas;
 
+import modelo.objetos.GuardableEnInventario;
 import modelo.objetos.materiales.*;
 import modelo.recursos.*;
 
 import org.junit.Test;
+
+import static junit.framework.TestCase.assertEquals;
 import static org.junit.Assert.*;
 
 public class PicoTest {
@@ -84,5 +87,22 @@ public class PicoTest {
         assertEquals(0, picoDeMetal.getDurabilidad(),0.0001);
     }
 
+    //Test de id
+    @Test
+    public void test01CrearPicoDeMaderaIDEs13(){
+        GuardableEnInventario pico = new Pico(new Madera());
+        assertEquals(13,pico.getId());
+    }
 
+    @Test
+    public void test01CrearPicoDePiedraIDEs14(){
+        GuardableEnInventario pico = new Pico(new Piedra());
+        assertEquals(14,pico.getId());
+    }
+
+    @Test
+    public void test01CrearPicoDeMetalIDEs15(){
+        GuardableEnInventario pico = new Pico(new Metal());
+        assertEquals(15,pico.getId());
+    }
 }

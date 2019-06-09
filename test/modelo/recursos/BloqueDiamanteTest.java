@@ -10,13 +10,13 @@ public class BloqueDiamanteTest {
 
     @Test
     public void test01BloqueDiamanteSeInicializaConDurabilidad100() {
-        BloqueDiamante diamante = new BloqueDiamante();
+        Recurso diamante = new BloqueDiamante();
         assertEquals(100, diamante.getDurabilidad(), 0);
     }
 
     @Test
     public void test02BloqueDiamanteSeGolpeaConUnPicoFinoYSeReduceSuDurabilidadEn20() {
-        BloqueDiamante diamante = new BloqueDiamante();
+        Recurso diamante = new BloqueDiamante();
         PicoFino picoFino = new PicoFino(new Piedra(), new Metal());
         float durabilidadInicialBloqueDiamante = diamante.getDurabilidad();
 
@@ -28,7 +28,7 @@ public class BloqueDiamanteTest {
 
     @Test
     public void test03BloqueDiamanteSeGolpeaConUnHachaDeCualquierMaterialYNoSeReduceSuDurabilidad() {
-        BloqueDiamante diamante = new BloqueDiamante();
+        Recurso diamante = new BloqueDiamante();
         Hacha hachaDeMadera = new Hacha(new Madera());
         Hacha hachaDePiedra = new Hacha(new Piedra());
         Hacha hachaDeMetal = new Hacha(new Metal());
@@ -44,7 +44,7 @@ public class BloqueDiamanteTest {
 
     @Test
     public void test04BloqueDiamanteSeGolpeaConUnPicoDeCualquierMaterialYNoSeReduceSuDurabilidad() {
-        BloqueDiamante diamante = new BloqueDiamante();
+        Recurso diamante = new BloqueDiamante();
         Pico picoDeMadera = new Pico(new Madera());
         Pico picoDePiedra = new Pico(new Piedra());
         Pico picoDeMetal = new Pico(new Metal());

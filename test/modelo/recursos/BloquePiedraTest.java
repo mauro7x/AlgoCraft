@@ -10,13 +10,13 @@ public class BloquePiedraTest {
 
     @Test
     public void test01BloquePiedraSeInicializaConDurabilidad30() {
-        BloquePiedra piedra = new BloquePiedra();
+        Recurso piedra = new BloquePiedra();
         assertEquals(30, piedra.getDurabilidad(), 0);
     }
 
     @Test
     public void test02BloquePiedraSeGolpeaConUnPicoDeMaderaYSeReduceSuDurabilidadEn2() {
-        BloquePiedra piedra = new BloquePiedra();
+        Recurso piedra = new BloquePiedra();
         Pico picoDeMadera = new Pico(new Madera());
         float durabilidadInicialBloquePiedra = piedra.getDurabilidad();
 
@@ -28,7 +28,7 @@ public class BloquePiedraTest {
 
     @Test
     public void test03BloquePiedraSeGolpeaConUnPicoDeBloquePiedraYSeReduceSuDurabilidadEn4() {
-        BloquePiedra piedra = new BloquePiedra();
+        Recurso piedra = new BloquePiedra();
         Pico picoDePiedra = new Pico(new Piedra());
         float durabilidadInicialBloquePiedra = piedra.getDurabilidad();
 
@@ -40,7 +40,7 @@ public class BloquePiedraTest {
 
     @Test
     public void test04BloquePiedraSeGolpeaConUnPicoDeMetalYSeReduceSuDurabilidadEn12() {
-        BloquePiedra piedra = new BloquePiedra();
+        Recurso piedra = new BloquePiedra();
         Pico picoDeMetal = new Pico(new Metal());
         float durabilidadInicialBloquePiedra = piedra.getDurabilidad();
 
@@ -52,7 +52,7 @@ public class BloquePiedraTest {
 
     @Test
     public void test05BloquePiedraSeGolpeaConUnHachaDeCualquierMaterialYNoSeReduceSuDurabilidad() {
-        BloquePiedra piedra = new BloquePiedra();
+        Recurso piedra = new BloquePiedra();
         Hacha hachaDeMadera = new Hacha(new Madera());
         Hacha hachaDePiedra = new Hacha(new Piedra());
         Hacha hachaDeMetal = new Hacha(new Metal());
@@ -68,7 +68,7 @@ public class BloquePiedraTest {
 
     @Test
     public void test06BloquePiedraSeGolpeaConUnPicoFinoYNoSeReduceSuDurabilidad() {
-        BloquePiedra piedra = new BloquePiedra();
+        Recurso piedra = new BloquePiedra();
         PicoFino picoFino = new PicoFino(new Piedra(), new Metal());
         float durabilidadInicialBloquePiedra = piedra.getDurabilidad();
 

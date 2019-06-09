@@ -1,7 +1,6 @@
 package modelo.recursos;
 
-import modelo.objetos.herramientas.*;
-import modelo.objetos.materiales.Material;
+import modelo.objetos.herramientas.Herramienta;
 
 public class BloqueDiamante extends Recurso {
 
@@ -9,18 +8,8 @@ public class BloqueDiamante extends Recurso {
         this.durabilidad = 100;
     }
 
-    public void serGolpeadoPor(Hacha hacha){
-        hacha.gastar();
+    @Override
+    public void serGolpeadoPor(Herramienta herramienta) {
+        herramienta.golpear(this);
     }
-
-    public void serGolpeadoPor(Pico pico){
-        pico.gastar();
-    }
-
-    public void serGolpeadoPor(PicoFino picoFino){
-        picoFino.gastar();
-        Material material = picoFino.getMaterial();
-        material.gastarDiamanteConPicoFino(this, picoFino.getFuerza());
-    }
-
 }

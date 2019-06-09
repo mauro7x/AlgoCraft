@@ -1,19 +1,39 @@
 package modelo.objetos.herramientas;
 
 import modelo.objetos.herramientas.durabilidades.*;
-import modelo.objetos.materiales.PiedraYMetal;
+import modelo.objetos.herramientas.reglas.ReglasEstandarPicoFino;
+import modelo.objetos.materiales.Piedra;
+import modelo.objetos.materiales.Metal;
 import modelo.recursos.*;
+
 
 public class PicoFino extends Herramienta {
 
-    public PicoFino(){
+    public PicoFino(Piedra piedra, Metal metal){
         this.durabilidad = new DurabilidadDiezPorciento();
         this.durabilidad.setDurabilidad(1000);
         this.fuerza = 20;
-        this.material = new PiedraYMetal();
+        this.reglasDeDesgaste = new ReglasEstandarPicoFino();
     }
 
-    public void golpear(Recurso recurso){
-        recurso.serGolpeadoPor(this);
+    @Override
+    public void golpear(BloqueMadera madera) {
+        reglasDeDesgaste.gastar(madera, fuerza);
+    }
+
+    @Override
+    public void golpear(BloquePiedra piedra) {
+        reglasDeDesgaste.gastar(piedra, fuerza);
+    }
+
+    @Override
+    public void golpear(BloqueMetal metal) {
+        reglasDeDesgaste.gastar(metal, fuerza);
+    }
+
+    @Override
+    public void golpear(BloqueDiamante diamante) {
+        gastar();
+        reglasDeDesgaste.gastar(diamante, fuerza);
     }
 }

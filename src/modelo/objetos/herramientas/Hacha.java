@@ -2,7 +2,9 @@ package modelo.objetos.herramientas;
 
 import modelo.objetos.herramientas.durabilidades.*;
 import modelo.objetos.herramientas.reglas.ReglasEstandarHacha;
-import modelo.objetos.materiales.*;
+import modelo.objetos.materiales.Madera;
+import modelo.objetos.materiales.Metal;
+import modelo.objetos.materiales.Piedra;
 
 
 public class Hacha extends Herramienta {

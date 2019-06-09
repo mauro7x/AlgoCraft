@@ -3,9 +3,8 @@ package modelo.jugador;
 import modelo.objetos.GuardableEnInventario;
 import modelo.objetos.SlotVacio;
 import modelo.objetos.materiales.Madera;
-import modelo.objetos.materiasPrimas.MaderaInventariable;
-import modelo.objetos.materiasPrimas.MetalInventariable;
-import modelo.objetos.materiasPrimas.PiedraInventariable;
+import modelo.objetos.materiales.Metal;
+import modelo.objetos.materiales.Piedra;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
@@ -17,9 +16,9 @@ public class ConstructorTest {
         Constructor constructor = new Constructor();
 
         GuardableEnInventario[] recetaHachaMadera = {
-                new MaderaInventariable(), new MaderaInventariable(),new SlotVacio(),
-                new MaderaInventariable(), new MaderaInventariable(),new SlotVacio(),
-                new SlotVacio(),new MaderaInventariable(), new SlotVacio()
+                new Madera(), new Madera(),new SlotVacio(),
+                new Madera(), new Madera(),new SlotVacio(),
+                new SlotVacio(),new Madera(), new SlotVacio()
         };
 
         GuardableEnInventario hachaMadera = constructor.construir(recetaHachaMadera);
@@ -31,9 +30,9 @@ public class ConstructorTest {
         Constructor constructor = new Constructor();
 
         GuardableEnInventario[] recetaHachaPiedra = {
-                new PiedraInventariable(), new PiedraInventariable(),new SlotVacio(),
-                new PiedraInventariable(), new MaderaInventariable(),new SlotVacio(),
-                new SlotVacio(),new MaderaInventariable(), new SlotVacio()
+                new Piedra(), new Piedra(),new SlotVacio(),
+                new Piedra(), new Madera(),new SlotVacio(),
+                new SlotVacio(),new Madera(), new SlotVacio()
         };
 
         GuardableEnInventario hachaPiedra = constructor.construir(recetaHachaPiedra);
@@ -45,9 +44,9 @@ public class ConstructorTest {
         Constructor constructor = new Constructor();
 
         GuardableEnInventario[] recetaHachaMetal = {
-                new MetalInventariable(), new MetalInventariable(),new SlotVacio(),
-                new MetalInventariable(), new MaderaInventariable(),new SlotVacio(),
-                new SlotVacio(),new MaderaInventariable(), new SlotVacio()
+                new Metal(), new Metal(),new SlotVacio(),
+                new Metal(), new Madera(),new SlotVacio(),
+                new SlotVacio(),new Madera(), new SlotVacio()
         };
 
         GuardableEnInventario hachaMetal = constructor.construir(recetaHachaMetal);
@@ -59,9 +58,9 @@ public class ConstructorTest {
         Constructor constructor = new Constructor();
 
         GuardableEnInventario[] recetaPicoMadera = {
-                new MaderaInventariable(), new MaderaInventariable(),new MaderaInventariable(),
-                new SlotVacio(), new MaderaInventariable(),new SlotVacio(),
-                new SlotVacio(),new MaderaInventariable(), new SlotVacio()
+                new Madera(), new Madera(),new Madera(),
+                new SlotVacio(), new Madera(),new SlotVacio(),
+                new SlotVacio(),new Madera(), new SlotVacio()
         };
 
         GuardableEnInventario picoMadera = constructor.construir(recetaPicoMadera);
@@ -73,9 +72,9 @@ public class ConstructorTest {
         Constructor constructor = new Constructor();
 
         GuardableEnInventario[] recetaPicoPiedra = {
-                new PiedraInventariable(),new PiedraInventariable(),new PiedraInventariable(),
-                new SlotVacio(), new MaderaInventariable(),new SlotVacio(),
-                new SlotVacio(),new MaderaInventariable(), new SlotVacio()
+                new Piedra(),new Piedra(),new Piedra(),
+                new SlotVacio(), new Madera(),new SlotVacio(),
+                new SlotVacio(),new Madera(), new SlotVacio()
         };
 
         GuardableEnInventario picoPiedra = constructor.construir(recetaPicoPiedra);
@@ -87,9 +86,9 @@ public class ConstructorTest {
         Constructor constructor = new Constructor();
 
         GuardableEnInventario[] recetaPicoMetal = {
-                new MetalInventariable(),new MetalInventariable(),new MetalInventariable(),
-                new SlotVacio(), new MaderaInventariable(),new SlotVacio(),
-                new SlotVacio(),new MaderaInventariable(), new SlotVacio()
+                new Metal(),new Metal(),new Metal(),
+                new SlotVacio(), new Madera(),new SlotVacio(),
+                new SlotVacio(),new Madera(), new SlotVacio()
         };
 
         GuardableEnInventario picoMetal = constructor.construir(recetaPicoMetal);
@@ -101,9 +100,9 @@ public class ConstructorTest {
         Constructor constructor = new Constructor();
 
         GuardableEnInventario[] recetaPicoFino = {
-                new MetalInventariable(),new MetalInventariable(),new MetalInventariable(),
-                new PiedraInventariable(), new MaderaInventariable(),new SlotVacio(),
-                new SlotVacio(),new MaderaInventariable(), new SlotVacio()
+                new Metal(),new Metal(),new Metal(),
+                new Piedra(), new Madera(),new SlotVacio(),
+                new SlotVacio(),new Madera(), new SlotVacio()
         };
 
         GuardableEnInventario picoFino = constructor.construir(recetaPicoFino);

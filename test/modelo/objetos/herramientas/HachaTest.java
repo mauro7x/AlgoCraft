@@ -77,8 +77,20 @@ public class HachaTest {
 
     //Test de id
     @Test
-    public void test01CrearHachaIDEs11(){
+    public void test01CrearHachaMaderaIDEs10(){
         GuardableEnInventario hacha = new Hacha(new Madera());
-        assertEquals(22,hacha.getId());
+        assertEquals(10,hacha.getId());
+    }
+
+    @Test
+    public void test02CrearHachaPiedraIDEs11(){
+        GuardableEnInventario hacha = new Hacha(new Piedra());
+        assertEquals(11,hacha.getId());
+    }
+
+    @Test
+    public void test03CrearHachaMetalIDEs12(){
+        GuardableEnInventario hacha = new Hacha(new Metal());
+        assertEquals(12,hacha.getId());
     }
 }

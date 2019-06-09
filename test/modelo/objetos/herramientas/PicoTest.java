@@ -89,8 +89,20 @@ public class PicoTest {
 
     //Test de id
     @Test
-    public void test01CrearPicoIDEs12(){
+    public void test01CrearPicoDeMaderaIDEs13(){
         GuardableEnInventario pico = new Pico(new Madera());
-        assertEquals(20,pico.getId());
+        assertEquals(13,pico.getId());
+    }
+
+    @Test
+    public void test01CrearPicoDePiedraIDEs14(){
+        GuardableEnInventario pico = new Pico(new Piedra());
+        assertEquals(14,pico.getId());
+    }
+
+    @Test
+    public void test01CrearPicoDeMetalIDEs15(){
+        GuardableEnInventario pico = new Pico(new Metal());
+        assertEquals(15,pico.getId());
     }
 }

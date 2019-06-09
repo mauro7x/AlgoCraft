@@ -44,9 +44,9 @@ public class PicoFinoTest {
 
     //Test de id
     @Test
-    public void test01CrearPicoFinoIDEs13(){
+    public void test01CrearPicoFinoIDEs16(){
         GuardableEnInventario pico = new PicoFino(new Piedra(),new Metal());
-        assertEquals(21,pico.getId());
+        assertEquals(16,pico.getId());
     }
 
 

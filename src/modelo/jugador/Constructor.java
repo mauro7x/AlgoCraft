@@ -53,12 +53,9 @@ public class Constructor {
             recetaParseada[i] = receta[i].getId();
         }
 
-        GuardableEnInventario herramientaConstruida = recetas.get(Arrays.hashCode(recetaParseada)).get();
+        GuardableEnInventario construccion = recetas.getOrDefault(Arrays.hashCode(recetaParseada), () -> new SlotVacio()).get();
 
-        if (herramientaConstruida != null){
-            return herramientaConstruida;
-        }
-        return new SlotVacio();
+        return construccion;
     }
 
 }

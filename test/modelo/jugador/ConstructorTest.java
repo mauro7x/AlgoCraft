@@ -108,4 +108,18 @@ public class ConstructorTest {
         GuardableEnInventario picoFino = constructor.construir(recetaPicoFino);
         assertEquals(16,picoFino.getId());
     }
+
+    @Test
+    public void test08ConstruirUnaRecetaInexistenteDevuelveSlotVacio(){
+        Constructor constructor = new Constructor();
+
+        GuardableEnInventario[] recetaInexistente = {
+                new SlotVacio(), new SlotVacio(), new Metal(),
+                new Piedra(), new Madera(),new SlotVacio(),
+                new SlotVacio(),new Madera(), new SlotVacio()
+        };
+
+        GuardableEnInventario slotVacio = constructor.construir(recetaInexistente);
+        assertEquals(0,slotVacio.getId());
+    }
 }

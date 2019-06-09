@@ -10,9 +10,8 @@ Trabajo Práctico N°2 de la materia Algoritmos y Programación III de la FIUBA.
 
 ### Links de interés 🚀
 
-Informe: https://www.overleaf.com/8746758456pyzgmhgnqdqm
-
-Enunciado: https://docs.google.com/document/d/1uT1NYcKcZytVY5hD31TXFGuXLqgSXLUc488Tv7DOxIw/edit#heading=h.yxmoczo35tm5
+* [Informe](https://www.overleaf.com/8746758456pyzgmhgnqdqm)
+* [Enunciado](https://docs.google.com/document/d/1uT1NYcKcZytVY5hD31TXFGuXLqgSXLUc488Tv7DOxIw/edit#heading=h.yxmoczo35tm5)
 
 
 ### Pre-requisitos 📋

@@ -13,7 +13,7 @@ public class ConstructorTest {
 
     @Test
     public void test01ConstruirHachaDeMadera(){
-        Constructor constructor = Constructor.getConstructor();
+        Constructor constructor = Constructor.get();
 
         GuardableEnInventario[] recetaHachaMadera = {
                 new Madera(), new Madera(),new SlotVacio(),
@@ -27,7 +27,7 @@ public class ConstructorTest {
 
     @Test
     public void test02ConstruirHachaDePiedra(){
-        Constructor constructor = Constructor.getConstructor();
+        Constructor constructor = Constructor.get();
 
         GuardableEnInventario[] recetaHachaPiedra = {
                 new Piedra(), new Piedra(),new SlotVacio(),
@@ -41,7 +41,7 @@ public class ConstructorTest {
 
     @Test
     public void test03ConstruirHachaDeMetal(){
-        Constructor constructor = Constructor.getConstructor();
+        Constructor constructor = Constructor.get();
 
         GuardableEnInventario[] recetaHachaMetal = {
                 new Metal(), new Metal(),new SlotVacio(),
@@ -55,7 +55,7 @@ public class ConstructorTest {
 
     @Test
     public void test04ConstruirPicoDeMadera(){
-        Constructor constructor = Constructor.getConstructor();
+        Constructor constructor = Constructor.get();
 
         GuardableEnInventario[] recetaPicoMadera = {
                 new Madera(), new Madera(),new Madera(),
@@ -69,7 +69,7 @@ public class ConstructorTest {
 
     @Test
     public void test05ConstruirPicoDePiedra(){
-        Constructor constructor = Constructor.getConstructor();
+        Constructor constructor = Constructor.get();
 
         GuardableEnInventario[] recetaPicoPiedra = {
                 new Piedra(),new Piedra(),new Piedra(),
@@ -83,7 +83,7 @@ public class ConstructorTest {
 
     @Test
     public void test06ConstruirPicoDeMetal(){
-        Constructor constructor = Constructor.getConstructor();
+        Constructor constructor = Constructor.get();
 
         GuardableEnInventario[] recetaPicoMetal = {
                 new Metal(),new Metal(),new Metal(),
@@ -97,7 +97,7 @@ public class ConstructorTest {
 
     @Test
     public void test07ConstruirPicoFino(){
-        Constructor constructor = Constructor.getConstructor();
+        Constructor constructor = Constructor.get();
 
         GuardableEnInventario[] recetaPicoFino = {
                 new Metal(),new Metal(),new Metal(),
@@ -111,7 +111,7 @@ public class ConstructorTest {
 
     @Test
     public void test08ConstruirUnaRecetaInexistenteDevuelveSlotVacio(){
-        Constructor constructor = Constructor.getConstructor();
+        Constructor constructor = Constructor.get();
 
         GuardableEnInventario[] recetaInexistente = {
                 new SlotVacio(), new SlotVacio(), new Metal(),

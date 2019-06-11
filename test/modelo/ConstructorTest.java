@@ -1,20 +1,18 @@
-package entregas;
+package modelo;
 
-import modelo.Constructor;
-import modelo.jugador.Jugador;
 import modelo.objetos.GuardableEnInventario;
 import modelo.objetos.SlotVacio;
-import modelo.objetos.materiales.*;
-
+import modelo.objetos.materiales.Madera;
+import modelo.objetos.materiales.Metal;
+import modelo.objetos.materiales.Piedra;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
+import static junit.framework.TestCase.assertEquals;
 
-public class SegundaEntregaTest {
+public class ConstructorTest {
 
-    //Pruebas de Construccion de herramienta
     @Test
-    public void test01HachaDeMaderaSeConstruyeDeLaFormaCorrecta(){
+    public void test01ConstruirHachaDeMadera(){
         Constructor constructor = Constructor.getConstructor();
 
         GuardableEnInventario[] recetaHachaMadera = {
@@ -28,7 +26,7 @@ public class SegundaEntregaTest {
     }
 
     @Test
-    public void test02HachaDePiedraSeConstruyeDeLaFormaCorrecta(){
+    public void test02ConstruirHachaDePiedra(){
         Constructor constructor = Constructor.getConstructor();
 
         GuardableEnInventario[] recetaHachaPiedra = {
@@ -42,7 +40,7 @@ public class SegundaEntregaTest {
     }
 
     @Test
-    public void test03HachaDeMetalSeConstruyeDeLaFormaCorrecta(){
+    public void test03ConstruirHachaDeMetal(){
         Constructor constructor = Constructor.getConstructor();
 
         GuardableEnInventario[] recetaHachaMetal = {
@@ -56,7 +54,7 @@ public class SegundaEntregaTest {
     }
 
     @Test
-    public void test04PicoDeMaderaSeConstruyeDeLaFormaCorrecta(){
+    public void test04ConstruirPicoDeMadera(){
         Constructor constructor = Constructor.getConstructor();
 
         GuardableEnInventario[] recetaPicoMadera = {
@@ -70,7 +68,7 @@ public class SegundaEntregaTest {
     }
 
     @Test
-    public void test05PicoDePiedraSeConstruyeDeLaFormaCorrecta(){
+    public void test05ConstruirPicoDePiedra(){
         Constructor constructor = Constructor.getConstructor();
 
         GuardableEnInventario[] recetaPicoPiedra = {
@@ -84,7 +82,7 @@ public class SegundaEntregaTest {
     }
 
     @Test
-    public void test06PicoDeMetalSeConstruyeDeLaFormaCorrecta(){
+    public void test06ConstruirPicoDeMetal(){
         Constructor constructor = Constructor.getConstructor();
 
         GuardableEnInventario[] recetaPicoMetal = {
@@ -98,7 +96,7 @@ public class SegundaEntregaTest {
     }
 
     @Test
-    public void test07PicoFinoSeConstruyeDeLaFormaCorrecta(){
+    public void test07ConstruirPicoFino(){
         Constructor constructor = Constructor.getConstructor();
 
         GuardableEnInventario[] recetaPicoFino = {
@@ -111,38 +109,17 @@ public class SegundaEntregaTest {
         assertEquals(16,picoFino.getId());
     }
 
-    //Pruebas de Jugador
     @Test
-    public void test01JugadorSeInicializaDeLaFormaCorrectaEnElMapa(){
-        Jugador jugador = Jugador.getJugador();
-        assertEquals(0,jugador.getPosicionX());
-        assertEquals(0,jugador.getPosicionY());
-    }
+    public void test08ConstruirUnaRecetaInexistenteDevuelveSlotVacio(){
+        Constructor constructor = Constructor.getConstructor();
 
-    @Test
-    public void test02JugadorPuedeMoverseParaTodasLasDireccionesVacias(){
+        GuardableEnInventario[] recetaInexistente = {
+                new SlotVacio(), new SlotVacio(), new Metal(),
+                new Piedra(), new Madera(),new SlotVacio(),
+                new SlotVacio(),new Madera(), new SlotVacio()
+        };
 
-    }
-
-    //Pruebas de Mapa
-    @Test
-    public void test01NoSePuedeOcuparUnCasilleroVacioDelTerreno(){
-
-    }
-
-    @Test
-    public void test02NoSePuedeOcuparUnCasilleroOcupadoDelTerreno(){
-
-    }
-
-    @Test
-    public void test03MaterialOPersonajePuedenOcuparUnCasilleroVacioDelTerreno(){
-
-    }
-
-    //Pruebas de Juego
-    @Test
-    public void test01SeIniciaElJuegoConElTerrenoInicializadoYElJugadorInicializado(){
-
+        GuardableEnInventario slotVacio = constructor.construir(recetaInexistente);
+        assertEquals(0,slotVacio.getId());
     }
 }

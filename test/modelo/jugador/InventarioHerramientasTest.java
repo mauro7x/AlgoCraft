@@ -10,91 +10,120 @@ import static org.junit.Assert.*;
 
 public class InventarioHerramientasTest {
 
-    final int cantidadDeSlots = 15;
-
     @Test
-    public void test01InventarioHerramientasSeInicializaConLaCantidadDeSlotsCorrecta(){
-        InventarioHerramientas inventarioHerramientas = new InventarioHerramientas(cantidadDeSlots);
+    public void test01InventarioHerramientasSeInicializaConLaCorrecta(){
+        InventarioHerramientas inventarioHerramientas = new InventarioHerramientas();
 
-        assertEquals(cantidadDeSlots, inventarioHerramientas.getCantidadSlotsDisponibles(), 0);
+        assertEquals(0, inventarioHerramientas.getCantidadHerramientas(), 0);
     }
 
     @Test
     public void test02InventarioHerramientasSeInicializaConNingunaHerramientaEnUso(){
-        InventarioHerramientas inventarioHerramientas = new InventarioHerramientas(cantidadDeSlots);
+        InventarioHerramientas inventarioHerramientas = new InventarioHerramientas();
 
         assertNull(inventarioHerramientas.getHerramientaEnUso());
     }
 
     @Test
     public void test03SeAgregaUnaHerramientaYSeModificanLosInvariantes(){
-        InventarioHerramientas inventarioHerramientas = new InventarioHerramientas(cantidadDeSlots);
-        int cantidadSlotsDisponiblesInicialmente = inventarioHerramientas.getCantidadSlotsDisponibles();
+        InventarioHerramientas inventarioHerramientas = new InventarioHerramientas();
+        int cantidadHerramientasInicial = inventarioHerramientas.getCantidadHerramientas();
         Herramienta herramienta = new PicoFino(new Piedra(), new Metal());
+
         inventarioHerramientas.guardar(herramienta);
-        assertEquals(cantidadSlotsDisponiblesInicialmente - 1, inventarioHerramientas.getCantidadSlotsDisponibles(), 0);
+
+        assertEquals(cantidadHerramientasInicial + 1, inventarioHerramientas.getCantidadHerramientas(), 0);
     }
 
     @Test
     public void test04SeEliminaUnaHerramientaYSeModificanLosInvariantes(){
-        InventarioHerramientas inventarioHerramientas = new InventarioHerramientas(cantidadDeSlots);
-        int cantidadSlotsDisponiblesInicialmente = inventarioHerramientas.getCantidadSlotsDisponibles();
+        InventarioHerramientas inventarioHerramientas = new InventarioHerramientas();
+        int cantidadHerramientasInicial = inventarioHerramientas.getCantidadHerramientas();
         Herramienta herramienta = new PicoFino(new Piedra(), new Metal());
+
         inventarioHerramientas.guardar(herramienta);
-        inventarioHerramientas.establecerHerramientaEnUso(0);
-        inventarioHerramientas.eliminar(0);
-        assertEquals(cantidadSlotsDisponiblesInicialmente, inventarioHerramientas.getCantidadSlotsDisponibles(), 0);
+        inventarioHerramientas.eliminarHerramientaEnUso();
+
+        assertEquals(cantidadHerramientasInicial, inventarioHerramientas.getCantidadHerramientas(), 0);
         assertNull(inventarioHerramientas.getHerramientaEnUso());
     }
 
     @Test
-    public void test05SeAgregaUnaHerramientaYSeLaPuedeEstablecerComoHerramientaEnUso(){
-        InventarioHerramientas inventarioHerramientas = new InventarioHerramientas(cantidadDeSlots);
+    public void test05SeAgregaUnaHerramientaSeEstableceAutomaticamenteComoHerramientaEnUso(){
+        InventarioHerramientas inventarioHerramientas = new InventarioHerramientas();
         Herramienta herramienta = new PicoFino(new Piedra(), new Metal());
 
         inventarioHerramientas.guardar(herramienta);
-        inventarioHerramientas.establecerHerramientaEnUso(0);
 
         assertEquals(herramienta, inventarioHerramientas.getHerramientaEnUso());
     }
 
     @Test
-    public void test06SeAgreganDosHerramientasYSeLasPuedeEstablecerComoHerramientaEnUso(){
-        InventarioHerramientas inventarioHerramientas = new InventarioHerramientas(cantidadDeSlots);
+    public void test06SeAgreganDosHerramientasYSePuedeCambiarHerramientaEnUsoAHerramientaSiguiente(){
+        InventarioHerramientas inventarioHerramientas = new InventarioHerramientas();
         Herramienta hachaMadera = new Hacha(new Madera());
         Herramienta hachaPiedra = new Hacha(new Piedra());
 
         inventarioHerramientas.guardar(hachaMadera);
         inventarioHerramientas.guardar(hachaPiedra);
 
-        inventarioHerramientas.establecerHerramientaEnUso(0);
-
         assertEquals(hachaMadera, inventarioHerramientas.getHerramientaEnUso());
 
-        inventarioHerramientas.establecerHerramientaEnUso(1);
+        inventarioHerramientas.cambiarAHerramientaSiguiente();
 
         assertEquals(hachaPiedra, inventarioHerramientas.getHerramientaEnUso());
     }
 
     @Test
-    public void test07NoSePuedeGuardarHerramientaCuandoNoHaySlotsDisponibles(){
-        InventarioHerramientas inventarioHerramientas = new InventarioHerramientas(0);
-        Herramienta herramienta = new Hacha(new Madera());
+    public void test07SeAgreganDosHerramientasYSePuedeCambiarHerramientaEnUsoAHerramientaAnterior(){
+        InventarioHerramientas inventarioHerramientas = new InventarioHerramientas();
+        Herramienta hachaMadera = new Hacha(new Madera());
+        Herramienta hachaPiedra = new Hacha(new Piedra());
 
-        assertFalse(inventarioHerramientas.guardar(herramienta));
+        inventarioHerramientas.guardar(hachaMadera);
+        inventarioHerramientas.guardar(hachaPiedra);
+
+        inventarioHerramientas.cambiarAHerramientaSiguiente();
+        inventarioHerramientas.cambiarAHerramientaAnterior();
+
+        assertEquals(hachaMadera, inventarioHerramientas.getHerramientaEnUso());
     }
 
     @Test
-    public void test08SePuedeGuardarHerramientaSiSeLiberaSlot(){
-        InventarioHerramientas inventarioHerramientas = new InventarioHerramientas(1);
-        Herramienta herramienta = new Hacha(new Madera());
+    public void test08HerramientaEnUsoSigueSiendoloSiNoHayHerramientaSiguiente(){
+        InventarioHerramientas inventarioHerramientas = new InventarioHerramientas();
+        Herramienta hachaMadera = new Hacha(new Madera());
 
-        inventarioHerramientas.guardar(herramienta);
+        inventarioHerramientas.guardar(hachaMadera);
 
-        assertFalse(inventarioHerramientas.guardar(herramienta));
+        inventarioHerramientas.cambiarAHerramientaSiguiente();
 
-        inventarioHerramientas.eliminar(0);
+        assertEquals(hachaMadera, inventarioHerramientas.getHerramientaEnUso());
+    }
 
-        assertTrue(inventarioHerramientas.guardar(herramienta));
+    @Test
+    public void test09HerramientaEnUsoSigueSiendoloSiNoHayHerramientaAnterior(){
+        InventarioHerramientas inventarioHerramientas = new InventarioHerramientas();
+        Herramienta hachaMadera = new Hacha(new Madera());
+
+        inventarioHerramientas.guardar(hachaMadera);
+
+        inventarioHerramientas.cambiarAHerramientaAnterior();
+
+        assertEquals(hachaMadera, inventarioHerramientas.getHerramientaEnUso());
+    }
+
+    @Test
+    public void test10HerramientaEnUsoEsEliminadaYLaHerramientaEnUsoPasaASerLaSiguiente(){
+        InventarioHerramientas inventarioHerramientas = new InventarioHerramientas();
+        Herramienta hachaMadera = new Hacha(new Madera());
+        Herramienta hachaPiedra = new Hacha(new Piedra());
+
+        inventarioHerramientas.guardar(hachaMadera);
+        inventarioHerramientas.guardar(hachaPiedra);
+
+        inventarioHerramientas.eliminarHerramientaEnUso();
+
+        assertEquals(hachaPiedra, inventarioHerramientas.getHerramientaEnUso());
     }
 }

@@ -5,36 +5,48 @@ import java.util.ArrayList;
 
 public class InventarioHerramientas{
 
-    private int cantidadDeSlotsDisponibles;
+    private int cantidadDeHerramientas;
     private ArrayList<Herramienta> herramientas;
-    private Herramienta herramientaEnUso;
+    private int herramientaEnUso;
 
-    public InventarioHerramientas(int cantidadDeSlots){
-        this.cantidadDeSlotsDisponibles = cantidadDeSlots;
+    public InventarioHerramientas(){
+        this.herramientaEnUso = 0;
         this.herramientas = new ArrayList<Herramienta>();
-        this.herramientaEnUso = null;
+        this.cantidadDeHerramientas = 0;
     }
 
-    public int getCantidadSlotsDisponibles(){ return this.cantidadDeSlotsDisponibles; }
+    public int getCantidadHerramientas(){ return this.cantidadDeHerramientas; }
 
-    public boolean guardar(Herramienta herramienta){
-        if (this.cantidadDeSlotsDisponibles == 0) return false;
+    public void guardar(Herramienta herramienta){
         this.herramientas.add(herramienta);
-        this.cantidadDeSlotsDisponibles -= 1;
-        return true;
+        if (this.cantidadDeHerramientas == 0){ this.herramientaEnUso = 0; }
+        this.cantidadDeHerramientas += 1;
     }
 
-    public void eliminar(int indice){
-        if (herramientas.get(indice) == this.herramientaEnUso){
-            herramientaEnUso = null;
+    public void eliminarHerramientaEnUso(){
+        if (this.cantidadDeHerramientas == 0){ return; }
+        this.herramientas.remove(herramientaEnUso);
+        this.cantidadDeHerramientas -= 1;
+    }
+
+    public void cambiarAHerramientaSiguiente(){
+        if (this.herramientaEnUso == this.cantidadDeHerramientas-1){
+            this.herramientaEnUso = 0;
+            return;
         }
-        this.herramientas.remove(indice);
-        this.cantidadDeSlotsDisponibles += 1;
+        this.herramientaEnUso += 1;
     }
 
-    public void establecerHerramientaEnUso(int indice){
-        herramientaEnUso = herramientas.get(indice);
+    public void cambiarAHerramientaAnterior(){
+        if (this.herramientaEnUso == 0){
+            this.herramientaEnUso = this.cantidadDeHerramientas-1;
+            return;
+        }
+        this.herramientaEnUso -= 1;
     }
 
-    public Herramienta getHerramientaEnUso(){ return herramientaEnUso; }
+    public Herramienta getHerramientaEnUso(){
+        if (this.cantidadDeHerramientas == 0){ return null; }
+        return herramientas.get(this.herramientaEnUso);
+    }
 }

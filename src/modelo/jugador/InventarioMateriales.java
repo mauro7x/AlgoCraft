@@ -5,7 +5,7 @@ import modelo.objetos.GuardableEnInventario;
 public class InventarioMateriales {
 
     private static final int cantidadMaterialesDelJuego = 4;
-    public static InventarioMateriales inventarioMateriales = new InventarioMateriales(cantidadMaterialesDelJuego);
+    private static InventarioMateriales inventarioMateriales = new InventarioMateriales(cantidadMaterialesDelJuego);
 
     private int materiales[];
 

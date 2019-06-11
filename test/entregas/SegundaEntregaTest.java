@@ -126,7 +126,7 @@ public class SegundaEntregaTest {
 
     //Pruebas de Mapa
     @Test
-    public void test01NoSePuedeOcuparUnCasilleroVacioDelTerreno(){
+    public void test01SePuedeOcuparUnCasilleroVacioDelTerreno(){
 
     }
 

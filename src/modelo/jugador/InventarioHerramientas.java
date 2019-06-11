@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class InventarioHerramientas{
 
-    public static InventarioHerramientas inventarioHerramientas = new InventarioHerramientas();
+    private static InventarioHerramientas inventarioHerramientas = new InventarioHerramientas();
 
     private int cantidadDeHerramientas;
     private ArrayList<Herramienta> herramientas;

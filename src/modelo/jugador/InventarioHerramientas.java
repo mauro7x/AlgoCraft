@@ -5,17 +5,23 @@ import java.util.ArrayList;
 
 public class InventarioHerramientas{
 
+    public static InventarioHerramientas inventarioHerramientas = new InventarioHerramientas();
+
     private int cantidadDeHerramientas;
     private ArrayList<Herramienta> herramientas;
     private int herramientaEnUso;
 
-    public InventarioHerramientas(){
+    private InventarioHerramientas(){
         this.herramientaEnUso = 0;
         this.herramientas = new ArrayList<Herramienta>();
         this.cantidadDeHerramientas = 0;
     }
 
+    public static InventarioHerramientas getInventarioHerramientas() { return inventarioHerramientas; }
+
     public int getCantidadHerramientas(){ return this.cantidadDeHerramientas; }
+
+    public void restablecer() { inventarioHerramientas = new InventarioHerramientas(); }
 
     public void guardar(Herramienta herramienta){
         this.herramientas.add(herramienta);

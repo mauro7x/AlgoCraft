@@ -126,4 +126,33 @@ public class InventarioHerramientasTest {
 
         assertEquals(hachaPiedra, inventarioHerramientas.getHerramientaEnUso());
     }
+
+    @Test
+    public void test11HerramientaEnUsoEsLaUltimaAgregadaYAlCambiarALaProximaPasaASerLaPrimera(){
+        InventarioHerramientas inventarioHerramientas = new InventarioHerramientas();
+        Herramienta hachaMadera = new Hacha(new Madera());
+        Herramienta hachaPiedra = new Hacha(new Piedra());
+
+        inventarioHerramientas.guardar(hachaMadera);
+        inventarioHerramientas.guardar(hachaPiedra);
+
+        inventarioHerramientas.cambiarAHerramientaSiguiente();
+        inventarioHerramientas.cambiarAHerramientaSiguiente();
+
+        assertEquals(hachaMadera, inventarioHerramientas.getHerramientaEnUso());
+    }
+
+    @Test
+    public void test12HerramientaEnUsoEsLaPrimeraAgregadaYAlCambiarALaAnteriorPasaASerLaUltima(){
+        InventarioHerramientas inventarioHerramientas = new InventarioHerramientas();
+        Herramienta hachaMadera = new Hacha(new Madera());
+        Herramienta hachaPiedra = new Hacha(new Piedra());
+
+        inventarioHerramientas.guardar(hachaMadera);
+        inventarioHerramientas.guardar(hachaPiedra);
+
+        inventarioHerramientas.cambiarAHerramientaAnterior();
+
+        assertEquals(hachaPiedra, inventarioHerramientas.getHerramientaEnUso());
+    }
 }

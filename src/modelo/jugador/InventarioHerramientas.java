@@ -19,34 +19,25 @@ public class InventarioHerramientas{
 
     public void guardar(Herramienta herramienta){
         this.herramientas.add(herramienta);
-        if (this.cantidadDeHerramientas == 0){ this.herramientaEnUso = 0; }
         this.cantidadDeHerramientas += 1;
     }
 
     public void eliminarHerramientaEnUso(){
-        if (this.cantidadDeHerramientas == 0){ return; }
+        if (this.cantidadDeHerramientas == 0) return;
         this.herramientas.remove(herramientaEnUso);
         this.cantidadDeHerramientas -= 1;
     }
 
     public void cambiarAHerramientaSiguiente(){
-        if (this.herramientaEnUso == this.cantidadDeHerramientas-1){
-            this.herramientaEnUso = 0;
-            return;
-        }
-        this.herramientaEnUso += 1;
+        this.herramientaEnUso = (this.herramientaEnUso + 1)%(this.cantidadDeHerramientas);
     }
 
     public void cambiarAHerramientaAnterior(){
-        if (this.herramientaEnUso == 0){
-            this.herramientaEnUso = this.cantidadDeHerramientas-1;
-            return;
-        }
-        this.herramientaEnUso -= 1;
+        this.herramientaEnUso = Math.abs((this.herramientaEnUso - 1)%(this.cantidadDeHerramientas));
     }
 
     public Herramienta getHerramientaEnUso(){
-        if (this.cantidadDeHerramientas == 0){ return null; }
+        if (this.cantidadDeHerramientas == 0) return null;
         return herramientas.get(this.herramientaEnUso);
     }
 }

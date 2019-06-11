@@ -15,7 +15,7 @@ public class SegundaEntregaTest {
     //Pruebas de Construccion de herramienta
     @Test
     public void test01HachaDeMaderaSeConstruyeDeLaFormaCorrecta(){
-        Constructor constructor = Constructor.get();
+        Constructor constructor = Constructor.getConstructor();
 
         GuardableEnInventario[] recetaHachaMadera = {
                 new Madera(), new Madera(),new SlotVacio(),
@@ -29,7 +29,7 @@ public class SegundaEntregaTest {
 
     @Test
     public void test02HachaDePiedraSeConstruyeDeLaFormaCorrecta(){
-        Constructor constructor = Constructor.get();
+        Constructor constructor = Constructor.getConstructor();
 
         GuardableEnInventario[] recetaHachaPiedra = {
                 new Piedra(), new Piedra(),new SlotVacio(),
@@ -43,7 +43,7 @@ public class SegundaEntregaTest {
 
     @Test
     public void test03HachaDeMetalSeConstruyeDeLaFormaCorrecta(){
-        Constructor constructor = Constructor.get();
+        Constructor constructor = Constructor.getConstructor();
 
         GuardableEnInventario[] recetaHachaMetal = {
                 new Metal(), new Metal(),new SlotVacio(),
@@ -57,7 +57,7 @@ public class SegundaEntregaTest {
 
     @Test
     public void test04PicoDeMaderaSeConstruyeDeLaFormaCorrecta(){
-        Constructor constructor = Constructor.get();
+        Constructor constructor = Constructor.getConstructor();
 
         GuardableEnInventario[] recetaPicoMadera = {
                 new Madera(), new Madera(),new Madera(),
@@ -71,7 +71,7 @@ public class SegundaEntregaTest {
 
     @Test
     public void test05PicoDePiedraSeConstruyeDeLaFormaCorrecta(){
-        Constructor constructor = Constructor.get();
+        Constructor constructor = Constructor.getConstructor();
 
         GuardableEnInventario[] recetaPicoPiedra = {
                 new Piedra(),new Piedra(),new Piedra(),
@@ -85,7 +85,7 @@ public class SegundaEntregaTest {
 
     @Test
     public void test06PicoDeMetalSeConstruyeDeLaFormaCorrecta(){
-        Constructor constructor = Constructor.get();
+        Constructor constructor = Constructor.getConstructor();
 
         GuardableEnInventario[] recetaPicoMetal = {
                 new Metal(),new Metal(),new Metal(),
@@ -99,7 +99,7 @@ public class SegundaEntregaTest {
 
     @Test
     public void test07PicoFinoSeConstruyeDeLaFormaCorrecta(){
-        Constructor constructor = Constructor.get();
+        Constructor constructor = Constructor.getConstructor();
 
         GuardableEnInventario[] recetaPicoFino = {
                 new Metal(),new Metal(),new Metal(),
@@ -114,7 +114,7 @@ public class SegundaEntregaTest {
     //Pruebas de Jugador
     @Test
     public void test01JugadorSeInicializaDeLaFormaCorrectaEnElMapa(){
-        Jugador jugador = Jugador.get();
+        Jugador jugador = Jugador.getJugador();
         assertEquals(0,jugador.getPosicionX());
         assertEquals(0,jugador.getPosicionY());
     }

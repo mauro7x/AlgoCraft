@@ -45,7 +45,7 @@ public class Constructor {
         recetas.put(Arrays.hashCode(picoFino), () -> new PicoFino(new Piedra(),new Metal()));
     }
 
-    public static Constructor get() {
+    public static Constructor getConstructor() {
         return constructor;
     }
 

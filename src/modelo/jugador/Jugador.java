@@ -14,7 +14,7 @@ public class Jugador {
         this.orientacion = 0;
     }
 
-    public static Jugador get() {
+    public static Jugador getJugador() {
         return jugador;
     }
 

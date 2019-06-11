@@ -144,7 +144,7 @@ public class PrimerEntregaTest {
 
     @Test
     public void test01CorrectaCreacionEInicializacionDelJugador() {
-        Jugador jugador = Jugador.get();
+        Jugador jugador = Jugador.getJugador();
         assertEquals(0,jugador.getPosicionX());
         assertEquals(0,jugador.getPosicionY());
         assertEquals(0,jugador.getOrientacion());

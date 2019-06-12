@@ -2,6 +2,8 @@ package entregas;
 
 import modelo.Juego;
 import modelo.Jugador;
+import modelo.mapa.Celda;
+import modelo.mapa.Mapa;
 import modelo.objetos.materiales.*;
 import modelo.objetos.herramientas.*;
 import modelo.recursos.*;
@@ -146,9 +148,12 @@ public class PrimerEntregaTest {
     @Test
     public void test01CorrectaCreacionEInicializacionDelJugador() {
         Juego juego = Juego.getJuego();
+        juego.resetear();
         Jugador jugador = juego.getJugador();
-        assertEquals(0,jugador.getPosicionX());
-        assertEquals(0,jugador.getPosicionY());
+        Mapa mapa = juego.getMapa();
+        Celda celdaCentral = mapa.getCeldaCentral();
+        assertEquals(celdaCentral.getX(),jugador.getPosicionX());
+        assertEquals(celdaCentral.getY(),jugador.getPosicionY());
         assertEquals(0,jugador.getOrientacion());
     }
 

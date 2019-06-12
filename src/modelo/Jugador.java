@@ -1,26 +1,34 @@
 package modelo;
 
-public class Jugador {
 
-    private int pos_x;
-    private int pos_y;
+import modelo.mapa.OcupanteDeCelda;
+
+public class Jugador implements OcupanteDeCelda {
+
+    private int posX;
+    private int posY;
     private int orientacion;
 
-    public Jugador(){
-        this.pos_x = 0;
-        this.pos_y = 0;
+    public Jugador(int posX, int posY){
+        this.posX = posX;
+        this.posY = posY;
         this.orientacion = 0;
     }
 
     public int getPosicionX() {
-        return pos_x;
+        return posX;
     }
 
     public int getPosicionY() {
-        return pos_y;
+        return posY;
     }
 
     public int getOrientacion() {
         return orientacion;
+    }
+
+    @Override
+    public OcupanteDeCelda ocuparPor(OcupanteDeCelda ocupante) {
+        return this;
     }
 }

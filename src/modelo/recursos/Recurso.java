@@ -1,7 +1,8 @@
 package modelo.recursos;
+import modelo.mapa.OcupanteDeCelda;
 import modelo.objetos.herramientas.*;
 
-public abstract class Recurso {
+public abstract class Recurso implements OcupanteDeCelda {
 
     protected int durabilidad;
 
@@ -14,4 +15,10 @@ public abstract class Recurso {
     public void gastar(float fuerza){
         durabilidad -= fuerza;
     }
+
+    @Override
+    public OcupanteDeCelda ocuparPor(OcupanteDeCelda ocupante){
+        return this;
+    }
+
 }

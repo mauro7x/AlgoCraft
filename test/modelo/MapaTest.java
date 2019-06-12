@@ -1,10 +1,10 @@
 package modelo;
 
 import modelo.mapa.Mapa;
+import modelo.recursos.BloqueMadera;
 import org.junit.Test;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertTrue;
+import static junit.framework.TestCase.*;
 
 public class MapaTest {
 
@@ -26,6 +26,14 @@ public class MapaTest {
         int xCentral = mapa.getCeldaCentral().getX();
         int yCentral = mapa.getCeldaCentral().getY();
         assertTrue((xCentral == 5) && (yCentral == 5));
+    }
+
+    @Test
+    public void test04InicializarMapaUbicarBloqueMaderaEnCeldaCentral(){
+        Mapa mapa = new Mapa(10,10);
+        BloqueMadera bloque = new BloqueMadera();
+        mapa.ubicarEnElCentro(bloque);
+        assertSame(mapa.getCeldaCentral().getOcupante(),bloque);
     }
 
 }

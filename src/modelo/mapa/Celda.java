@@ -12,7 +12,7 @@ public class Celda {
         ocupante = new CeldaVacia();
     }
 
-    OcupanteDeCelda getOcupante() {
+    public OcupanteDeCelda getOcupante() {
         return ocupante;
     }
 

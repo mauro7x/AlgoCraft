@@ -155,4 +155,15 @@ public class InventarioHerramientasTest {
 
         assertEquals(hachaPiedra, inventarioHerramientas.getHerramientaEnUso());
     }
+
+    @Test
+    public void test13HerramientaEnUsoEsEliminadaCuandoNoHayHerramientasYNoOcurreNada(){
+        InventarioHerramientas inventarioHerramientas = new InventarioHerramientas();
+        int cantidadHerramientasInicial = inventarioHerramientas.getCantidadHerramientas();
+
+        inventarioHerramientas.eliminarHerramientaEnUso();
+
+        assertEquals(cantidadHerramientasInicial, inventarioHerramientas.getCantidadHerramientas(), 0);
+
+    }
 }

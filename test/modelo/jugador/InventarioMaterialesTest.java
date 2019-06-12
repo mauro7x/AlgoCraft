@@ -30,7 +30,7 @@ public class InventarioMaterialesTest {
     }
 
     @Test
-    public void test03SeObtieneUnMaterialYSeActualizanLosInvariantesCorrespondienteS(){
+    public void test03SeObtieneUnMaterialYSeActualizanLosInvariantesCorrespondientes(){
         InventarioMateriales inventarioMateriales = new InventarioMateriales();
         GuardableEnInventario madera = new Madera();
         int cantidadMaderaInicial = inventarioMateriales.getCantidadMateriales(madera.getId());
@@ -42,4 +42,10 @@ public class InventarioMaterialesTest {
         assertEquals(cantidadMaderaInicial, inventarioMateriales.getCantidadMateriales(madera.getId()));
     }
 
+    @Test
+    public void test04SeObtieneMaterialSinQueLosHayaYDevuelveNull(){
+        InventarioMateriales inventarioMateriales = new InventarioMateriales();
+
+        assertNull(inventarioMateriales.usarMaterial(new Madera()));
+    }
 }

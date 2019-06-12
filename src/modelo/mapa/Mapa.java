@@ -29,12 +29,7 @@ public class Mapa {
     }
 
     public void ubicarEnElCentro(OcupanteDeCelda ocupante){
-        ubicarOcupanteEn(ocupante, xMax/2, yMax/2);
-    }
-
-    private void ubicarOcupanteEn(OcupanteDeCelda ocupante, int x, int y){
-        Celda celdaDestino = celdas.getCelda(x, y);
-        celdaDestino.ocuparPor(ocupante);
+        setearOcupanteEn(ocupante, xMax/2, yMax/2);
     }
 
     public void setearOcupanteEn(OcupanteDeCelda ocupante, int x, int y){
@@ -60,14 +55,14 @@ public class Mapa {
         int jugadorX = jugador.getX();
         int jugadorY = jugador.getY();
         Celda celdaActual = celdas.getCelda(jugadorX, jugadorY);
-        Celda celdaNueva = celdas.getCelda(Math.abs((jugadorX-1)%yMax), jugadorY);
+        Celda celdaNueva = celdas.getCelda(Math.abs((jugadorX-1)%xMax), jugadorY);
         celdaActual.moverA(celdaNueva);
     }
     public void moverJugadorDerecha(Jugador jugador){
         int jugadorX = jugador.getX();
         int jugadorY = jugador.getY();
         Celda celdaActual = celdas.getCelda(jugadorX, jugadorY);
-        Celda celdaNueva = celdas.getCelda(Math.abs((jugadorX+1)%yMax), jugadorY);
+        Celda celdaNueva = celdas.getCelda(Math.abs((jugadorX+1)%xMax), jugadorY);
         celdaActual.moverA(celdaNueva);
     }
 }

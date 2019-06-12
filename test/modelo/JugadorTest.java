@@ -184,7 +184,7 @@ public class JugadorTest {
         Mapa mapa = juego.getMapa();
         int posXInicial = jugador.getX();
         int posYInicial = jugador.getY();
-        int celdasAnchura = mapa.getYMax();
+        int celdasAnchura = mapa.getXMax();
 
         for (int i = 0; i<celdasAnchura; i++){
             mapa.setearOcupanteEn(new CeldaVacia(), i, posYInicial);

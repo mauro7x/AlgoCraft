@@ -27,11 +27,6 @@ public class Jugador implements OcupanteDeCelda {
     }
 
     @Override
-    public OcupanteDeCelda ocuparPor(OcupanteDeCelda ocupante) {
-        return this;
-    }
-
-    @Override
     public OcupanteDeCelda ocuparPorOcupanteDe(Celda celdaOrigen) {
         return this;
     }

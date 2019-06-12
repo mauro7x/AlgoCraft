@@ -25,10 +25,6 @@ public class Celda {
     }
 
 
-    void ocuparPor(OcupanteDeCelda ocupante){
-        this.ocupante = (this.ocupante).ocuparPor(ocupante);
-    }
-
     private void ocuparPorOcupanteDe(Celda celdaOrigen){
         this.ocupante = (this.ocupante).ocuparPorOcupanteDe(celdaOrigen);
     }

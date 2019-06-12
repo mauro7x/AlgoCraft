@@ -2,10 +2,6 @@ package modelo.mapa;
 
 
 public class CeldaVacia implements OcupanteDeCelda {
-    @Override
-    public OcupanteDeCelda ocuparPor(OcupanteDeCelda ocupante) {
-        return ocupante;
-    }
 
     @Override
     public OcupanteDeCelda ocuparPorOcupanteDe(Celda celdaOrigen) {

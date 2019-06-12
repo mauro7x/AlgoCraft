@@ -16,7 +16,7 @@ public abstract class Recurso implements OcupanteDeCelda {
     public void gastar(float fuerza){
         durabilidad -= fuerza;
     }
-    
+
     @Override
     public OcupanteDeCelda ocuparPorOcupanteDe(Celda celda){
         return this;

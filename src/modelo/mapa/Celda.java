@@ -39,6 +39,7 @@ public class Celda {
 
     void moverA(Celda celdaDestino){
         celdaDestino.ocuparPorOcupanteDe(this);
+        actualizarPosicionOcupante();
         celdaDestino.actualizarPosicionOcupante(); // en caso de que se haya movido, actualiza la pos del jugador
     }
 

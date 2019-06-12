@@ -3,6 +3,7 @@ package modelo;
 import modelo.mapa.Celda;
 import modelo.mapa.CeldaVacia;
 import modelo.mapa.Mapa;
+import modelo.mapa.OcupanteDeCelda;
 import modelo.recursos.BloqueMadera;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -199,6 +200,19 @@ public class JugadorTest {
         assertEquals(posYInicial, jugador.getY());
 
     }
+
+    @Test
+    public void test14SiSeLePideOcuparSuCasillaSeDebeDevolverASiMismo(){
+        Juego juego = Juego.getJuego();
+        juego.resetear();
+        Jugador jugador = juego.getJugador();
+        Mapa mapa = juego.getMapa();
+
+        OcupanteDeCelda nuevo = jugador.ocuparPorOcupanteDe(mapa.getCeldaCentral());
+        assertSame(nuevo, jugador);
+
+    }
+
 
 
 }

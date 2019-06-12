@@ -6,18 +6,31 @@ public class Celda {
     private int y;
     private OcupanteDeCelda ocupante;
 
-    public Celda(int x, int y){
+    Celda(int x, int y){
         this.x = x;
         this.y = y;
         ocupante = new CeldaVacia();
     }
 
-    public OcupanteDeCelda getOcupante() {
+    OcupanteDeCelda getOcupante() {
         return ocupante;
     }
 
-    public void ocuparPor(OcupanteDeCelda ocupante){
+    void setOcupante(OcupanteDeCelda ocupante){
+        this.ocupante = ocupante;
+    }
+
+    private void actualizarPosicionOcupante(){
+        this.ocupante.actualizarPosicion(x, y);
+    }
+
+
+    void ocuparPor(OcupanteDeCelda ocupante){
         this.ocupante = (this.ocupante).ocuparPor(ocupante);
+    }
+
+    private void ocuparPorOcupanteDe(Celda celdaOrigen){
+        this.ocupante = (this.ocupante).ocuparPorOcupanteDe(celdaOrigen);
     }
 
     public int getX(){
@@ -26,6 +39,11 @@ public class Celda {
 
     public int getY(){
         return y;
+    }
+
+    void moverA(Celda celdaDestino){
+        celdaDestino.ocuparPorOcupanteDe(this);
+        celdaDestino.actualizarPosicionOcupante(); // en caso de que se haya movido, actualiza la pos del jugador
     }
 
 }

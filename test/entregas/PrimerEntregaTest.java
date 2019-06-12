@@ -152,8 +152,8 @@ public class PrimerEntregaTest {
         Jugador jugador = juego.getJugador();
         Mapa mapa = juego.getMapa();
         Celda celdaCentral = mapa.getCeldaCentral();
-        assertEquals(celdaCentral.getX(),jugador.getPosicionX());
-        assertEquals(celdaCentral.getY(),jugador.getPosicionY());
+        assertEquals(celdaCentral.getX(),jugador.getX());
+        assertEquals(celdaCentral.getY(),jugador.getY());
         assertEquals(0,jugador.getOrientacion());
     }
 

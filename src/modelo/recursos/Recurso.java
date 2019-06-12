@@ -1,4 +1,5 @@
 package modelo.recursos;
+import modelo.mapa.Celda;
 import modelo.mapa.OcupanteDeCelda;
 import modelo.objetos.herramientas.*;
 
@@ -21,4 +22,13 @@ public abstract class Recurso implements OcupanteDeCelda {
         return this;
     }
 
+    @Override
+    public OcupanteDeCelda ocuparPorOcupanteDe(Celda celda){
+        return this;
+    }
+
+    @Override
+    public void actualizarPosicion(int x, int y){
+        // no actualiza nada
+    }
 }

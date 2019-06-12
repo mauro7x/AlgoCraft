@@ -17,6 +17,7 @@ public class SegundaEntregaTest {
     @Test
     public void test01HachaDeMaderaSeConstruyeDeLaFormaCorrecta(){
         Juego juego = Juego.getJuego();
+        juego.resetear();
         Constructor constructor = juego.getConstructor();
 
         GuardableEnInventario[] recetaHachaMadera = {
@@ -32,6 +33,7 @@ public class SegundaEntregaTest {
     @Test
     public void test02HachaDePiedraSeConstruyeDeLaFormaCorrecta(){
         Juego juego = Juego.getJuego();
+        juego.resetear();
         Constructor constructor = juego.getConstructor();
 
         GuardableEnInventario[] recetaHachaPiedra = {
@@ -47,6 +49,7 @@ public class SegundaEntregaTest {
     @Test
     public void test03HachaDeMetalSeConstruyeDeLaFormaCorrecta(){
         Juego juego = Juego.getJuego();
+        juego.resetear();
         Constructor constructor = juego.getConstructor();
 
         GuardableEnInventario[] recetaHachaMetal = {
@@ -62,6 +65,7 @@ public class SegundaEntregaTest {
     @Test
     public void test04PicoDeMaderaSeConstruyeDeLaFormaCorrecta(){
         Juego juego = Juego.getJuego();
+        juego.resetear();
         Constructor constructor = juego.getConstructor();
 
         GuardableEnInventario[] recetaPicoMadera = {
@@ -77,6 +81,7 @@ public class SegundaEntregaTest {
     @Test
     public void test05PicoDePiedraSeConstruyeDeLaFormaCorrecta(){
         Juego juego = Juego.getJuego();
+        juego.resetear();
         Constructor constructor = juego.getConstructor();
 
         GuardableEnInventario[] recetaPicoPiedra = {
@@ -92,6 +97,7 @@ public class SegundaEntregaTest {
     @Test
     public void test06PicoDeMetalSeConstruyeDeLaFormaCorrecta(){
         Juego juego = Juego.getJuego();
+        juego.resetear();
         Constructor constructor = juego.getConstructor();
 
         GuardableEnInventario[] recetaPicoMetal = {
@@ -107,6 +113,7 @@ public class SegundaEntregaTest {
     @Test
     public void test07PicoFinoSeConstruyeDeLaFormaCorrecta(){
         Juego juego = Juego.getJuego();
+        juego.resetear();
         Constructor constructor = juego.getConstructor();
 
         GuardableEnInventario[] recetaPicoFino = {

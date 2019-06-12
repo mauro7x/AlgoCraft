@@ -15,11 +15,9 @@ import java.util.function.Supplier;
 
 public class Constructor {
 
-    private static Constructor constructor = new Constructor();
-
     private HashMap<Integer, Supplier<GuardableEnInventario>> recetas;
 
-    private Constructor(){
+    public Constructor(){
         recetas = new HashMap<>();
         //Hachas
         int[] hachaMadera = {1,1,0,1,1,0,0,1,0}; //Disposicion de los materiales para un hacha de madera.
@@ -43,10 +41,6 @@ public class Constructor {
         recetas.put(Arrays.hashCode(picoMetal), () -> new Pico(new Metal()));
 
         recetas.put(Arrays.hashCode(picoFino), () -> new PicoFino(new Piedra(),new Metal()));
-    }
-
-    public static Constructor getConstructor() {
-        return constructor;
     }
 
     public GuardableEnInventario construir(GuardableEnInventario[] receta){

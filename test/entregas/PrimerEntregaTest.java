@@ -1,6 +1,7 @@
 package entregas;
 
-import modelo.jugador.Jugador;
+import modelo.Juego;
+import modelo.Jugador;
 import modelo.objetos.materiales.*;
 import modelo.objetos.herramientas.*;
 import modelo.recursos.*;
@@ -144,7 +145,8 @@ public class PrimerEntregaTest {
 
     @Test
     public void test01CorrectaCreacionEInicializacionDelJugador() {
-        Jugador jugador = Jugador.getJugador();
+        Juego juego = Juego.getJuego();
+        Jugador jugador = juego.getJugador();
         assertEquals(0,jugador.getPosicionX());
         assertEquals(0,jugador.getPosicionY());
         assertEquals(0,jugador.getOrientacion());

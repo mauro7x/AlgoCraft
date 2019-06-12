@@ -1,4 +1,4 @@
-package modelo.jugador;
+package modelo;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -9,19 +9,22 @@ public class JugadorTest {
 
     @Test
     public void test01InicializarJugadorCoordenadaXEs0(){
-        Jugador jugador = Jugador.getJugador();
+        Juego juego = Juego.getJuego();
+        Jugador jugador = juego.getJugador();
         assertEquals(0,jugador.getPosicionX());
     }
 
     @Test
     public void test02InicializarJugadorCoordenadaYEs0(){
-        Jugador jugador = Jugador.getJugador();
+        Juego juego = Juego.getJuego();
+        Jugador jugador = juego.getJugador();
         assertEquals(0,jugador.getPosicionY());
     }
 
     @Test
     public void test03InicializarJugadorOrientacionEsArriba(){
-        Jugador jugador = Jugador.getJugador();
+        Juego juego = Juego.getJuego();
+        Jugador jugador = juego.getJugador();
         assertEquals(0,jugador.getOrientacion());
     }
 }

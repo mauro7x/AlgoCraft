@@ -1,5 +1,6 @@
 package modelo;
 
+import modelo.jugador.Jugador;
 import modelo.mapa.Mapa;
 
 public class Juego {
@@ -44,16 +45,16 @@ public class Juego {
         return mapa;
     }
 
-    void moverJugadorArriba(Jugador jugador){
+    public void moverJugadorArriba(Jugador jugador){
         mapa.moverJugadorArriba(jugador);
     }
-    void moverJugadorAbajo(Jugador jugador){
+    public void moverJugadorAbajo(Jugador jugador){
         mapa.moverJugadorAbajo(jugador);
     }
-    void moverJugadorIzquierda(Jugador jugador){
+    public void moverJugadorIzquierda(Jugador jugador){
         mapa.moverJugadorIzquierda(jugador);
     }
-    void moverJugadorDerecha(Jugador jugador){
+    public void moverJugadorDerecha(Jugador jugador){
         mapa.moverJugadorDerecha(jugador);
     }
 

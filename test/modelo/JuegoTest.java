@@ -1,5 +1,6 @@
 package modelo;
 
+import modelo.jugador.Jugador;
 import modelo.mapa.Celda;
 import modelo.mapa.Mapa;
 import org.junit.Test;

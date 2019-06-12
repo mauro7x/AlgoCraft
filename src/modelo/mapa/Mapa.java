@@ -1,6 +1,6 @@
 package modelo.mapa;
 
-import modelo.Jugador;
+import modelo.jugador.Jugador;
 
 public class Mapa {
 

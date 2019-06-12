@@ -1,5 +1,6 @@
-package modelo;
+package modelo.jugador;
 
+import modelo.Juego;
 import modelo.mapa.Celda;
 import modelo.mapa.CeldaVacia;
 import modelo.mapa.Mapa;

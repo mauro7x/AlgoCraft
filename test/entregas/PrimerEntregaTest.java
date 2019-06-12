@@ -1,7 +1,7 @@
 package entregas;
 
 import modelo.Juego;
-import modelo.Jugador;
+import modelo.jugador.Jugador;
 import modelo.mapa.Celda;
 import modelo.mapa.Mapa;
 import modelo.objetos.materiales.*;

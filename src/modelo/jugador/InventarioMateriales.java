@@ -6,11 +6,13 @@ import java.util.HashMap;
 
 public class InventarioMateriales {
 
+    private static final int CANTIDAD_MATERIALES = 4;
+
     private HashMap<Integer, Integer> materiales;
 
-    public InventarioMateriales(int cantidadMateriales){
+    public InventarioMateriales(){
         this.materiales = new HashMap<Integer, Integer>();
-        for (int i=1; i<=cantidadMateriales; i++){
+        for (int i=1; i<=CANTIDAD_MATERIALES; i++){
             this.materiales.put(i, 0);
         }
     }

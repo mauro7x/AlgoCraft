@@ -1,6 +1,7 @@
-package modelo;
+package modelo.jugador;
 
 
+import modelo.Juego;
 import modelo.mapa.Celda;
 import modelo.mapa.OcupanteDeCelda;
 
@@ -9,11 +10,15 @@ public class Jugador implements OcupanteDeCelda {
     private int x;
     private int y;
     private int orientacion;
+    private InventarioHerramientas herramientas;
+    private InventarioMateriales materiales;
 
     public Jugador(int x, int y){
         this.x = x;
         this.y = y;
         this.orientacion = 0;
+        herramientas = new InventarioHerramientas();
+        materiales = new InventarioMateriales();
     }
 
     public int getX() {

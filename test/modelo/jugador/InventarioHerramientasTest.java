@@ -12,24 +12,21 @@ public class InventarioHerramientasTest {
 
     @Test
     public void test01InventarioHerramientasSeInicializaConLaCorrecta(){
-        InventarioHerramientas inventarioHerramientas = InventarioHerramientas.getInventarioHerramientas();
-        inventarioHerramientas.restablecer();
+        InventarioHerramientas inventarioHerramientas = new InventarioHerramientas();
 
         assertEquals(0, inventarioHerramientas.getCantidadHerramientas(), 0);
     }
 
     @Test
     public void test02InventarioHerramientasSeInicializaConNingunaHerramientaEnUso(){
-        InventarioHerramientas inventarioHerramientas = InventarioHerramientas.getInventarioHerramientas();
-        inventarioHerramientas.restablecer();
+        InventarioHerramientas inventarioHerramientas = new InventarioHerramientas();
 
         assertNull(inventarioHerramientas.getHerramientaEnUso());
     }
 
     @Test
     public void test03SeAgregaUnaHerramientaYSeModificanLosInvariantes(){
-        InventarioHerramientas inventarioHerramientas = InventarioHerramientas.getInventarioHerramientas();
-        inventarioHerramientas.restablecer();
+        InventarioHerramientas inventarioHerramientas = new InventarioHerramientas();
         int cantidadHerramientasInicial = inventarioHerramientas.getCantidadHerramientas();
         Herramienta herramienta = new PicoFino(new Piedra(), new Metal());
 
@@ -40,8 +37,7 @@ public class InventarioHerramientasTest {
 
     @Test
     public void test04SeEliminaUnaHerramientaYSeModificanLosInvariantes(){
-        InventarioHerramientas inventarioHerramientas = InventarioHerramientas.getInventarioHerramientas();
-        inventarioHerramientas.restablecer();
+        InventarioHerramientas inventarioHerramientas = new InventarioHerramientas();
         int cantidadHerramientasInicial = inventarioHerramientas.getCantidadHerramientas();
         Herramienta herramienta = new PicoFino(new Piedra(), new Metal());
 
@@ -54,8 +50,7 @@ public class InventarioHerramientasTest {
 
     @Test
     public void test05SeAgregaUnaHerramientaSeEstableceAutomaticamenteComoHerramientaEnUso(){
-        InventarioHerramientas inventarioHerramientas = InventarioHerramientas.getInventarioHerramientas();
-        inventarioHerramientas.restablecer();
+        InventarioHerramientas inventarioHerramientas = new InventarioHerramientas();
         Herramienta herramienta = new PicoFino(new Piedra(), new Metal());
 
         inventarioHerramientas.guardar(herramienta);
@@ -65,8 +60,7 @@ public class InventarioHerramientasTest {
 
     @Test
     public void test06SeAgreganDosHerramientasYSePuedeCambiarHerramientaEnUsoAHerramientaSiguiente(){
-        InventarioHerramientas inventarioHerramientas = InventarioHerramientas.getInventarioHerramientas();
-        inventarioHerramientas.restablecer();
+        InventarioHerramientas inventarioHerramientas = new InventarioHerramientas();
         Herramienta hachaMadera = new Hacha(new Madera());
         Herramienta hachaPiedra = new Hacha(new Piedra());
 
@@ -82,8 +76,7 @@ public class InventarioHerramientasTest {
 
     @Test
     public void test07SeAgreganDosHerramientasYSePuedeCambiarHerramientaEnUsoAHerramientaAnterior(){
-        InventarioHerramientas inventarioHerramientas = InventarioHerramientas.getInventarioHerramientas();
-        inventarioHerramientas.restablecer();
+        InventarioHerramientas inventarioHerramientas = new InventarioHerramientas();
         Herramienta hachaMadera = new Hacha(new Madera());
         Herramienta hachaPiedra = new Hacha(new Piedra());
 
@@ -98,8 +91,7 @@ public class InventarioHerramientasTest {
 
     @Test
     public void test08HerramientaEnUsoSigueSiendoloSiNoHayHerramientaSiguiente(){
-        InventarioHerramientas inventarioHerramientas = InventarioHerramientas.getInventarioHerramientas();
-        inventarioHerramientas.restablecer();
+        InventarioHerramientas inventarioHerramientas = new InventarioHerramientas();
         Herramienta hachaMadera = new Hacha(new Madera());
 
         inventarioHerramientas.guardar(hachaMadera);
@@ -111,8 +103,7 @@ public class InventarioHerramientasTest {
 
     @Test
     public void test09HerramientaEnUsoSigueSiendoloSiNoHayHerramientaAnterior(){
-        InventarioHerramientas inventarioHerramientas = InventarioHerramientas.getInventarioHerramientas();
-        inventarioHerramientas.restablecer();
+        InventarioHerramientas inventarioHerramientas = new InventarioHerramientas();
         Herramienta hachaMadera = new Hacha(new Madera());
 
         inventarioHerramientas.guardar(hachaMadera);
@@ -124,8 +115,7 @@ public class InventarioHerramientasTest {
 
     @Test
     public void test10HerramientaEnUsoEsEliminadaYLaHerramientaEnUsoPasaASerLaSiguiente(){
-        InventarioHerramientas inventarioHerramientas = InventarioHerramientas.getInventarioHerramientas();
-        inventarioHerramientas.restablecer();
+        InventarioHerramientas inventarioHerramientas = new InventarioHerramientas();
         Herramienta hachaMadera = new Hacha(new Madera());
         Herramienta hachaPiedra = new Hacha(new Piedra());
 
@@ -139,8 +129,7 @@ public class InventarioHerramientasTest {
 
     @Test
     public void test11HerramientaEnUsoEsLaUltimaAgregadaYAlCambiarALaProximaPasaASerLaPrimera(){
-        InventarioHerramientas inventarioHerramientas = InventarioHerramientas.getInventarioHerramientas();
-        inventarioHerramientas.restablecer();
+        InventarioHerramientas inventarioHerramientas = new InventarioHerramientas();
         Herramienta hachaMadera = new Hacha(new Madera());
         Herramienta hachaPiedra = new Hacha(new Piedra());
 
@@ -155,8 +144,7 @@ public class InventarioHerramientasTest {
 
     @Test
     public void test12HerramientaEnUsoEsLaPrimeraAgregadaYAlCambiarALaAnteriorPasaASerLaUltima(){
-        InventarioHerramientas inventarioHerramientas = InventarioHerramientas.getInventarioHerramientas();
-        inventarioHerramientas.restablecer();
+        InventarioHerramientas inventarioHerramientas = new InventarioHerramientas();
         Herramienta hachaMadera = new Hacha(new Madera());
         Herramienta hachaPiedra = new Hacha(new Piedra());
 

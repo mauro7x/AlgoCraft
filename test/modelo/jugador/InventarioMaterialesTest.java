@@ -12,8 +12,7 @@ public class InventarioMaterialesTest {
 
     @Test
     public void test01InventarioMaterialesSeInicializaCorrectamente(){
-        InventarioMateriales inventarioMateriales = InventarioMateriales.getInventarioMateriales();
-        inventarioMateriales.restablecer();
+        InventarioMateriales inventarioMateriales = new InventarioMateriales(cantidadMateriales);
 
         for (int i=1; i<=cantidadMateriales; i++) {
             assertEquals(0, inventarioMateriales.getCantidadMaterial(i));
@@ -22,8 +21,7 @@ public class InventarioMaterialesTest {
 
     @Test
     public void test02SeAgregaUnMaterialYSeActualizanLosInvariantesCorrespondientes(){
-        InventarioMateriales inventarioMateriales = InventarioMateriales.getInventarioMateriales();
-        inventarioMateriales.restablecer();
+        InventarioMateriales inventarioMateriales = new InventarioMateriales(cantidadMateriales);
         GuardableEnInventario madera = new Madera();
 
         inventarioMateriales.guardar(madera);
@@ -33,8 +31,7 @@ public class InventarioMaterialesTest {
 
     @Test
     public void test03SeObtieneUnMaterialYSeActualizanLosInvariantesCorrespondienteS(){
-        InventarioMateriales inventarioMateriales = InventarioMateriales.getInventarioMateriales();
-        inventarioMateriales.restablecer();
+        InventarioMateriales inventarioMateriales = new InventarioMateriales(cantidadMateriales);
         GuardableEnInventario madera = new Madera();
         int cantidadMaderaInicial = inventarioMateriales.getCantidadMaterial(madera.getId());
 

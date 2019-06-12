@@ -128,7 +128,7 @@ public class InventarioHerramientasTest {
     }
 
     @Test
-    public void test11HerramientaEnUsoEsLaUltimaAgregadaYAlCambiarALaProximaPasaASerLaPrimera(){
+    public void test11HerramientaEnUsoEsLaUltimaAgregadaYAlCambiarALaProximaPasaASerLaPrimeraDeTodas(){
         InventarioHerramientas inventarioHerramientas = new InventarioHerramientas();
         Herramienta hachaMadera = new Hacha(new Madera());
         Herramienta hachaPiedra = new Hacha(new Piedra());
@@ -143,7 +143,7 @@ public class InventarioHerramientasTest {
     }
 
     @Test
-    public void test12HerramientaEnUsoEsLaPrimeraAgregadaYAlCambiarALaAnteriorPasaASerLaUltima(){
+    public void test12HerramientaEnUsoEsLaPrimeraAgregadaYAlCambiarALaAnteriorPasaASerLaUltimaDeTodas(){
         InventarioHerramientas inventarioHerramientas = new InventarioHerramientas();
         Herramienta hachaMadera = new Hacha(new Madera());
         Herramienta hachaPiedra = new Hacha(new Piedra());

@@ -2,24 +2,30 @@ package modelo.jugador;
 
 import modelo.objetos.GuardableEnInventario;
 
+import java.util.HashMap;
+
 public class InventarioMateriales {
 
-    private int materiales[];
+    private HashMap<Integer, Integer> materiales;
 
     public InventarioMateriales(int cantidadMateriales){
-        this.materiales = new int[cantidadMateriales];
-        for (int i=0; i<cantidadMateriales; i++){
-            this.materiales[i] = 0;
+        this.materiales = new HashMap<Integer, Integer>();
+        for (int i=1; i<=cantidadMateriales; i++){
+            this.materiales.put(i, 0);
         }
     }
 
-    public int getCantidadMaterial(int id){ return this.materiales[id - 1]; }
+    public int getCantidadMateriales(int id){ return this.materiales.get(id); }
 
-    public void guardar(GuardableEnInventario material){ this.materiales[material.getId() - 1] += 1; }
+    public void guardar(GuardableEnInventario material){
+        int id = material.getId();
+        this.materiales.put(id, this.materiales.get(id) + 1);
+    }
 
     public GuardableEnInventario usarMaterial(GuardableEnInventario material){
-        if (this.materiales[material.getId() - 1] == 0) { return null; }
-        this.materiales[material.getId() - 1] -= 1;
+        int id = material.getId();
+        if (this.materiales.get(id) == 0) { return null; }
+        this.materiales.put(id, this.materiales.get(id) - 1);
         return material;
     }
 

@@ -1,5 +1,7 @@
 package modelo.recursos;
 
+import modelo.Juego;
+import modelo.jugador.InventarioMateriales;
 import modelo.objetos.materiales.*;
 import modelo.objetos.herramientas.*;
 
@@ -77,10 +79,22 @@ public class BloqueMetalTest {
         assertEquals(durabilidadInicialBloqueMetal, metal.getDurabilidad(), 0);
 
     }
-    
-    /* DEFINIR COMPORTAMIENTO
+
     @Test
-    public void test07BloqueMetalSeGolpeaHastaAgotarDurabilidadY(){}
-     */
+    public void test07BloqueMetalSeGolpeaHastaAgotarDurabilidadYSeAgregaUnMetalAlInventarioMaterialesDelJugador(){
+        Juego juego = Juego.getJuego();
+        juego.resetear();
+        InventarioMateriales inventarioMateriales = juego.getJugador().getInventarioMateriales();
+        int cantidadInicialDeMetal = inventarioMateriales.getCantidadMateriales((new Metal()).getId());
+        Recurso metal = new BloqueMetal();
+        Pico picoPiedra = new Pico(new Piedra());
+
+        while (metal.getDurabilidad() > 0){ picoPiedra.golpear(metal); }
+
+        assertEquals(cantidadInicialDeMetal + 1, inventarioMateriales.getCantidadMateriales((new Metal().getId())));
+    }
+
+
+
 
 }

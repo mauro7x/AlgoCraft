@@ -28,6 +28,8 @@ public class Mapa {
         return celdas.getCelda(xMax/2, yMax/2);
     }
 
+    public Celda getCelda(int x, int y) { return celdas.getCelda(x, y); }
+
     public void ubicarEnElCentro(OcupanteDeCelda ocupante){
         setearOcupanteEn(ocupante, xMax/2, yMax/2);
     }

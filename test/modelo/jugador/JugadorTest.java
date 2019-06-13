@@ -5,6 +5,9 @@ import modelo.mapa.Celda;
 import modelo.mapa.CeldaVacia;
 import modelo.mapa.Mapa;
 import modelo.mapa.OcupanteDeCelda;
+import modelo.objetos.herramientas.Hacha;
+import modelo.objetos.herramientas.Herramienta;
+import modelo.objetos.materiales.Madera;
 import modelo.recursos.BloqueMadera;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -213,7 +216,4 @@ public class JugadorTest {
         assertSame(nuevo, jugador);
 
     }
-
-
-
 }

@@ -6,7 +6,7 @@ public class Celda {
     private int y;
     private OcupanteDeCelda ocupante;
 
-    Celda(int x, int y){
+    public Celda(int x, int y){
         this.x = x;
         this.y = y;
         ocupante = new CeldaVacia();

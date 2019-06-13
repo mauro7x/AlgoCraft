@@ -1,5 +1,7 @@
 package modelo.recursos;
 
+import modelo.Juego;
+import modelo.jugador.InventarioMateriales;
 import modelo.objetos.materiales.*;
 import modelo.objetos.herramientas.*;
 
@@ -58,9 +60,19 @@ public class BloqueDiamanteTest {
 
     }
 
-    /* DEFINIR COMPORTAMIENTO
     @Test
-    public void test05MaderaSeGolpeaHastaAgotarDurabilidadY(){}
-     */
+    public void test05BloqueDiamanteSeGolpeaHastaAgotarDurabilidadYSeAgregaUnDiamanteAlInventarioMaterialesDelJugador(){
+        Juego juego = Juego.getJuego();
+        juego.resetear();
+        InventarioMateriales inventarioMateriales = juego.getJugador().getInventarioMateriales();
+        int cantidadInicialDeDiamante = inventarioMateriales.getCantidadMateriales((new Diamante()).getId());
+        Recurso diamante = new BloqueDiamante();
+        PicoFino picoFino = new PicoFino(new Piedra(), new Metal());
+
+        while (diamante.getDurabilidad() > 0){ picoFino.golpear(diamante); }
+
+        assertEquals(cantidadInicialDeDiamante + 1, inventarioMateriales.getCantidadMateriales((new Diamante().getId())));
+    }
+
 
 }

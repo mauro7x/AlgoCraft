@@ -4,6 +4,9 @@ package modelo.jugador;
 import modelo.Juego;
 import modelo.mapa.Celda;
 import modelo.mapa.OcupanteDeCelda;
+import modelo.objetos.herramientas.Hacha;
+import modelo.objetos.herramientas.Herramienta;
+import modelo.objetos.materiales.Madera;
 
 public class Jugador implements OcupanteDeCelda {
 
@@ -58,5 +61,5 @@ public class Jugador implements OcupanteDeCelda {
         this.orientacion = 3;
         Juego.getJuego().moverJugadorDerecha(this);
     }
-
+    public InventarioMateriales getInventarioMateriales(){ return this.materiales; }
 }

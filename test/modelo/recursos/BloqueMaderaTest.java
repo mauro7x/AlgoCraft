@@ -1,5 +1,7 @@
 package modelo.recursos;
 
+import modelo.Juego;
+import modelo.jugador.InventarioMateriales;
 import modelo.objetos.materiales.*;
 import modelo.objetos.herramientas.*;
 
@@ -78,9 +80,17 @@ public class BloqueMaderaTest {
 
     }
 
-    /* DEFINIR COMPORTAMIENTO
     @Test
-    public void test07BloqueMaderaSeGolpeaHastaAgotarDurabilidadY(){}
-     */
+    public void test07BloqueMaderaSeGolpeaHastaAgotarDurabilidadYSeAgregaUnMaderaAlInventarioMaterialesDelJugador(){
+        Juego juego = Juego.getJuego();
+        juego.resetear();
+        InventarioMateriales inventarioMateriales = juego.getJugador().getInventarioMateriales();
+        int cantidadInicialDeMadera = inventarioMateriales.getCantidadMateriales((new Madera()).getId());
+        Recurso madera = new BloqueMadera();
+        Hacha hachaMetal = new Hacha(new Metal());
 
+        while (madera.getDurabilidad() > 0){ hachaMetal.golpear(madera); }
+
+        assertEquals(cantidadInicialDeMadera + 1, inventarioMateriales.getCantidadMateriales((new Madera().getId())));
+    }
 }

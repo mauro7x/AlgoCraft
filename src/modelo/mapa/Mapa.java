@@ -67,4 +67,32 @@ public class Mapa {
         Celda celdaNueva = celdas.getCelda(Math.abs((jugadorX+1)%xMax), jugadorY);
         celdaActual.moverA(celdaNueva);
     }
+
+    public OcupanteDeCelda obtenerBloqueArribaDelJugador(Jugador jugador){
+        int jugadorX = jugador.getX();
+        int jugadorY = jugador.getY();
+        Celda celdaArriba = celdas.getCelda(jugadorX,jugadorY+1);
+        return celdaArriba.getOcupante();
+    }
+
+    public OcupanteDeCelda obtenerBloqueAbajoDelJugador(Jugador jugador){
+        int jugadorX = jugador.getX();
+        int jugadorY = jugador.getY();
+        Celda celdaAbajo = celdas.getCelda(jugadorX,jugadorY-1);
+        return celdaAbajo.getOcupante();
+    }
+
+    public OcupanteDeCelda obtenerBloqueIzquierdaDelJugador(Jugador jugador){
+        int jugadorX = jugador.getX();
+        int jugadorY = jugador.getY();
+        Celda celdaIzquierda = celdas.getCelda(jugadorX-1,jugadorY);
+        return celdaIzquierda.getOcupante();
+    }
+
+    public OcupanteDeCelda obtenerBloqueDerechaDelJugador(Jugador jugador){
+        int jugadorX = jugador.getX();
+        int jugadorY = jugador.getY();
+        Celda celdaDerecha = celdas.getCelda(jugadorX+1,jugadorY);
+        return celdaDerecha.getOcupante();
+    }
 }

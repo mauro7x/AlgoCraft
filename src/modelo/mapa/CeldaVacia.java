@@ -1,6 +1,8 @@
 package modelo.mapa;
 
 
+import modelo.objetos.herramientas.Herramienta;
+
 public class CeldaVacia implements OcupanteDeCelda {
 
     @Override
@@ -13,5 +15,11 @@ public class CeldaVacia implements OcupanteDeCelda {
     @Override
     public void actualizarPosicion(int x, int y) {
         // no actualiza nada
+    }
+
+    @Override
+    public void serGolpeadoPor(Herramienta herramienta) {
+        return;
+        //La celda vacia no hace nada al ser golpeada.
     }
 }

@@ -9,6 +9,7 @@ import modelo.objetos.herramientas.Hacha;
 import modelo.objetos.herramientas.Herramienta;
 import modelo.objetos.materiales.Madera;
 import modelo.recursos.BloqueMadera;
+import modelo.recursos.Recurso;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -42,7 +43,7 @@ public class JugadorTest {
         Juego juego = Juego.getJuego();
         juego.resetear();
         Jugador jugador = juego.getJugador();
-        assertEquals(0,jugador.getOrientacion());
+        assertTrue(jugador.getOrientacion() instanceof  OrientacionArriba);
     }
 
     @Test
@@ -215,5 +216,65 @@ public class JugadorTest {
         OcupanteDeCelda nuevo = jugador.ocuparPorOcupanteDe(mapa.getCeldaCentral());
         assertSame(nuevo, jugador);
 
+    }
+
+    @Test
+    public void test15GolpearBloqueMaderaPosicionadoDebajoLoDesgasta(){
+        Juego juego = Juego.getJuego();
+        juego.resetear();
+        Jugador jugador = juego.getJugador();
+        Mapa mapa = juego.getMapa();
+        Recurso madera = new BloqueMadera();
+        float durabilidadMaderaOriginal = madera.getDurabilidad();
+        jugador.moverAbajo();
+        mapa.setearOcupanteEn(madera,jugador.getX(),jugador.getY()-1);
+        jugador.golpear();
+
+        assertEquals(durabilidadMaderaOriginal-2,madera.getDurabilidad(),0.001);
+    }
+
+    @Test
+    public void test16GolpearBloqueMaderaPosicionadoArribaLoDesgasta(){
+        Juego juego = Juego.getJuego();
+        juego.resetear();
+        Jugador jugador = juego.getJugador();
+        Mapa mapa = juego.getMapa();
+        Recurso madera = new BloqueMadera();
+        float durabilidadMaderaOriginal = madera.getDurabilidad();
+        jugador.moverArriba();
+        mapa.setearOcupanteEn(madera,jugador.getX(),jugador.getY()+1);
+        jugador.golpear();
+
+        assertEquals(durabilidadMaderaOriginal-2,madera.getDurabilidad(),0.001);
+    }
+
+    @Test
+    public void test17GolpearBloqueMaderaPosicionadoDerechaLoDesgasta(){
+        Juego juego = Juego.getJuego();
+        juego.resetear();
+        Jugador jugador = juego.getJugador();
+        Mapa mapa = juego.getMapa();
+        Recurso madera = new BloqueMadera();
+        float durabilidadMaderaOriginal = madera.getDurabilidad();
+        jugador.moverDerecha();
+        mapa.setearOcupanteEn(madera,jugador.getX()+1,jugador.getY());
+        jugador.golpear();
+
+        assertEquals(durabilidadMaderaOriginal-2,madera.getDurabilidad(),0.001);
+    }
+
+    @Test
+    public void test18GolpearBloqueMaderaPosicionadoIzquierdaLoDesgasta(){
+        Juego juego = Juego.getJuego();
+        juego.resetear();
+        Jugador jugador = juego.getJugador();
+        Mapa mapa = juego.getMapa();
+        Recurso madera = new BloqueMadera();
+        float durabilidadMaderaOriginal = madera.getDurabilidad();
+        jugador.moverIzquierda();
+        mapa.setearOcupanteEn(madera,jugador.getX()-1,jugador.getY());
+        jugador.golpear();
+
+        assertEquals(durabilidadMaderaOriginal-2,madera.getDurabilidad(),0.001);
     }
 }

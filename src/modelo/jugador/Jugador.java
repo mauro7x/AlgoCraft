@@ -12,14 +12,14 @@ public class Jugador implements OcupanteDeCelda {
 
     private int x;
     private int y;
-    private int orientacion;
+    private Orientacion orientacion;
     private InventarioHerramientas herramientas;
     private InventarioMateriales materiales;
 
     public Jugador(int x, int y){
         this.x = x;
         this.y = y;
-        this.orientacion = 0;
+        this.orientacion = new OrientacionArriba();
         herramientas = new InventarioHerramientas();
         materiales = new InventarioMateriales();
     }
@@ -30,7 +30,8 @@ public class Jugador implements OcupanteDeCelda {
     public int getY() {
         return y;
     }
-    public int getOrientacion() {
+
+    public Orientacion getOrientacion() {
         return orientacion;
     }
 
@@ -45,21 +46,31 @@ public class Jugador implements OcupanteDeCelda {
         this.y = y;
     }
 
+    @Override
+    public void serGolpeadoPor(Herramienta herramienta) {
+        return; //El jugador no puede ser golpeado por otro jugador.
+    }
+
     public void moverArriba(){
-        this.orientacion = 0;
+        this.orientacion = new OrientacionArriba();
         Juego.getJuego().moverJugadorArriba(this);
     }
     public void moverAbajo(){
-        this.orientacion = 1;
+        this.orientacion = new OrientacionAbajo();
         Juego.getJuego().moverJugadorAbajo(this);
     }
     public void moverIzquierda(){
-        this.orientacion = 2;
+        this.orientacion = new OrientacionIzquierda();
         Juego.getJuego().moverJugadorIzquierda(this);
     }
     public void moverDerecha(){
-        this.orientacion = 3;
+        this.orientacion = new OrientacionDerecha();
         Juego.getJuego().moverJugadorDerecha(this);
     }
+
+    public void golpear(){
+        this.orientacion.golpear(herramientas.getHerramientaActual());
+    }
+
     public InventarioMateriales getInventarioMateriales(){ return this.materiales; }
 }

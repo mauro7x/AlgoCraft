@@ -1,5 +1,6 @@
 package modelo.objetos.herramientas;
 
+import modelo.mapa.OcupanteDeCelda;
 import modelo.objetos.GuardableEnInventario;
 import modelo.objetos.herramientas.reglas.*;
 import modelo.objetos.herramientas.durabilidades.*;
@@ -23,7 +24,7 @@ public abstract class Herramienta implements GuardableEnInventario {
         this.durabilidad.gastar(this.fuerza);
     }
 
-    public void golpear(Recurso recurso){
+    public void golpear(OcupanteDeCelda recurso){
         recurso.serGolpeadoPor(this);
     }
 

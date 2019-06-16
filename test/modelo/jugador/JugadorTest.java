@@ -80,7 +80,7 @@ public class JugadorTest {
         Mapa mapa = juego.getMapa();
         Posicion posicionInicialJugador = jugador.getPosicion();
 
-        mapa.setearOcupanteEn(new CeldaVacia(), jugador.getPosicion().getPosicionIzquierda());
+        mapa.setearOcupanteEn(new CeldaVacia(), posicionInicialJugador.getPosicionIzquierda());
         jugador.moverIzquierda();
 
         assertEquals(posicionInicialJugador.getPosicionIzquierda(), jugador.getPosicion());

@@ -25,46 +25,66 @@ public class Mapa {
     }
 
     public Celda getCeldaCentral(){
-        return celdas.getCelda(xMax/2, yMax/2);
+        return celdas.getCelda(new Posicion(xMax/2, yMax/2));
     }
 
-    public Celda getCelda(int x, int y) { return celdas.getCelda(x, y); }
+    public Celda getCelda(Posicion posicion) { return celdas.getCelda(posicion); }
 
     public void ubicarEnElCentro(OcupanteDeCelda ocupante){
-        setearOcupanteEn(ocupante, xMax/2, yMax/2);
+        setearOcupanteEn(ocupante, new Posicion(xMax/2, yMax/2));
     }
 
-    public void setearOcupanteEn(OcupanteDeCelda ocupante, int x, int y){
-        celdas.getCelda(x, y).setOcupante(ocupante);
+    public void setearOcupanteEn(OcupanteDeCelda ocupante, Posicion posicion){
+        celdas.getCelda(posicion).setOcupante(ocupante);
     }
 
 
     public void moverJugadorArriba(Jugador jugador){
-        int jugadorX = jugador.getX();
-        int jugadorY = jugador.getY();
-        Celda celdaActual = celdas.getCelda(jugadorX, jugadorY);
-        Celda celdaNueva = celdas.getCelda(jugadorX, Math.abs((jugadorY+1)%yMax));
+        Posicion posicionJugador = jugador.getPosicion();
+        Celda celdaActual = celdas.getCelda(posicionJugador);
+        Celda celdaNueva = celdas.getCelda(posicionJugador.getPosicionArriba());
         celdaActual.moverA(celdaNueva);
     }
     public void moverJugadorAbajo(Jugador jugador){
-        int jugadorX = jugador.getX();
-        int jugadorY = jugador.getY();
-        Celda celdaActual = celdas.getCelda(jugadorX, jugadorY);
-        Celda celdaNueva = celdas.getCelda(jugadorX, Math.abs((jugadorY-1)%yMax));
+        Posicion posicionJugador = jugador.getPosicion();
+        Celda celdaActual = celdas.getCelda(posicionJugador);
+        Celda celdaNueva = celdas.getCelda(posicionJugador.getPosicionAbajo());
         celdaActual.moverA(celdaNueva);
     }
     public void moverJugadorIzquierda(Jugador jugador){
-        int jugadorX = jugador.getX();
-        int jugadorY = jugador.getY();
-        Celda celdaActual = celdas.getCelda(jugadorX, jugadorY);
-        Celda celdaNueva = celdas.getCelda(Math.abs((jugadorX-1)%xMax), jugadorY);
+        Posicion posicionJugador = jugador.getPosicion();
+        Celda celdaActual = celdas.getCelda(posicionJugador);
+        Celda celdaNueva = celdas.getCelda(posicionJugador.getPosicionIzquierda());
         celdaActual.moverA(celdaNueva);
     }
     public void moverJugadorDerecha(Jugador jugador){
-        int jugadorX = jugador.getX();
-        int jugadorY = jugador.getY();
-        Celda celdaActual = celdas.getCelda(jugadorX, jugadorY);
-        Celda celdaNueva = celdas.getCelda(Math.abs((jugadorX+1)%xMax), jugadorY);
+        Posicion posicionJugador = jugador.getPosicion();
+        Celda celdaActual = celdas.getCelda(posicionJugador);
+        Celda celdaNueva = celdas.getCelda(posicionJugador.getPosicionDerecha());
         celdaActual.moverA(celdaNueva);
+    }
+
+    public OcupanteDeCelda obtenerBloqueArribaDelJugador(Jugador jugador){
+        Posicion posicionJugador = jugador.getPosicion();
+        Celda celdaArriba = celdas.getCelda(posicionJugador.getPosicionArriba());
+        return celdaArriba.getOcupante();
+    }
+
+    public OcupanteDeCelda obtenerBloqueAbajoDelJugador(Jugador jugador){
+        Posicion posicionJugador = jugador.getPosicion();
+        Celda celdaAbajo = celdas.getCelda(posicionJugador.getPosicionAbajo());
+        return celdaAbajo.getOcupante();
+    }
+
+    public OcupanteDeCelda obtenerBloqueIzquierdaDelJugador(Jugador jugador){
+        Posicion posicionJugador = jugador.getPosicion();
+        Celda celdaIzquierda = celdas.getCelda(posicionJugador.getPosicionIzquierda());
+        return celdaIzquierda.getOcupante();
+    }
+
+    public OcupanteDeCelda obtenerBloqueDerechaDelJugador(Jugador jugador){
+        Posicion posicionJugador = jugador.getPosicion();
+        Celda celdaDerecha = celdas.getCelda(posicionJugador.getPosicionDerecha());
+        return celdaDerecha.getOcupante();
     }
 }

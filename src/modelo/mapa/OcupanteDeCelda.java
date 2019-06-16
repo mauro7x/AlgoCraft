@@ -1,9 +1,12 @@
 package modelo.mapa;
 
+import modelo.objetos.herramientas.Herramienta;
+
 public interface OcupanteDeCelda {
 
     OcupanteDeCelda ocuparPorOcupanteDe(Celda celdaOrigen);
 
-    void actualizarPosicion(int x, int y);
+    void actualizarPosicion(Posicion posicion);
 
+    void serGolpeadoPor(Herramienta herramienta);
 }

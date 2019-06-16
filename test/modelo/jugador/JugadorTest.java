@@ -1,14 +1,9 @@
 package modelo.jugador;
 
 import modelo.Juego;
-import modelo.mapa.Celda;
-import modelo.mapa.CeldaVacia;
-import modelo.mapa.Mapa;
-import modelo.mapa.OcupanteDeCelda;
-import modelo.objetos.herramientas.Hacha;
-import modelo.objetos.herramientas.Herramienta;
-import modelo.objetos.materiales.Madera;
+import modelo.mapa.*;
 import modelo.recursos.BloqueMadera;
+import modelo.recursos.Recurso;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -17,24 +12,14 @@ public class JugadorTest {
     //Tests de inicializacion del jugador
 
     @Test
-    public void test01InicializarJugadorCoordenadaXCentral(){
+    public void test01InicializarJugadorPosicionCentral(){
         Juego juego = Juego.getJuego();
         juego.resetear();
         Jugador jugador = juego.getJugador();
         Mapa mapa = juego.getMapa();
         Celda celdaCentral = mapa.getCeldaCentral();
-        assertEquals(celdaCentral.getX(),jugador.getX());
+        assertEquals(jugador.getPosicion(), celdaCentral.getPosicion());
 
-    }
-
-    @Test
-    public void test02InicializarJugadorCoordenadaYCentral(){
-        Juego juego = Juego.getJuego();
-        juego.resetear();
-        Jugador jugador = juego.getJugador();
-        Mapa mapa = juego.getMapa();
-        Celda celdaCentral = mapa.getCeldaCentral();
-        assertEquals(celdaCentral.getY(),jugador.getY());
     }
 
     @Test
@@ -42,7 +27,7 @@ public class JugadorTest {
         Juego juego = Juego.getJuego();
         juego.resetear();
         Jugador jugador = juego.getJugador();
-        assertEquals(0,jugador.getOrientacion());
+        assertTrue(jugador.getOrientacion() instanceof  OrientacionArriba);
     }
 
     @Test
@@ -51,12 +36,12 @@ public class JugadorTest {
         juego.resetear();
         Jugador jugador = juego.getJugador();
         Mapa mapa = juego.getMapa();
-        int posXInicial = jugador.getX();
-        int posYInicial = jugador.getY();
-        mapa.setearOcupanteEn(new CeldaVacia(), posXInicial, posYInicial+1);
+        Posicion posicionInicialJugador = jugador.getPosicion();
+        
+        mapa.setearOcupanteEn(new CeldaVacia(), posicionInicialJugador.getPosicionArriba());
         jugador.moverArriba();
-        assertEquals(posXInicial, jugador.getX());
-        assertEquals(posYInicial+1, jugador.getY());
+        
+        assertEquals(posicionInicialJugador.getPosicionArriba(), jugador.getPosicion());
     }
 
     @Test
@@ -65,12 +50,12 @@ public class JugadorTest {
         juego.resetear();
         Jugador jugador = juego.getJugador();
         Mapa mapa = juego.getMapa();
-        int posXInicial = jugador.getX();
-        int posYInicial = jugador.getY();
-        mapa.setearOcupanteEn(new CeldaVacia(), posXInicial, posYInicial-1);
+        Posicion posicionInicialJugador = jugador.getPosicion();
+
+        mapa.setearOcupanteEn(new CeldaVacia(), posicionInicialJugador.getPosicionAbajo());
         jugador.moverAbajo();
-        assertEquals(posXInicial, jugador.getX());
-        assertEquals(posYInicial-1, jugador.getY());
+
+        assertEquals(posicionInicialJugador.getPosicionAbajo(), jugador.getPosicion());
     }
 
     @Test
@@ -79,12 +64,12 @@ public class JugadorTest {
         juego.resetear();
         Jugador jugador = juego.getJugador();
         Mapa mapa = juego.getMapa();
-        int posXInicial = jugador.getX();
-        int posYInicial = jugador.getY();
-        mapa.setearOcupanteEn(new CeldaVacia(), posXInicial+1, posYInicial);
+        Posicion posicionInicialJugador = jugador.getPosicion();
+
+        mapa.setearOcupanteEn(new CeldaVacia(), posicionInicialJugador.getPosicionDerecha());
         jugador.moverDerecha();
-        assertEquals(posXInicial+1, jugador.getX());
-        assertEquals(posYInicial, jugador.getY());
+
+        assertEquals(posicionInicialJugador.getPosicionDerecha(), jugador.getPosicion());
     }
 
     @Test
@@ -93,12 +78,12 @@ public class JugadorTest {
         juego.resetear();
         Jugador jugador = juego.getJugador();
         Mapa mapa = juego.getMapa();
-        int posXInicial = jugador.getX();
-        int posYInicial = jugador.getY();
-        mapa.setearOcupanteEn(new CeldaVacia(), posXInicial-1, posYInicial);
+        Posicion posicionInicialJugador = jugador.getPosicion();
+
+        mapa.setearOcupanteEn(new CeldaVacia(), jugador.getPosicion().getPosicionIzquierda());
         jugador.moverIzquierda();
-        assertEquals(posXInicial-1, jugador.getX());
-        assertEquals(posYInicial, jugador.getY());
+
+        assertEquals(posicionInicialJugador.getPosicionIzquierda(), jugador.getPosicion());
     }
 
     @Test
@@ -107,12 +92,12 @@ public class JugadorTest {
         juego.resetear();
         Jugador jugador = juego.getJugador();
         Mapa mapa = juego.getMapa();
-        int posXInicial = jugador.getX();
-        int posYInicial = jugador.getY();
-        mapa.setearOcupanteEn(new BloqueMadera(), posXInicial, posYInicial+1);
+
+        Posicion posicionInicialJugador = jugador.getPosicion();
+        mapa.setearOcupanteEn(new BloqueMadera(), posicionInicialJugador.getPosicionArriba());
         jugador.moverArriba();
-        assertEquals(posXInicial, jugador.getX());
-        assertEquals(posYInicial, jugador.getY());
+
+        assertEquals(posicionInicialJugador, jugador.getPosicion());
     }
 
     @Test
@@ -121,12 +106,12 @@ public class JugadorTest {
         juego.resetear();
         Jugador jugador = juego.getJugador();
         Mapa mapa = juego.getMapa();
-        int posXInicial = jugador.getX();
-        int posYInicial = jugador.getY();
-        mapa.setearOcupanteEn(new BloqueMadera(), posXInicial, posYInicial-1);
+
+        Posicion posicionInicialJugador = jugador.getPosicion();
+        mapa.setearOcupanteEn(new BloqueMadera(), posicionInicialJugador.getPosicionAbajo());
         jugador.moverAbajo();
-        assertEquals(posXInicial, jugador.getX());
-        assertEquals(posYInicial, jugador.getY());
+
+        assertEquals(posicionInicialJugador, jugador.getPosicion());
     }
 
     @Test
@@ -135,12 +120,12 @@ public class JugadorTest {
         juego.resetear();
         Jugador jugador = juego.getJugador();
         Mapa mapa = juego.getMapa();
-        int posXInicial = jugador.getX();
-        int posYInicial = jugador.getY();
-        mapa.setearOcupanteEn(new BloqueMadera(), posXInicial+1, posYInicial);
+        Posicion posicionInicialJugador = jugador.getPosicion();
+
+        mapa.setearOcupanteEn(new BloqueMadera(), posicionInicialJugador.getPosicionDerecha());
         jugador.moverDerecha();
-        assertEquals(posXInicial, jugador.getX());
-        assertEquals(posYInicial, jugador.getY());
+
+        assertEquals(posicionInicialJugador, jugador.getPosicion());
     }
 
     @Test
@@ -149,12 +134,12 @@ public class JugadorTest {
         juego.resetear();
         Jugador jugador = juego.getJugador();
         Mapa mapa = juego.getMapa();
-        int posXInicial = jugador.getX();
-        int posYInicial = jugador.getY();
-        mapa.setearOcupanteEn(new BloqueMadera(), posXInicial-1, posYInicial);
+        Posicion posicionInicialJugador = jugador.getPosicion();
+
+        mapa.setearOcupanteEn(new BloqueMadera(), posicionInicialJugador.getPosicionIzquierda());
         jugador.moverIzquierda();
-        assertEquals(posXInicial, jugador.getX());
-        assertEquals(posYInicial, jugador.getY());
+
+        assertEquals(posicionInicialJugador, jugador.getPosicion());
     }
 
     @Test
@@ -163,12 +148,12 @@ public class JugadorTest {
         juego.resetear();
         Jugador jugador = juego.getJugador();
         Mapa mapa = juego.getMapa();
-        int posXInicial = jugador.getX();
-        int posYInicial = jugador.getY();
+        Posicion posicionInicialJugador = jugador.getPosicion();
         int celdasAltura = mapa.getYMax();
-
+        Posicion posicionAuxiliar = posicionInicialJugador;
         for (int i = 0; i<celdasAltura; i++){
-            mapa.setearOcupanteEn(new CeldaVacia(), posXInicial, i);
+            posicionAuxiliar = posicionAuxiliar.getPosicionArriba();
+            mapa.setearOcupanteEn(new CeldaVacia(), posicionAuxiliar);
         }
         mapa.ubicarEnElCentro(jugador);
 
@@ -176,8 +161,7 @@ public class JugadorTest {
             jugador.moverArriba();
         }
 
-        assertEquals(posXInicial, jugador.getX());
-        assertEquals(posYInicial, jugador.getY());
+        assertEquals(posicionInicialJugador, jugador.getPosicion());
 
     }
 
@@ -187,12 +171,13 @@ public class JugadorTest {
         juego.resetear();
         Jugador jugador = juego.getJugador();
         Mapa mapa = juego.getMapa();
-        int posXInicial = jugador.getX();
-        int posYInicial = jugador.getY();
+        Posicion posicionInicialJugador = jugador.getPosicion();
         int celdasAnchura = mapa.getXMax();
+        Posicion posicionAuxiliar = posicionInicialJugador;
 
         for (int i = 0; i<celdasAnchura; i++){
-            mapa.setearOcupanteEn(new CeldaVacia(), i, posYInicial);
+            posicionAuxiliar = posicionAuxiliar.getPosicionDerecha();
+            mapa.setearOcupanteEn(new CeldaVacia(), posicionAuxiliar);
         }
         mapa.ubicarEnElCentro(jugador);
 
@@ -200,9 +185,7 @@ public class JugadorTest {
             jugador.moverDerecha();
         }
 
-        assertEquals(posXInicial, jugador.getX());
-        assertEquals(posYInicial, jugador.getY());
-
+        assertEquals(posicionInicialJugador, jugador.getPosicion());
     }
 
     @Test
@@ -213,7 +196,66 @@ public class JugadorTest {
         Mapa mapa = juego.getMapa();
 
         OcupanteDeCelda nuevo = jugador.ocuparPorOcupanteDe(mapa.getCeldaCentral());
-        assertSame(nuevo, jugador);
+        assertEquals(nuevo, jugador);
+    }
 
+    @Test
+    public void test15GolpearBloqueMaderaPosicionadoDebajoLoDesgasta(){
+        Juego juego = Juego.getJuego();
+        juego.resetear();
+        Jugador jugador = juego.getJugador();
+        Mapa mapa = juego.getMapa();
+        Recurso madera = new BloqueMadera();
+        float durabilidadMaderaOriginal = madera.getDurabilidad();
+        jugador.moverAbajo();
+        mapa.setearOcupanteEn(madera, jugador.getPosicion().getPosicionAbajo());
+        jugador.golpear();
+
+        assertEquals(durabilidadMaderaOriginal-2,madera.getDurabilidad(),0.001);
+    }
+
+    @Test
+    public void test16GolpearBloqueMaderaPosicionadoArribaLoDesgasta(){
+        Juego juego = Juego.getJuego();
+        juego.resetear();
+        Jugador jugador = juego.getJugador();
+        Mapa mapa = juego.getMapa();
+        Recurso madera = new BloqueMadera();
+        float durabilidadMaderaOriginal = madera.getDurabilidad();
+        jugador.moverArriba();
+        mapa.setearOcupanteEn(madera, jugador.getPosicion().getPosicionArriba());
+        jugador.golpear();
+
+        assertEquals(durabilidadMaderaOriginal-2,madera.getDurabilidad(),0.001);
+    }
+
+    @Test
+    public void test17GolpearBloqueMaderaPosicionadoDerechaLoDesgasta(){
+        Juego juego = Juego.getJuego();
+        juego.resetear();
+        Jugador jugador = juego.getJugador();
+        Mapa mapa = juego.getMapa();
+        Recurso madera = new BloqueMadera();
+        float durabilidadMaderaOriginal = madera.getDurabilidad();
+        jugador.moverDerecha();
+        mapa.setearOcupanteEn(madera,jugador.getPosicion().getPosicionDerecha());
+        jugador.golpear();
+
+        assertEquals(durabilidadMaderaOriginal-2,madera.getDurabilidad(),0.001);
+    }
+
+    @Test
+    public void test18GolpearBloqueMaderaPosicionadoIzquierdaLoDesgasta(){
+        Juego juego = Juego.getJuego();
+        juego.resetear();
+        Jugador jugador = juego.getJugador();
+        Mapa mapa = juego.getMapa();
+        Recurso madera = new BloqueMadera();
+        float durabilidadMaderaOriginal = madera.getDurabilidad();
+        jugador.moverIzquierda();
+        mapa.setearOcupanteEn(madera, jugador.getPosicion().getPosicionIzquierda());
+        jugador.golpear();
+
+        assertEquals(durabilidadMaderaOriginal-2,madera.getDurabilidad(),0.001);
     }
 }

@@ -2,6 +2,7 @@ package entregas;
 
 import modelo.Juego;
 import modelo.jugador.Jugador;
+import modelo.jugador.OrientacionArriba;
 import modelo.mapa.Celda;
 import modelo.mapa.Mapa;
 import modelo.objetos.materiales.*;
@@ -152,9 +153,8 @@ public class PrimerEntregaTest {
         Jugador jugador = juego.getJugador();
         Mapa mapa = juego.getMapa();
         Celda celdaCentral = mapa.getCeldaCentral();
-        assertEquals(celdaCentral.getX(),jugador.getX());
-        assertEquals(celdaCentral.getY(),jugador.getY());
-        assertEquals(0,jugador.getOrientacion());
+        assertEquals(mapa.getCeldaCentral().getPosicion(), jugador.getPosicion());
+        assertTrue(jugador.getOrientacion() instanceof OrientacionArriba);
     }
 
 

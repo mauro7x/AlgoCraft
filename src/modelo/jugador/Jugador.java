@@ -4,32 +4,24 @@ package modelo.jugador;
 import modelo.Juego;
 import modelo.mapa.Celda;
 import modelo.mapa.OcupanteDeCelda;
-import modelo.objetos.herramientas.Hacha;
+import modelo.mapa.Posicion;
 import modelo.objetos.herramientas.Herramienta;
-import modelo.objetos.materiales.Madera;
 
 public class Jugador implements OcupanteDeCelda {
 
-    private int x;
-    private int y;
+    private Posicion posicion;
     private Orientacion orientacion;
     private InventarioHerramientas herramientas;
     private InventarioMateriales materiales;
 
-    public Jugador(int x, int y){
-        this.x = x;
-        this.y = y;
+    public Jugador(Posicion posicionInicial){
+        this.posicion = posicionInicial;
         this.orientacion = new OrientacionArriba();
         herramientas = new InventarioHerramientas();
         materiales = new InventarioMateriales();
     }
 
-    public int getX() {
-        return x;
-    }
-    public int getY() {
-        return y;
-    }
+    public Posicion getPosicion(){ return this.posicion; }
 
     public Orientacion getOrientacion() {
         return orientacion;
@@ -41,9 +33,8 @@ public class Jugador implements OcupanteDeCelda {
     }
 
     @Override
-    public void actualizarPosicion(int x, int y) {
-        this.x = x;
-        this.y = y;
+    public void actualizarPosicion(Posicion posicionNueva) {
+        this.posicion = posicionNueva;
     }
 
     @Override

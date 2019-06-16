@@ -1,8 +1,10 @@
 package modelo.recursos;
+import javafx.geometry.Pos;
 import modelo.Juego;
 import modelo.mapa.Celda;
 import modelo.mapa.CeldaVacia;
 import modelo.mapa.OcupanteDeCelda;
+import modelo.mapa.Posicion;
 import modelo.objetos.herramientas.*;
 
 public abstract class Recurso implements OcupanteDeCelda {
@@ -21,7 +23,7 @@ public abstract class Recurso implements OcupanteDeCelda {
         durabilidad -= fuerza;
         if (durabilidad <= 0) {
             this.agregarRecursoAlInventario();
-            this.ocuparPorOcupanteDe(new Celda(0,0)); //Vacio la celda que esta ocupando
+            this.ocuparPorOcupanteDe(new Celda(new Posicion(0,0))); //Vacio la celda que esta ocupando
         }
     }
 
@@ -31,7 +33,7 @@ public abstract class Recurso implements OcupanteDeCelda {
     }
 
     @Override
-    public void actualizarPosicion(int x, int y){
+    public void actualizarPosicion(Posicion posicion){
         // no actualiza nada
     }
 }

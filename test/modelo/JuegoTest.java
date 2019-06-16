@@ -12,12 +12,10 @@ public class JuegoTest {
     public void test01CorrectaInicializacionDelJugadorEnElCentroDelMapa(){
         Juego juego = Juego.getJuego();
         juego.resetear();
-
         Mapa mapa = juego.getMapa();
-        Celda celdaCentral = mapa.getCeldaCentral();
         Jugador jugador = juego.getJugador();
-        assertEquals(celdaCentral.getX(), jugador.getX());
-        assertEquals(celdaCentral.getY(), jugador.getY());
+
+        assertEquals(mapa.getCeldaCentral().getPosicion(), jugador.getPosicion());
     }
 
     @Test
@@ -29,14 +27,10 @@ public class JuegoTest {
         Jugador jugador = juego.getJugador();
 
         jugador.moverArriba();
-        assertNotEquals(celdaCentral.getY(), jugador.getY());
+        assertNotSame(celdaCentral.getPosicion(), jugador.getPosicion());
 
         juego.resetear();
         jugador = juego.getJugador();
-        assertEquals(celdaCentral.getY(), jugador.getY());
+        assertEquals(celdaCentral.getPosicion(), jugador.getPosicion());
     }
-
-
-
-
 }

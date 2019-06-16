@@ -2,6 +2,7 @@ package modelo;
 
 import modelo.jugador.Jugador;
 import modelo.mapa.Mapa;
+import modelo.mapa.Posicion;
 
 public class Juego {
     private static Juego juego = new Juego();
@@ -23,7 +24,7 @@ public class Juego {
 
     private void inicializacion(){
         mapa = new Mapa(X_MAX, Y_MAX);
-        jugador = new Jugador(X_MAX /2, Y_MAX /2);
+        jugador = new Jugador(new Posicion(X_MAX /2, Y_MAX /2));
         mapa.ubicarEnElCentro(jugador);
         constructor = new Constructor();
     }

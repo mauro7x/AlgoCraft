@@ -13,7 +13,7 @@ public class CeldaVacia implements OcupanteDeCelda {
     }
 
     @Override
-    public void actualizarPosicion(int x, int y) {
+    public void actualizarPosicion(Posicion posicion) {
         // no actualiza nada
     }
 

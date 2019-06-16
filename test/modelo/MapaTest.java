@@ -1,6 +1,7 @@
 package modelo;
 
 import modelo.mapa.Mapa;
+import modelo.mapa.Posicion;
 import modelo.recursos.BloqueMadera;
 import org.junit.Test;
 
@@ -23,9 +24,8 @@ public class MapaTest {
     @Test
     public void test03InicializarMapa10x10CeldaCentralEsCorrecta(){
         Mapa mapa = new Mapa(10,10);
-        int xCentral = mapa.getCeldaCentral().getX();
-        int yCentral = mapa.getCeldaCentral().getY();
-        assertTrue((xCentral == 5) && (yCentral == 5));
+        Posicion posicionCeldaCentral = mapa.getCeldaCentral().getPosicion();
+        assertTrue((posicionCeldaCentral.getX() == 5) && (posicionCeldaCentral.getY() == 5));
     }
 
     @Test

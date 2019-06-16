@@ -18,14 +18,14 @@ class CuadriculaCeldas {
 
         for (int y = 0; y < yMax; y++){
             for (int x = 0; x < xMax; x++){
-                celdas[(y*xMax) + x] = new Celda(x, y);
+                celdas[(y*xMax) + x] = new Celda(new Posicion(x, y));
             }
         }
 
     }
 
-    Celda getCelda(int x, int y){
-        return celdas[(y*xMax) + x];
+    Celda getCelda(Posicion posicion){
+        return celdas[(posicion.getY()*xMax) + posicion.getX()];
     }
 
 }

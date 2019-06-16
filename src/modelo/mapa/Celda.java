@@ -2,13 +2,11 @@ package modelo.mapa;
 
 public class Celda {
 
-    private int x;
-    private int y;
     private OcupanteDeCelda ocupante;
+    private Posicion posicion;
 
-    public Celda(int x, int y){
-        this.x = x;
-        this.y = y;
+    public Celda(Posicion posicion){
+        this.posicion = posicion;
         ocupante = new CeldaVacia();
     }
 
@@ -21,21 +19,14 @@ public class Celda {
     }
 
     private void actualizarPosicionOcupante(){
-        this.ocupante.actualizarPosicion(x, y);
+        this.ocupante.actualizarPosicion(posicion);
     }
-
 
     private void ocuparPorOcupanteDe(Celda celdaOrigen){
         this.ocupante = (this.ocupante).ocuparPorOcupanteDe(celdaOrigen);
     }
 
-    public int getX(){
-        return x;
-    }
-
-    public int getY(){
-        return y;
-    }
+    public Posicion getPosicion() { return this.posicion; }
 
     void moverA(Celda celdaDestino){
         celdaDestino.ocuparPorOcupanteDe(this);

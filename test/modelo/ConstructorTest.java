@@ -1,5 +1,7 @@
 package modelo;
 
+import modelo.Juego;
+import modelo.Constructor;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

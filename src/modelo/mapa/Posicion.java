@@ -15,6 +15,7 @@ public class Posicion {
     @Override
     public boolean equals(Object o) {
 
+        /*
         if (o == this) {
             return true;
         }
@@ -22,33 +23,30 @@ public class Posicion {
         if (!(o instanceof Posicion)) {
             return false;
         }
+        */
 
         Posicion posicion = (Posicion) o;
-
         return (this.x == posicion.getX() && this.y == posicion.getY());
     }
 
-    public int getX(){ return this.x; }
-    public int getY(){ return this.y; }
+    int getX(){ return this.x; }
+    int getY(){ return this.y; }
 
     public Posicion getPosicionArriba(){
         int yMax = Juego.getJuego().getMapa().getYMax();
         Posicion posicionArriba = new Posicion(this.x, Math.abs((this.y+1)%yMax));
         return posicionArriba;
     }
-
     public Posicion getPosicionAbajo(){
         int yMax = Juego.getJuego().getMapa().getYMax();
         Posicion posicionAbajo = new Posicion(this.x, Math.abs((this.y-1)%yMax));
         return posicionAbajo;
     }
-
     public Posicion getPosicionIzquierda(){
         int xMax = Juego.getJuego().getMapa().getXMax();
         Posicion posicionIzquierda = new Posicion(Math.abs((this.x-1)%xMax), this.y);
         return posicionIzquierda;
     }
-
     public Posicion getPosicionDerecha(){
         int xMax = Juego.getJuego().getMapa().getXMax();
         Posicion posicionDerecha = new Posicion(Math.abs((this.x+1)%xMax), this.y);

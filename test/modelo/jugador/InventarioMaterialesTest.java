@@ -43,4 +43,21 @@ public class InventarioMaterialesTest {
         assertEquals(0, inventarioMateriales.getMetal());
         assertEquals(0, inventarioMateriales.getDiamante());
     }
+
+    @Test
+    public void test05SePidenMaterialesYDevuelveSusID(){
+        InventarioMateriales inventarioMateriales = new InventarioMateriales();
+        inventarioMateriales.agregarMadera();
+        inventarioMateriales.agregarPiedra();
+        inventarioMateriales.agregarMetal();
+        inventarioMateriales.agregarDiamante();
+
+        assertEquals(1, inventarioMateriales.getMadera());
+        assertEquals(2, inventarioMateriales.getPiedra());
+        assertEquals(3, inventarioMateriales.getMetal());
+        assertEquals(4, inventarioMateriales.getDiamante());
+    }
+
+
+
 }

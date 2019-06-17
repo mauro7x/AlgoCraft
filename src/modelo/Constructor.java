@@ -1,6 +1,7 @@
 package modelo;
 
 
+import modelo.Juego;
 import modelo.herramientas.FabricaHerramientas;
 import modelo.herramientas.Herramienta;
 

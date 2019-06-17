@@ -39,7 +39,7 @@ public class Jugador implements OcupanteDeCelda {
 
     @Override
     public void serGolpeadoPor(Herramienta herramienta) {
-        return; //El jugador no puede ser golpeado por otro jugador.
+        throw new RuntimeException("Jugador no puede ser golpeado por nadie");
     }
 
     public void moverArriba(){

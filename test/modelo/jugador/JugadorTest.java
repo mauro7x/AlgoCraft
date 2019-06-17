@@ -1,6 +1,7 @@
 package modelo.jugador;
 
 import modelo.Juego;
+import modelo.herramientas.FabricaHerramientas;
 import modelo.mapa.*;
 import modelo.recursos.BloqueMadera;
 import modelo.recursos.Recurso;
@@ -258,4 +259,13 @@ public class JugadorTest {
 
         assertEquals(durabilidadMaderaOriginal-2,madera.getDurabilidad(),0.001);
     }
+
+
+    @Test(expected = RuntimeException.class)
+    public void test19JugadorEsGolpeadoYSeLanzaExcepcion(){
+        Jugador jugador = Juego.getJuego().getJugador();
+        jugador.serGolpeadoPor(FabricaHerramientas.crearHachaDeMadera());
+    }
+
+
 }

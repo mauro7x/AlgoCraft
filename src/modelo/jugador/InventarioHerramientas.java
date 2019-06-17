@@ -50,4 +50,8 @@ public class InventarioHerramientas{
     public boolean noTieneHerramientas() {
         return cantidadDeHerramientas == 0;
     }
+
+    public ArrayList<Herramienta> getHerramientas(){
+        return herramientas;
+    }
 }

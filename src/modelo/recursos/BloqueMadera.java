@@ -1,5 +1,6 @@
 package modelo.recursos;
 
+import javafx.scene.image.Image;
 import modelo.Juego;
 import modelo.herramientas.Herramienta;
 
@@ -12,6 +13,11 @@ public class BloqueMadera extends Recurso {
     @Override
     public void serGolpeadoPor(Herramienta herramienta) {
         herramienta.golpear(this);
+    }
+
+    @Override
+    public Image obtenerImagen(int size) {
+        return new Image("media/textures/tileMadera.png",size,size,false,false);
     }
 
     @Override

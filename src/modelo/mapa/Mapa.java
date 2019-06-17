@@ -1,6 +1,12 @@
 package modelo.mapa;
 
 import modelo.jugador.Jugador;
+import modelo.recursos.BloqueDiamante;
+import modelo.recursos.BloqueMadera;
+import modelo.recursos.BloqueMetal;
+import modelo.recursos.BloquePiedra;
+
+import java.util.Random;
 
 public class Mapa {
 
@@ -36,6 +42,23 @@ public class Mapa {
         celdas.getCelda(posicion).setOcupante(ocupante);
     }
 
+    public void generarRecursosEnPosicionesAleatorias(int cantidadRecursos){
+        Random rand = new Random();
+
+        for(int i=0;i<cantidadRecursos;i++){
+            int x = rand.nextInt(xMax);
+            int y = rand.nextInt(yMax);
+
+            OcupanteDeCelda[] recursos = {new BloqueMadera(),new BloquePiedra(), new BloqueMetal(), new BloqueDiamante()};
+            int recurso = rand.nextInt(recursos.length);
+
+            setearOcupanteEn(recursos[recurso],new Posicion(x,y));
+        }
+    }
+
+    public OcupanteDeCelda obtenerOcupanteEn(Posicion posicion){
+        return celdas.getCelda(posicion).getOcupante();
+    }
 
     public void moverJugadorArriba(Jugador jugador){
         Posicion posicionJugador = jugador.getPosicion();

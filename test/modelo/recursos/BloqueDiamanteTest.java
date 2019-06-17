@@ -74,5 +74,4 @@ public class BloqueDiamanteTest {
         assertEquals(cantidadInicialDeDiamante + 1, inventarioMateriales.cantidadDiamante());
     }
 
-
 }

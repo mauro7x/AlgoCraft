@@ -1,5 +1,6 @@
 package modelo.herramientas;
 
+import javafx.scene.image.Image;
 import modelo.herramientas.durabilidades.DurabilidadEnFuerza;
 import modelo.herramientas.reglas.ReglasEstandarHacha;
 import modelo.recursos.*;
@@ -16,6 +17,7 @@ public class Hacha extends Herramienta {
         hacha.fuerza = 2;
         hacha.reglasDeDesgaste = new ReglasEstandarHacha();
         hacha.id = 10;
+        hacha.rutaImagen = "media/herramientas/hachaMadera.png";
         return hacha;
     }
     static Herramienta dePiedra(){
@@ -25,6 +27,7 @@ public class Hacha extends Herramienta {
         hacha.fuerza = 5;
         hacha.reglasDeDesgaste = new ReglasEstandarHacha();
         hacha.id = 11;
+        hacha.rutaImagen = "media/herramientas/hachaPiedra.png";
         return hacha;
     }
     static Herramienta deMetal(){
@@ -34,6 +37,7 @@ public class Hacha extends Herramienta {
         hacha.fuerza = 10;
         hacha.reglasDeDesgaste = new ReglasEstandarHacha();
         hacha.id = 12;
+        hacha.rutaImagen = "media/herramientas/hachaMetal.png";
         return hacha;
     }
 

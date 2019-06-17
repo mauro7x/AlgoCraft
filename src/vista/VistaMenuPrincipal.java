@@ -1,9 +1,10 @@
 package vista;
+
 import controladores.menuPrincipal.BotonAcercaDeHandler;
+import controladores.menuPrincipal.BotonJugarHandler;
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -12,30 +13,13 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
-import java.net.URL;
 
-public class MenuPrincipal extends Application{
-    public static void main(String[] args){
-        launch(args);
-    }
-
-    @Override
-    public void start(Stage stage) throws Exception {
-        stage.setTitle("Algocraft");
-
-        Scene escenaMenuPrincipal = generarMenuPrincipal();
-        stage.setScene(escenaMenuPrincipal);
-        stage.setResizable(false);
-        stage.show();
-    }
-
-    private Scene generarMenuPrincipal() throws IOException {
+public class VistaMenuPrincipal {
+    public Scene generarMenuPrincipal(Stage ventanaPrincipal) throws IOException {
         String estiloBotones = "-fx-opacity: 50; -fx-pref-width: 200px";
 
         Button botonJugar = new Button("Jugar");
@@ -43,6 +27,9 @@ public class MenuPrincipal extends Application{
 
         BotonAcercaDeHandler handlerAcercade = new BotonAcercaDeHandler();
         botonAcercaDe.setOnAction(handlerAcercade);
+
+        BotonJugarHandler handleJugar = new BotonJugarHandler(ventanaPrincipal);
+        botonJugar.setOnAction(handleJugar);
 
         botonJugar.setStyle(estiloBotones);
         botonAcercaDe.setStyle(estiloBotones);
@@ -86,7 +73,7 @@ public class MenuPrincipal extends Application{
         transicion.setFromValue(0);
         transicion.setToValue(10);
         transicion.play();
-        
+
         return new Scene(contenedorPrincipal,900,500);
     }
 }

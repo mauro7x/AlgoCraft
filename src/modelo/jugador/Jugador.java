@@ -1,11 +1,14 @@
 package modelo.jugador;
 
 
+import javafx.scene.image.Image;
 import modelo.Juego;
 import modelo.mapa.Celda;
 import modelo.mapa.OcupanteDeCelda;
 import modelo.mapa.Posicion;
 import modelo.herramientas.Herramienta;
+
+import java.util.ArrayList;
 
 public class Jugador implements OcupanteDeCelda {
 
@@ -42,6 +45,11 @@ public class Jugador implements OcupanteDeCelda {
         throw new RuntimeException("Jugador no puede ser golpeado por nadie");
     }
 
+    @Override
+    public Image obtenerImagen(int size) { //TODO: cambiar esto
+        return new Image("media/textures/tileDiamante.png",size,size,false,false);
+    }
+
     public void moverArriba(){
         this.orientacion = new OrientacionArriba();
         Juego.getJuego().moverJugadorArriba(this);
@@ -71,6 +79,10 @@ public class Jugador implements OcupanteDeCelda {
 
     public Herramienta getHerramientaActual(){
         return herramientas.getHerramientaActual();
+    }
+
+    public ArrayList<Herramienta> getHerramientas(){
+        return herramientas.getHerramientas();
     }
 
     public void eliminarHerramientaActual() {

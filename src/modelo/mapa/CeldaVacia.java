@@ -1,6 +1,7 @@
 package modelo.mapa;
 
 
+import javafx.scene.image.Image;
 import modelo.herramientas.Herramienta;
 
 public class CeldaVacia implements OcupanteDeCelda {
@@ -22,4 +23,10 @@ public class CeldaVacia implements OcupanteDeCelda {
         return;
         //La celda vacia no hace nada al ser golpeada.
     }
+
+    @Override
+    public Image obtenerImagen(int size) {
+        return new Image("media/textures/tileCeldaVacia2.png",size,size,false,false);
+    }
+
 }

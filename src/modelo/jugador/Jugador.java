@@ -47,7 +47,7 @@ public class Jugador implements OcupanteDeCelda {
 
     @Override
     public Image obtenerImagen(int size) { //TODO: cambiar esto
-        return new Image("media/textures/tileDiamante.png",size,size,false,false);
+        return orientacion.obtenerImagen(size);
     }
 
     public void moverArriba(){
@@ -65,6 +65,14 @@ public class Jugador implements OcupanteDeCelda {
     public void moverDerecha(){
         this.orientacion = new OrientacionDerecha();
         Juego.getJuego().moverJugadorDerecha(this);
+    }
+
+    public void cambiarAHerramientaSiguiente(){
+        herramientas.cambiarAHerramientaSiguiente();
+    }
+
+    public void cambiarAHerramientaAnterior(){
+        herramientas.cambiarAHerramientaAnterior();
     }
 
     public void golpear(){

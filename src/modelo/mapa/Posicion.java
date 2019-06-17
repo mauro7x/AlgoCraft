@@ -23,20 +23,18 @@ public class Posicion {
 
     public Posicion getPosicionArriba(){
         int yMax = Juego.getJuego().getMapa().getYMax();
-        return new Posicion(this.x, Math.abs((this.y+1)%yMax));
+        return new Posicion(this.x, Math.floorMod(this.y+1,yMax));
     }
     public Posicion getPosicionAbajo(){
-        //int yMax = Juego.getJuego().getMapa().getYMax();
-        //return new Posicion(this.x, Math.abs((this.y-1)%yMax));
-        return new Posicion(this.x, Math.abs((this.y-1)%10));
+        int yMax = Juego.getJuego().getMapa().getYMax();
+        return new Posicion(this.x, Math.floorMod(this.y-1,yMax));
     }
     public Posicion getPosicionIzquierda(){
         int xMax = Juego.getJuego().getMapa().getXMax();
-        return new Posicion(Math.abs((this.x-1)%xMax), this.y);
+        return new Posicion(Math.floorMod(this.x-1,xMax), this.y);
     }
     public Posicion getPosicionDerecha(){
-        //int xMax = Juego.getJuego().getMapa().getXMax();
-        //return new Posicion(Math.abs((this.x+1)%xMax), this.y);
-        return new Posicion(Math.abs((this.x+1)%15), this.y);
+        int xMax = Juego.getJuego().getMapa().getXMax();
+        return new Posicion(Math.floorMod(this.x+1,xMax), this.y);
     }
 }

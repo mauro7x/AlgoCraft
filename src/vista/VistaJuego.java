@@ -1,5 +1,7 @@
 package vista;
 
+import controladores.menuPrincipal.ControlScrollHandler;
+import controladores.menuPrincipal.ControlesMovimientoHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -18,22 +20,29 @@ import java.util.ArrayList;
 public class VistaJuego {
 
     private int dimensionTile = 50;
+    private GridPane cuadriculaMapa;
+    private GridPane itemsInventario;
+
+    public VistaJuego(){
+        cuadriculaMapa = new GridPane();
+        itemsInventario = new GridPane();
+    }
+
 
     public Scene generarVistaJuego(){
 
         BorderPane contenedorPrincipal = new BorderPane();
-        GridPane cuadriculaMapa = new GridPane();
         cuadriculaMapa.setHgap(0);
         cuadriculaMapa.setVgap(0);
         cuadriculaMapa.setPadding(new Insets(0,0,0,0));
 
         Juego juego = Juego.getJuego();
         Mapa mapa = juego.getMapa();
-
+        juego.generarRecursos();
         int widthVentana = mapa.getXMax()*dimensionTile;
         int heightVentana = mapa.getYMax()*dimensionTile;
 
-        dibujarMapa(cuadriculaMapa);
+        dibujarMapa();
 
         juego.getJugador().guardar(FabricaHerramientas.crearHachaDePiedra());
         juego.getJugador().guardar(FabricaHerramientas.crearPicoDeMetal());
@@ -44,20 +53,28 @@ public class VistaJuego {
 
         contenedorPrincipal.setBottom(inventarioHerramientas);
         contenedorPrincipal.setCenter(cuadriculaMapa);
+        Scene escena = new Scene(contenedorPrincipal,contenedorPrincipal.getPrefWidth(),contenedorPrincipal.getPrefHeight());
 
-        return new Scene(contenedorPrincipal,contenedorPrincipal.getPrefWidth(),contenedorPrincipal.getPrefHeight());
+        escena.setOnKeyPressed(new ControlesMovimientoHandler(this));
+        escena.setOnScroll(new ControlScrollHandler(this));
+
+        return escena;
     }
 
-    private void dibujarMapa(GridPane cuadriculaMapa){
+    public void dibujarMapa(){
         Juego juego = Juego.getJuego();
         Mapa mapa = juego.getMapa();
 
         for(int i=0;i<mapa.getXMax();i++){
-            for(int j=mapa.getYMax()-1;j>=0;j--){
+
+            for(int j=mapa.getYMax()-1;j>0;j--){
+
                 OcupanteDeCelda celdaActual = mapa.obtenerOcupanteEn(new Posicion(i,j));
                 ImageView tile = new ImageView(celdaActual.obtenerImagen(dimensionTile));
-                cuadriculaMapa.add(tile,i,j);
+                cuadriculaMapa.add(tile,i,mapa.getYMax()-j);
+
             }
+
         }
 
     }
@@ -66,18 +83,17 @@ public class VistaJuego {
         HBox inventario = new HBox();
         inventario.setAlignment(Pos.BOTTOM_CENTER);
         inventario.setStyle("-fx-background-color: #096346;");
-        GridPane itemsInventario = new GridPane();
         itemsInventario.setVgap(0);
         itemsInventario.setHgap(2);
         inventario.setPadding(new Insets(3,0,3,0));
 
         inventario.getChildren().addAll(itemsInventario);
-        actualizarInventarioHerramientas(itemsInventario);
+        actualizarInventarioHerramientas();
 
         return inventario;
     }
 
-    public void actualizarInventarioHerramientas(GridPane itemsInventario){
+    public void actualizarInventarioHerramientas(){
         Juego juego = Juego.getJuego();
         Jugador jugador = juego.getJugador();
         ArrayList<Herramienta> herramientas = jugador.getHerramientas();
@@ -89,7 +105,7 @@ public class VistaJuego {
             bordeHerramienta.getChildren().addAll(herramienta);
             bordeHerramienta.setPadding(new Insets(0,0,0,0));
             if(jugador.getHerramientaActual() == herramientaActual){
-                bordeHerramienta.setStyle("-fx-border-color: #000000;-fx-border-radius: 2px; -fx-border-width: 2px");
+                bordeHerramienta.setStyle("-fx-border-color: #000000;-fx-border-radius: 2px; -fx-border-width: 1px");
             }else{
                 bordeHerramienta.setStyle("-fx-border-color: #AAAAAA;-fx-border-radius: 2px; -fx-border-width: 1px");
             }

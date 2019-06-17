@@ -67,7 +67,6 @@ public class Mapa {
                     break;
             }
         }
-
     }
 
     private void agregarBloqueDiamante(Posicion posicion){

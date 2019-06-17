@@ -32,13 +32,12 @@ public class Juego {
         jugador = new Jugador(new Posicion(X_MAX /2, Y_MAX /2));
         mapa.ubicarEnElCentro(jugador);
     }
-    private void generarRecursos(){
+    public void generarRecursos(){
         mapa.generarRecursosAleatoriamente(10);
     }
 
     public void resetear(){
         generarMapaYConstructor();
-        generarRecursos();
         generarJugador();
     }
 

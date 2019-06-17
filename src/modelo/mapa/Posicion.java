@@ -15,9 +15,7 @@ public class Posicion {
     @Override
     public boolean equals(Object o) {
         Posicion posicion = (Posicion) o;
-        boolean c1 = (this.x == posicion.getX());
-        boolean c2 = (this.y == posicion.getY());
-        return (c1 && c2);
+        return (this.x == posicion.getX() && this.y == posicion.getY());
     }
 
     int getX(){ return this.x; }

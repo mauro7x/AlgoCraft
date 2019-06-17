@@ -39,6 +39,7 @@ public class VistaJuego {
         Juego juego = Juego.getJuego();
         Mapa mapa = juego.getMapa();
         juego.generarRecursos();
+
         int widthVentana = mapa.getXMax()*dimensionTile;
         int heightVentana = mapa.getYMax()*dimensionTile;
 

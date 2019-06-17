@@ -27,13 +27,12 @@ public class Juego {
         constructor = new Constructor();
     }
     private void generarJugador(){
-        System.out.println(X_MAX/2);
-        System.out.println(Y_MAX/2);
         jugador = new Jugador(new Posicion(X_MAX /2, Y_MAX /2));
         mapa.ubicarEnElCentro(jugador);
     }
     public void generarRecursos(){
         mapa.generarRecursosAleatoriamente(10);
+        mapa.ubicarEnElCentro(jugador);
     }
 
     public void resetear(){

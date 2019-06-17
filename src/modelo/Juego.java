@@ -26,8 +26,11 @@ public class Juego {
         mapa = new Mapa(X_MAX, Y_MAX);
         jugador = new Jugador(new Posicion(X_MAX /2, Y_MAX /2));
         mapa.ubicarEnElCentro(jugador);
-        mapa.generarRecursosEnPosicionesAleatorias(20);
         constructor = new Constructor();
+    }
+
+    public void generarRecursos(){
+        mapa.generarRecursosEnPosicionesAleatorias(20);
     }
 
     public void resetear(){

@@ -68,4 +68,8 @@ public class Jugador implements OcupanteDeCelda {
     public void guardar(Herramienta herramienta){
         herramientas.guardar(herramienta);
     }
+
+    public Herramienta getHerramientaActual(){
+        return herramientas.getHerramientaActual();
+    }
 }

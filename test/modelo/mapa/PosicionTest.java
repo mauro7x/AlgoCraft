@@ -62,19 +62,4 @@ public class PosicionTest {
         assertEquals(new Posicion(x+1, y), posicion.getPosicionDerecha());
     }
 
-    @Test
-    public void test07SeComparaPosicionConOtroObjetoYDaFalse(){
-        int x = 5;
-        int y = 5;
-        Posicion posicion = new Posicion(x, y);
-        assertNotEquals(new Mapa(10,10), posicion);
-    }
-
-    @Test
-    public void test08SeComparaPosicionConSiMismaYDaTrue(){
-        int x = 5;
-        int y = 5;
-        Posicion posicion = new Posicion(x, y);
-        assertEquals(posicion, posicion);
-    }
 }

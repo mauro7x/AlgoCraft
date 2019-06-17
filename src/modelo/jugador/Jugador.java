@@ -5,7 +5,7 @@ import modelo.Juego;
 import modelo.mapa.Celda;
 import modelo.mapa.OcupanteDeCelda;
 import modelo.mapa.Posicion;
-import modelo.objetos.herramientas.Herramienta;
+import modelo.herramientas.Herramienta;
 
 public class Jugador implements OcupanteDeCelda {
 
@@ -64,4 +64,8 @@ public class Jugador implements OcupanteDeCelda {
     }
 
     public InventarioMateriales getInventarioMateriales(){ return this.materiales; }
+
+    public void guardar(Herramienta herramienta){
+        herramientas.guardar(herramienta);
+    }
 }

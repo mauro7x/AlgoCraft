@@ -1,28 +1,28 @@
-package modelo.objetos.herramientas.reglas;
+package modelo.herramientas.reglas;
 
 import modelo.recursos.BloqueDiamante;
 import modelo.recursos.BloqueMadera;
 import modelo.recursos.BloqueMetal;
 import modelo.recursos.BloquePiedra;
 
-public class ReglasEstandarPicoFino implements ReglasDesgasteRecurso {
+public class ReglasEstandarHacha implements ReglasDesgasteRecurso {
     @Override
     public void gastar(BloqueMetal metal, float fuerza) {
-        // no gasto metal con pico fino
+        // no gasto metal con hacha
     }
 
     @Override
     public void gastar(BloqueMadera madera, float fuerza) {
-        // no gasto madera con pico fino
+        madera.gastar(fuerza);
     }
 
     @Override
     public void gastar(BloquePiedra piedra, float fuerza) {
-        // no gasto piedra con pico fino
+        // no gasto piedra con hacha
     }
 
     @Override
     public void gastar(BloqueDiamante diamante, float fuerza) {
-        diamante.gastar(fuerza);
+        // no gasto diamante con hacha
     }
 }

@@ -1,6 +1,6 @@
 package modelo.mapa;
 
-import modelo.objetos.herramientas.Herramienta;
+import modelo.herramientas.Herramienta;
 
 public interface OcupanteDeCelda {
 

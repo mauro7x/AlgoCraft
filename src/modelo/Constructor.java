@@ -1,13 +1,8 @@
 package modelo;
 
-import modelo.objetos.GuardableEnInventario;
-import modelo.objetos.SlotVacio;
-import modelo.objetos.herramientas.Hacha;
-import modelo.objetos.herramientas.Pico;
-import modelo.objetos.herramientas.PicoFino;
-import modelo.objetos.materiales.Madera;
-import modelo.objetos.materiales.Metal;
-import modelo.objetos.materiales.Piedra;
+
+import modelo.herramientas.FabricaHerramientas;
+import modelo.herramientas.Herramienta;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -15,44 +10,43 @@ import java.util.function.Supplier;
 
 public class Constructor {
 
-    private HashMap<Integer, Supplier<GuardableEnInventario>> recetas;
+    private HashMap<Integer, Supplier<Herramienta>> recetas;
 
     public Constructor(){
         recetas = new HashMap<>();
         //Hachas
         int[] hachaMadera = {1,1,0,1,1,0,0,1,0}; //Disposicion de los materiales para un hacha de madera.
         int[] hachaPiedra = {2,2,0,2,1,0,0,1,0}; //Disposicion de los materiales para un hacha de piedra.
-        int[] hachaMetal = {3,3,0,3,1,0,0,1,0}; //Disposicion de los materiales para un hacha de piedra.
+        int[] hachaMetal = {3,3,0,3,1,0,0,1,0}; //Disposicion de los materiales para un hacha de metal.
 
         //Picos
-        int[] picoMadera = {1,1,1,0,1,0,0,1,0};
-        int[] picoPiedra = {2,2,2,0,1,0,0,1,0};
-        int[] picoMetal = {3,3,3,0,1,0,0,1,0};
+        int[] picoMadera = {1,1,1,0,1,0,0,1,0}; //Disposicion de los materiales para un pico de madera.
+        int[] picoPiedra = {2,2,2,0,1,0,0,1,0}; //Disposicion de los materiales para un pico de piedra.
+        int[] picoMetal = {3,3,3,0,1,0,0,1,0}; //Disposicion de los materiales para un pico de metal.
 
         //Pico Fino
-        int[] picoFino = {3,3,3,2,1,0,0,1,0};
+        int[] picoFino = {3,3,3,2,1,0,0,1,0}; //Disposicion de los materiales para un pico fino.
 
-        recetas.put(Arrays.hashCode(hachaMadera), () -> new Hacha(new Madera()));
-        recetas.put(Arrays.hashCode(hachaPiedra), () -> new Hacha(new Piedra()));
-        recetas.put(Arrays.hashCode(hachaMetal), () -> new Hacha(new Metal()));
+        recetas.put(Arrays.hashCode(hachaMadera), () -> FabricaHerramientas.crearHachaDeMadera());
+        recetas.put(Arrays.hashCode(hachaPiedra), () -> FabricaHerramientas.crearHachaDePiedra());
+        recetas.put(Arrays.hashCode(hachaMetal), () -> FabricaHerramientas.crearHachaDeMetal());
 
-        recetas.put(Arrays.hashCode(picoMadera), () -> new Pico(new Madera()));
-        recetas.put(Arrays.hashCode(picoPiedra), () -> new Pico(new Piedra()));
-        recetas.put(Arrays.hashCode(picoMetal), () -> new Pico(new Metal()));
+        recetas.put(Arrays.hashCode(picoMadera), () -> FabricaHerramientas.crearPicoDeMadera());
+        recetas.put(Arrays.hashCode(picoPiedra), () -> FabricaHerramientas.crearPicoDePiedra());
+        recetas.put(Arrays.hashCode(picoMetal), () -> FabricaHerramientas.crearPicoDeMetal());
 
-        recetas.put(Arrays.hashCode(picoFino), () -> new PicoFino(new Piedra(),new Metal()));
+        recetas.put(Arrays.hashCode(picoFino), () -> FabricaHerramientas.crearPicoFino());
     }
 
-    public GuardableEnInventario construir(GuardableEnInventario[] receta){
-        int[] recetaParseada = new int[receta.length];
+    public int construir(int[] receta){
+        Herramienta construccion = recetas.getOrDefault(Arrays.hashCode(receta), () -> null).get();
 
-        for(int i = 0;i<receta.length;i++){
-            recetaParseada[i] = receta[i].getId();
+        if (!(construccion == null)){
+            Juego.getJuego().getJugador().guardar(construccion);
+            return construccion.getId();
         }
 
-        GuardableEnInventario construccion = recetas.getOrDefault(Arrays.hashCode(recetaParseada), () -> new SlotVacio()).get();
-
-        return construccion;
+        return 0;
     }
 
 }

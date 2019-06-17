@@ -1,9 +1,7 @@
 package modelo.jugador;
 
-import modelo.objetos.herramientas.*;
-import modelo.objetos.materiales.Madera;
-import modelo.objetos.materiales.Metal;
-import modelo.objetos.materiales.Piedra;
+import modelo.herramientas.FabricaHerramientas;
+import modelo.herramientas.Herramienta;
 import modelo.recursos.BloqueMadera;
 import org.junit.Test;
 
@@ -34,7 +32,7 @@ public class InventarioHerramientasTest {
     public void test03SeAgregaUnaHerramientaYSeModificanLosInvariantes(){
         InventarioHerramientas inventarioHerramientas = new InventarioHerramientas();
         int cantidadHerramientasInicial = inventarioHerramientas.getCantidadHerramientas();
-        Herramienta herramienta = new PicoFino(new Piedra(), new Metal());
+        Herramienta herramienta = FabricaHerramientas.crearPicoFino();
 
         inventarioHerramientas.guardar(herramienta);
 
@@ -45,7 +43,7 @@ public class InventarioHerramientasTest {
     public void test04SeEliminaUnaHerramientaYSeModificanLosInvariantes(){
         InventarioHerramientas inventarioHerramientas = new InventarioHerramientas();
         int cantidadHerramientasInicial = inventarioHerramientas.getCantidadHerramientas();
-        Herramienta herramienta = new PicoFino(new Piedra(), new Metal());
+        Herramienta herramienta = FabricaHerramientas.crearPicoFino();
 
         inventarioHerramientas.guardar(herramienta);
         inventarioHerramientas.eliminarHerramientaActual();
@@ -57,7 +55,7 @@ public class InventarioHerramientasTest {
     public void test05SeAgregaUnaHerramientaSeEstableceAutomaticamenteComoHerramientaActual(){
         InventarioHerramientas inventarioHerramientas = new InventarioHerramientas();
         inventarioHerramientas.eliminarHerramientaActual();
-        Herramienta herramienta = new PicoFino(new Piedra(), new Metal());
+        Herramienta herramienta = FabricaHerramientas.crearPicoFino();
 
         inventarioHerramientas.guardar(herramienta);
 
@@ -68,8 +66,8 @@ public class InventarioHerramientasTest {
     public void test06SeAgreganDosHerramientasYSePuedeCambiarHerramientaActualAHerramientaSiguiente(){
         InventarioHerramientas inventarioHerramientas = new InventarioHerramientas();
         inventarioHerramientas.eliminarHerramientaActual();
-        Herramienta hachaMadera = new Hacha(new Madera());
-        Herramienta hachaPiedra = new Hacha(new Piedra());
+        Herramienta hachaMadera = FabricaHerramientas.crearHachaDeMadera();
+        Herramienta hachaPiedra = FabricaHerramientas.crearHachaDePiedra();
 
         inventarioHerramientas.guardar(hachaMadera);
         inventarioHerramientas.guardar(hachaPiedra);
@@ -85,8 +83,8 @@ public class InventarioHerramientasTest {
     public void test07SeAgreganDosHerramientasYSePuedeCambiarHerramientaActualAHerramientaAnterior(){
         InventarioHerramientas inventarioHerramientas = new InventarioHerramientas();
         inventarioHerramientas.eliminarHerramientaActual();
-        Herramienta hachaMadera = new Hacha(new Madera());
-        Herramienta hachaPiedra = new Hacha(new Piedra());
+        Herramienta hachaMadera = FabricaHerramientas.crearHachaDeMadera();
+        Herramienta hachaPiedra = FabricaHerramientas.crearHachaDePiedra();
 
         inventarioHerramientas.guardar(hachaMadera);
         inventarioHerramientas.guardar(hachaPiedra);
@@ -101,7 +99,7 @@ public class InventarioHerramientasTest {
     public void test08HerramientaActualSigueSiendoloSiNoHayHerramientaSiguiente(){
         InventarioHerramientas inventarioHerramientas = new InventarioHerramientas();
         inventarioHerramientas.eliminarHerramientaActual();
-        Herramienta hachaMadera = new Hacha(new Madera());
+        Herramienta hachaMadera = FabricaHerramientas.crearHachaDeMadera();
 
         inventarioHerramientas.guardar(hachaMadera);
 
@@ -114,7 +112,7 @@ public class InventarioHerramientasTest {
     public void test09HerramientaActualSigueSiendoloSiNoHayHerramientaAnterior(){
         InventarioHerramientas inventarioHerramientas = new InventarioHerramientas();
         inventarioHerramientas.eliminarHerramientaActual();
-        Herramienta hachaMadera = new Hacha(new Madera());
+        Herramienta hachaMadera = FabricaHerramientas.crearHachaDeMadera();
 
         inventarioHerramientas.guardar(hachaMadera);
 
@@ -127,8 +125,8 @@ public class InventarioHerramientasTest {
     public void test10HerramientaActualEsEliminadaYLaHerramientaActualPasaASerLaSiguiente(){
         InventarioHerramientas inventarioHerramientas = new InventarioHerramientas();
         inventarioHerramientas.eliminarHerramientaActual();
-        Herramienta hachaMadera = new Hacha(new Madera());
-        Herramienta hachaPiedra = new Hacha(new Piedra());
+        Herramienta hachaMadera = FabricaHerramientas.crearHachaDeMadera();
+        Herramienta hachaPiedra = FabricaHerramientas.crearHachaDePiedra();
 
         inventarioHerramientas.guardar(hachaMadera);
         inventarioHerramientas.guardar(hachaPiedra);
@@ -142,8 +140,8 @@ public class InventarioHerramientasTest {
     public void test11HerramientaActualEsLaUltimaAgregadaYAlCambiarALaProximaPasaASerLaPrimeraDeTodas(){
         InventarioHerramientas inventarioHerramientas = new InventarioHerramientas();
         inventarioHerramientas.eliminarHerramientaActual();
-        Herramienta hachaMadera = new Hacha(new Madera());
-        Herramienta hachaPiedra = new Hacha(new Piedra());
+        Herramienta hachaMadera = FabricaHerramientas.crearHachaDeMadera();
+        Herramienta hachaPiedra = FabricaHerramientas.crearHachaDePiedra();
 
         inventarioHerramientas.guardar(hachaMadera);
         inventarioHerramientas.guardar(hachaPiedra);
@@ -158,8 +156,8 @@ public class InventarioHerramientasTest {
     public void test12HerramientaActualEsLaPrimeraAgregadaYAlCambiarALaAnteriorPasaASerLaUltimaDeTodas(){
         InventarioHerramientas inventarioHerramientas = new InventarioHerramientas();
         inventarioHerramientas.eliminarHerramientaActual();
-        Herramienta hachaMadera = new Hacha(new Madera());
-        Herramienta hachaPiedra = new Hacha(new Piedra());
+        Herramienta hachaMadera = FabricaHerramientas.crearHachaDeMadera();
+        Herramienta hachaPiedra = FabricaHerramientas.crearHachaDePiedra();
 
         inventarioHerramientas.guardar(hachaMadera);
         inventarioHerramientas.guardar(hachaPiedra);

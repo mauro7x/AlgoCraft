@@ -1,13 +1,8 @@
 package modelo;
 
-import modelo.objetos.GuardableEnInventario;
-import modelo.objetos.SlotVacio;
-import modelo.objetos.materiales.Madera;
-import modelo.objetos.materiales.Metal;
-import modelo.objetos.materiales.Piedra;
 import org.junit.Test;
 
-import static junit.framework.TestCase.assertEquals;
+import static org.junit.Assert.*;
 
 public class ConstructorTest {
 
@@ -16,29 +11,18 @@ public class ConstructorTest {
         Juego juego = Juego.getJuego();
         Constructor constructor = juego.getConstructor();
 
-        GuardableEnInventario[] recetaHachaMadera = {
-                new Madera(), new Madera(),new SlotVacio(),
-                new Madera(), new Madera(),new SlotVacio(),
-                new SlotVacio(),new Madera(), new SlotVacio()
-        };
-
-        GuardableEnInventario hachaMadera = constructor.construir(recetaHachaMadera);
-        assertEquals(10,hachaMadera.getId());
+        int[] recetaHachaMadera = { 1,1,0,1,1,0,0,1,0 };
+        int resultadoConstruccion = constructor.construir(recetaHachaMadera);
+        assertEquals(10,resultadoConstruccion);
     }
 
     @Test
     public void test02ConstruirHachaDePiedra(){
         Juego juego = Juego.getJuego();
         Constructor constructor = juego.getConstructor();
-
-        GuardableEnInventario[] recetaHachaPiedra = {
-                new Piedra(), new Piedra(),new SlotVacio(),
-                new Piedra(), new Madera(),new SlotVacio(),
-                new SlotVacio(),new Madera(), new SlotVacio()
-        };
-
-        GuardableEnInventario hachaPiedra = constructor.construir(recetaHachaPiedra);
-        assertEquals(11,hachaPiedra.getId());
+        int[] recetaHachaPiedra = { 2,2,0,2,1,0,0,1,0 };
+        int resultadoConstruccion = constructor.construir(recetaHachaPiedra);
+        assertEquals(11,resultadoConstruccion);
     }
 
     @Test
@@ -46,14 +30,10 @@ public class ConstructorTest {
         Juego juego = Juego.getJuego();
         Constructor constructor = juego.getConstructor();
 
-        GuardableEnInventario[] recetaHachaMetal = {
-                new Metal(), new Metal(),new SlotVacio(),
-                new Metal(), new Madera(),new SlotVacio(),
-                new SlotVacio(),new Madera(), new SlotVacio()
-        };
+        int[] recetaHachaMetal = { 3,3,0,3,1,0,0,1,0 };
 
-        GuardableEnInventario hachaMetal = constructor.construir(recetaHachaMetal);
-        assertEquals(12,hachaMetal.getId());
+        int resultadoConstruccion = constructor.construir(recetaHachaMetal);
+        assertEquals(12,resultadoConstruccion);
     }
 
     @Test
@@ -61,14 +41,10 @@ public class ConstructorTest {
         Juego juego = Juego.getJuego();
         Constructor constructor = juego.getConstructor();
 
-        GuardableEnInventario[] recetaPicoMadera = {
-                new Madera(), new Madera(),new Madera(),
-                new SlotVacio(), new Madera(),new SlotVacio(),
-                new SlotVacio(),new Madera(), new SlotVacio()
-        };
+        int[] recetaPicoMadera = { 1,1,1,0,1,0,0,1,0 };
 
-        GuardableEnInventario picoMadera = constructor.construir(recetaPicoMadera);
-        assertEquals(13,picoMadera.getId());
+        int resultadoConstruccion = constructor.construir(recetaPicoMadera);
+        assertEquals(13,resultadoConstruccion);
     }
 
     @Test
@@ -76,14 +52,10 @@ public class ConstructorTest {
         Juego juego = Juego.getJuego();
         Constructor constructor = juego.getConstructor();
 
-        GuardableEnInventario[] recetaPicoPiedra = {
-                new Piedra(),new Piedra(),new Piedra(),
-                new SlotVacio(), new Madera(),new SlotVacio(),
-                new SlotVacio(),new Madera(), new SlotVacio()
-        };
+        int[] recetaPicoPiedra = { 2,2,2,0,1,0,0,1,0 };
 
-        GuardableEnInventario picoPiedra = constructor.construir(recetaPicoPiedra);
-        assertEquals(14,picoPiedra.getId());
+        int resultadoConstruccion = constructor.construir(recetaPicoPiedra);
+        assertEquals(14,resultadoConstruccion);
     }
 
     @Test
@@ -91,14 +63,10 @@ public class ConstructorTest {
         Juego juego = Juego.getJuego();
         Constructor constructor = juego.getConstructor();
 
-        GuardableEnInventario[] recetaPicoMetal = {
-                new Metal(),new Metal(),new Metal(),
-                new SlotVacio(), new Madera(),new SlotVacio(),
-                new SlotVacio(),new Madera(), new SlotVacio()
-        };
+        int[] recetaPicoMetal = { 3,3,3,0,1,0,0,1,0};
 
-        GuardableEnInventario picoMetal = constructor.construir(recetaPicoMetal);
-        assertEquals(15,picoMetal.getId());
+        int resultadoConstruccion = constructor.construir(recetaPicoMetal);
+        assertEquals(15,resultadoConstruccion);
     }
 
     @Test
@@ -106,14 +74,10 @@ public class ConstructorTest {
         Juego juego = Juego.getJuego();
         Constructor constructor = juego.getConstructor();
 
-        GuardableEnInventario[] recetaPicoFino = {
-                new Metal(),new Metal(),new Metal(),
-                new Piedra(), new Madera(),new SlotVacio(),
-                new SlotVacio(),new Madera(), new SlotVacio()
-        };
+        int[] recetaPicoFino = {3,3,3,2,1,0,0,1,0};
 
-        GuardableEnInventario picoFino = constructor.construir(recetaPicoFino);
-        assertEquals(16,picoFino.getId());
+        int resultadoConstruccion = constructor.construir(recetaPicoFino);
+        assertEquals(16,resultadoConstruccion);
     }
 
     @Test
@@ -121,13 +85,9 @@ public class ConstructorTest {
         Juego juego = Juego.getJuego();
         Constructor constructor = juego.getConstructor();
 
-        GuardableEnInventario[] recetaInexistente = {
-                new SlotVacio(), new SlotVacio(), new Metal(),
-                new Piedra(), new Madera(),new SlotVacio(),
-                new SlotVacio(),new Madera(), new SlotVacio()
-        };
+        int[] recetaInexistente = { 0,0,3,2,1,0,0,1,0 };
 
-        GuardableEnInventario slotVacio = constructor.construir(recetaInexistente);
-        assertEquals(0,slotVacio.getId());
+        int resultadoConstruccion = constructor.construir(recetaInexistente);
+        assertEquals(0,resultadoConstruccion);
     }
 }

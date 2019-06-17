@@ -1,4 +1,4 @@
-package modelo.objetos.herramientas.reglas;
+package modelo.herramientas.reglas;
 
 import modelo.recursos.*;
 

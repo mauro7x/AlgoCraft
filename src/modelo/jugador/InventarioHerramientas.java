@@ -1,8 +1,7 @@
 package modelo.jugador;
 
-import modelo.objetos.herramientas.Hacha;
-import modelo.objetos.herramientas.Herramienta;
-import modelo.objetos.materiales.Madera;
+import modelo.herramientas.FabricaHerramientas;
+import modelo.herramientas.Herramienta;
 
 import java.util.ArrayList;
 
@@ -14,8 +13,8 @@ public class InventarioHerramientas{
 
     public InventarioHerramientas(){
         this.herramientaActual = 0;
-        this.herramientas = new ArrayList<Herramienta>();
-        this.herramientas.add(new Hacha(new Madera()));
+        this.herramientas = new ArrayList<>();
+        this.herramientas.add(FabricaHerramientas.crearHachaDeMadera());
         this.cantidadDeHerramientas = 1;
     }
 

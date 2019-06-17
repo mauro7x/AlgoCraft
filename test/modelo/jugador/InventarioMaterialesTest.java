@@ -39,5 +39,8 @@ public class InventarioMaterialesTest {
     public void test04SeObtieneMaterialSinQueLosHayaYDevuelve0(){
         InventarioMateriales inventarioMateriales = new InventarioMateriales();
         assertEquals(0, inventarioMateriales.getMadera());
+        assertEquals(0, inventarioMateriales.getPiedra());
+        assertEquals(0, inventarioMateriales.getMetal());
+        assertEquals(0, inventarioMateriales.getDiamante());
     }
 }

@@ -1,4 +1,4 @@
-package modelo.objetos.herramientas.durabilidades;
+package modelo.herramientas.durabilidades;
 
 public class DurabilidadDiezPorciento extends Durabilidad {
 

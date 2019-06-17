@@ -1,7 +1,5 @@
-package modelo;
+package modelo.mapa;
 
-import modelo.mapa.Mapa;
-import modelo.mapa.Posicion;
 import modelo.recursos.BloqueMadera;
 import org.junit.Test;
 

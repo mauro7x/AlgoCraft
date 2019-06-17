@@ -1,4 +1,4 @@
-package modelo.objetos.herramientas.reglas;
+package modelo.herramientas.reglas;
 
 
 public abstract class ReglasDecorador implements ReglasDesgasteRecurso {

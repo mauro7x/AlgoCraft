@@ -1,12 +1,12 @@
 package entregas;
 
 import modelo.Juego;
+import modelo.herramientas.FabricaHerramientas;
+import modelo.herramientas.Herramienta;
 import modelo.jugador.Jugador;
 import modelo.jugador.OrientacionArriba;
 import modelo.mapa.Celda;
 import modelo.mapa.Mapa;
-import modelo.objetos.materiales.*;
-import modelo.objetos.herramientas.*;
 import modelo.recursos.*;
 
 import org.junit.Test;
@@ -19,14 +19,14 @@ public class PrimerEntregaTest {
 
     @Test
     public void test01SeCreaHachaDeMaderaConDurabilidad100YFuerza2() {
-        Hacha hachaDeMadera = new Hacha(new Madera());
+        Herramienta hachaDeMadera = FabricaHerramientas.crearHachaDeMadera();
         assertEquals(100, hachaDeMadera.getDurabilidad(),0.0001);
         assertEquals(2, hachaDeMadera.getFuerza(),0.0001);
     }
 
     @Test
     public void test02SeCreaPicoDeMaderaConDurabilidad100YFuerza2() {
-        Pico picoDeMadera = new Pico(new Madera());
+        Herramienta picoDeMadera = FabricaHerramientas.crearPicoDeMadera();
         assertEquals(100, picoDeMadera.getDurabilidad(),0.0001);
         assertEquals(2, picoDeMadera.getFuerza(),0.0001);
 
@@ -34,7 +34,7 @@ public class PrimerEntregaTest {
 
     @Test
     public void test03SeCreaHachaDeMetalConDurabilidad400YFuerza10() {
-        Hacha hachaDeMetal = new Hacha(new Metal());
+        Herramienta hachaDeMetal = FabricaHerramientas.crearHachaDeMetal();
         assertEquals(400, hachaDeMetal.getDurabilidad(),0.0001);
         assertEquals(10, hachaDeMetal.getFuerza(),0.0001);
 
@@ -42,23 +42,23 @@ public class PrimerEntregaTest {
 
     @Test
     public void test04SeCreaPicoDeMetalConDurabilidad400YFuerza12() {
-        Pico picoDeMetal = new Pico(new Metal());
+        Herramienta picoDeMetal = FabricaHerramientas.crearPicoDeMetal();
         assertEquals(400, picoDeMetal.getDurabilidad(),0.0001);
         assertEquals(12, picoDeMetal.getFuerza(),0.0001);
     }
 
     @Test
     public void test05SeCreaPicoFinoConDurabilidad1000YFuerza20() {
-        PicoFino picoFino = new PicoFino(new Piedra(), new Metal());
+        Herramienta picoFino = FabricaHerramientas.crearPicoFino();
         assertEquals(1000, picoFino.getDurabilidad(),0.0001);
         assertEquals(20, picoFino.getFuerza(),0.0001);
     }
 
     @Test
     public void test06HachaSeUsaContraCadaMaterialYReduceSuDurabilidadSegunElMaterial() {
-        Hacha hachaDeMadera = new Hacha(new Madera());
-        Hacha hachaDeMetal = new Hacha(new Metal());
-        Hacha hachaDePiedra = new Hacha(new Piedra());
+        Herramienta hachaDeMadera = FabricaHerramientas.crearHachaDeMadera();
+        Herramienta hachaDeMetal = FabricaHerramientas.crearHachaDeMetal();
+        Herramienta hachaDePiedra = FabricaHerramientas.crearHachaDePiedra();
         float durabilidadHachaMadera = hachaDeMadera.getDurabilidad();
         float durabilidadHachaMetal = hachaDeMetal.getDurabilidad();
         float durabilidadHachaPiedra = hachaDePiedra.getDurabilidad();
@@ -88,9 +88,9 @@ public class PrimerEntregaTest {
 
     @Test
     public void test07PicoSeUsaContraCadaMaterialYReduceSuDurabilidadSegunElMaterial() {
-        Pico picoDeMadera = new Pico(new Madera());
-        Pico picoDeMetal = new Pico(new Metal());
-        Pico picoDePiedra = new Pico(new Piedra());
+        Herramienta picoDeMadera = FabricaHerramientas.crearPicoDeMadera();
+        Herramienta picoDeMetal = FabricaHerramientas.crearPicoDeMetal();
+        Herramienta picoDePiedra = FabricaHerramientas.crearPicoDePiedra();
         float durabilidadPicoMadera = picoDeMadera.getDurabilidad();
         float durabilidadPicoMetal = picoDeMetal.getDurabilidad();
         float durabilidadPicoPiedra = picoDePiedra.getDurabilidad();
@@ -125,7 +125,7 @@ public class PrimerEntregaTest {
 
     @Test
     public void test08PicoFinoSeUsaContraDiamanteYReduceSuDurabilidadUn10PorCiento() {
-        PicoFino picoFino = new PicoFino(new Piedra(), new Metal());
+        Herramienta picoFino = FabricaHerramientas.crearPicoFino();
         float durabilidad = picoFino.getDurabilidad();
         picoFino.golpear(new BloqueDiamante());
         assertEquals(durabilidad-(float)(durabilidad*0.1), picoFino.getDurabilidad(),0.0001);
@@ -133,7 +133,7 @@ public class PrimerEntregaTest {
 
     @Test
     public void test09PicoFinoSeUsaContraMaterialQueNoSeaDiamanteYNoReduceDurabilidad() {
-        PicoFino picoFino = new PicoFino(new Piedra(), new Metal());
+        Herramienta picoFino = new FabricaHerramientas().crearPicoFino();
         float durabilidadInicial = picoFino.getDurabilidad();
         picoFino.golpear(new BloqueMetal());
         picoFino.golpear(new BloqueMadera());
@@ -153,7 +153,7 @@ public class PrimerEntregaTest {
         Jugador jugador = juego.getJugador();
         Mapa mapa = juego.getMapa();
         Celda celdaCentral = mapa.getCeldaCentral();
-        assertEquals(mapa.getCeldaCentral().getPosicion(), jugador.getPosicion());
+        assertEquals(celdaCentral.getPosicion(), jugador.getPosicion());
         assertTrue(jugador.getOrientacion() instanceof OrientacionArriba);
     }
 
@@ -163,7 +163,7 @@ public class PrimerEntregaTest {
     @Test
     public void test01MaderaSeGolpeaConHachaDeMaderaYReduceDurabilidadEn2() {
         Recurso madera = new BloqueMadera();
-        Hacha hachaDeMadera = new Hacha(new Madera());
+        Herramienta hachaDeMadera = FabricaHerramientas.crearHachaDeMadera();
         float durabilidadInicialMadera = madera.getDurabilidad();
 
         hachaDeMadera.golpear(madera);
@@ -174,9 +174,9 @@ public class PrimerEntregaTest {
     @Test
     public void test02PiedraSeGolpeaConHachaYNoReduceDurabilidad() {
         Recurso piedra = new BloquePiedra();
-        Hacha hachaDeMadera = new Hacha(new Madera());
-        Hacha hachaDePiedra = new Hacha(new Piedra());
-        Hacha hachaDeMetal = new Hacha(new Metal());
+        Herramienta hachaDeMadera = FabricaHerramientas.crearHachaDeMadera();
+        Herramienta hachaDePiedra = FabricaHerramientas.crearHachaDePiedra();
+        Herramienta hachaDeMetal = FabricaHerramientas.crearHachaDeMetal();
 
         float durabilidadInicialPiedra = piedra.getDurabilidad();
 
@@ -190,7 +190,7 @@ public class PrimerEntregaTest {
     @Test
     public void test03MetalSeGolpeaConPicoDeMaderaYNoReduceDurabilidad() {
         Recurso metal = new BloqueMetal();
-        Pico picoDeMadera = new Pico(new Madera());
+        Herramienta picoDeMadera = FabricaHerramientas.crearPicoDeMadera();
         float durabilidadInicialMetal = metal.getDurabilidad();
 
         picoDeMadera.golpear(metal);

@@ -1,8 +1,7 @@
 package modelo.recursos;
 
 import modelo.Juego;
-import modelo.objetos.herramientas.Herramienta;
-import modelo.objetos.materiales.Metal;
+import modelo.herramientas.Herramienta;
 
 public class BloqueMetal extends Recurso {
 
@@ -17,6 +16,6 @@ public class BloqueMetal extends Recurso {
 
     @Override
     public void agregarRecursoAlInventario(){
-        Juego.getJuego().getJugador().getInventarioMateriales().guardar(new Metal());
+        Juego.getJuego().getJugador().getInventarioMateriales().agregarMetal();
     }
 }

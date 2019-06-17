@@ -1,11 +1,8 @@
 package modelo.recursos;
-import javafx.geometry.Pos;
-import modelo.Juego;
+import modelo.herramientas.Herramienta;
 import modelo.mapa.Celda;
-import modelo.mapa.CeldaVacia;
 import modelo.mapa.OcupanteDeCelda;
 import modelo.mapa.Posicion;
-import modelo.objetos.herramientas.*;
 
 public abstract class Recurso implements OcupanteDeCelda {
 

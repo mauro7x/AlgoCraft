@@ -1,14 +1,16 @@
 package modelo.recursos;
 
 import modelo.Juego;
+import modelo.herramientas.FabricaHerramientas;
+import modelo.herramientas.Herramienta;
 import modelo.jugador.InventarioMateriales;
-import modelo.objetos.materiales.*;
-import modelo.objetos.herramientas.*;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class BloqueMaderaTest {
+
+
 
     @Test
     public void test01BloqueMaderaSeInicializaConDurabilidad10() {
@@ -16,10 +18,11 @@ public class BloqueMaderaTest {
         assertEquals(10, madera.getDurabilidad(), 0);
     }
 
+
     @Test
-    public void test02BloqueMaderaSeGolpeaConUnHachaDeBloqueMaderaYSeReduceSuDurabilidadEn2() {
+    public void test02BloqueMaderaSeGolpeaConUnHachaMaderaYSeReduceSuDurabilidadEn2() {
         Recurso madera = new BloqueMadera();
-        Hacha hachaDeMadera = new Hacha(new Madera());
+        Herramienta hachaDeMadera = FabricaHerramientas.crearHachaDeMadera();
         float durabilidadInicialBloqueMadera = madera.getDurabilidad();
 
         hachaDeMadera.golpear(madera);
@@ -28,10 +31,11 @@ public class BloqueMaderaTest {
 
     }
 
+
     @Test
     public void test03BloqueMaderaSeGolpeaConUnHachaDePiedraYSeReduceSuDurabilidadEn5() {
         Recurso madera = new BloqueMadera();
-        Hacha hachaDePiedra = new Hacha(new Piedra());
+        Herramienta hachaDePiedra = FabricaHerramientas.crearHachaDePiedra();
         float durabilidadInicialBloqueMadera = madera.getDurabilidad();
 
         hachaDePiedra.golpear(madera);
@@ -40,10 +44,11 @@ public class BloqueMaderaTest {
 
     }
 
+
     @Test
     public void test04BloqueMaderaSeGolpeaConUnHachaDeMetalYSeReduceSuDurabilidadEn10() {
         Recurso madera = new BloqueMadera();
-        Hacha hachaDeMetal = new Hacha(new Metal());
+        Herramienta hachaDeMetal = FabricaHerramientas.crearHachaDeMetal();
         float durabilidadInicialBloqueMadera = madera.getDurabilidad();
 
         hachaDeMetal.golpear(madera);
@@ -52,12 +57,13 @@ public class BloqueMaderaTest {
 
     }
 
+
     @Test
     public void test05BloqueMaderaSeGolpeaConUnPicoDeCualquierMaterialYNoSeReduceSuDurabilidad() {
         Recurso madera = new BloqueMadera();
-        Pico picoDeMadera = new Pico(new Madera());
-        Pico picoDePiedra = new Pico(new Piedra());
-        Pico picoDeMetal = new Pico(new Metal());
+        Herramienta picoDeMadera = FabricaHerramientas.crearPicoDeMadera();
+        Herramienta picoDePiedra = FabricaHerramientas.crearPicoDePiedra();
+        Herramienta picoDeMetal = FabricaHerramientas.crearPicoDeMetal();
         float durabilidadInicialBloqueMadera = madera.getDurabilidad();
 
         picoDeMadera.golpear(madera);
@@ -68,10 +74,11 @@ public class BloqueMaderaTest {
 
     }
 
+
     @Test
     public void test06BloqueMaderaSeGolpeaConUnPicoFinoYNoSeReduceSuDurabilidad() {
         Recurso madera = new BloqueMadera();
-        PicoFino picoFino = new PicoFino(new Piedra(), new Metal());
+        Herramienta picoFino = FabricaHerramientas.crearPicoFino();
         float durabilidadInicialBloqueMadera = madera.getDurabilidad();
 
         picoFino.golpear(madera);
@@ -80,17 +87,21 @@ public class BloqueMaderaTest {
 
     }
 
+
     @Test
     public void test07BloqueMaderaSeGolpeaHastaAgotarDurabilidadYSeAgregaUnMaderaAlInventarioMaterialesDelJugador(){
         Juego juego = Juego.getJuego();
         juego.resetear();
         InventarioMateriales inventarioMateriales = juego.getJugador().getInventarioMateriales();
-        int cantidadInicialDeMadera = inventarioMateriales.getCantidadMateriales((new Madera()).getId());
+        int cantidadInicialDeMadera = inventarioMateriales.cantidadMadera();
         Recurso madera = new BloqueMadera();
-        Hacha hachaMetal = new Hacha(new Metal());
 
+        Herramienta hachaMetal = FabricaHerramientas.crearHachaDeMetal();
         while (madera.getDurabilidad() > 0){ hachaMetal.golpear(madera); }
+        assertEquals(cantidadInicialDeMadera + 1, inventarioMateriales.cantidadMadera());
 
-        assertEquals(cantidadInicialDeMadera + 1, inventarioMateriales.getCantidadMateriales((new Madera().getId())));
     }
+
+
+
 }

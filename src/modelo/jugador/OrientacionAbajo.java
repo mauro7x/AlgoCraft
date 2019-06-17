@@ -2,7 +2,7 @@ package modelo.jugador;
 
 import modelo.Juego;
 import modelo.mapa.OcupanteDeCelda;
-import modelo.objetos.herramientas.Herramienta;
+import modelo.herramientas.Herramienta;
 
 public class OrientacionAbajo implements Orientacion {
     @Override

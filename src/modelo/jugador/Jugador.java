@@ -5,7 +5,7 @@ import modelo.Juego;
 import modelo.mapa.Celda;
 import modelo.mapa.OcupanteDeCelda;
 import modelo.mapa.Posicion;
-import modelo.objetos.herramientas.Herramienta;
+import modelo.herramientas.Herramienta;
 
 public class Jugador implements OcupanteDeCelda {
 
@@ -39,7 +39,7 @@ public class Jugador implements OcupanteDeCelda {
 
     @Override
     public void serGolpeadoPor(Herramienta herramienta) {
-        return; //El jugador no puede ser golpeado por otro jugador.
+        throw new RuntimeException("Jugador no puede ser golpeado por nadie");
     }
 
     public void moverArriba(){
@@ -64,4 +64,12 @@ public class Jugador implements OcupanteDeCelda {
     }
 
     public InventarioMateriales getInventarioMateriales(){ return this.materiales; }
+
+    public void guardar(Herramienta herramienta){
+        herramientas.guardar(herramienta);
+    }
+
+    public Herramienta getHerramientaActual(){
+        return herramientas.getHerramientaActual();
+    }
 }

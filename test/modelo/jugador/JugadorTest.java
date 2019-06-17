@@ -1,6 +1,8 @@
 package modelo.jugador;
 
 import modelo.Juego;
+import modelo.herramientas.FabricaHerramientas;
+import modelo.herramientas.Herramienta;
 import modelo.mapa.*;
 import modelo.recursos.BloqueMadera;
 import modelo.recursos.Recurso;
@@ -258,4 +260,28 @@ public class JugadorTest {
 
         assertEquals(durabilidadMaderaOriginal-2,madera.getDurabilidad(),0.001);
     }
+
+    @Test
+    public void test19GolpearCeldaVaciaNoReduceDurabilidadHerramientaActiva(){
+        Juego juego = Juego.getJuego();
+        juego.resetear();
+        Jugador jugador = juego.getJugador();
+        Mapa mapa = juego.getMapa();
+        float durabilidadInicial = jugador.getHerramientaActual().getDurabilidad();
+
+        jugador.moverIzquierda();
+        mapa.setearOcupanteEn(new CeldaVacia(), jugador.getPosicion().getPosicionIzquierda());
+        jugador.golpear();
+
+        assertEquals(durabilidadInicial, jugador.getHerramientaActual().getDurabilidad(), 0.001);
+    }
+
+
+    @Test(expected = RuntimeException.class)
+    public void test20JugadorEsGolpeadoYSeLanzaExcepcion(){
+        Jugador jugador = Juego.getJuego().getJugador();
+        jugador.serGolpeadoPor(FabricaHerramientas.crearHachaDeMadera());
+    }
+
+
 }

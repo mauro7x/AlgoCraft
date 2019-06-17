@@ -1,7 +1,5 @@
 package modelo.jugador;
 
-import modelo.objetos.GuardableEnInventario;
-import modelo.objetos.materiales.*;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -14,38 +12,52 @@ public class InventarioMaterialesTest {
     public void test01InventarioMaterialesSeInicializaCorrectamente(){
         InventarioMateriales inventarioMateriales = new InventarioMateriales();
 
-        for (int i=1; i<=cantidadMateriales; i++) {
-            assertEquals(0, inventarioMateriales.getCantidadMateriales(i));
-        }
+        assertEquals(0, inventarioMateriales.cantidadMadera());
+        assertEquals(0, inventarioMateriales.cantidadPiedra());
+        assertEquals(0, inventarioMateriales.cantidadMetal());
+        assertEquals(0, inventarioMateriales.cantidadDiamante());
     }
 
     @Test
     public void test02SeAgregaUnMaterialYSeActualizanLosInvariantesCorrespondientes(){
         InventarioMateriales inventarioMateriales = new InventarioMateriales();
-        GuardableEnInventario madera = new Madera();
-
-        inventarioMateriales.guardar(madera);
-
-        assertEquals(1, inventarioMateriales.getCantidadMateriales(madera.getId()), 0);
+        inventarioMateriales.agregarMadera();
+        assertEquals(1, inventarioMateriales.cantidadMadera());
     }
 
     @Test
     public void test03SeObtieneUnMaterialYSeActualizanLosInvariantesCorrespondientes(){
         InventarioMateriales inventarioMateriales = new InventarioMateriales();
-        GuardableEnInventario madera = new Madera();
-        int cantidadMaderaInicial = inventarioMateriales.getCantidadMateriales(madera.getId());
+        int cantidadMaderaInicial = inventarioMateriales.cantidadMadera();
+        inventarioMateriales.agregarMadera();
 
-        inventarioMateriales.guardar(madera);
-
-        assertTrue(inventarioMateriales.usarMaterial(new Madera()) instanceof Madera);
-        
-        assertEquals(cantidadMaderaInicial, inventarioMateriales.getCantidadMateriales(madera.getId()));
+        assertEquals(1, inventarioMateriales.getMadera());
+        assertEquals(cantidadMaderaInicial, inventarioMateriales.cantidadMadera());
     }
 
     @Test
-    public void test04SeObtieneMaterialSinQueLosHayaYDevuelveNull(){
+    public void test04SeObtieneMaterialSinQueLosHayaYDevuelve0(){
         InventarioMateriales inventarioMateriales = new InventarioMateriales();
-
-        assertNull(inventarioMateriales.usarMaterial(new Madera()));
+        assertEquals(0, inventarioMateriales.getMadera());
+        assertEquals(0, inventarioMateriales.getPiedra());
+        assertEquals(0, inventarioMateriales.getMetal());
+        assertEquals(0, inventarioMateriales.getDiamante());
     }
+
+    @Test
+    public void test05SePidenMaterialesYDevuelveSusID(){
+        InventarioMateriales inventarioMateriales = new InventarioMateriales();
+        inventarioMateriales.agregarMadera();
+        inventarioMateriales.agregarPiedra();
+        inventarioMateriales.agregarMetal();
+        inventarioMateriales.agregarDiamante();
+
+        assertEquals(1, inventarioMateriales.getMadera());
+        assertEquals(2, inventarioMateriales.getPiedra());
+        assertEquals(3, inventarioMateriales.getMetal());
+        assertEquals(4, inventarioMateriales.getDiamante());
+    }
+
+
+
 }

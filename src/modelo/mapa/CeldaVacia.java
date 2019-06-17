@@ -27,7 +27,7 @@ public class CeldaVacia implements OcupanteDeCelda {
     }
 
     @Override
-    public Image obtenerImagen(int size) {
+    public Image obtenerImagen() {
         return imagen;
     }
 

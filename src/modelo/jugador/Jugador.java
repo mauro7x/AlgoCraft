@@ -46,8 +46,8 @@ public class Jugador implements OcupanteDeCelda {
     }
 
     @Override
-    public Image obtenerImagen(int size) { //TODO: cambiar esto
-        return orientacion.obtenerImagen(size);
+    public Image obtenerImagen() {
+        return orientacion.obtenerImagen();
     }
 
     public void moverArriba(){

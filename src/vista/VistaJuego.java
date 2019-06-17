@@ -70,7 +70,7 @@ public class VistaJuego {
             for(int j=mapa.getYMax()-1;j>0;j--){
 
                 OcupanteDeCelda celdaActual = mapa.obtenerOcupanteEn(new Posicion(i,j));
-                ImageView tile = new ImageView(celdaActual.obtenerImagen(dimensionTile));
+                ImageView tile = new ImageView(celdaActual.obtenerImagen());
                 cuadriculaMapa.add(tile,i,mapa.getYMax()-j);
 
             }

@@ -17,7 +17,7 @@ public class OrientacionAbajo implements Orientacion {
     }
 
     @Override
-    public Image obtenerImagen(int size) {
+    public Image obtenerImagen() {
         return imagen;
     }
 }

@@ -18,7 +18,7 @@ public class BloqueMetal extends Recurso {
     }
 
     @Override
-    public Image obtenerImagen(int size) {
+    public Image obtenerImagen() {
         return imagen;
     }
 

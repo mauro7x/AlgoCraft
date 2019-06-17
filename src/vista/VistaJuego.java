@@ -28,8 +28,6 @@ public class VistaJuego {
         cuadriculaMapa.setPadding(new Insets(0,0,0,0));
 
         Juego juego = Juego.getJuego();
-        juego.resetear();
-        juego.generarRecursos();
         Mapa mapa = juego.getMapa();
 
         int widthVentana = mapa.getXMax()*dimensionTile;

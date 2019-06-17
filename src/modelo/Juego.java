@@ -8,7 +8,7 @@ public class Juego {
     private static Juego juego = new Juego();
 
     private static final int X_MAX = 15;
-    private static final int Y_MAX = 10;
+    private static final int Y_MAX = 11;
 
     private Constructor constructor;
     private Mapa mapa;
@@ -19,24 +19,28 @@ public class Juego {
     }
 
     private Juego() {
-        inicializacion();
+        resetear();
     }
 
-    private void inicializacion(){
+    private void generarMapaYConstructor(){
         mapa = new Mapa(X_MAX, Y_MAX);
-        jugador = new Jugador(new Posicion(X_MAX /2, Y_MAX /2));
-        mapa.ubicarEnElCentro(jugador);
         constructor = new Constructor();
     }
-
-    public void generarRecursos(){
-        mapa.generarRecursosEnPosicionesAleatorias(20);
+    private void generarJugador(){
+        System.out.println(X_MAX/2);
+        System.out.println(Y_MAX/2);
+        jugador = new Jugador(new Posicion(X_MAX /2, Y_MAX /2));
+        mapa.ubicarEnElCentro(jugador);
+    }
+    private void generarRecursos(){
+        mapa.generarRecursosAleatoriamente(10);
     }
 
     public void resetear(){
-        inicializacion();
+        generarMapaYConstructor();
+        generarRecursos();
+        generarJugador();
     }
-
 
     public Jugador getJugador() {
         return jugador;

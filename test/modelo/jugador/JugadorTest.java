@@ -26,7 +26,7 @@ public class JugadorTest {
     }
 
     @Test
-    public void test03InicializarJugadorOrientacionEsArriba(){
+    public void test02InicializarJugadorOrientacionEsArriba(){
         Juego juego = Juego.getJuego();
         juego.resetear();
         Jugador jugador = juego.getJugador();
@@ -34,7 +34,7 @@ public class JugadorTest {
     }
 
     @Test
-    public void test04SeMueveCorrectamenteArribaDondeHayCeldaVacia(){
+    public void test03SeMueveCorrectamenteArribaDondeHayCeldaVacia(){
         Juego juego = Juego.getJuego();
         juego.resetear();
         Jugador jugador = juego.getJugador();
@@ -48,7 +48,7 @@ public class JugadorTest {
     }
 
     @Test
-    public void test05SeMueveCorrectamenteAbajoDondeHayCeldaVacia(){
+    public void test04SeMueveCorrectamenteAbajoDondeHayCeldaVacia(){
         Juego juego = Juego.getJuego();
         juego.resetear();
         Jugador jugador = juego.getJugador();
@@ -62,7 +62,7 @@ public class JugadorTest {
     }
 
     @Test
-    public void test06SeMueveCorrectamenteADerechaDondeHayCeldaVacia(){
+    public void test05SeMueveCorrectamenteADerechaDondeHayCeldaVacia(){
         Juego juego = Juego.getJuego();
         juego.resetear();
         Jugador jugador = juego.getJugador();
@@ -76,7 +76,7 @@ public class JugadorTest {
     }
 
     @Test
-    public void test07SeMueveCorrectamenteAIzquierdaDondeHayCeldaVacia(){
+    public void test06SeMueveCorrectamenteAIzquierdaDondeHayCeldaVacia(){
         Juego juego = Juego.getJuego();
         juego.resetear();
         Jugador jugador = juego.getJugador();
@@ -90,7 +90,7 @@ public class JugadorTest {
     }
 
     @Test
-    public void test08NoSeMueveArribaDondeHayCeldaOcupada(){
+    public void test07NoSeMueveArribaDondeHayCeldaOcupada(){
         Juego juego = Juego.getJuego();
         juego.resetear();
         Jugador jugador = juego.getJugador();
@@ -104,7 +104,7 @@ public class JugadorTest {
     }
 
     @Test
-    public void test09NoSeMueveAbajoDondeHayCeldaOcupada(){
+    public void test08NoSeMueveAbajoDondeHayCeldaOcupada(){
         Juego juego = Juego.getJuego();
         juego.resetear();
         Jugador jugador = juego.getJugador();
@@ -118,7 +118,7 @@ public class JugadorTest {
     }
 
     @Test
-    public void test10NoSeMueveADerechaDondeHayCeldaOcupada(){
+    public void test09NoSeMueveADerechaDondeHayCeldaOcupada(){
         Juego juego = Juego.getJuego();
         juego.resetear();
         Jugador jugador = juego.getJugador();
@@ -132,7 +132,7 @@ public class JugadorTest {
     }
 
     @Test
-    public void test11NoSeMueveAIzquierdaDondeHayCeldaOcupada(){
+    public void test10NoSeMueveAIzquierdaDondeHayCeldaOcupada(){
         Juego juego = Juego.getJuego();
         juego.resetear();
         Jugador jugador = juego.getJugador();
@@ -146,7 +146,7 @@ public class JugadorTest {
     }
 
     @Test
-    public void test12SiSeMueveArribaLaMismaCantidadDeCeldasQueTieneElMapaTerminaEnElOrigen(){
+    public void test11SiSeMueveArribaLaMismaCantidadDeCeldasQueTieneElMapaTerminaEnElOrigen(){
         Juego juego = Juego.getJuego();
         juego.resetear();
         Jugador jugador = juego.getJugador();
@@ -169,7 +169,7 @@ public class JugadorTest {
     }
 
     @Test
-    public void test13SiSeMueveADerechaLaMismaCantidadDeCeldasQueTieneElMapaTerminaEnElOrigen(){
+    public void test12SiSeMueveADerechaLaMismaCantidadDeCeldasQueTieneElMapaTerminaEnElOrigen(){
         Juego juego = Juego.getJuego();
         juego.resetear();
         Jugador jugador = juego.getJugador();
@@ -192,7 +192,7 @@ public class JugadorTest {
     }
 
     @Test
-    public void test14SiSeLePideOcuparSuCasillaSeDebeDevolverASiMismo(){
+    public void test13SiSeLePideOcuparSuCasillaSeDebeDevolverASiMismo(){
         Juego juego = Juego.getJuego();
         juego.resetear();
         Jugador jugador = juego.getJugador();
@@ -203,7 +203,7 @@ public class JugadorTest {
     }
 
     @Test
-    public void test15GolpearBloqueMaderaPosicionadoDebajoLoDesgasta(){
+    public void test14GolpearBloqueMaderaPosicionadoDebajoLoDesgasta(){
         Juego juego = Juego.getJuego();
         juego.resetear();
         Jugador jugador = juego.getJugador();
@@ -218,7 +218,7 @@ public class JugadorTest {
     }
 
     @Test
-    public void test16GolpearBloqueMaderaPosicionadoArribaLoDesgasta(){
+    public void test15GolpearBloqueMaderaPosicionadoArribaLoDesgasta(){
         Juego juego = Juego.getJuego();
         juego.resetear();
         Jugador jugador = juego.getJugador();
@@ -233,7 +233,7 @@ public class JugadorTest {
     }
 
     @Test
-    public void test17GolpearBloqueMaderaPosicionadoDerechaLoDesgasta(){
+    public void test16GolpearBloqueMaderaPosicionadoDerechaLoDesgasta(){
         Juego juego = Juego.getJuego();
         juego.resetear();
         Jugador jugador = juego.getJugador();
@@ -248,7 +248,7 @@ public class JugadorTest {
     }
 
     @Test
-    public void test18GolpearBloqueMaderaPosicionadoIzquierdaLoDesgasta(){
+    public void test17GolpearBloqueMaderaPosicionadoIzquierdaLoDesgasta(){
         Juego juego = Juego.getJuego();
         juego.resetear();
         Jugador jugador = juego.getJugador();
@@ -263,7 +263,7 @@ public class JugadorTest {
     }
 
     @Test
-    public void test19GolpearCeldaVaciaNoReduceDurabilidadHerramientaActiva(){
+    public void test18GolpearCeldaVaciaNoReduceDurabilidadHerramientaActiva(){
         Juego juego = Juego.getJuego();
         juego.resetear();
         Jugador jugador = juego.getJugador();
@@ -279,13 +279,13 @@ public class JugadorTest {
 
 
     @Test(expected = RuntimeException.class)
-    public void test20JugadorEsGolpeadoYSeLanzaExcepcion(){
+    public void test19JugadorEsGolpeadoYSeLanzaExcepcion(){
         Jugador jugador = Juego.getJuego().getJugador();
         jugador.serGolpeadoPor(FabricaHerramientas.crearHachaDeMadera());
     }
 
     @Test
-    public void test21JugadorUtilizaHachaYSeRompe(){
+    public void test20JugadorUtilizaHachaYSeRompe(){
         Juego juego = Juego.getJuego();
         juego.resetear();
         Jugador jugador = juego.getJugador(); //El jugador se inicializa con un hacha de madera.

@@ -72,4 +72,12 @@ public class Jugador implements OcupanteDeCelda {
     public Herramienta getHerramientaActual(){
         return herramientas.getHerramientaActual();
     }
+
+    public void eliminarHerramientaActual() {
+        herramientas.eliminarHerramientaActual();
+    }
+
+    public boolean noTieneHerramientas(){
+        return herramientas.noTieneHerramientas();
+    }
 }

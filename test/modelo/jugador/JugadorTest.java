@@ -4,6 +4,7 @@ import modelo.Juego;
 import modelo.herramientas.FabricaHerramientas;
 import modelo.herramientas.Herramienta;
 import modelo.mapa.*;
+import modelo.recursos.BloqueDiamante;
 import modelo.recursos.BloqueMadera;
 import modelo.recursos.Recurso;
 import org.junit.Test;
@@ -283,5 +284,17 @@ public class JugadorTest {
         jugador.serGolpeadoPor(FabricaHerramientas.crearHachaDeMadera());
     }
 
+    @Test
+    public void test21JugadorUtilizaHachaYSeRompe(){
+        Juego juego = Juego.getJuego();
+        juego.resetear();
+        Jugador jugador = juego.getJugador(); //El jugador se inicializa con un hacha de madera.
+        BloqueDiamante diamante = new BloqueDiamante();
 
+        for(int i=0;i<50;i++){
+            jugador.getHerramientaActual().golpear(diamante); //Se usa el hacha 50 veces hasta que se rompe.
+        }
+
+        assertTrue(jugador.noTieneHerramientas());
+    }
 }

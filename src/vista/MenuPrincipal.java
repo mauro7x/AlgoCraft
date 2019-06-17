@@ -86,7 +86,7 @@ public class MenuPrincipal extends Application{
         transicion.setFromValue(0);
         transicion.setToValue(10);
         transicion.play();
-
+        
         return new Scene(contenedorPrincipal,900,500);
     }
 }

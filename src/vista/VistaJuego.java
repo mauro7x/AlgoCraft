@@ -2,9 +2,11 @@ package vista;
 
 import controladores.menuPrincipal.ControlScrollHandler;
 import controladores.menuPrincipal.ControlesMovimientoHandler;
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -25,14 +27,28 @@ public class VistaJuego {
     private final int dimensionHerramienta = 40;
 
     private GridPane cuadriculaMapa;
+    private GridPane itemsInventarioHerramientas;
     private GridPane itemsInventario;
+
+    private Label etiquetaCantidadMadera;
+    private Label etiquetaCantidadPiedra;
+    private Label etiquetaCantidadMetal;
+    private Label etiquetaCantidadDiamante;
+
     private HashMap<String, Image> imagenes;
 
 
 
     public VistaJuego(){
         cuadriculaMapa = new GridPane();
+        itemsInventarioHerramientas = new GridPane();
         itemsInventario = new GridPane();
+
+        etiquetaCantidadMadera = new Label();
+        etiquetaCantidadPiedra = new Label();
+        etiquetaCantidadMetal = new Label();
+        etiquetaCantidadDiamante = new Label();
+
         imagenes = new HashMap<>();
         cargarImagenes();
     }
@@ -104,10 +120,11 @@ public class VistaJuego {
         juego.getJugador().guardar(FabricaHerramientas.crearPicoFino());
         juego.getJugador().guardar(FabricaHerramientas.crearPicoDeMadera());
 
-        HBox inventarioHerramientas = generarInventarioHerramientas();
+        GridPane inventarioHerramientas = generarInventario();
 
         contenedorPrincipal.setBottom(inventarioHerramientas);
         contenedorPrincipal.setCenter(cuadriculaMapa);
+
         Scene escena = new Scene(contenedorPrincipal,contenedorPrincipal.getPrefWidth(),contenedorPrincipal.getPrefHeight());
 
         escena.setOnKeyPressed(new ControlesMovimientoHandler(this));
@@ -130,16 +147,67 @@ public class VistaJuego {
         }
     }
 
-    private HBox generarInventarioHerramientas(){
-        HBox inventario = new HBox();
-        inventario.setAlignment(Pos.BOTTOM_CENTER);
+    private GridPane generarInventario(){
+
+        GridPane inventario = new GridPane();
+
+        //Inventario Herramientas
         inventario.setStyle("-fx-background-color: #096346;");
-        itemsInventario.setVgap(0);
-        itemsInventario.setHgap(2);
+        itemsInventarioHerramientas.setVgap(0);
+        itemsInventarioHerramientas.setHgap(2);
+        itemsInventarioHerramientas.setAlignment(Pos.CENTER);
         inventario.setPadding(new Insets(3,0,3,0));
 
-        inventario.getChildren().addAll(itemsInventario);
         actualizarInventarioHerramientas();
+
+
+        //Inventario
+        ImageView viewMadera = new ImageView(new Image("media/recursos/madera.png",40,40,false,false));
+        itemsInventario.add(viewMadera,0,0);
+
+        ImageView viewPiedra = new ImageView(new Image("media/recursos/piedra.png",40,40,false,false));
+        itemsInventario.add(viewPiedra,1,0);
+
+        ImageView viewMetal = new ImageView(new Image("media/recursos/metal.png",40,40,false,false));
+        itemsInventario.add(viewMetal,2,0);
+
+        ImageView viewDiamante = new ImageView(new Image("media/recursos/diamante.png",40,40,false,false));
+        itemsInventario.add(viewDiamante,3,0);
+
+        itemsInventario.add(etiquetaCantidadMadera,0,1);
+        itemsInventario.setHalignment(etiquetaCantidadMadera, HPos.CENTER);
+
+        itemsInventario.add(etiquetaCantidadPiedra,1,1);
+        itemsInventario.setHalignment(etiquetaCantidadPiedra, HPos.CENTER);
+
+        itemsInventario.add(etiquetaCantidadMetal,2,1);
+        itemsInventario.setHalignment(etiquetaCantidadMetal, HPos.CENTER);
+
+        itemsInventario.add(etiquetaCantidadDiamante,3,1);
+        itemsInventario.setHalignment(etiquetaCantidadDiamante, HPos.CENTER);
+
+        itemsInventario.setPadding(new Insets(0,0,0,10));
+
+        String estiloEtiquetas = "-fx-font-size: 15;-fx-font-weight: bold;";
+
+        etiquetaCantidadMadera.setStyle(estiloEtiquetas);
+        etiquetaCantidadPiedra.setStyle(estiloEtiquetas);
+        etiquetaCantidadMetal.setStyle(estiloEtiquetas);
+        etiquetaCantidadDiamante.setStyle(estiloEtiquetas);
+        actualizarInventario();
+
+        ColumnConstraints espacioInventario = new ColumnConstraints();
+        espacioInventario.setPercentWidth(33);
+
+        ColumnConstraints espacioInventarioHerramientas = new ColumnConstraints();
+        espacioInventarioHerramientas.setPercentWidth(33);
+
+        ColumnConstraints espacioConstructor = new ColumnConstraints();
+        espacioConstructor.setPercentWidth(33);
+
+        inventario.getColumnConstraints().addAll(espacioInventario,espacioInventarioHerramientas,espacioConstructor);
+        inventario.add(itemsInventario,0,0);
+        inventario.add(itemsInventarioHerramientas,1,0);
 
         return inventario;
     }
@@ -149,7 +217,7 @@ public class VistaJuego {
         Jugador jugador = juego.getJugador();
         ArrayList<Herramienta> herramientas = jugador.getHerramientas();
 
-        itemsInventario.getChildren().clear();
+        itemsInventarioHerramientas.getChildren().clear();
 
         for(int i=0;i<herramientas.size();i++){
             Herramienta herramientaActual = herramientas.get(i);
@@ -161,7 +229,7 @@ public class VistaJuego {
                 BorderPane bordeHerramientaActual = new BorderPane();
                 bordeHerramientaActual.setCenter(viewHerramientaActual);
                 bordeHerramientaActual.setStyle("-fx-border-color: #000000;-fx-border-radius: 2px; -fx-border-width: 4px");
-                itemsInventario.add(bordeHerramientaActual,1,0);
+                itemsInventarioHerramientas.add(bordeHerramientaActual,1,0);
 
                 //Herramienta Anterior
                 Herramienta herramientaAnterior = herramientas.get(Math.floorMod(i-1,herramientas.size()));
@@ -169,7 +237,7 @@ public class VistaJuego {
                 BorderPane bordeHerramientaAnterior = new BorderPane();
                 bordeHerramientaAnterior.setCenter(viewHerramientaAnterior);
                 bordeHerramientaAnterior.setStyle("-fx-border-color: #AAAAAA;-fx-border-radius: 2px; -fx-border-width: 1px");
-                itemsInventario.add(bordeHerramientaAnterior,0,0);
+                itemsInventarioHerramientas.add(bordeHerramientaAnterior,0,0);
 
                 //Herramienta Siguiente
                 Herramienta herramientaSiguiente = herramientas.get(Math.floorMod(i+1,herramientas.size()));
@@ -177,9 +245,23 @@ public class VistaJuego {
                 BorderPane bordeHerramientaSiguiente = new BorderPane();
                 bordeHerramientaSiguiente.setCenter(viewHerramientaSiguiente);
                 bordeHerramientaSiguiente.setStyle("-fx-border-color: #AAAAAA;-fx-border-radius: 2px; -fx-border-width: 1px");
-                itemsInventario.add(bordeHerramientaSiguiente,2,0);
+                itemsInventarioHerramientas.add(bordeHerramientaSiguiente,2,0);
             }
 
         }
+    }
+
+    public void actualizarInventario(){
+        int cantidadMadera = Juego.getJuego().getJugador().getInventarioMateriales().cantidadMadera();
+        etiquetaCantidadMadera.setText(Integer.toString(cantidadMadera));
+
+        int cantidadPiedra = Juego.getJuego().getJugador().getInventarioMateriales().cantidadPiedra();
+        etiquetaCantidadPiedra.setText(Integer.toString(cantidadPiedra));
+
+        int cantidadMetal = Juego.getJuego().getJugador().getInventarioMateriales().cantidadMetal();
+        etiquetaCantidadMetal.setText(Integer.toString(cantidadMetal));
+
+        int cantidadDiamante = Juego.getJuego().getJugador().getInventarioMateriales().cantidadDiamante();
+        etiquetaCantidadDiamante.setText(Integer.toString(cantidadDiamante));
     }
 }

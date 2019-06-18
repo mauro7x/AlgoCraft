@@ -47,6 +47,7 @@ public class ControlesMovimientoHandler implements EventHandler<KeyEvent> {
             juego.getJugador().golpear();
             vistaJuego.dibujarMapa();
             vistaJuego.actualizarInventarioHerramientas();
+            vistaJuego.actualizarInventario();
         }
     }
 }

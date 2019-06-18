@@ -18,8 +18,8 @@ public class Posicion {
         return (this.x == posicion.getX() && this.y == posicion.getY());
     }
 
-    int getX(){ return this.x; }
-    int getY(){ return this.y; }
+    public int getX(){ return this.x; }
+    public int getY(){ return this.y; }
 
     public Posicion getPosicionArriba(){
         int yMax = Juego.getJuego().getMapa().getYMax();

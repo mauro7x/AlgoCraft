@@ -1,7 +1,5 @@
 package modelo.mapa;
 
-
-import javafx.scene.image.Image;
 import modelo.herramientas.Herramienta;
 
 public class CeldaVacia implements OcupanteDeCelda {

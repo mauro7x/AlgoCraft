@@ -1,6 +1,5 @@
 package modelo.herramientas;
 
-import javafx.scene.image.Image;
 import modelo.herramientas.durabilidades.Durabilidad;
 import modelo.herramientas.reglas.ReglasDesgasteRecurso;
 import modelo.mapa.OcupanteDeCelda;

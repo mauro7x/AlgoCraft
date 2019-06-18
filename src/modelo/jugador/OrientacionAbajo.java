@@ -1,6 +1,5 @@
 package modelo.jugador;
 
-import javafx.scene.image.Image;
 import modelo.Juego;
 import modelo.mapa.OcupanteDeCelda;
 import modelo.herramientas.Herramienta;

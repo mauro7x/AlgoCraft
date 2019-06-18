@@ -45,5 +45,10 @@ public class MapaTest {
         assertEquals(jugador, mapa.obtenerOcupanteEn(jugador.getPosicion()));
     }
 
-
+    //Test de imagen celda vacia
+    @Test
+    public void test01CeldaVaciaObtenerImagenDeFormaCorrecta(){
+        OcupanteDeCelda celdaVacia = new CeldaVacia();
+        assertEquals("tileCeldaVacia2.png", celdaVacia.obtenerImagen());
+    }
 }

@@ -1,6 +1,5 @@
 package modelo.herramientas;
 
-import javafx.scene.image.Image;
 import modelo.herramientas.durabilidades.DurabilidadEnFuerza;
 import modelo.herramientas.reglas.ReglasEstandarHacha;
 import modelo.recursos.*;

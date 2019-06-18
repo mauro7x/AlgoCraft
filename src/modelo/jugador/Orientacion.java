@@ -1,6 +1,5 @@
 package modelo.jugador;
 
-import javafx.scene.image.Image;
 import modelo.herramientas.Herramienta;
 
 public interface Orientacion {

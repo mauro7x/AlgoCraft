@@ -1,6 +1,5 @@
 package modelo.mapa;
 
-import modelo.Juego;
 import modelo.jugador.Jugador;
 import modelo.recursos.BloqueDiamante;
 import modelo.recursos.BloqueMadera;

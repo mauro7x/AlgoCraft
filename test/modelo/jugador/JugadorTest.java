@@ -10,6 +10,9 @@ import modelo.recursos.BloqueDiamante;
 import modelo.recursos.BloqueMadera;
 import modelo.recursos.Recurso;
 import org.junit.Test;
+
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 
@@ -318,6 +321,17 @@ public class JugadorTest {
         jugador.cambiarAHerramientaAnterior();
         assertEquals(hachaMadera, jugador.getHerramientaActual());
     }
+
+    @Test
+    public void test22JugadorIniciaInventarioHerramientasConHachaDeMadera(){
+        Juego.getJuego().resetear();
+        Jugador jugador = Juego.getJuego().getJugador();
+
+        ArrayList<Herramienta> herramientas = jugador.getHerramientas();
+        Herramienta herramienta = herramientas.get(0);
+        assertEquals("hachaMadera.png", herramienta.obtenerImagen());
+    }
+
 
     //Tests de imagenes
 

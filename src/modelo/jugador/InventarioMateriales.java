@@ -24,13 +24,13 @@ public class InventarioMateriales {
         this.materiales.put(1, this.materiales.get(1) + 1);
     }
     public void agregarPiedra(){
-        this.materiales.put(2, this.materiales.get(1) + 1);
+        this.materiales.put(2, this.materiales.get(2) + 1);
     }
     public void agregarMetal(){
-        this.materiales.put(3, this.materiales.get(1) + 1);
+        this.materiales.put(3, this.materiales.get(3) + 1);
     }
     public void agregarDiamante(){
-        this.materiales.put(4, this.materiales.get(1) + 1);
+        this.materiales.put(4, this.materiales.get(4) + 1);
     }
 
     public int getMadera(){

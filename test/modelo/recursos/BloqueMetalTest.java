@@ -94,7 +94,10 @@ public class BloqueMetalTest {
         assertEquals(cantidadInicialDeMetal + 1, inventarioMateriales.cantidadMetal());
     }
 
-
-
+    @Test
+    public void test06BloqueMetalDevuelveSuImagen(){
+        Recurso metal = new BloqueMetal();
+        assertEquals("tileMetal.png", metal.obtenerImagen());
+    }
 
 }

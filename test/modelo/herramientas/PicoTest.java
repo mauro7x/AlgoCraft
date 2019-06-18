@@ -3,8 +3,8 @@ package modelo.herramientas;
 import modelo.recursos.*;
 
 import org.junit.Test;
+import static org.junit.Assert.*;
 
-import static junit.framework.TestCase.assertEquals;
 
 public class PicoTest {
 
@@ -101,5 +101,25 @@ public class PicoTest {
     public void test01CrearPicoDeMetalIDEs15(){
         Herramienta pico = FabricaHerramientas.crearPicoDeMetal();
         assertEquals(15,pico.getId());
+    }
+
+    //Tests de imagen
+
+    @Test
+    public void test01PicoMaderaDevuelveSuImagen(){
+        Herramienta pico = FabricaHerramientas.crearPicoDeMadera();
+        assertEquals("picoMadera.png",pico.obtenerImagen());
+    }
+
+    @Test
+    public void test02PicoPiedraDevuelveSuImagen(){
+        Herramienta pico = FabricaHerramientas.crearPicoDePiedra();
+        assertEquals("picoPiedra.png",pico.obtenerImagen());
+    }
+
+    @Test
+    public void test03PicoMetalDevuelveSuImagen(){
+        Herramienta pico = FabricaHerramientas.crearPicoDeMetal();
+        assertEquals("picoMetal.png",pico.obtenerImagen());
     }
 }

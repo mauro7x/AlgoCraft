@@ -74,4 +74,10 @@ public class BloqueDiamanteTest {
         assertEquals(cantidadInicialDeDiamante + 1, inventarioMateriales.cantidadDiamante());
     }
 
+    @Test
+    public void test06BloqueDiamanteDevuelveSuImagen(){
+        Recurso diamante = new BloqueDiamante();
+        assertEquals("tileDiamante.png", diamante.obtenerImagen());
+    }
+
 }

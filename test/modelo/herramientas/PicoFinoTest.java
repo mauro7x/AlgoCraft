@@ -1,10 +1,13 @@
 package modelo.herramientas;
 
+import modelo.Juego;
+import modelo.jugador.InventarioHerramientas;
 import modelo.recursos.*;
 
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertTrue;
 
 
 public class PicoFinoTest {
@@ -39,6 +42,17 @@ public class PicoFinoTest {
         assertEquals(durabilidadInicial, picoFino.getDurabilidad(),0.0001);
     }
 
+    @Test
+    public void test05PicoFinoSeRompeCuandoSuDurabilidadEsMenorA1() {
+        Juego.getJuego().resetear();
+        Herramienta picoFino = FabricaHerramientas.crearPicoFino();
+
+        while(picoFino.getDurabilidad()>1){
+            picoFino.gastar();
+        }
+        assertEquals(0, picoFino.getDurabilidad(), 0.0001);
+    }
+
     //Test de id
     @Test
     public void test01CrearPicoFinoIDEs16(){
@@ -46,5 +60,12 @@ public class PicoFinoTest {
         assertEquals(16,pico.getId());
     }
 
+    //Tests de imagen
+
+    @Test
+    public void test01PicoFinoDevuelveSuImagen(){
+        Herramienta picoFino = FabricaHerramientas.crearPicoFino();
+        assertEquals("picoFino.png",picoFino.obtenerImagen());
+    }
 
 }

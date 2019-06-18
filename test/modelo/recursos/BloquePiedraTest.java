@@ -95,4 +95,9 @@ public class BloquePiedraTest {
         assertEquals(cantidadInicialDePiedra + 1, inventarioMateriales.cantidadPiedra());
     }
 
+    @Test
+    public void test06BloquePiedraDevuelveSuImagen(){
+        Recurso piedra = new BloquePiedra();
+        assertEquals("tilePiedra.png", piedra.obtenerImagen());
+    }
 }

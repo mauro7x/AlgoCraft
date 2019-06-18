@@ -91,4 +91,24 @@ public class HachaTest {
         Herramienta hacha = FabricaHerramientas.crearHachaDeMetal();
         assertEquals(12,hacha.getId());
     }
+
+    //Tests de imagen
+
+    @Test
+    public void test01HachaMaderaDevuelveSuImagen(){
+        Herramienta hacha = FabricaHerramientas.crearHachaDeMadera();
+        assertEquals("hachaMadera.png",hacha.obtenerImagen());
+    }
+
+    @Test
+    public void test02HachaPiedraDevuelveSuImagen(){
+        Herramienta hacha = FabricaHerramientas.crearHachaDePiedra();
+        assertEquals("hachaPiedra.png",hacha.obtenerImagen());
+    }
+
+    @Test
+    public void test03HachaMetalDevuelveSuImagen(){
+        Herramienta hacha = FabricaHerramientas.crearHachaDeMetal();
+        assertEquals("hachaMetal.png",hacha.obtenerImagen());
+    }
 }

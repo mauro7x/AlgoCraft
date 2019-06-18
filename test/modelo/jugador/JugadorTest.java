@@ -3,6 +3,8 @@ package modelo.jugador;
 import modelo.Juego;
 import modelo.herramientas.FabricaHerramientas;
 import modelo.herramientas.Herramienta;
+import modelo.herramientas.Pico;
+import modelo.herramientas.PicoFino;
 import modelo.mapa.*;
 import modelo.recursos.BloqueDiamante;
 import modelo.recursos.BloqueMadera;
@@ -296,5 +298,58 @@ public class JugadorTest {
         }
 
         assertTrue(jugador.noTieneHerramientas());
+    }
+
+    @Test
+    public void test21JugadorPasaAHerramientaSiguienteYAnteriorCorrectamente(){
+        Juego.getJuego().resetear();
+        Jugador jugador = Juego.getJuego().getJugador();
+
+        Herramienta hachaMadera = jugador.getHerramientaActual();
+        Herramienta picoFino = FabricaHerramientas.crearPicoFino();
+        Herramienta hachaMetal = FabricaHerramientas.crearHachaDeMetal();
+
+        jugador.guardar(picoFino);
+        jugador.guardar(hachaMetal);
+
+        assertEquals(hachaMadera, jugador.getHerramientaActual());
+        jugador.cambiarAHerramientaSiguiente();
+        assertEquals(picoFino, jugador.getHerramientaActual());
+        jugador.cambiarAHerramientaAnterior();
+        assertEquals(hachaMadera, jugador.getHerramientaActual());
+    }
+
+    //Tests de imagenes
+
+    @Test
+    public void test01ImagenOrientacionArribaEsCorrecta(){
+        Juego.getJuego().resetear();
+        Jugador jugador = Juego.getJuego().getJugador();
+        jugador.moverArriba();
+        assertEquals("jugadorArriba.png", jugador.obtenerImagen());
+    }
+
+    @Test
+    public void test02ImagenOrientacionAbajoEsCorrecta(){
+        Juego.getJuego().resetear();
+        Jugador jugador = Juego.getJuego().getJugador();
+        jugador.moverAbajo();
+        assertEquals("jugadorAbajo.png", jugador.obtenerImagen());
+    }
+
+    @Test
+    public void test03ImagenOrientacionDerechaEsCorrecta(){
+        Juego.getJuego().resetear();
+        Jugador jugador = Juego.getJuego().getJugador();
+        jugador.moverDerecha();
+        assertEquals("jugadorDerecha.png", jugador.obtenerImagen());
+    }
+
+    @Test
+    public void test04ImagenOrientacionIzquierdaEsCorrecta(){
+        Juego.getJuego().resetear();
+        Jugador jugador = Juego.getJuego().getJugador();
+        jugador.moverIzquierda();
+        assertEquals("jugadorIzquierda.png", jugador.obtenerImagen());
     }
 }

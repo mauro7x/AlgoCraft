@@ -200,7 +200,12 @@ public class InventarioHerramientasTest {
         inventarioHerramientas.eliminarHerramientaActual();
 
         assertTrue(inventarioHerramientas.noTieneHerramientas());
+    }
 
+    @Test
+    public void test17CuandoHayHerramientasElInventarioTieneHerramientas(){
+        InventarioHerramientas inventarioHerramientas = new InventarioHerramientas();
+        assertFalse(inventarioHerramientas.noTieneHerramientas());
     }
 
 

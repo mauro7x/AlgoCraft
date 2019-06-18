@@ -7,8 +7,8 @@ import modelo.mapa.Posicion;
 public class Juego {
     private static Juego juego = new Juego();
 
-    private static final int X_MAX = 51;
-    private static final int Y_MAX = 31;
+    private static final int X_MAX = 15;
+    private static final int Y_MAX = 11;
 
     private Constructor constructor;
     private Mapa mapa;
@@ -19,20 +19,26 @@ public class Juego {
     }
 
     private Juego() {
-        inicializacion();
+        resetear();
     }
 
-    private void inicializacion(){
+    private void generarMapaYConstructor(){
         mapa = new Mapa(X_MAX, Y_MAX);
+        constructor = new Constructor();
+    }
+    private void generarJugador(){
         jugador = new Jugador(new Posicion(X_MAX /2, Y_MAX /2));
         mapa.ubicarEnElCentro(jugador);
-        constructor = new Constructor();
+    }
+    public void generarRecursos(){
+        mapa.generarRecursosAleatoriamente(10);
+        mapa.ubicarEnElCentro(jugador);
     }
 
     public void resetear(){
-        inicializacion();
+        generarMapaYConstructor();
+        generarJugador();
     }
-
 
     public Jugador getJugador() {
         return jugador;

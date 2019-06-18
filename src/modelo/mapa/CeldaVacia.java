@@ -1,9 +1,12 @@
 package modelo.mapa;
 
 
+import javafx.scene.image.Image;
 import modelo.herramientas.Herramienta;
 
 public class CeldaVacia implements OcupanteDeCelda {
+
+    private static String imagen = "tileCeldaVacia2.png";
 
     @Override
     public OcupanteDeCelda ocuparPorOcupanteDe(Celda celdaOrigen) {
@@ -22,4 +25,10 @@ public class CeldaVacia implements OcupanteDeCelda {
         return;
         //La celda vacia no hace nada al ser golpeada.
     }
+
+    @Override
+    public String obtenerImagen() {
+        return imagen;
+    }
+
 }

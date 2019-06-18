@@ -34,12 +34,12 @@ public class InventarioHerramientas{
 
     public void cambiarAHerramientaSiguiente(){
         if(cantidadDeHerramientas == 0) return;
-        this.herramientaActual = (this.herramientaActual + 1)%(this.cantidadDeHerramientas);
+        this.herramientaActual = Math.floorMod(this.herramientaActual+1,this.cantidadDeHerramientas);
     }
 
     public void cambiarAHerramientaAnterior(){
         if(cantidadDeHerramientas == 0) return;
-        this.herramientaActual = Math.abs((this.herramientaActual - 1)%(this.cantidadDeHerramientas));
+        this.herramientaActual = Math.floorMod(this.herramientaActual-1,this.cantidadDeHerramientas);
     }
 
     public Herramienta getHerramientaActual(){
@@ -49,5 +49,9 @@ public class InventarioHerramientas{
 
     public boolean noTieneHerramientas() {
         return cantidadDeHerramientas == 0;
+    }
+
+    public ArrayList<Herramienta> getHerramientas(){
+        return herramientas;
     }
 }

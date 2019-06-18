@@ -1,5 +1,6 @@
 package modelo.herramientas;
 
+import javafx.scene.image.Image;
 import modelo.herramientas.durabilidades.Durabilidad;
 import modelo.herramientas.reglas.ReglasDesgasteRecurso;
 import modelo.mapa.OcupanteDeCelda;
@@ -12,7 +13,7 @@ public abstract class Herramienta {
     protected Durabilidad durabilidad;
     protected float fuerza;
     ReglasDesgasteRecurso reglasDeDesgaste;
-
+    String imagen;
 
     public float getDurabilidad() {
         return (this.durabilidad.getDurabilidad());
@@ -34,6 +35,9 @@ public abstract class Herramienta {
     public abstract void golpear(BloqueMetal metal);
     public abstract void golpear(BloqueDiamante diamante);
 
+    public String obtenerImagen(){
+        return imagen;
+    }
 
     public int getId() {
         return this.id;

@@ -1,10 +1,13 @@
 package modelo.jugador;
 
+import javafx.scene.image.Image;
 import modelo.Juego;
 import modelo.mapa.OcupanteDeCelda;
 import modelo.herramientas.Herramienta;
 
 public class OrientacionArriba implements Orientacion {
+
+    private static String imagen = "jugadorArriba.png";
 
     @Override
     public void golpear(Herramienta herramientaActual) {
@@ -13,4 +16,8 @@ public class OrientacionArriba implements Orientacion {
         herramientaActual.golpear(bloqueArriba);
     }
 
+    @Override
+    public String obtenerImagen() {
+        return imagen;
+    }
 }

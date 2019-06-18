@@ -1,5 +1,7 @@
 package modelo.mapa;
 
+import modelo.Juego;
+import modelo.jugador.Jugador;
 import modelo.recursos.BloqueMadera;
 import org.junit.Test;
 
@@ -33,5 +35,15 @@ public class MapaTest {
         mapa.ubicarEnElCentro(bloque);
         assertSame(mapa.getCeldaCentral().getOcupante(),bloque);
     }
+
+    @Test
+    public void test05ObtenerOcupanteDeCeldaCentralDevuelveJugador(){
+        Juego juego = Juego.getJuego();
+        Jugador jugador = juego.getJugador();
+        Mapa mapa = juego.getMapa();
+
+        assertEquals(jugador, mapa.obtenerOcupanteEn(jugador.getPosicion()));
+    }
+
 
 }

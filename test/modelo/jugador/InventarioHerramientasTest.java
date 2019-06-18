@@ -186,4 +186,24 @@ public class InventarioHerramientasTest {
         assertNull(inventarioHerramientas.getHerramientaActual());
     }
 
+    @Test
+    public void test15HerramientaActualEsNullCambiarAHerramientaAnteriorCuandoNoHayHerramientas(){
+        InventarioHerramientas inventarioHerramientas = new InventarioHerramientas();
+        inventarioHerramientas.eliminarHerramientaActual();
+        inventarioHerramientas.cambiarAHerramientaAnterior();
+        assertNull(inventarioHerramientas.getHerramientaActual());
+    }
+
+    @Test
+    public void test16CuandoNoHayHerramientasElInventarioNoTieneHerramientas(){
+        InventarioHerramientas inventarioHerramientas = new InventarioHerramientas();
+        inventarioHerramientas.eliminarHerramientaActual();
+
+        assertTrue(inventarioHerramientas.noTieneHerramientas());
+
+    }
+
+
+
+
 }

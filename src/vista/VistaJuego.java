@@ -153,19 +153,33 @@ public class VistaJuego {
 
         for(int i=0;i<herramientas.size();i++){
             Herramienta herramientaActual = herramientas.get(i);
-            ImageView herramienta = new ImageView(imagenes.get(herramientaActual.obtenerImagen()));
-            Pane bordeHerramienta = new Pane();
-
-            bordeHerramienta.getChildren().addAll(herramienta);
-            bordeHerramienta.setPadding(new Insets(0,0,0,0));
 
             if(jugador.getHerramientaActual() == herramientaActual){
-                bordeHerramienta.setStyle("-fx-border-color: #000000;-fx-border-radius: 2px; -fx-border-width: 2px");
-            }else{
-                bordeHerramienta.setStyle("-fx-border-color: #AAAAAA;-fx-border-radius: 2px; -fx-border-width: 1px");
+                //Herramienta Actual
+                ImageView viewHerramientaActual = new ImageView(imagenes.get(herramientaActual.obtenerImagen()));
+
+                BorderPane bordeHerramientaActual = new BorderPane();
+                bordeHerramientaActual.setCenter(viewHerramientaActual);
+                bordeHerramientaActual.setStyle("-fx-border-color: #000000;-fx-border-radius: 2px; -fx-border-width: 4px");
+                itemsInventario.add(bordeHerramientaActual,1,0);
+
+                //Herramienta Anterior
+                Herramienta herramientaAnterior = herramientas.get(Math.floorMod(i-1,herramientas.size()));
+                ImageView viewHerramientaAnterior = new ImageView(imagenes.get(herramientaAnterior.obtenerImagen()));
+                BorderPane bordeHerramientaAnterior = new BorderPane();
+                bordeHerramientaAnterior.setCenter(viewHerramientaAnterior);
+                bordeHerramientaAnterior.setStyle("-fx-border-color: #AAAAAA;-fx-border-radius: 2px; -fx-border-width: 1px");
+                itemsInventario.add(bordeHerramientaAnterior,0,0);
+
+                //Herramienta Siguiente
+                Herramienta herramientaSiguiente = herramientas.get(Math.floorMod(i+1,herramientas.size()));
+                ImageView viewHerramientaSiguiente = new ImageView(imagenes.get(herramientaSiguiente.obtenerImagen()));
+                BorderPane bordeHerramientaSiguiente = new BorderPane();
+                bordeHerramientaSiguiente.setCenter(viewHerramientaSiguiente);
+                bordeHerramientaSiguiente.setStyle("-fx-border-color: #AAAAAA;-fx-border-radius: 2px; -fx-border-width: 1px");
+                itemsInventario.add(bordeHerramientaSiguiente,2,0);
             }
 
-            itemsInventario.add(bordeHerramienta,i,0);
         }
     }
 }

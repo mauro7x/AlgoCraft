@@ -1,4 +1,5 @@
 package modelo.recursos;
+import modelo.Juego;
 import modelo.herramientas.Herramienta;
 import modelo.mapa.Celda;
 import modelo.mapa.OcupanteDeCelda;
@@ -21,7 +22,10 @@ public abstract class Recurso implements OcupanteDeCelda {
         if (durabilidad <= 0) {
             this.agregarRecursoAlInventario();
             this.ocuparPorOcupanteDe(new Celda(new Posicion(0,0))); //Vacio la celda que esta ocupando
+            System.out.println("Recurso roto");
         }
+
+        System.out.println("Recurso golpeado");
     }
 
     @Override

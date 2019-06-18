@@ -188,7 +188,7 @@ public class VistaJuego {
 
         itemsInventario.setPadding(new Insets(0,0,0,10));
 
-        String estiloEtiquetas = "-fx-font-size: 15;-fx-font-weight: bold;-fx-text-fill: #77aa4b";
+        String estiloEtiquetas = "-fx-font-size: 15;-fx-font-weight: bold;-fx-text-fill: #ffffff";
 
         etiquetaCantidadMadera.setStyle(estiloEtiquetas);
 

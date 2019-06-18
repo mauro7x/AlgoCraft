@@ -13,7 +13,7 @@ public abstract class Herramienta {
     protected Durabilidad durabilidad;
     protected float fuerza;
     ReglasDesgasteRecurso reglasDeDesgaste;
-    String rutaImagen;
+    String imagen;
 
     public float getDurabilidad() {
         return (this.durabilidad.getDurabilidad());
@@ -35,8 +35,8 @@ public abstract class Herramienta {
     public abstract void golpear(BloqueMetal metal);
     public abstract void golpear(BloqueDiamante diamante);
 
-    public Image obtenerImagen(int size){
-        return new Image(rutaImagen,size,size,false,false);
+    public String obtenerImagen(){
+        return imagen;
     }
 
     public int getId() {

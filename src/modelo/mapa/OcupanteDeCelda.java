@@ -13,5 +13,5 @@ public interface OcupanteDeCelda {
 
     void serGolpeadoPor(Herramienta herramienta);
 
-    Image obtenerImagen();
+    String obtenerImagen();
 }

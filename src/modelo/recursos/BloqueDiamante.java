@@ -6,7 +6,7 @@ import modelo.herramientas.Herramienta;
 
 public class BloqueDiamante extends Recurso {
 
-    private static Image imagen = new Image("media/textures/tileDiamante.png",50,50,false,false);
+    private static String imagen = "tileDiamante.png";
 
     public BloqueDiamante(){
         this.durabilidad = 100;
@@ -18,7 +18,7 @@ public class BloqueDiamante extends Recurso {
     }
 
     @Override
-    public Image obtenerImagen() {
+    public String obtenerImagen() {
         return imagen;
     }
 

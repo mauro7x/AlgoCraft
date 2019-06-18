@@ -6,7 +6,7 @@ import modelo.herramientas.Herramienta;
 
 public class BloqueMetal extends Recurso {
 
-    private static Image imagen = new Image("media/textures/tileMetal.png",50,50,false,false);
+    private static String imagen = "tileMetal.png";
 
     public BloqueMetal(){
         this.durabilidad = 50;
@@ -18,7 +18,7 @@ public class BloqueMetal extends Recurso {
     }
 
     @Override
-    public Image obtenerImagen() {
+    public String obtenerImagen() {
         return imagen;
     }
 

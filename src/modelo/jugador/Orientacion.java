@@ -5,5 +5,6 @@ import modelo.herramientas.Herramienta;
 
 public interface Orientacion {
     void golpear(Herramienta herramientaActual);
-    Image obtenerImagen();
+
+    String obtenerImagen();
 }

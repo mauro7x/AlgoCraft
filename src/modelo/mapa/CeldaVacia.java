@@ -6,7 +6,7 @@ import modelo.herramientas.Herramienta;
 
 public class CeldaVacia implements OcupanteDeCelda {
 
-    private static Image imagen = new Image("media/textures/tileCeldaVacia2.png",50,50,false,false);
+    private static String imagen = "tileCeldaVacia2.png";
 
     @Override
     public OcupanteDeCelda ocuparPorOcupanteDe(Celda celdaOrigen) {
@@ -27,7 +27,7 @@ public class CeldaVacia implements OcupanteDeCelda {
     }
 
     @Override
-    public Image obtenerImagen() {
+    public String obtenerImagen() {
         return imagen;
     }
 

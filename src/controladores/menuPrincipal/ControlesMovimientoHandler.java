@@ -34,5 +34,19 @@ public class ControlesMovimientoHandler implements EventHandler<KeyEvent> {
             juego.getJugador().moverDerecha();
             vistaJuego.dibujarMapa();
         }
+        if(keyEvent.getCode() == KeyCode.Q){
+            juego.getJugador().cambiarAHerramientaAnterior();
+            vistaJuego.actualizarInventarioHerramientas();
+        }
+        if(keyEvent.getCode() == KeyCode.E){
+            juego.getJugador().cambiarAHerramientaSiguiente();
+            vistaJuego.actualizarInventarioHerramientas();
+        }
+        if(keyEvent.getCode() == KeyCode.SPACE){
+            System.out.println("Golpeando");
+            juego.getJugador().golpear();
+            vistaJuego.dibujarMapa();
+            vistaJuego.actualizarInventarioHerramientas();
+        }
     }
 }

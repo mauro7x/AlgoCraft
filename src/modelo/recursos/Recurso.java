@@ -1,12 +1,15 @@
 package modelo.recursos;
+
 import modelo.Juego;
 import modelo.herramientas.Herramienta;
 import modelo.mapa.Celda;
+import modelo.mapa.CeldaVacia;
 import modelo.mapa.OcupanteDeCelda;
 import modelo.mapa.Posicion;
 
 public abstract class Recurso implements OcupanteDeCelda {
 
+    protected Posicion posicion;
     protected int durabilidad;
 
     public float getDurabilidad() {
@@ -21,7 +24,7 @@ public abstract class Recurso implements OcupanteDeCelda {
         durabilidad -= fuerza;
         if (durabilidad <= 0) {
             this.agregarRecursoAlInventario();
-            this.ocuparPorOcupanteDe(new Celda(new Posicion(0,0))); //Vacio la celda que esta ocupando
+            Juego.getJuego().getMapa().setearOcupanteEn(new CeldaVacia(), this.posicion);
             System.out.println("Recurso roto");
         }
 

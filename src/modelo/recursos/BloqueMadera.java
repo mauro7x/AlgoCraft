@@ -1,8 +1,8 @@
 package modelo.recursos;
 
-import javafx.scene.image.Image;
 import modelo.Juego;
 import modelo.herramientas.Herramienta;
+import modelo.mapa.Posicion;
 
 public class BloqueMadera extends Recurso {
 
@@ -10,6 +10,11 @@ public class BloqueMadera extends Recurso {
 
     public BloqueMadera(){
         this.durabilidad = 10;
+        this.posicion = new Posicion(0,0);
+    }
+    public BloqueMadera(Posicion posicion){
+        this.durabilidad = 10;
+        this.posicion = posicion;
     }
 
     @Override

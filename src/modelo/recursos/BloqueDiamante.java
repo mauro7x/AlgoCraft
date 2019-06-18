@@ -1,8 +1,8 @@
 package modelo.recursos;
 
-import javafx.scene.image.Image;
 import modelo.Juego;
 import modelo.herramientas.Herramienta;
+import modelo.mapa.Posicion;
 
 public class BloqueDiamante extends Recurso {
 
@@ -10,6 +10,11 @@ public class BloqueDiamante extends Recurso {
 
     public BloqueDiamante(){
         this.durabilidad = 100;
+        this.posicion = new Posicion(0,0);
+    }
+    public BloqueDiamante(Posicion posicion){
+        this.durabilidad = 100;
+        this.posicion = posicion;
     }
 
     @Override

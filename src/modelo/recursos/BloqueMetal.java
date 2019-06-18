@@ -1,8 +1,8 @@
 package modelo.recursos;
 
-import javafx.scene.image.Image;
 import modelo.Juego;
 import modelo.herramientas.Herramienta;
+import modelo.mapa.Posicion;
 
 public class BloqueMetal extends Recurso {
 
@@ -10,7 +10,15 @@ public class BloqueMetal extends Recurso {
 
     public BloqueMetal(){
         this.durabilidad = 50;
+        this.posicion = new Posicion(0,0);
     }
+
+    public BloqueMetal(Posicion posicion){
+        this.durabilidad = 50;
+        this.posicion = posicion;
+    }
+
+
 
     @Override
     public void serGolpeadoPor(Herramienta herramienta) {

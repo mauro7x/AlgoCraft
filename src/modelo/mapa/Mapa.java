@@ -73,23 +73,27 @@ public class Mapa {
         Random random = new Random();
         int recurso = random.nextInt(4);
 
+        Posicion posDer = posicion.getPosicionDerecha();
+        Posicion posAba = posicion.getPosicionAbajo();
+        Posicion posDerAba = posAba.getPosicionDerecha();
+
         switch(recurso){
             case 0: //agrega 1
-                setearOcupanteEn(new BloqueDiamante(), posicion);
+                setearOcupanteEn(new BloqueDiamante(posicion), posicion);
                 break;
             case 1: //agrega 2 horizontalmente
-                setearOcupanteEn(new BloqueDiamante(), posicion);
-                setearOcupanteEn(new BloqueDiamante(), posicion.getPosicionDerecha());
+                setearOcupanteEn(new BloqueDiamante(posicion), posicion);
+                setearOcupanteEn(new BloqueDiamante(posDer), posDer);
                 break;
             case 2: //agrega 2 verticalmente
-                setearOcupanteEn(new BloqueDiamante(), posicion);
-                setearOcupanteEn(new BloqueDiamante(), posicion.getPosicionAbajo());
+                setearOcupanteEn(new BloqueDiamante(posicion), posicion);
+                setearOcupanteEn(new BloqueDiamante(posAba), posAba);
                 break;
             case 3: //agrega 4 en bloque
-                setearOcupanteEn(new BloqueDiamante(), posicion);
-                setearOcupanteEn(new BloqueDiamante(), posicion.getPosicionDerecha());
-                setearOcupanteEn(new BloqueDiamante(), posicion.getPosicionAbajo());
-                setearOcupanteEn(new BloqueDiamante(), posicion.getPosicionAbajo().getPosicionDerecha());
+                setearOcupanteEn(new BloqueDiamante(posicion), posicion);
+                setearOcupanteEn(new BloqueDiamante(posDer), posDer);
+                setearOcupanteEn(new BloqueDiamante(posAba), posAba);
+                setearOcupanteEn(new BloqueDiamante(posDerAba), posDerAba);
                 break;
         }
 
@@ -98,51 +102,63 @@ public class Mapa {
     private void agregarBloqueMetal(Posicion posicion){
         Random random = new Random();
         int recurso = random.nextInt(4);
+        
+        Posicion posDer = posicion.getPosicionDerecha();
+        Posicion posAba = posicion.getPosicionAbajo();
+        Posicion posDerAba = posDer.getPosicionAbajo();
+        
         switch(recurso){
             case 0: //agrega 1
-                setearOcupanteEn(new BloqueMetal(), posicion);
+                setearOcupanteEn(new BloqueMetal(posicion), posicion);
                 break;
             case 1: //agrega 2 horizontalmente
-                setearOcupanteEn(new BloqueMetal(), posicion);
-                setearOcupanteEn(new BloqueMetal(), posicion.getPosicionDerecha());
+                setearOcupanteEn(new BloqueMetal(posicion), posicion);
+                setearOcupanteEn(new BloqueMetal(posDer), posDer);
                 break;
             case 2: //agrega 2 verticalmente
-                setearOcupanteEn(new BloqueMetal(), posicion);
-                setearOcupanteEn(new BloqueMetal(), posicion.getPosicionAbajo());
+                setearOcupanteEn(new BloqueMetal(posicion), posicion);
+                setearOcupanteEn(new BloqueMetal(posAba), posAba);
                 break;
             case 3: //agrega 4 en bloque
-                setearOcupanteEn(new BloqueMetal(), posicion);
-                setearOcupanteEn(new BloqueMetal(), posicion.getPosicionDerecha());
-                setearOcupanteEn(new BloqueMetal(), posicion.getPosicionAbajo());
-                setearOcupanteEn(new BloqueMetal(), posicion.getPosicionDerecha().getPosicionAbajo());
+                setearOcupanteEn(new BloqueMetal(posicion), posicion);
+                setearOcupanteEn(new BloqueMetal(posDer), posDer);
+                setearOcupanteEn(new BloqueMetal(posAba), posAba);
+                setearOcupanteEn(new BloqueMetal(posDerAba), posDerAba);
                 break;
         }
     }
     private void agregarBloquePiedra(Posicion posicion){
         Random random = new Random();
         int recurso = random.nextInt(4);
+
+        Posicion posDer = posicion.getPosicionDerecha();
+        Posicion posAba = posicion.getPosicionAbajo();
+        Posicion posDerAba = posAba.getPosicionDerecha();
+        Posicion posDerDer = posDer.getPosicionDerecha();
+        Posicion posDerDerAba = posDerDer.getPosicionAbajo();
+        
         switch(recurso){
             case 0: //agrega 2 horizontalmente
-                setearOcupanteEn(new BloquePiedra(), posicion);
-                setearOcupanteEn(new BloquePiedra(), posicion.getPosicionDerecha());
+                setearOcupanteEn(new BloquePiedra(posicion), posicion);
+                setearOcupanteEn(new BloquePiedra(posDer), posDer);
                 break;
             case 1: //agrega 2 verticalmente
-                setearOcupanteEn(new BloquePiedra(), posicion);
-                setearOcupanteEn(new BloquePiedra(), posicion.getPosicionAbajo());
+                setearOcupanteEn(new BloquePiedra(posicion), posicion);
+                setearOcupanteEn(new BloquePiedra(posAba), posAba);
                 break;
             case 2: //agrega 4 en bloque
-                setearOcupanteEn(new BloquePiedra(), posicion);
-                setearOcupanteEn(new BloquePiedra(), posicion.getPosicionDerecha());
-                setearOcupanteEn(new BloquePiedra(), posicion.getPosicionAbajo());
-                setearOcupanteEn(new BloquePiedra(), posicion.getPosicionDerecha().getPosicionAbajo());
+                setearOcupanteEn(new BloquePiedra(posicion), posicion);
+                setearOcupanteEn(new BloquePiedra(posDer), posDer);
+                setearOcupanteEn(new BloquePiedra(posAba), posAba);
+                setearOcupanteEn(new BloquePiedra(posDerAba), posDerAba);
                 break;
             case 3: //agrega 6 en bloque horizontal
-                setearOcupanteEn(new BloquePiedra(), posicion);
-                setearOcupanteEn(new BloquePiedra(), posicion.getPosicionDerecha());
-                setearOcupanteEn(new BloquePiedra(), posicion.getPosicionAbajo());
-                setearOcupanteEn(new BloquePiedra(), posicion.getPosicionDerecha().getPosicionAbajo());
-                setearOcupanteEn(new BloquePiedra(), posicion.getPosicionDerecha().getPosicionDerecha());
-                setearOcupanteEn(new BloquePiedra(), posicion.getPosicionDerecha().getPosicionDerecha().getPosicionAbajo());
+                setearOcupanteEn(new BloquePiedra(posicion), posicion);
+                setearOcupanteEn(new BloquePiedra(posDer), posDer);
+                setearOcupanteEn(new BloquePiedra(posAba), posAba);
+                setearOcupanteEn(new BloquePiedra(posDerAba), posDerAba);
+                setearOcupanteEn(new BloquePiedra(posDerDer), posDerDer);
+                setearOcupanteEn(new BloquePiedra(posDerDerAba), posDerDerAba);
                 break;
 
         }
@@ -150,39 +166,49 @@ public class Mapa {
     private void agregarBloqueMadera(Posicion posicion){
         Random random = new Random();
         int recurso = random.nextInt(4);
+
+        Posicion posDer = posicion.getPosicionDerecha();
+        Posicion posAba = posicion.getPosicionAbajo();
+        Posicion posDerAba = posDer.getPosicionAbajo();
+        Posicion posDerDer = posDer.getPosicionDerecha();
+        Posicion posDerDerAba = posDerDer.getPosicionAbajo();
+        Posicion posAbaAba = posAba.getPosicionAbajo();
+        Posicion posAbaAbaDer = posAbaAba.getPosicionDerecha();
+        Posicion posAbaAbaDerDer = posAbaAbaDer.getPosicionDerecha();
+        
         switch(recurso){
             case 0: //agrega bloque de 4
-                setearOcupanteEn(new BloqueMadera(), posicion);
-                setearOcupanteEn(new BloqueMadera(), posicion.getPosicionDerecha());
-                setearOcupanteEn(new BloqueMadera(), posicion.getPosicionAbajo());
-                setearOcupanteEn(new BloqueMadera(), posicion.getPosicionDerecha().getPosicionAbajo());
+                setearOcupanteEn(new BloqueMadera(posicion), posicion);
+                setearOcupanteEn(new BloqueMadera(posDer), posDer);
+                setearOcupanteEn(new BloqueMadera(posAba), posAba);
+                setearOcupanteEn(new BloqueMadera(posDerAba), posDerAba);
                 break;
             case 1: //agrega bloque de 6 horizontalmente
-                setearOcupanteEn(new BloqueMadera(), posicion);
-                setearOcupanteEn(new BloqueMadera(), posicion.getPosicionDerecha());
-                setearOcupanteEn(new BloqueMadera(), posicion.getPosicionAbajo());
-                setearOcupanteEn(new BloqueMadera(), posicion.getPosicionDerecha().getPosicionAbajo());
-                setearOcupanteEn(new BloqueMadera(), posicion.getPosicionDerecha().getPosicionDerecha());
-                setearOcupanteEn(new BloqueMadera(), posicion.getPosicionDerecha().getPosicionDerecha().getPosicionAbajo());
+                setearOcupanteEn(new BloqueMadera(posicion), posicion);
+                setearOcupanteEn(new BloqueMadera(posDer), posDer);
+                setearOcupanteEn(new BloqueMadera(posAba), posAba);
+                setearOcupanteEn(new BloqueMadera(posDerAba), posDerAba);
+                setearOcupanteEn(new BloqueMadera(posDerDer), posDerDer);
+                setearOcupanteEn(new BloqueMadera(posDerDerAba), posDerDerAba);
                 break;
             case 2: //agrega bloque de 6 verticalmente
-                setearOcupanteEn(new BloqueMadera(), posicion);
-                setearOcupanteEn(new BloqueMadera(), posicion.getPosicionDerecha());
-                setearOcupanteEn(new BloqueMadera(), posicion.getPosicionAbajo());
-                setearOcupanteEn(new BloqueMadera(), posicion.getPosicionDerecha().getPosicionAbajo());
-                setearOcupanteEn(new BloqueMadera(), posicion.getPosicionAbajo().getPosicionAbajo());
-                setearOcupanteEn(new BloqueMadera(), posicion.getPosicionAbajo().getPosicionAbajo().getPosicionDerecha());
+                setearOcupanteEn(new BloqueMadera(posicion), posicion);
+                setearOcupanteEn(new BloqueMadera(posDer), posDer);
+                setearOcupanteEn(new BloqueMadera(posAba), posAba);
+                setearOcupanteEn(new BloqueMadera(posDerAba), posDerAba);
+                setearOcupanteEn(new BloqueMadera(posAbaAba), posAbaAba);
+                setearOcupanteEn(new BloqueMadera(posAbaAbaDer), posAbaAbaDer);
                 break;
             case 3: //agrega bloque de 9
-                setearOcupanteEn(new BloqueMadera(), posicion);
-                setearOcupanteEn(new BloqueMadera(), posicion.getPosicionDerecha());
-                setearOcupanteEn(new BloqueMadera(), posicion.getPosicionDerecha().getPosicionDerecha());
-                setearOcupanteEn(new BloqueMadera(), posicion.getPosicionAbajo());
-                setearOcupanteEn(new BloqueMadera(), posicion.getPosicionAbajo().getPosicionDerecha());
-                setearOcupanteEn(new BloqueMadera(), posicion.getPosicionAbajo().getPosicionDerecha().getPosicionDerecha());
-                setearOcupanteEn(new BloqueMadera(), posicion.getPosicionAbajo().getPosicionAbajo());
-                setearOcupanteEn(new BloqueMadera(), posicion.getPosicionAbajo().getPosicionAbajo().getPosicionDerecha());
-                setearOcupanteEn(new BloqueMadera(), posicion.getPosicionAbajo().getPosicionAbajo().getPosicionDerecha().getPosicionDerecha());
+                setearOcupanteEn(new BloqueMadera(posicion), posicion);
+                setearOcupanteEn(new BloqueMadera(posDer), posDer);
+                setearOcupanteEn(new BloqueMadera(posDerDer), posDerDer);
+                setearOcupanteEn(new BloqueMadera(posAba), posAba);
+                setearOcupanteEn(new BloqueMadera(posDerAba), posDerAba);
+                setearOcupanteEn(new BloqueMadera(posDerDerAba), posDerDerAba);
+                setearOcupanteEn(new BloqueMadera(posAbaAba), posAbaAba);
+                setearOcupanteEn(new BloqueMadera(posAbaAbaDer), posAbaAbaDer);
+                setearOcupanteEn(new BloqueMadera(posAbaAbaDerDer), posAbaAbaDerDer);
 
                 break;
         }

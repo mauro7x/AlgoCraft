@@ -24,6 +24,7 @@ public class Posicion {
     public Posicion getPosicionArriba(){
         int yMax = Juego.getJuego().getMapa().getYMax();
         return new Posicion(this.x, Math.floorMod(this.y+1,yMax));
+
     }
     public Posicion getPosicionAbajo(){
         int yMax = Juego.getJuego().getMapa().getYMax();

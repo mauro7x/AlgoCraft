@@ -2,6 +2,7 @@ package modelo;
 
 import modelo.jugador.Jugador;
 import modelo.mapa.Celda;
+import modelo.mapa.CeldaVacia;
 import modelo.mapa.Mapa;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -26,6 +27,7 @@ public class JuegoTest {
         Celda celdaCentral = mapa.getCeldaCentral();
         Jugador jugador = juego.getJugador();
 
+        mapa.setearOcupanteEn(new CeldaVacia(), celdaCentral.getPosicion().getPosicionArriba());
         jugador.moverArriba();
         assertNotSame(celdaCentral.getPosicion(), jugador.getPosicion());
 

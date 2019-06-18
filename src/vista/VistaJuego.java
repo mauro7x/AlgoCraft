@@ -95,7 +95,7 @@ public class VistaJuego {
         cuadriculaMapa.setPadding(new Insets(0,0,0,0));
 
         Juego juego = Juego.getJuego();
-        juego.generarRecursos();
+        juego.resetear();
 
         dibujarMapa();
 

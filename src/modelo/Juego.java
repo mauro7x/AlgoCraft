@@ -18,9 +18,7 @@ public class Juego {
         return juego;
     }
 
-    private Juego() {
-        resetear();
-    }
+    private Juego() {}
 
     private void generarMapaYConstructor(){
         mapa = new Mapa(X_MAX, Y_MAX);
@@ -32,11 +30,11 @@ public class Juego {
     }
     public void generarRecursos(){
         mapa.generarRecursosAleatoriamente(10);
-        mapa.ubicarEnElCentro(jugador);
     }
 
     public void resetear(){
         generarMapaYConstructor();
+        generarRecursos();
         generarJugador();
     }
 

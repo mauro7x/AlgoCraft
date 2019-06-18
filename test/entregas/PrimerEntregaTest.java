@@ -88,6 +88,7 @@ public class PrimerEntregaTest {
 
     @Test
     public void test07PicoSeUsaContraCadaMaterialYReduceSuDurabilidadSegunElMaterial() {
+        Juego.getJuego().resetear();
         Herramienta picoDeMadera = FabricaHerramientas.crearPicoDeMadera();
         Herramienta picoDeMetal = FabricaHerramientas.crearPicoDeMetal();
         Herramienta picoDePiedra = FabricaHerramientas.crearPicoDePiedra();
@@ -119,6 +120,7 @@ public class PrimerEntregaTest {
         for(int i =0; i <= 6; i++){
             picoDeMetal.golpear(new BloqueMadera());
         }
+
         assertEquals(0, picoDeMetal.getDurabilidad(),0);
 
     }

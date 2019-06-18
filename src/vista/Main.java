@@ -12,7 +12,7 @@ public class Main extends Application{
     @Override
     public void start(Stage stage) throws Exception {
         stage.setTitle("Algocraft");
-        stage.getIcons().add(new Image("media/herramientas/picoFino.png"));
+        stage.getIcons().add(new Image("media/herramientas/picoMetal.png"));
 
         Scene escenaMenuPrincipal = new VistaMenuPrincipal().generarMenuPrincipal(stage);
         stage.setScene(escenaMenuPrincipal);

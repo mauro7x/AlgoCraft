@@ -50,20 +50,20 @@ public class Mapa {
         for(int i=0; i<cantidad; i++){
             int x = random.nextInt(xMax);
             int y = random.nextInt(yMax);
+            Posicion posicion = new Posicion(x,y);
             recurso = random.nextInt(10);
-
             switch(recurso){
                 case 0:
-                    agregarBloqueDiamante(new Posicion(x,y));
+                    agregarBloqueDiamante(posicion);
                     break;
                 case 1: case 2:
-                    agregarBloqueMetal(new Posicion(x,y));
+                    agregarBloqueMetal(posicion);
                     break;
                 case 3: case 4: case 5:
-                    agregarBloquePiedra(new Posicion(x,y));
+                    agregarBloquePiedra(posicion);
                     break;
                 case 6: case 7: case 8: case 9:
-                    agregarBloqueMadera(new Posicion(x,y));
+                    agregarBloqueMadera(posicion);
                     break;
             }
         }

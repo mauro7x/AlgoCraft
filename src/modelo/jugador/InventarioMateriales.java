@@ -44,12 +44,12 @@ public class InventarioMateriales {
         return 2;
     }
     public int getMetal(){
-        if (this.materiales.get(2) == 0) { return 0; }
+        if (this.materiales.get(3) == 0) { return 0; }
         this.materiales.put(3, this.materiales.get(3) - 1);
         return 3;
     }
     public int getDiamante(){
-        if (this.materiales.get(2) == 0) { return 0; }
+        if (this.materiales.get(4) == 0) { return 0; }
         this.materiales.put(4, this.materiales.get(4) - 1);
         return 4;
     }

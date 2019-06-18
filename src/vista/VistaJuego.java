@@ -152,7 +152,7 @@ public class VistaJuego {
         GridPane inventario = new GridPane();
 
         //Inventario Herramientas
-        inventario.setStyle("-fx-background-color: #096346;");
+
         itemsInventarioHerramientas.setVgap(0);
         itemsInventarioHerramientas.setHgap(2);
         itemsInventarioHerramientas.setAlignment(Pos.CENTER);
@@ -188,9 +188,10 @@ public class VistaJuego {
 
         itemsInventario.setPadding(new Insets(0,0,0,10));
 
-        String estiloEtiquetas = "-fx-font-size: 15;-fx-font-weight: bold;";
+        String estiloEtiquetas = "-fx-font-size: 15;-fx-font-weight: bold;-fx-text-fill: #77aa4b";
 
         etiquetaCantidadMadera.setStyle(estiloEtiquetas);
+
         etiquetaCantidadPiedra.setStyle(estiloEtiquetas);
         etiquetaCantidadMetal.setStyle(estiloEtiquetas);
         etiquetaCantidadDiamante.setStyle(estiloEtiquetas);
@@ -208,6 +209,11 @@ public class VistaJuego {
         inventario.getColumnConstraints().addAll(espacioInventario,espacioInventarioHerramientas,espacioConstructor);
         inventario.add(itemsInventario,0,0);
         inventario.add(itemsInventarioHerramientas,1,0);
+
+        BackgroundImage fondo = new BackgroundImage(new Image("media/hud.jpg",70,70,false,true),
+                BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+                BackgroundSize.DEFAULT);
+        inventario.setBackground(new Background(fondo));
 
         return inventario;
     }

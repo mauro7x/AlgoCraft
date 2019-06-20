@@ -20,17 +20,21 @@ public class InventarioMateriales {
     public int cantidadMetal(){ return this.materiales.get(3); }
     public int cantidadDiamante(){ return this.materiales.get(4); }
 
-    public void agregarMadera(){
+    public int agregarMadera(){
         this.materiales.put(1, this.materiales.get(1) + 1);
+        return 0;
     }
-    public void agregarPiedra(){
+    public int agregarPiedra(){
         this.materiales.put(2, this.materiales.get(2) + 1);
+        return 0;
     }
-    public void agregarMetal(){
+    public int agregarMetal(){
         this.materiales.put(3, this.materiales.get(3) + 1);
+        return 0;
     }
-    public void agregarDiamante(){
+    public int agregarDiamante(){
         this.materiales.put(4, this.materiales.get(4) + 1);
+        return 0;
     }
 
     public int getMadera(){

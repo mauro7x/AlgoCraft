@@ -6,31 +6,35 @@ import javafx.scene.input.KeyEvent;
 import modelo.Juego;
 import vista.VistaJuego;
 
+import java.security.Key;
+
 public class ControlesMovimientoHandler implements EventHandler<KeyEvent> {
 
     private VistaJuego vistaJuego;
+    private BotonConstructorHandler constructorHandler;
 
-    public ControlesMovimientoHandler(VistaJuego vistaJuego){
+    public ControlesMovimientoHandler(VistaJuego vistaJuego, BotonConstructorHandler constructorHandler){
         this.vistaJuego = vistaJuego;
+        this.constructorHandler = constructorHandler;
     }
 
     @Override
     public void handle(KeyEvent keyEvent) {
         Juego juego = Juego.getJuego();
 
-        if(keyEvent.getCode() == KeyCode.W){
+        if(keyEvent.getCode() == KeyCode.W || keyEvent.getCode() == KeyCode.UP){
             juego.getJugador().moverArriba();
             vistaJuego.dibujarMapa();
         }
-        if(keyEvent.getCode() == KeyCode.S){
+        if(keyEvent.getCode() == KeyCode.S || keyEvent.getCode() == KeyCode.DOWN){
             juego.getJugador().moverAbajo();
             vistaJuego.dibujarMapa();
         }
-        if(keyEvent.getCode() == KeyCode.A){
+        if(keyEvent.getCode() == KeyCode.A || keyEvent.getCode() == KeyCode.LEFT){
             juego.getJugador().moverIzquierda();
             vistaJuego.dibujarMapa();
         }
-        if(keyEvent.getCode() == KeyCode.D){
+        if(keyEvent.getCode() == KeyCode.D || keyEvent.getCode() == KeyCode.RIGHT){
             juego.getJugador().moverDerecha();
             vistaJuego.dibujarMapa();
         }
@@ -48,6 +52,9 @@ public class ControlesMovimientoHandler implements EventHandler<KeyEvent> {
             vistaJuego.actualizarInventario();
             vistaJuego.dibujarMapa();
             vistaJuego.actualizarInventarioHerramientas();
+        }
+        if(keyEvent.getCode() == KeyCode.C){
+            constructorHandler.accionar();
         }
     }
 }

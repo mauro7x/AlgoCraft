@@ -18,4 +18,5 @@ public class BotonJugarHandler implements EventHandler<ActionEvent> {
         Scene vistaJuego = new VistaJuego().generarVistaJuego();
         ventanaPrincipal.setScene(vistaJuego);
     }
+
 }

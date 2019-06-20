@@ -11,6 +11,7 @@ public class OrientacionAbajo implements Orientacion {
     @Override
     public void golpear(Herramienta herramientaActual) {
         Jugador jugador = Juego.getJuego().getJugador();
+        if(jugador.noTieneHerramientas()){return;}
         OcupanteDeCelda bloqueAbajo = Juego.getJuego().getMapa().obtenerBloqueAbajoDelJugador(jugador);
         herramientaActual.golpear(bloqueAbajo);
     }

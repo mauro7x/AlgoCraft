@@ -48,4 +48,12 @@ public class Constructor {
         return 0;
     }
 
+    public int comprobarReceta(int[] receta){
+        Herramienta construccion = recetas.getOrDefault(Arrays.hashCode(receta), () -> null).get();
+        if (!(construccion == null)){
+            return construccion.getId();
+        }
+        return 0;
+    }
+
 }

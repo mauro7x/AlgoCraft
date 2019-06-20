@@ -11,6 +11,7 @@ public class OrientacionIzquierda implements Orientacion {
     @Override
     public void golpear(Herramienta herramientaActual) {
         Jugador jugador = Juego.getJuego().getJugador();
+        if(jugador.noTieneHerramientas()){return;}
         OcupanteDeCelda bloqueIzquierda = Juego.getJuego().getMapa().obtenerBloqueIzquierdaDelJugador(jugador);
         herramientaActual.golpear(bloqueIzquierda);
     }

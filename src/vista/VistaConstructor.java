@@ -256,7 +256,7 @@ public class VistaConstructor {
         ImageView imagenResultadoConstructor = new ImageView(imagenes.get(resultado));
 
         Button botonConstruir = new Button("Construir");
-        botonConstruir.setOnAction((event) -> { construir(); });
+        botonConstruir.setOnAction((event) -> { construir(false);vistaJuego.actualizarInventarioHerramientas(); });
 
         resultadoConstructor.getChildren().clear();
         resultadoConstructor.add(imagenResultadoConstructor, 0, 1);
@@ -326,14 +326,26 @@ public class VistaConstructor {
         for (int i=0; i<9; i++){ materialesDispuestos.put(i,"Vacio"); }
     }
 
-    public void construir(){
+    public void construir(boolean preview){
         int[] receta = new int[9];
         for (int i=0; i<9; i++){ receta[i] = codigosConstructor.get(materialesDispuestos.get(i)); }
-        int idConstruccion = Juego.getJuego().getConstructor().construir(receta);
-        if (idConstruccion != 0){ vaciarMaterialesDispuestos(); }
+        int idConstruccion;
+
+        if(preview){
+            idConstruccion = Juego.getJuego().getConstructor().comprobarReceta(receta);
+            resultado = Integer.toString(idConstruccion);
+        }
+        else{
+            idConstruccion = Juego.getJuego().getConstructor().construir(receta);
+            if(idConstruccion != 0){
+                vaciarMaterialesDispuestos();
+                resultado = Integer.toString(0);
+            }
+        }
+
         System.out.print(idConstruccion);
         System.out.print(Arrays.toString(receta));
-        resultado = Integer.toString(idConstruccion);
+
         actualizarVistaConstructor();
     }
 

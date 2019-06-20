@@ -119,8 +119,8 @@ public class VistaJuego {
 
         dibujarMapa();
 
-        juego.getJugador().guardar(FabricaHerramientas.crearHachaDePiedra());
-        juego.getJugador().guardar(FabricaHerramientas.crearPicoDeMetal());
+        /*juego.getJugador().guardar(FabricaHerramientas.crearHachaDePiedra());
+        juego.getJugador().guardar(FabricaHerramientas.crearPicoDeMetal());*/
         juego.getJugador().guardar(FabricaHerramientas.crearPicoFino());
         juego.getJugador().guardar(FabricaHerramientas.crearPicoDeMadera());
 
@@ -163,7 +163,6 @@ public class VistaJuego {
         inventario.setPadding(new Insets(3,0,3,0));
 
         actualizarInventarioHerramientas();
-
 
         //Inventario
         ImageView viewMadera = new ImageView(new Image("media/recursos/madera.png",40,40,false,false));
@@ -241,6 +240,27 @@ public class VistaJuego {
         ArrayList<Herramienta> herramientas = jugador.getHerramientas();
 
         itemsInventarioHerramientas.getChildren().clear();
+
+        if(herramientas.size() == 0){
+            /*Pane bordeHerramientaAnterior = new Pane();
+            bordeHerramientaAnterior.setPrefWidth(dimensionHerramienta);
+            bordeHerramientaAnterior.setPrefHeight(dimensionHerramienta);
+            bordeHerramientaAnterior.setStyle("-fx-border-color: #AAAAAA;-fx-border-radius: 2px; -fx-border-width: 1px");
+            itemsInventarioHerramientas.add(bordeHerramientaAnterior,0,0);
+
+            Pane bordeHerramientaSiguiente = new Pane();
+            bordeHerramientaSiguiente.setPrefWidth(dimensionHerramienta);
+            bordeHerramientaSiguiente.setPrefHeight(dimensionHerramienta);
+            bordeHerramientaAnterior.setStyle("-fx-border-color: #AAAAAA;-fx-border-radius: 2px; -fx-border-width: 1px");
+            itemsInventarioHerramientas.add(bordeHerramientaAnterior,2,0);
+
+            Pane bordeHerramientaActual = new Pane();
+            bordeHerramientaActual.setPrefWidth(dimensionHerramienta);
+            bordeHerramientaActual.setPrefHeight(dimensionHerramienta);
+            bordeHerramientaActual.setStyle("-fx-border-color: #000000;-fx-border-radius: 2px; -fx-border-width: 4px");
+            itemsInventarioHerramientas.add(bordeHerramientaActual,1,0);*/
+            return;
+        }
 
         for(int i=0;i<herramientas.size();i++){
             Herramienta herramientaActual = herramientas.get(i);

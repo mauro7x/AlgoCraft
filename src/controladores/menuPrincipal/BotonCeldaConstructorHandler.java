@@ -16,5 +16,6 @@ public class BotonCeldaConstructorHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
         vista.setMaterial(this.numeroDeCelda);
+        vista.construir(true);
     }
 }

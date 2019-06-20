@@ -120,9 +120,9 @@ public class VistaJuego {
         dibujarMapa();
 
         /*juego.getJugador().guardar(FabricaHerramientas.crearHachaDePiedra());
-        juego.getJugador().guardar(FabricaHerramientas.crearPicoDeMetal());*/
+        juego.getJugador().guardar(FabricaHerramientas.crearPicoDeMetal());
         juego.getJugador().guardar(FabricaHerramientas.crearPicoFino());
-        juego.getJugador().guardar(FabricaHerramientas.crearPicoDeMadera());
+        juego.getJugador().guardar(FabricaHerramientas.crearPicoDeMadera());*/
 
         GridPane inventarioHerramientas = generarInventario();
 

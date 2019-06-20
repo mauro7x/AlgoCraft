@@ -55,6 +55,12 @@ public class ControlesTecladoHandler implements EventHandler<KeyEvent> {
             vistaJuego.actualizarInventarioHerramientas();
         }
 
+
+        if(keyEvent.getCode() == KeyCode.R){
+            juego.resetearMapa();
+            vistaJuego.dibujarMapa();
+        }
+
         if(keyEvent.getCode() == KeyCode.C){
             constructorHandler.accionar();
         }

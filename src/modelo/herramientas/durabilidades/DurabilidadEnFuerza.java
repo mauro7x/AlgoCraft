@@ -13,7 +13,7 @@ public class DurabilidadEnFuerza extends Durabilidad {
     @Override
     public void gastar(float fuerza) {
         durabilidad -=(fuerza/FactorReduccion);
-        if(durabilidad == 0){
+        if(durabilidad <= 0){
             Juego.getJuego().getJugador().eliminarHerramientaActual();
         }
     }

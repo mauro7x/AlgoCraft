@@ -2,10 +2,10 @@ package vista;
 
 import controladores.menuPrincipal.BotonCeldaConstructorHandler;
 import controladores.menuPrincipal.BotonMaterialConstructorHandler;
+
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.geometry.VPos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
@@ -18,12 +18,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.RowConstraints;
+
 import modelo.Juego;
 import modelo.herramientas.*;
 import modelo.jugador.InventarioMateriales;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.function.Supplier;
 
@@ -342,10 +341,6 @@ public class VistaConstructor {
                 resultado = Integer.toString(0);
             }
         }
-
-        System.out.print(idConstruccion);
-        System.out.print(Arrays.toString(receta));
-
         actualizarVistaConstructor();
     }
 

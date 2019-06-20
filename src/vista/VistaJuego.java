@@ -1,7 +1,7 @@
 package vista;
 
 import controladores.menuPrincipal.ControlScrollHandler;
-import controladores.menuPrincipal.ControlesMovimientoHandler;
+import controladores.menuPrincipal.ControlesTecladoHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -127,7 +127,7 @@ public class VistaJuego {
 
         Scene escena = new Scene(contenedorPrincipal,contenedorPrincipal.getPrefWidth(),contenedorPrincipal.getPrefHeight());
 
-        escena.setOnKeyPressed(new ControlesMovimientoHandler(this));
+        escena.setOnKeyPressed(new ControlesTecladoHandler(this));
         escena.setOnScroll(new ControlScrollHandler(this));
 
         return escena;

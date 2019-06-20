@@ -22,6 +22,11 @@ public class Jugador implements OcupanteDeCelda {
         materiales = new InventarioMateriales();
     }
 
+    public void resetear(Posicion posicionInicialReseteo){
+        this.posicion = posicionInicialReseteo;
+        this.orientacion = new OrientacionArriba();
+    }
+
     public Posicion getPosicion(){ return this.posicion; }
 
     public Orientacion getOrientacion() {

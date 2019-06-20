@@ -38,6 +38,13 @@ public class Juego {
         generarJugador();
     }
 
+    public void resetearMapa(){
+        mapa = new Mapa(X_MAX, Y_MAX);
+        generarRecursos();
+        jugador.resetear(new Posicion(X_MAX /2, Y_MAX /2));
+        mapa.ubicarEnElCentro(jugador);
+    }
+
     public Jugador getJugador() {
         return jugador;
     }

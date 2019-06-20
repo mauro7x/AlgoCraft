@@ -1,5 +1,7 @@
 package modelo;
 
+import modelo.herramientas.FabricaHerramientas;
+import modelo.herramientas.Herramienta;
 import modelo.jugador.Jugador;
 import modelo.mapa.Celda;
 import modelo.mapa.CeldaVacia;
@@ -35,4 +37,17 @@ public class JuegoTest {
         jugador = juego.getJugador();
         assertEquals(celdaCentral.getPosicion(), jugador.getPosicion());
     }
+
+    @Test
+    public void test03SeReseteaElMapaPeroElJugadorConservaSusHerramientas(){
+        Juego juego = Juego.getJuego();
+        juego.resetear();
+        Jugador jugador = juego.getJugador();
+        Herramienta pico = FabricaHerramientas.crearPicoDeMetal();
+        jugador.guardar(pico);
+        jugador.cambiarAHerramientaSiguiente();
+        juego.resetearMapa();
+        assertEquals(pico, jugador.getHerramientaActual());
+    }
+
 }

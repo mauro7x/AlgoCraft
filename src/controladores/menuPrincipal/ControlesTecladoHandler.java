@@ -6,11 +6,11 @@ import javafx.scene.input.KeyEvent;
 import modelo.Juego;
 import vista.VistaJuego;
 
-public class ControlesMovimientoHandler implements EventHandler<KeyEvent> {
+public class ControlesTecladoHandler implements EventHandler<KeyEvent> {
 
     private VistaJuego vistaJuego;
 
-    public ControlesMovimientoHandler(VistaJuego vistaJuego){
+    public ControlesTecladoHandler(VistaJuego vistaJuego){
         this.vistaJuego = vistaJuego;
     }
 
@@ -48,6 +48,11 @@ public class ControlesMovimientoHandler implements EventHandler<KeyEvent> {
             vistaJuego.actualizarInventario();
             vistaJuego.dibujarMapa();
             vistaJuego.actualizarInventarioHerramientas();
+        }
+        if(keyEvent.getCode() == KeyCode.R){
+            System.out.println("RESET DEL MAPA");
+            Juego.getJuego().resetearMapa();
+            vistaJuego.dibujarMapa();
         }
     }
 }

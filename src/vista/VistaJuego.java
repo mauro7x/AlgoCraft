@@ -1,5 +1,6 @@
 package vista;
 
+import controladores.menuPrincipal.BotonConstructorHandler;
 import controladores.menuPrincipal.ControlScrollHandler;
 import controladores.menuPrincipal.ControlesTecladoHandler;
 import javafx.geometry.HPos;
@@ -7,8 +8,11 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.Button;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import modelo.Juego;
 import modelo.herramientas.FabricaHerramientas;
@@ -37,7 +41,7 @@ public class VistaJuego {
 
     private HashMap<String, Image> imagenes;
 
-
+    private BotonConstructorHandler constructorHandler;
 
     public VistaJuego(){
         cuadriculaMapa = new GridPane();
@@ -127,7 +131,7 @@ public class VistaJuego {
 
         Scene escena = new Scene(contenedorPrincipal,contenedorPrincipal.getPrefWidth(),contenedorPrincipal.getPrefHeight());
 
-        escena.setOnKeyPressed(new ControlesTecladoHandler(this));
+        escena.setOnKeyPressed(new ControlesTecladoHandler(this,constructorHandler));
         escena.setOnScroll(new ControlScrollHandler(this));
 
         return escena;
@@ -195,7 +199,18 @@ public class VistaJuego {
         etiquetaCantidadPiedra.setStyle(estiloEtiquetas);
         etiquetaCantidadMetal.setStyle(estiloEtiquetas);
         etiquetaCantidadDiamante.setStyle(estiloEtiquetas);
+
         actualizarInventario();
+
+        //Constructor
+        ImageView iconoConstructor = new ImageView(imagenes.get("picoMadera.png"));
+        Button botonConstructor = new Button("", iconoConstructor);
+        constructorHandler = new BotonConstructorHandler(this);
+        botonConstructor.setOnAction(constructorHandler);
+        botonConstructor.setDefaultButton(false);
+        botonConstructor.setCancelButton(false);
+
+        botonConstructor.setDisable(true); //No puedo hacer que cuando toco space no se presione.
 
         ColumnConstraints espacioInventario = new ColumnConstraints();
         espacioInventario.setPercentWidth(33);
@@ -205,10 +220,12 @@ public class VistaJuego {
 
         ColumnConstraints espacioConstructor = new ColumnConstraints();
         espacioConstructor.setPercentWidth(33);
-
+        espacioConstructor.setHalignment(HPos.CENTER);
         inventario.getColumnConstraints().addAll(espacioInventario,espacioInventarioHerramientas,espacioConstructor);
+
         inventario.add(itemsInventario,0,0);
         inventario.add(itemsInventarioHerramientas,1,0);
+        inventario.add(botonConstructor, 2, 0);
 
         BackgroundImage fondo = new BackgroundImage(new Image("media/hud.jpg",70,70,false,true),
                 BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
@@ -270,4 +287,5 @@ public class VistaJuego {
         int cantidadDiamante = Juego.getJuego().getJugador().getInventarioMateriales().cantidadDiamante();
         etiquetaCantidadDiamante.setText(Integer.toString(cantidadDiamante));
     }
+
 }

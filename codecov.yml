@@ -6,10 +6,12 @@ coverage:
   precision: 2
   round: down
   range: "70...100"
+
   ignore:
     - "src/controladores"
     - "src/vista"
     - "src/media"
+
   status:
     project: yes
     patch: yes
@@ -26,4 +28,4 @@ parsers:
 comment:
   layout: "header, diff"
   behavior: default
-require_changes: no
+  require_changes: no

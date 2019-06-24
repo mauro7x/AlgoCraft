@@ -77,7 +77,7 @@ public class BloqueDiamanteTest {
     @Test
     public void test06BloqueDiamanteDevuelveSuImagen(){
         Recurso diamante = new BloqueDiamante();
-        assertEquals("tileDiamante.png", diamante.obtenerImagen());
+        assertEquals("tileDiamante", diamante.obtenerImagen());
     }
 
 }

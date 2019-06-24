@@ -329,7 +329,7 @@ public class JugadorTest {
 
         ArrayList<Herramienta> herramientas = jugador.getHerramientas();
         Herramienta herramienta = herramientas.get(0);
-        assertEquals("hachaMadera.png", herramienta.obtenerImagen());
+        assertEquals("hachaMadera", herramienta.obtenerImagen());
     }
 
 
@@ -340,7 +340,7 @@ public class JugadorTest {
         Juego.getJuego().resetear();
         Jugador jugador = Juego.getJuego().getJugador();
         jugador.moverArriba();
-        assertEquals("jugadorArriba.png", jugador.obtenerImagen());
+        assertEquals("jugadorArriba", jugador.obtenerImagen());
     }
 
     @Test
@@ -348,7 +348,7 @@ public class JugadorTest {
         Juego.getJuego().resetear();
         Jugador jugador = Juego.getJuego().getJugador();
         jugador.moverAbajo();
-        assertEquals("jugadorAbajo.png", jugador.obtenerImagen());
+        assertEquals("jugadorAbajo", jugador.obtenerImagen());
     }
 
     @Test
@@ -356,7 +356,7 @@ public class JugadorTest {
         Juego.getJuego().resetear();
         Jugador jugador = Juego.getJuego().getJugador();
         jugador.moverDerecha();
-        assertEquals("jugadorDerecha.png", jugador.obtenerImagen());
+        assertEquals("jugadorDerecha", jugador.obtenerImagen());
     }
 
     @Test
@@ -364,6 +364,6 @@ public class JugadorTest {
         Juego.getJuego().resetear();
         Jugador jugador = Juego.getJuego().getJugador();
         jugador.moverIzquierda();
-        assertEquals("jugadorIzquierda.png", jugador.obtenerImagen());
+        assertEquals("jugadorIzquierda", jugador.obtenerImagen());
     }
 }

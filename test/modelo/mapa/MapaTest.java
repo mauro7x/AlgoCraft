@@ -49,6 +49,6 @@ public class MapaTest {
     @Test
     public void test01CeldaVaciaObtenerImagenDeFormaCorrecta(){
         OcupanteDeCelda celdaVacia = new CeldaVacia();
-        assertEquals("tileCeldaVacia2.png", celdaVacia.obtenerImagen());
+        assertEquals("tileCeldaVacia2", celdaVacia.obtenerImagen());
     }
 }

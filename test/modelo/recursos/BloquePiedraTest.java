@@ -98,6 +98,6 @@ public class BloquePiedraTest {
     @Test
     public void test06BloquePiedraDevuelveSuImagen(){
         Recurso piedra = new BloquePiedra();
-        assertEquals("tilePiedra.png", piedra.obtenerImagen());
+        assertEquals("tilePiedra", piedra.obtenerImagen());
     }
 }

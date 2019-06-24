@@ -59,57 +59,57 @@ public class VistaJuego {
 
     private void cargarImagenes(){
         Image celdaVacia = new Image("media/textures/tileCeldaVacia2.png",dimensionTile ,dimensionTile ,false,false);
-        imagenes.put("tileCeldaVacia2.png",celdaVacia);
+        imagenes.put("tileCeldaVacia2",celdaVacia);
 
         Image tileDiamante = new Image("media/textures/tileDiamante.png",dimensionTile ,dimensionTile ,false,false);
-        imagenes.put("tileDiamante.png",tileDiamante);
+        imagenes.put("tileDiamante",tileDiamante);
 
         Image tileMadera = new Image("media/textures/tileMadera.png",dimensionTile ,dimensionTile ,false,false);
-        imagenes.put("tileMadera.png",tileMadera);
+        imagenes.put("tileMadera",tileMadera);
 
         Image tileMetal = new Image("media/textures/tileMetal.png",dimensionTile ,dimensionTile ,false,false);
-        imagenes.put("tileMetal.png",tileMetal);
+        imagenes.put("tileMetal",tileMetal);
 
         Image tilePiedra = new Image("media/textures/tilePiedra.png",dimensionTile ,dimensionTile ,false,false);
-        imagenes.put("tilePiedra.png",tilePiedra);
+        imagenes.put("tilePiedra",tilePiedra);
 
         Image jugadorArriba = new Image("media/jugador/jugadorArriba.png",dimensionTile ,dimensionTile ,false,false);
-        imagenes.put("jugadorArriba.png",jugadorArriba);
+        imagenes.put("jugadorArriba",jugadorArriba);
 
         Image jugadorAbajo = new Image("media/jugador/jugadorAbajo.png",dimensionTile ,dimensionTile ,false,false);
-        imagenes.put("jugadorAbajo.png",jugadorAbajo);
+        imagenes.put("jugadorAbajo" ,jugadorAbajo);
 
         Image jugadorDerecha = new Image("media/jugador/jugadorDerecha.png",dimensionTile ,dimensionTile ,false,false);
-        imagenes.put("jugadorDerecha.png",jugadorDerecha);
+        imagenes.put("jugadorDerecha",jugadorDerecha);
 
         Image jugadorIzquierda = new Image("media/jugador/jugadorIzquierda.png",dimensionTile ,dimensionTile ,false,false);
-        imagenes.put("jugadorIzquierda.png",jugadorIzquierda);
+        imagenes.put("jugadorIzquierda",jugadorIzquierda);
 
         Image hachaMadera = new Image("media/herramientas/hachaMadera.png",dimensionHerramienta ,dimensionHerramienta ,false,false);
-        imagenes.put("hachaMadera.png",hachaMadera);
+        imagenes.put("hachaMadera",hachaMadera);
 
         Image hachaMetal = new Image("media/herramientas/hachaMetal.png",dimensionHerramienta ,dimensionHerramienta ,false,false);
-        imagenes.put("hachaMetal.png",hachaMetal);
+        imagenes.put("hachaMetal",hachaMetal);
 
         Image hachaPiedra = new Image("media/herramientas/hachaPiedra.png",dimensionHerramienta ,dimensionHerramienta ,false,false);
-        imagenes.put("hachaPiedra.png",hachaPiedra);
+        imagenes.put("hachaPiedra",hachaPiedra);
 
         Image picoMadera = new Image("media/herramientas/picoMadera.png",dimensionHerramienta ,dimensionHerramienta ,false,false);
-        imagenes.put("picoMadera.png",picoMadera);
+        imagenes.put("picoMadera",picoMadera);
 
         Image picoPiedra = new Image("media/herramientas/picoPiedra.png",dimensionHerramienta,dimensionHerramienta,false,false);
-        imagenes.put("picoPiedra.png",picoPiedra);
+        imagenes.put("picoPiedra",picoPiedra);
 
         Image picoMetal = new Image("media/herramientas/picoMetal.png",dimensionHerramienta,dimensionHerramienta,false,false);
-        imagenes.put("picoMetal.png",picoMetal);
+        imagenes.put("picoMetal",picoMetal);
 
         Image picoFino = new Image("media/herramientas/picoFino.png",dimensionHerramienta,dimensionHerramienta,false,false);
-        imagenes.put("picoFino.png",picoFino);
+        imagenes.put("picoFino",picoFino);
     }
 
     public Scene generarVistaJuego(){
 
-        BorderPane contenedorPrincipal = new BorderPane();
+        BorderPane root = new BorderPane();
         cuadriculaMapa.setHgap(0);
         cuadriculaMapa.setVgap(0);
         cuadriculaMapa.setPadding(new Insets(0,0,0,0));
@@ -119,19 +119,14 @@ public class VistaJuego {
 
         dibujarMapa();
 
-        /*juego.getJugador().guardar(FabricaHerramientas.crearHachaDePiedra());
-        juego.getJugador().guardar(FabricaHerramientas.crearPicoDeMetal());
-        juego.getJugador().guardar(FabricaHerramientas.crearPicoFino());
-        juego.getJugador().guardar(FabricaHerramientas.crearPicoDeMadera());*/
+        GridPane barraInventario = generarInventario();
 
-        GridPane inventarioHerramientas = generarInventario();
+        root.setBottom(barraInventario);
+        root.setCenter(cuadriculaMapa);
 
-        contenedorPrincipal.setBottom(inventarioHerramientas);
-        contenedorPrincipal.setCenter(cuadriculaMapa);
+        Scene escena = new Scene(root,root.getPrefWidth(),root.getPrefHeight());
 
-        Scene escena = new Scene(contenedorPrincipal,contenedorPrincipal.getPrefWidth(),contenedorPrincipal.getPrefHeight());
-
-        escena.setOnKeyPressed(new ControlesTecladoHandler(this,constructorHandler));
+        escena.setOnKeyPressed(new ControlesTecladoHandler(this));
         escena.setOnScroll(new ControlScrollHandler(this));
 
         return escena;
@@ -201,16 +196,6 @@ public class VistaJuego {
 
         actualizarInventario();
 
-        //Constructor
-        ImageView iconoConstructor = new ImageView(imagenes.get("picoMadera.png"));
-        Button botonConstructor = new Button("", iconoConstructor);
-        constructorHandler = new BotonConstructorHandler(this);
-        botonConstructor.setOnAction(constructorHandler);
-        botonConstructor.setDefaultButton(false);
-        botonConstructor.setCancelButton(false);
-
-        botonConstructor.setDisable(true); //No puedo hacer que cuando toco space no se presione.
-
         ColumnConstraints espacioInventario = new ColumnConstraints();
         espacioInventario.setPercentWidth(33);
 
@@ -224,7 +209,6 @@ public class VistaJuego {
 
         inventario.add(itemsInventario,0,0);
         inventario.add(itemsInventarioHerramientas,1,0);
-        inventario.add(botonConstructor, 2, 0);
 
         BackgroundImage fondo = new BackgroundImage(new Image("media/hud.jpg",70,70,false,true),
                 BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
@@ -240,27 +224,6 @@ public class VistaJuego {
         ArrayList<Herramienta> herramientas = jugador.getHerramientas();
 
         itemsInventarioHerramientas.getChildren().clear();
-
-        if(herramientas.size() == 0){
-            /*Pane bordeHerramientaAnterior = new Pane();
-            bordeHerramientaAnterior.setPrefWidth(dimensionHerramienta);
-            bordeHerramientaAnterior.setPrefHeight(dimensionHerramienta);
-            bordeHerramientaAnterior.setStyle("-fx-border-color: #AAAAAA;-fx-border-radius: 2px; -fx-border-width: 1px");
-            itemsInventarioHerramientas.add(bordeHerramientaAnterior,0,0);
-
-            Pane bordeHerramientaSiguiente = new Pane();
-            bordeHerramientaSiguiente.setPrefWidth(dimensionHerramienta);
-            bordeHerramientaSiguiente.setPrefHeight(dimensionHerramienta);
-            bordeHerramientaAnterior.setStyle("-fx-border-color: #AAAAAA;-fx-border-radius: 2px; -fx-border-width: 1px");
-            itemsInventarioHerramientas.add(bordeHerramientaAnterior,2,0);
-
-            Pane bordeHerramientaActual = new Pane();
-            bordeHerramientaActual.setPrefWidth(dimensionHerramienta);
-            bordeHerramientaActual.setPrefHeight(dimensionHerramienta);
-            bordeHerramientaActual.setStyle("-fx-border-color: #000000;-fx-border-radius: 2px; -fx-border-width: 4px");
-            itemsInventarioHerramientas.add(bordeHerramientaActual,1,0);*/
-            return;
-        }
 
         for(int i=0;i<herramientas.size();i++){
             Herramienta herramientaActual = herramientas.get(i);

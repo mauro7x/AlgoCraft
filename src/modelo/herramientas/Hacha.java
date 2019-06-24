@@ -16,7 +16,7 @@ public class Hacha extends Herramienta {
         hacha.fuerza = 2;
         hacha.reglasDeDesgaste = new ReglasEstandarHacha();
         hacha.id = 10;
-        hacha.imagen = "hachaMadera.png";
+        hacha.imagen = "hachaMadera";
         return hacha;
     }
     static Herramienta dePiedra(){
@@ -26,7 +26,7 @@ public class Hacha extends Herramienta {
         hacha.fuerza = 5;
         hacha.reglasDeDesgaste = new ReglasEstandarHacha();
         hacha.id = 11;
-        hacha.imagen = "hachaPiedra.png";
+        hacha.imagen = "hachaPiedra";
         return hacha;
     }
     static Herramienta deMetal(){
@@ -36,7 +36,7 @@ public class Hacha extends Herramienta {
         hacha.fuerza = 10;
         hacha.reglasDeDesgaste = new ReglasEstandarHacha();
         hacha.id = 12;
-        hacha.imagen = "hachaMetal.png";
+        hacha.imagen = "hachaMetal";
         return hacha;
     }
 

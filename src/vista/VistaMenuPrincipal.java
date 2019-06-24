@@ -36,12 +36,36 @@ public class VistaMenuPrincipal {
 
         Image logo = new Image("media/Algocraft.png");
         ImageView vistaLogo = new ImageView(logo);
-        VBox contenedorPrincipal = new VBox();
+        VBox root = new VBox();
 
-        contenedorPrincipal.getChildren().addAll(vistaLogo,botonJugar,botonAcercaDe);
-        contenedorPrincipal.setSpacing(20);
-        contenedorPrincipal.setAlignment(Pos.CENTER);
+        root.getChildren().addAll(vistaLogo,botonJugar,botonAcercaDe);
+        root.setSpacing(20);
+        root.setAlignment(Pos.CENTER);
 
+        BackgroundImage[] fondos = cargarFondos();
+
+        root.setBackground(new Background(fondos[0]));
+        Timeline carruselFondo = new Timeline(new KeyFrame(Duration.seconds(3), new EventHandler<ActionEvent>() {
+            int i = 0;
+
+            @Override
+            public void handle(ActionEvent event) {
+                i = (i+1)%fondos.length;
+                root.setBackground(new Background(fondos[i]));
+            }
+        }));
+        carruselFondo.setCycleCount(Timeline.INDEFINITE);
+        carruselFondo.play();
+
+        FadeTransition transicion = new FadeTransition(Duration.millis(3500),vistaLogo);
+        transicion.setFromValue(0);
+        transicion.setToValue(10);
+        transicion.play();
+
+        return new Scene(root,900,500);
+    }
+
+    private BackgroundImage[] cargarFondos(){
         BackgroundImage fondo1= new BackgroundImage(new Image("media/fondo.jpg",900,500,false,true),
                 BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);
@@ -55,25 +79,7 @@ public class VistaMenuPrincipal {
                 BackgroundSize.DEFAULT);
 
         BackgroundImage[] fondos = {fondo1,fondo2,fondo3};
+        return fondos;
 
-        contenedorPrincipal.setBackground(new Background(fondo1));
-        Timeline carruselFondo = new Timeline(new KeyFrame(Duration.seconds(3), new EventHandler<ActionEvent>() {
-            int i = 0;
-
-            @Override
-            public void handle(ActionEvent event) {
-                i = (i+1)%fondos.length;
-                contenedorPrincipal.setBackground(new Background(fondos[i]));
-            }
-        }));
-        carruselFondo.setCycleCount(Timeline.INDEFINITE);
-        carruselFondo.play();
-
-        FadeTransition transicion = new FadeTransition(Duration.millis(3500),vistaLogo);
-        transicion.setFromValue(0);
-        transicion.setToValue(10);
-        transicion.play();
-
-        return new Scene(contenedorPrincipal,900,500);
     }
 }

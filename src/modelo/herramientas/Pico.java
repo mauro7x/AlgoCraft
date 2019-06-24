@@ -18,7 +18,7 @@ public class Pico extends Herramienta {
         pico.fuerza = 2;
         pico.reglasDeDesgaste = new ReglasEstandarPico();
         pico.id = 13;
-        pico.imagen = "picoMadera.png";
+        pico.imagen = "picoMadera";
         return pico;
     }
     static Herramienta dePiedra(){
@@ -28,7 +28,7 @@ public class Pico extends Herramienta {
         pico.fuerza = 4;
         pico.reglasDeDesgaste = new ReglasPicoPiedra(new ReglasEstandarPico());
         pico.id = 14;
-        pico.imagen = "picoPiedra.png";
+        pico.imagen = "picoPiedra";
         return pico;
     }
     static Herramienta deMetal(){
@@ -38,7 +38,7 @@ public class Pico extends Herramienta {
         pico.fuerza = 12;
         pico.reglasDeDesgaste = new ReglasEstandarPico();
         pico.id = 15;
-        pico.imagen = "picoMetal.png";
+        pico.imagen = "picoMetal";
         return pico;
     }
 

@@ -14,9 +14,9 @@ public class ControlesTecladoHandler implements EventHandler<KeyEvent> {
     private VistaJuego vistaJuego;
     private BotonConstructorHandler constructorHandler;
 
-    public ControlesTecladoHandler(VistaJuego vistaJuego, BotonConstructorHandler constructorHandler){
+    public ControlesTecladoHandler(VistaJuego vistaJuego){
         this.vistaJuego = vistaJuego;
-        this.constructorHandler = constructorHandler;
+        this.constructorHandler = new BotonConstructorHandler(vistaJuego);
     }
 
     @Override

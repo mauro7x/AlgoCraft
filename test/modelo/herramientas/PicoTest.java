@@ -108,18 +108,18 @@ public class PicoTest {
     @Test
     public void test01PicoMaderaDevuelveSuImagen(){
         Herramienta pico = FabricaHerramientas.crearPicoDeMadera();
-        assertEquals("picoMadera.png",pico.obtenerImagen());
+        assertEquals("picoMadera",pico.obtenerImagen());
     }
 
     @Test
     public void test02PicoPiedraDevuelveSuImagen(){
         Herramienta pico = FabricaHerramientas.crearPicoDePiedra();
-        assertEquals("picoPiedra.png",pico.obtenerImagen());
+        assertEquals("picoPiedra",pico.obtenerImagen());
     }
 
     @Test
     public void test03PicoMetalDevuelveSuImagen(){
         Herramienta pico = FabricaHerramientas.crearPicoDeMetal();
-        assertEquals("picoMetal.png",pico.obtenerImagen());
+        assertEquals("picoMetal",pico.obtenerImagen());
     }
 }

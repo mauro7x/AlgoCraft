@@ -16,7 +16,7 @@ public class PicoFino extends Herramienta {
         picoFino.fuerza = 20;
         picoFino.reglasDeDesgaste = new ReglasEstandarPicoFino();
         picoFino.id = 16;
-        picoFino.imagen = "picoFino.png";
+        picoFino.imagen = "picoFino";
         return picoFino;
     }
 

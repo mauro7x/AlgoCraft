@@ -65,7 +65,7 @@ public class PicoFinoTest {
     @Test
     public void test01PicoFinoDevuelveSuImagen(){
         Herramienta picoFino = FabricaHerramientas.crearPicoFino();
-        assertEquals("picoFino.png",picoFino.obtenerImagen());
+        assertEquals("picoFino",picoFino.obtenerImagen());
     }
 
 }

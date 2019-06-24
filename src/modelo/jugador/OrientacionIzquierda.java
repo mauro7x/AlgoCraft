@@ -6,7 +6,7 @@ import modelo.herramientas.Herramienta;
 
 public class OrientacionIzquierda implements Orientacion {
 
-    private static String imagen = "jugadorIzquierda.png";
+    private static String imagen = "jugadorIzquierda";
 
     @Override
     public void golpear(Herramienta herramientaActual) {

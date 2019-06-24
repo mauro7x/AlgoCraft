@@ -105,7 +105,7 @@ public class BloqueMaderaTest {
     @Test
     public void test06BloqueMaderaDevuelveSuImagen(){
         Recurso madera = new BloqueMadera();
-        assertEquals("tileMadera.png", madera.obtenerImagen());
+        assertEquals("tileMadera", madera.obtenerImagen());
     }
 
 

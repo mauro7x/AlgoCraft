@@ -6,7 +6,7 @@ import modelo.mapa.Posicion;
 
 public class BloqueMadera extends Recurso {
 
-    private static String imagen = "tileMadera.png";
+    private static String imagen = "tileMadera";
 
     public BloqueMadera(){
         this.durabilidad = 10;

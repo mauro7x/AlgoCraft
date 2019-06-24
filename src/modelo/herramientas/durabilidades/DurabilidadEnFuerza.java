@@ -15,6 +15,7 @@ public class DurabilidadEnFuerza extends Durabilidad {
         durabilidad -=(fuerza/FactorReduccion);
         if(durabilidad <= 0){
             Juego.getJuego().getJugador().eliminarHerramientaActual();
+
         }
     }
 }

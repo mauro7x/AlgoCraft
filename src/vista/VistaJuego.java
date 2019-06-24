@@ -9,6 +9,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -196,19 +197,32 @@ public class VistaJuego {
 
         actualizarInventario();
 
+        TextArea consola = new TextArea();
+        consola.setPrefRowCount(2);
+        consola.setPrefColumnCount(10);
+        consola.setEditable(false);
+        consola.setFocusTraversable(false);
+        consola.setMouseTransparent(true);
+        consola.setOpacity(0.6);
+        consola.setText("Bienvenido a AlgoCraft!\n");
+        consola.setStyle("-fx-font-weight: bold;");
+        Juego.getJuego().setConsola(consola);
+
         ColumnConstraints espacioInventario = new ColumnConstraints();
+
         espacioInventario.setPercentWidth(33);
 
         ColumnConstraints espacioInventarioHerramientas = new ColumnConstraints();
         espacioInventarioHerramientas.setPercentWidth(33);
 
-        ColumnConstraints espacioConstructor = new ColumnConstraints();
-        espacioConstructor.setPercentWidth(33);
-        espacioConstructor.setHalignment(HPos.CENTER);
-        inventario.getColumnConstraints().addAll(espacioInventario,espacioInventarioHerramientas,espacioConstructor);
+        ColumnConstraints espacioConsola = new ColumnConstraints();
+        espacioConsola.setPercentWidth(33);
+        espacioConsola.setHalignment(HPos.CENTER);
+        inventario.getColumnConstraints().addAll(espacioInventario,espacioInventarioHerramientas,espacioConsola);
 
         inventario.add(itemsInventario,0,0);
         inventario.add(itemsInventarioHerramientas,1,0);
+        inventario.add(consola,2,0);
 
         BackgroundImage fondo = new BackgroundImage(new Image("media/hud.jpg",70,70,false,true),
                 BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,

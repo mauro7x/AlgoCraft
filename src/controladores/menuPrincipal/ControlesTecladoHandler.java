@@ -59,6 +59,7 @@ public class ControlesTecladoHandler implements EventHandler<KeyEvent> {
         if(keyEvent.getCode() == KeyCode.R){
             juego.resetearMapa();
             vistaJuego.dibujarMapa();
+            juego.imprimirPorConsola("Nuevo mapa generado.");
         }
 
         if(keyEvent.getCode() == KeyCode.C){

@@ -30,6 +30,7 @@ public class BloqueDiamante extends Recurso {
     @Override
     public void agregarRecursoAlInventario(){
         Juego.getJuego().getJugador().getInventarioMateriales().agregarDiamante();
+        Juego.getJuego().imprimirPorConsola("+1 Diamante");
     }
 
 

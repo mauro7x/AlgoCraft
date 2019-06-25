@@ -1,5 +1,6 @@
 package modelo.jugador;
 
+import modelo.Juego;
 import modelo.herramientas.FabricaHerramientas;
 import modelo.herramientas.Herramienta;
 
@@ -30,6 +31,7 @@ public class InventarioHerramientas{
         this.herramientas.remove(herramientaActual);
         this.cantidadDeHerramientas -= 1;
         this.cambiarAHerramientaSiguiente();
+        Juego.getJuego().imprimirPorConsola("Herramienta rota.");
     }
 
     public void cambiarAHerramientaSiguiente(){

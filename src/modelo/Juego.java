@@ -1,5 +1,7 @@
 package modelo;
 
+import javafx.scene.control.TextArea;
+import javafx.scene.text.TextFlow;
 import modelo.jugador.Jugador;
 import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;
@@ -13,6 +15,7 @@ public class Juego {
     private Constructor constructor;
     private Mapa mapa;
     private Jugador jugador;
+    private TextArea consola = null;
 
     public static Juego getJuego() {
         return juego;
@@ -68,6 +71,16 @@ public class Juego {
     }
     public void moverJugadorDerecha(Jugador jugador){
         mapa.moverJugadorDerecha(jugador);
+    }
+
+    public void setConsola(TextArea consola){
+        this.consola = consola;
+    }
+
+    public void imprimirPorConsola(String texto) {
+        if(consola != null){
+            consola.appendText(texto+"\n");
+        }
     }
 
 

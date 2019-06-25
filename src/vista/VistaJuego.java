@@ -15,6 +15,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
+import javafx.scene.media.AudioClip;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
+import javafx.util.Duration;
 import modelo.Juego;
 import modelo.herramientas.FabricaHerramientas;
 import modelo.herramientas.Herramienta;
@@ -23,8 +28,11 @@ import modelo.mapa.Mapa;
 import modelo.mapa.OcupanteDeCelda;
 import modelo.mapa.Posicion;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class VistaJuego {
 
@@ -44,6 +52,9 @@ public class VistaJuego {
 
     private BotonConstructorHandler constructorHandler;
 
+    private boolean sonidoCaminarDisponible = true;
+    private AudioClip sonidoCaminar;
+
     public VistaJuego(){
         cuadriculaMapa = new GridPane();
         itemsInventarioHerramientas = new GridPane();
@@ -54,6 +65,16 @@ public class VistaJuego {
         etiquetaCantidadMetal = new Label();
         etiquetaCantidadDiamante = new Label();
 
+        sonidoCaminar = new AudioClip(new File("src/media/sonidos/sonidoPasto.mp3").toURI().toString());
+        sonidoCaminar.setVolume(0.5);
+        new Timer().schedule(
+                new TimerTask() {
+                    @Override
+                    public void run() {
+                        sonidoCaminarDisponible = true;
+                    }
+                }, 500, 500);
+        
         imagenes = new HashMap<>();
         cargarImagenes();
     }
@@ -129,6 +150,20 @@ public class VistaJuego {
 
         escena.setOnKeyPressed(new ControlesTecladoHandler(this));
         escena.setOnScroll(new ControlScrollHandler(this));
+
+
+        Media cancion = new Media(new File("src/media/sonidos/game.mp3").toURI().toString());
+        MediaPlayer reproductor = new MediaPlayer(cancion);
+        reproductor.setVolume(1.0);
+        reproductor.setOnEndOfMedia(new Runnable() {
+            @Override
+            public void run() {
+                reproductor.seek(Duration.ZERO);
+            }
+        });
+        MediaView vistaReproductor = new MediaView(reproductor);
+        root.getChildren().addAll(vistaReproductor);
+        reproductor.setAutoPlay(true);
 
         return escena;
     }
@@ -283,6 +318,13 @@ public class VistaJuego {
 
         int cantidadDiamante = Juego.getJuego().getJugador().getInventarioMateriales().cantidadDiamante();
         etiquetaCantidadDiamante.setText(Integer.toString(cantidadDiamante));
+    }
+
+    public void hacerSonidoCaminar(){
+        if(sonidoCaminarDisponible){
+            sonidoCaminar.play();
+            sonidoCaminarDisponible = false;
+        }
     }
 
 }

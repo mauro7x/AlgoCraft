@@ -13,9 +13,13 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.File;
 import java.io.IOException;
 
 public class VistaMenuPrincipal {
@@ -28,8 +32,6 @@ public class VistaMenuPrincipal {
         BotonAcercaDeHandler handlerAcercade = new BotonAcercaDeHandler();
         botonAcercaDe.setOnAction(handlerAcercade);
 
-        BotonJugarHandler handleJugar = new BotonJugarHandler(ventanaPrincipal);
-        botonJugar.setOnAction(handleJugar);
 
         botonJugar.setStyle(estiloBotones);
         botonAcercaDe.setStyle(estiloBotones);
@@ -61,6 +63,22 @@ public class VistaMenuPrincipal {
         transicion.setFromValue(0);
         transicion.setToValue(10);
         transicion.play();
+
+        Media cancion = new Media(new File("src/media/sonidos/mainMenu.mp3").toURI().toString());
+        MediaPlayer reproductor = new MediaPlayer(cancion);
+        reproductor.setVolume(0.5);
+        reproductor.setOnEndOfMedia(new Runnable() {
+            @Override
+            public void run() {
+                reproductor.seek(Duration.ZERO);
+            }
+        });
+        MediaView vistaReproductor = new MediaView(reproductor);
+        root.getChildren().addAll(vistaReproductor);
+        reproductor.setAutoPlay(true);
+
+        BotonJugarHandler handleJugar = new BotonJugarHandler(ventanaPrincipal,reproductor);
+        botonJugar.setOnAction(handleJugar);
 
         return new Scene(root,900,500);
     }

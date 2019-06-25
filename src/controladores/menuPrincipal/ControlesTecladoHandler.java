@@ -25,18 +25,22 @@ public class ControlesTecladoHandler implements EventHandler<KeyEvent> {
 
         if(keyEvent.getCode() == KeyCode.W || keyEvent.getCode() == KeyCode.UP){
             juego.getJugador().moverArriba();
+            vistaJuego.hacerSonidoCaminar();
             vistaJuego.dibujarMapa();
         }
         if(keyEvent.getCode() == KeyCode.S || keyEvent.getCode() == KeyCode.DOWN){
             juego.getJugador().moverAbajo();
+            vistaJuego.hacerSonidoCaminar();
             vistaJuego.dibujarMapa();
         }
         if(keyEvent.getCode() == KeyCode.A || keyEvent.getCode() == KeyCode.LEFT){
             juego.getJugador().moverIzquierda();
+            vistaJuego.hacerSonidoCaminar();
             vistaJuego.dibujarMapa();
         }
         if(keyEvent.getCode() == KeyCode.D || keyEvent.getCode() == KeyCode.RIGHT){
             juego.getJugador().moverDerecha();
+            vistaJuego.hacerSonidoCaminar();
             vistaJuego.dibujarMapa();
         }
         if(keyEvent.getCode() == KeyCode.Q){

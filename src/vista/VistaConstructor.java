@@ -62,8 +62,6 @@ public class VistaConstructor {
     
     private String materialActual = "Vacio";
 
-    private Lighting efectoSeleccion;
-
     public VistaConstructor(VistaJuego vistaJuego) {
         constructorHerramientas = new GridPane();
         cuadriculaConstructorHerramientas = new GridPane();
@@ -92,13 +90,6 @@ public class VistaConstructor {
         cargarCodigosConstructor();
 
         resultado = "Vacio";
-
-        efectoSeleccion = new Lighting();
-        efectoSeleccion.setDiffuseConstant(1.0);
-        efectoSeleccion.setSpecularConstant(0.0);
-        efectoSeleccion.setSpecularExponent(0.0);
-        efectoSeleccion.setSurfaceScale(0.0);
-        efectoSeleccion.setLight(new Light.Distant(45, 45, YELLOW));
     }
 
     private void cargarImagenes(){

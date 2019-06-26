@@ -21,6 +21,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 
+import javafx.scene.layout.RowConstraints;
 import modelo.Juego;
 import modelo.herramientas.*;
 import modelo.jugador.InventarioMateriales;
@@ -41,6 +42,8 @@ public class VistaConstructor {
     private GridPane cuadriculaConstructorHerramientas;
     private GridPane itemsInventario;
     private GridPane resultadoConstructor;
+    private GridPane resultadoConstructorImagen;
+    private GridPane resultadoConstructorBotonConstruir;
 
     private String resultado;
 
@@ -66,6 +69,8 @@ public class VistaConstructor {
         cuadriculaConstructorHerramientas = new GridPane();
         itemsInventario = new GridPane();
         resultadoConstructor = new GridPane();
+        resultadoConstructorImagen = new GridPane();
+        resultadoConstructorBotonConstruir = new GridPane();
 
         etiquetaCantidadMadera = new Label();
         etiquetaCantidadPiedra = new Label();
@@ -201,10 +206,15 @@ public class VistaConstructor {
         cuadriculaConstructorHerramientas.setPadding(new Insets(0,0,0,8));
         cuadriculaConstructorHerramientas.setAlignment(Pos.CENTER);
 
-        resultadoConstructor.setVgap(0);
-        resultadoConstructor.setHgap(0);
+        resultadoConstructor.setVgap(15);
+        resultadoConstructor.setHgap(10);
         resultadoConstructor.setAlignment(Pos.CENTER);
         resultadoConstructor.setPadding(new Insets(0,0,0,0));
+
+        resultadoConstructorImagen.setAlignment(Pos.CENTER);
+        resultadoConstructorImagen.setPadding(new Insets(0,0,0,0));
+        resultadoConstructorBotonConstruir.setAlignment(Pos.BASELINE_LEFT);
+        resultadoConstructorBotonConstruir.setPadding(new Insets(0,0,0,0));
 
         ImageView flechaConstructor = new ImageView(imagenes.get("Flecha"));
 
@@ -212,11 +222,11 @@ public class VistaConstructor {
 
         ColumnConstraints espacioCuadriculaConstructor = new ColumnConstraints();
         espacioCuadriculaConstructor.setPercentWidth(50);
-        espacioCuadriculaConstructor.setHalignment(HPos.CENTER);
+        espacioCuadriculaConstructor.setHalignment(HPos.LEFT);
 
         ColumnConstraints espacioFlechaConstructor = new ColumnConstraints();
         espacioFlechaConstructor.setPercentWidth(15);
-        espacioFlechaConstructor.setHalignment(HPos.CENTER);
+        espacioFlechaConstructor.setHalignment(HPos.RIGHT);
 
         ColumnConstraints espacioResultadoConstructor = new ColumnConstraints();
         espacioResultadoConstructor.setPercentWidth(35);
@@ -258,12 +268,20 @@ public class VistaConstructor {
         ImageView imagenResultadoConstructor = new ImageView(imagenes.get(resultado));
 
         Button botonConstruir = new Button("Construir");
-        botonConstruir.setOnAction((event) -> { construir(false);vistaJuego.actualizarInventarioHerramientas(); });
+        botonConstruir.setOnAction((event) -> {
+            construir(false);
+            vistaJuego.actualizarInventarioHerramientas();
+        });
+
+        resultadoConstructorBotonConstruir.getChildren().clear();
+        resultadoConstructorBotonConstruir.add(botonConstruir, 0, 1);
+
+        resultadoConstructorImagen.getChildren().clear();
+        resultadoConstructorImagen.add(imagenResultadoConstructor, 0 , 1);
 
         resultadoConstructor.getChildren().clear();
-        resultadoConstructor.add(imagenResultadoConstructor, 0, 1);
-        resultadoConstructor.add(botonConstruir,0,2);
-
+        resultadoConstructor.add(resultadoConstructorImagen, 0, 1);
+        resultadoConstructor.add(resultadoConstructorBotonConstruir,0,2);
     }
 
     public void dibujarItemsInventario(){

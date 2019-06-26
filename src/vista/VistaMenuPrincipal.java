@@ -1,7 +1,8 @@
 package vista;
 
-import controladores.menuPrincipal.BotonAcercaDeHandler;
-import controladores.menuPrincipal.BotonJugarHandler;
+import controladores.BotonAcercaDeHandler;
+import controladores.BotonControlesHandler;
+import controladores.BotonJugarHandler;
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -24,6 +25,7 @@ public class VistaMenuPrincipal {
 
         Button botonJugar = new Button("Jugar");
         Button botonAcercaDe = new Button("Acerca De");
+        Button botonControles = new Button("Controles");
 
         BotonAcercaDeHandler handlerAcercade = new BotonAcercaDeHandler();
         botonAcercaDe.setOnAction(handlerAcercade);
@@ -31,14 +33,18 @@ public class VistaMenuPrincipal {
         BotonJugarHandler handleJugar = new BotonJugarHandler(ventanaPrincipal);
         botonJugar.setOnAction(handleJugar);
 
+        BotonControlesHandler handlerControles = new BotonControlesHandler();
+        botonControles.setOnAction(handlerControles);
+
         botonJugar.setStyle(estiloBotones);
         botonAcercaDe.setStyle(estiloBotones);
+        botonControles.setStyle(estiloBotones);
 
         Image logo = new Image("media/Algocraft.png");
         ImageView vistaLogo = new ImageView(logo);
         VBox root = new VBox();
 
-        root.getChildren().addAll(vistaLogo,botonJugar,botonAcercaDe);
+        root.getChildren().addAll(vistaLogo,botonJugar,botonAcercaDe, botonControles);
         root.setSpacing(20);
         root.setAlignment(Pos.CENTER);
 

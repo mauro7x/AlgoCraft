@@ -1,4 +1,4 @@
-package controladores.menuPrincipal;
+package controladores;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -12,7 +12,7 @@ public class BotonAcercaDeHandler implements EventHandler<ActionEvent> {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Informacion");
         alert.setHeaderText("Acerca de este juego");
-        alert.setContentText("Desarrollado por Mauro Parafati, Santiago Klein y Nicolas Aguerre para Algoritmos y Programacion III." +
+        alert.setContentText("Desarrollado por Mauro Parafati, Santiago Klein y Nicolas Aguerre para Algoritmos y Programacion III. \n\n" +
                 "1° Cuatrimestre 2019.");
         alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
         alert.show();

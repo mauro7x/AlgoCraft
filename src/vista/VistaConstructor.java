@@ -1,8 +1,9 @@
 package vista;
 
-import controladores.menuPrincipal.BotonCeldaConstructorHandler;
-import controladores.menuPrincipal.BotonMaterialConstructorHandler;
+import controladores.BotonCeldaConstructorHandler;
+import controladores.BotonMaterialConstructorHandler;
 
+import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -15,6 +16,7 @@ import javafx.scene.effect.Light;
 import javafx.scene.effect.Lighting;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
@@ -23,6 +25,7 @@ import modelo.Juego;
 import modelo.herramientas.*;
 import modelo.jugador.InventarioMateriales;
 
+import java.awt.event.MouseEvent;
 import java.util.HashMap;
 import java.util.function.Supplier;
 

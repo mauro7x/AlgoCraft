@@ -1,4 +1,4 @@
-package controladores.menuPrincipal;
+package controladores;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.ScrollEvent;

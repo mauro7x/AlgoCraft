@@ -1,8 +1,11 @@
-package controladores.menuPrincipal;
+package controladores;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.input.MouseButton;
 import vista.VistaConstructor;
+
+import java.awt.event.MouseEvent;
 
 public class BotonCeldaConstructorHandler implements EventHandler<ActionEvent> {
     private VistaConstructor vista;

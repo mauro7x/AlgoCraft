@@ -1,13 +1,10 @@
-package controladores.menuPrincipal;
+package controladores;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import modelo.Juego;
 import vista.VistaJuego;
-
-
-import java.security.Key;
 
 public class ControlesTecladoHandler implements EventHandler<KeyEvent> {
 

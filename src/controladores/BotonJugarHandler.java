@@ -1,4 +1,4 @@
-package controladores.menuPrincipal;
+package controladores;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

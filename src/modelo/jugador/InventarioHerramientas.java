@@ -24,6 +24,7 @@ public class InventarioHerramientas{
     public void guardar(Herramienta herramienta){
         this.herramientas.add(herramienta);
         this.cantidadDeHerramientas += 1;
+        Juego.getJuego().imprimirPorConsola("Herramienta construida.");
     }
 
     public void eliminarHerramientaActual(){

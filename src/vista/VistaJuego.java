@@ -1,22 +1,18 @@
 package vista;
 
-import controladores.menuPrincipal.BotonConstructorHandler;
-import controladores.menuPrincipal.ControlScrollHandler;
-import controladores.menuPrincipal.ControlesTecladoHandler;
+import controladores.BotonConstructorHandler;
+import controladores.ControlScrollHandler;
+import controladores.ControlesTecladoHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import modelo.Juego;
-import modelo.herramientas.FabricaHerramientas;
 import modelo.herramientas.Herramienta;
 import modelo.jugador.Jugador;
 import modelo.mapa.Mapa;

@@ -15,7 +15,7 @@ public class BotonControlesHandler implements EventHandler<ActionEvent> {
 
     public BotonControlesHandler() {
         sonidoBotonControles = new AudioClip(new File("src/media/sonidos/sonidoBotonAcercaDeSeleccionado.mp3").toURI().toString());
-        sonidoBotonControles.setVolume(0.5);
+        sonidoBotonControles.setVolume(1);
     }
 
     @Override
@@ -30,6 +30,7 @@ public class BotonControlesHandler implements EventHandler<ActionEvent> {
                 "C - Abrir constructor de herramientas\n\n" +
                 "SPACE - Golpear\n\n" +
                 "R - Resetear el mapa\n\n" +
+                "ESC - Pausa\n\n" +
                 "");
         Image image = new Image("media/controles.png", 50,50, false, false);
         ImageView imageView = new ImageView(image);

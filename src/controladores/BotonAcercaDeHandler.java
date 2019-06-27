@@ -13,7 +13,7 @@ public class BotonAcercaDeHandler implements EventHandler<ActionEvent> {
 
         public BotonAcercaDeHandler() {
             sonidoBotonAcercaDe = new AudioClip(new File("src/media/sonidos/sonidoBotonAcercaDeSeleccionado.mp3").toURI().toString());
-            sonidoBotonAcercaDe.setVolume(0.5);
+            sonidoBotonAcercaDe.setVolume(1);
         }
 
     @Override

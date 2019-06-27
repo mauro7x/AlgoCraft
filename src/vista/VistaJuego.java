@@ -12,6 +12,11 @@ import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.media.AudioClip;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
+import javafx.util.Duration;
 import modelo.Juego;
 import modelo.herramientas.Herramienta;
 import modelo.jugador.Jugador;
@@ -19,8 +24,11 @@ import modelo.mapa.Mapa;
 import modelo.mapa.OcupanteDeCelda;
 import modelo.mapa.Posicion;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class VistaJuego {
 
@@ -40,6 +48,15 @@ public class VistaJuego {
 
     private BotonConstructorHandler constructorHandler;
 
+    private boolean sonidoCaminarDisponible = true;
+    private boolean sonidoNoSePuedeMoverDisponible = true;
+    private boolean sonidoGolpearBloqueDisponible = true;
+    private boolean sonidoGolpearNadaDisponible = true;
+    private AudioClip sonidoCaminar;
+    private AudioClip sonidoNoSePuedeMover;
+    private AudioClip sonidoGolpearBloque;
+    private AudioClip sonidoGolpearNada;
+
     public VistaJuego(){
         cuadriculaMapa = new GridPane();
         itemsInventarioHerramientas = new GridPane();
@@ -50,6 +67,50 @@ public class VistaJuego {
         etiquetaCantidadMetal = new Label();
         etiquetaCantidadDiamante = new Label();
 
+        sonidoCaminar = new AudioClip(new File("src/media/sonidos/sonidoPasto.mp3").toURI().toString());
+        sonidoCaminar.setVolume(0.5);
+
+        sonidoNoSePuedeMover = new AudioClip(new File("src/media/sonidos/sonidoNoSePuedeMover.mp3").toURI().toString());
+        sonidoNoSePuedeMover.setVolume(0.5);
+
+        sonidoGolpearBloque = new AudioClip(new File("src/media/sonidos/sonidoGolpearBloque.mp3").toURI().toString());
+        sonidoGolpearBloque.setVolume(0.5);
+
+        sonidoGolpearNada = new AudioClip(new File("src/media/sonidos/sonidoGolpearNada.mp3").toURI().toString());
+        sonidoGolpearNada.setVolume(0.5);
+
+        new Timer().schedule(
+                new TimerTask() {
+                    @Override
+                    public void run() {
+                        sonidoCaminarDisponible = true;
+                    }
+                }, 200, 200);
+
+        new Timer().schedule(
+                new TimerTask() {
+                    @Override
+                    public void run() {
+                        sonidoNoSePuedeMoverDisponible = true;
+                    }
+                }, 100, 100);
+
+        new Timer().schedule(
+                new TimerTask() {
+                    @Override
+                    public void run() {
+                        sonidoGolpearBloqueDisponible = true;
+                    }
+                }, 100, 100);
+
+        new Timer().schedule(
+                new TimerTask() {
+                    @Override
+                    public void run() {
+                        sonidoGolpearNadaDisponible = true;
+                    }
+                }, 100, 100);
+        
         imagenes = new HashMap<>();
         cargarImagenes();
     }
@@ -125,6 +186,20 @@ public class VistaJuego {
 
         escena.setOnKeyPressed(new ControlesTecladoHandler(this));
         escena.setOnScroll(new ControlScrollHandler(this));
+
+
+        Media cancion = new Media(new File("src/media/sonidos/game.mp3").toURI().toString());
+        MediaPlayer reproductor = new MediaPlayer(cancion);
+        reproductor.setVolume(1.0);
+        reproductor.setOnEndOfMedia(new Runnable() {
+            @Override
+            public void run() {
+                reproductor.seek(Duration.ZERO);
+            }
+        });
+        MediaView vistaReproductor = new MediaView(reproductor);
+        root.getChildren().addAll(vistaReproductor);
+        reproductor.setAutoPlay(true);
 
         return escena;
     }
@@ -279,6 +354,34 @@ public class VistaJuego {
 
         int cantidadDiamante = Juego.getJuego().getJugador().getInventarioMateriales().cantidadDiamante();
         etiquetaCantidadDiamante.setText(Integer.toString(cantidadDiamante));
+    }
+
+    public void hacerSonidoCaminar(){
+        if(sonidoCaminarDisponible){
+            sonidoCaminar.play();
+            sonidoCaminarDisponible = false;
+        }
+    }
+
+    public void hacerSonidoNoSePuedeMover(){
+        if(sonidoNoSePuedeMoverDisponible){
+            sonidoNoSePuedeMover.play();
+            sonidoNoSePuedeMoverDisponible = false;
+        }
+    }
+
+    public void hacerSonidoGolpearBloque(){
+        if(sonidoGolpearBloqueDisponible){
+            sonidoGolpearBloque.play();
+            sonidoGolpearBloqueDisponible = false;
+        }
+    }
+
+    public void hacerSonidoGolpearNada(){
+        if(sonidoGolpearNadaDisponible){
+            sonidoGolpearNada.play();
+            sonidoGolpearNadaDisponible = false;
+        }
     }
 
 }

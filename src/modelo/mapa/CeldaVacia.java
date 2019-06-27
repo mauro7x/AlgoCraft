@@ -19,8 +19,8 @@ public class CeldaVacia implements OcupanteDeCelda {
     }
 
     @Override
-    public void serGolpeadoPor(Herramienta herramienta) {
-        return;
+    public boolean serGolpeadoPor(Herramienta herramienta) {
+        return false;
         //La celda vacia no hace nada al ser golpeada.
     }
 

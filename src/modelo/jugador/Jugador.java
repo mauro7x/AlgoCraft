@@ -44,7 +44,7 @@ public class Jugador implements OcupanteDeCelda {
     }
 
     @Override
-    public void serGolpeadoPor(Herramienta herramienta) {
+    public boolean serGolpeadoPor(Herramienta herramienta) {
         throw new RuntimeException("Jugador no puede ser golpeado por nadie");
     }
 
@@ -53,21 +53,33 @@ public class Jugador implements OcupanteDeCelda {
         return orientacion.obtenerImagen();
     }
 
-    public void moverArriba(){
+    public boolean moverArriba(){
+        Posicion posicionJugador = this.getPosicion();
         this.orientacion = new OrientacionArriba();
         Juego.getJuego().moverJugadorArriba(this);
+        if (posicionJugador.equals(this.getPosicion())){ return false; };
+        return true;
     }
-    public void moverAbajo(){
+    public boolean moverAbajo(){
+        Posicion posicionJugador = this.getPosicion();
         this.orientacion = new OrientacionAbajo();
         Juego.getJuego().moverJugadorAbajo(this);
+        if (posicionJugador.equals(this.getPosicion())){ return false; };
+        return true;
     }
-    public void moverIzquierda(){
+    public boolean moverIzquierda(){
+        Posicion posicionJugador = this.getPosicion();
         this.orientacion = new OrientacionIzquierda();
         Juego.getJuego().moverJugadorIzquierda(this);
+        if (posicionJugador.equals(this.getPosicion())){ return false; };
+        return true;
     }
-    public void moverDerecha(){
+    public boolean moverDerecha(){
+        Posicion posicionJugador = this.getPosicion();
         this.orientacion = new OrientacionDerecha();
         Juego.getJuego().moverJugadorDerecha(this);
+        if (posicionJugador.equals(this.getPosicion())){ return false; };
+        return true;
     }
 
     public void cambiarAHerramientaSiguiente(){
@@ -78,9 +90,7 @@ public class Jugador implements OcupanteDeCelda {
         herramientas.cambiarAHerramientaAnterior();
     }
 
-    public void golpear(){
-        this.orientacion.golpear(herramientas.getHerramientaActual());
-    }
+    public boolean golpear(){ return this.orientacion.golpear(herramientas.getHerramientaActual()); }
 
     public InventarioMateriales getInventarioMateriales(){ return this.materiales; }
 

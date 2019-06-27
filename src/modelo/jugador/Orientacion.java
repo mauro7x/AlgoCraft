@@ -3,7 +3,7 @@ package modelo.jugador;
 import modelo.herramientas.Herramienta;
 
 public interface Orientacion {
-    void golpear(Herramienta herramientaActual);
+    boolean golpear(Herramienta herramientaActual);
 
     String obtenerImagen();
 }

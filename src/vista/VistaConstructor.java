@@ -3,7 +3,6 @@ package vista;
 import controladores.BotonCeldaConstructorHandler;
 import controladores.BotonMaterialConstructorHandler;
 
-import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -16,17 +15,17 @@ import javafx.scene.effect.Light;
 import javafx.scene.effect.Lighting;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseButton;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 
-import javafx.scene.layout.RowConstraints;
+import javafx.scene.media.AudioClip;
 import modelo.Juego;
 import modelo.herramientas.*;
 import modelo.jugador.InventarioMateriales;
 
-import java.awt.event.MouseEvent;
+
+import java.io.File;
 import java.util.HashMap;
 import java.util.function.Supplier;
 
@@ -62,6 +61,11 @@ public class VistaConstructor {
     
     private String materialActual = "Vacio";
 
+    private AudioClip sonidoHerramientaConstruida;
+    private AudioClip sonidoMaterialDispuesto;
+
+    private Lighting efectoSeleccion;
+
     public VistaConstructor(VistaJuego vistaJuego) {
         constructorHerramientas = new GridPane();
         cuadriculaConstructorHerramientas = new GridPane();
@@ -90,6 +94,19 @@ public class VistaConstructor {
         cargarCodigosConstructor();
 
         resultado = "Vacio";
+
+        sonidoHerramientaConstruida = new AudioClip(new File("src/media/sonidos/sonidoHerramientaConstruida.mp3").toURI().toString());
+        sonidoHerramientaConstruida.setVolume(0.5);
+
+        sonidoMaterialDispuesto = new AudioClip(new File("src/media/sonidos/sonidoMaterialDispuesto.mp3").toURI().toString());
+        sonidoMaterialDispuesto.setVolume(0.5);
+        
+        efectoSeleccion = new Lighting();
+        efectoSeleccion.setDiffuseConstant(1.0);
+        efectoSeleccion.setSpecularConstant(0.0);
+        efectoSeleccion.setSpecularExponent(0.0);
+        efectoSeleccion.setSurfaceScale(0.0);
+        efectoSeleccion.setLight(new Light.Distant(45, 45, YELLOW));
     }
 
     private void cargarImagenes(){
@@ -350,6 +367,7 @@ public class VistaConstructor {
             idConstruccion = Juego.getJuego().getConstructor().construir(receta);
             if(idConstruccion != 0){
                 vaciarMaterialesDispuestos();
+                sonidoHerramientaConstruida.play();
                 resultado = Integer.toString(0);
             }
         }
@@ -365,6 +383,7 @@ public class VistaConstructor {
             this.funciones.get(this.materialesDispuestos.get(numeroDeCelda))[1].get(); //Vuelvo a agregar material al inventario si celda estaba ocupada
             funciones.get(materialActual)[0].get();
             this.materialesDispuestos.put(numeroDeCelda, materialActual);
+            sonidoMaterialDispuesto.play();
         }
         vistaJuego.actualizarInventario();
         actualizarVistaConstructor();

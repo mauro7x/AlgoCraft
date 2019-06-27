@@ -25,9 +25,7 @@ public abstract class Herramienta {
         this.durabilidad.gastar(this.fuerza);
     }
 
-    public void golpear(OcupanteDeCelda recurso){
-        recurso.serGolpeadoPor(this);
-    }
+    public boolean golpear(OcupanteDeCelda recurso){ return recurso.serGolpeadoPor(this); }
 
     public abstract void golpear(BloqueMadera madera);
     public abstract void golpear(BloquePiedra piedra);

@@ -21,19 +21,27 @@ public class ControlesTecladoHandler implements EventHandler<KeyEvent> {
         Juego juego = Juego.getJuego();
 
         if(keyEvent.getCode() == KeyCode.W || keyEvent.getCode() == KeyCode.UP){
-            juego.getJugador().moverArriba();
+            boolean seMovioElJugador = juego.getJugador().moverArriba();
+            if (seMovioElJugador){vistaJuego.hacerSonidoCaminar();}
+            else { vistaJuego.hacerSonidoNoSePuedeMover();};
             vistaJuego.dibujarMapa();
         }
         if(keyEvent.getCode() == KeyCode.S || keyEvent.getCode() == KeyCode.DOWN){
-            juego.getJugador().moverAbajo();
+            boolean seMovioElJugador = juego.getJugador().moverAbajo();
+            if (seMovioElJugador){vistaJuego.hacerSonidoCaminar();}
+            else { vistaJuego.hacerSonidoNoSePuedeMover();};
             vistaJuego.dibujarMapa();
         }
         if(keyEvent.getCode() == KeyCode.A || keyEvent.getCode() == KeyCode.LEFT){
-            juego.getJugador().moverIzquierda();
+            boolean seMovioElJugador = juego.getJugador().moverIzquierda();
+            if (seMovioElJugador){vistaJuego.hacerSonidoCaminar();}
+            else { vistaJuego.hacerSonidoNoSePuedeMover();};
             vistaJuego.dibujarMapa();
         }
         if(keyEvent.getCode() == KeyCode.D || keyEvent.getCode() == KeyCode.RIGHT){
-            juego.getJugador().moverDerecha();
+            boolean seMovioElJugador = juego.getJugador().moverDerecha();
+            if (seMovioElJugador){vistaJuego.hacerSonidoCaminar();}
+            else { vistaJuego.hacerSonidoNoSePuedeMover();};
             vistaJuego.dibujarMapa();
         }
         if(keyEvent.getCode() == KeyCode.Q){
@@ -45,8 +53,14 @@ public class ControlesTecladoHandler implements EventHandler<KeyEvent> {
             vistaJuego.actualizarInventarioHerramientas();
         }
         if(keyEvent.getCode() == KeyCode.SPACE){
-            System.out.println("Golpeando");
-            juego.getJugador().golpear();
+            boolean golpeoUnBloque = juego.getJugador().golpear();
+            if (golpeoUnBloque){
+                System.out.println("Golpeando");
+                vistaJuego.hacerSonidoGolpearBloque();
+            }
+            else{
+                vistaJuego.hacerSonidoGolpearNada();
+            };
             vistaJuego.actualizarInventario();
             vistaJuego.dibujarMapa();
             vistaJuego.actualizarInventarioHerramientas();

@@ -52,10 +52,12 @@ public class VistaJuego {
     private boolean sonidoNoSePuedeMoverDisponible = true;
     private boolean sonidoGolpearBloqueDisponible = true;
     private boolean sonidoGolpearNadaDisponible = true;
+    private boolean sonidoCambiarMapaDisponible = true;
     private AudioClip sonidoCaminar;
     private AudioClip sonidoNoSePuedeMover;
     private AudioClip sonidoGolpearBloque;
     private AudioClip sonidoGolpearNada;
+    private AudioClip sonidoCambiarMapa;
 
     public VistaJuego(){
         cuadriculaMapa = new GridPane();
@@ -78,6 +80,9 @@ public class VistaJuego {
 
         sonidoGolpearNada = new AudioClip(new File("src/media/sonidos/sonidoGolpearNada.mp3").toURI().toString());
         sonidoGolpearNada.setVolume(0.5);
+
+        sonidoCambiarMapa = new AudioClip(new File("src/media/sonidos/levelUp.wav").toURI().toString());
+        sonidoCambiarMapa.setVolume(0.35);
 
         new Timer().schedule(
                 new TimerTask() {
@@ -110,6 +115,14 @@ public class VistaJuego {
                         sonidoGolpearNadaDisponible = true;
                     }
                 }, 100, 100);
+
+        new Timer().schedule(
+                new TimerTask() {
+                    @Override
+                    public void run() {
+                        sonidoCambiarMapaDisponible = true;
+                    }
+                }, 100, 1000);
         
         imagenes = new HashMap<>();
         cargarImagenes();
@@ -384,4 +397,10 @@ public class VistaJuego {
         }
     }
 
+    public void hacerSonidoCambiarMapa(){
+        if(sonidoCambiarMapaDisponible){
+            sonidoCambiarMapa.play();
+            sonidoCambiarMapaDisponible = false;
+        }
+    }
 }

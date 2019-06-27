@@ -305,27 +305,26 @@ public class VistaConstructor {
         ToggleButton botonMadera = new ToggleButton("", viewMadera);
         itemsInventario.add(botonMadera,0,0);
         botonMadera.setToggleGroup(grupoBotones);
-        botonMadera.setOnAction(new BotonMaterialConstructorHandler(botonMadera, this, "Madera"));
+        botonMadera.setOnAction(new BotonMaterialConstructorHandler(botonMadera, this, "Madera", grupoBotones));
 
         ImageView viewPiedra = new ImageView(new Image("media/recursos/piedra.png",40,40,false,false));
         ToggleButton botonPiedra = new ToggleButton("", viewPiedra);
         itemsInventario.add(botonPiedra,1,0);
         botonPiedra.setToggleGroup(grupoBotones);
-        botonPiedra.setOnAction(new BotonMaterialConstructorHandler(botonPiedra, this, "Piedra"));
+        botonPiedra.setOnAction(new BotonMaterialConstructorHandler(botonPiedra, this, "Piedra", grupoBotones));
 
         ImageView viewMetal = new ImageView(new Image("media/recursos/metal.png",40,40,false,false));
         ToggleButton botonMetal = new ToggleButton("", viewMetal);
         itemsInventario.add(botonMetal,2,0);
         botonMetal.setToggleGroup(grupoBotones);
-        botonMetal.setOnAction(new BotonMaterialConstructorHandler(botonMetal, this, "Metal"));
+        botonMetal.setOnAction(new BotonMaterialConstructorHandler(botonMetal, this, "Metal", grupoBotones));
 
 
         ImageView viewDiamante = new ImageView(new Image("media/recursos/diamante.png",40,40,false,false));
         ToggleButton botonDiamante = new ToggleButton("", viewDiamante);
         itemsInventario.add(botonDiamante,3,0);
         botonDiamante.setToggleGroup(grupoBotones);
-        botonDiamante.setOnAction(new BotonMaterialConstructorHandler(botonDiamante, this, "Diamante"));
-
+        botonDiamante.setOnAction(new BotonMaterialConstructorHandler(botonDiamante, this, "Diamante", grupoBotones));
 
         itemsInventario.add(etiquetaCantidadMadera,0,1);
         itemsInventario.setHalignment(etiquetaCantidadMadera, HPos.CENTER);

@@ -4,6 +4,7 @@ import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import modelo.Juego;
+import sun.awt.SunHints;
 import vista.VistaJuego;
 
 public class ControlesTecladoHandler implements EventHandler<KeyEvent> {
@@ -70,11 +71,14 @@ public class ControlesTecladoHandler implements EventHandler<KeyEvent> {
         if(keyEvent.getCode() == KeyCode.R){
             juego.resetearMapa();
             vistaJuego.dibujarMapa();
+            vistaJuego.hacerSonidoCambiarMapa();
             juego.imprimirPorConsola("Nuevo mapa generado.");
         }
 
         if(keyEvent.getCode() == KeyCode.C){
             constructorHandler.accionar();
         }
+
+
     }
 }

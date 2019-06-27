@@ -72,6 +72,7 @@ public class ControlesTecladoHandler implements EventHandler<KeyEvent> {
         if(keyEvent.getCode() == KeyCode.R){
             juego.resetearMapa();
             vistaJuego.dibujarMapa();
+            vistaJuego.hacerSonidoCambiarMapa();
             juego.imprimirPorConsola("Nuevo mapa generado.");
         }
 
@@ -82,5 +83,6 @@ public class ControlesTecladoHandler implements EventHandler<KeyEvent> {
         if(keyEvent.getCode() == KeyCode.ESCAPE){
             VistaPausa.mostrar();
         }
+
     }
 }

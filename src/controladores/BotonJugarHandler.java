@@ -19,7 +19,7 @@ public class BotonJugarHandler implements EventHandler<ActionEvent> {
         this.ventanaPrincipal = ventanaPrincipal;
         this.reproductorMusicaMenuPrincipal = reproductorMusicaMenuPrincipal;
         sonidoBotonJugar = new AudioClip(new File("src/media/sonidos/sonidoBotonJugarSeleccionado.mp3").toURI().toString());
-        sonidoBotonJugar.setVolume(0.5);
+        sonidoBotonJugar.setVolume(1);
     }
 
     @Override

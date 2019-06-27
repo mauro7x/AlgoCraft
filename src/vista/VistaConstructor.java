@@ -59,6 +59,7 @@ public class VistaConstructor {
     private String materialActual = "Vacio";
 
     private AudioClip sonidoHerramientaConstruida;
+    private AudioClip sonidoMaterialDispuesto;
 
     private Lighting efectoSeleccion;
 
@@ -92,7 +93,9 @@ public class VistaConstructor {
         sonidoHerramientaConstruida = new AudioClip(new File("src/media/sonidos/sonidoHerramientaConstruida.mp3").toURI().toString());
         sonidoHerramientaConstruida.setVolume(0.5);
 
-
+        sonidoMaterialDispuesto = new AudioClip(new File("src/media/sonidos/sonidoMaterialDispuesto.mp3").toURI().toString());
+        sonidoMaterialDispuesto.setVolume(0.5);
+        
         efectoSeleccion = new Lighting();
         efectoSeleccion.setDiffuseConstant(1.0);
         efectoSeleccion.setSpecularConstant(0.0);
@@ -362,6 +365,7 @@ public class VistaConstructor {
             this.funciones.get(this.materialesDispuestos.get(numeroDeCelda))[1].get(); //Vuelvo a agregar material al inventario si celda estaba ocupada
             funciones.get(materialActual)[0].get();
             this.materialesDispuestos.put(numeroDeCelda, materialActual);
+            sonidoMaterialDispuesto.play();
         }
         vistaJuego.actualizarInventario();
         actualizarVistaConstructor();

@@ -4,6 +4,11 @@ import modelo.Constructor;
 
 import modelo.Juego;
 
+import modelo.jugador.Jugador;
+import modelo.mapa.Celda;
+import modelo.mapa.CeldaVacia;
+import modelo.mapa.Mapa;
+import modelo.mapa.Posicion;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -89,33 +94,39 @@ public class SegundaEntregaTest {
     //Pruebas de Jugador
     @Test
     public void test01JugadorSeInicializaDeLaFormaCorrectaEnElMapa(){
-        
+        Juego juego = Juego.getJuego();
+        juego.resetear();
+        Jugador jugador = juego.getJugador();
+        Mapa mapa = juego.getMapa();
+        Celda celdaCentral = mapa.getCeldaCentral();
+        assertEquals(jugador.getPosicion(), celdaCentral.getPosicion());
     }
 
     @Test
     public void test02JugadorPuedeMoverseParaTodasLasDireccionesVacias(){
+        Juego juego = Juego.getJuego();
+        juego.resetear();
+        Jugador jugador = juego.getJugador();
+        Mapa mapa = juego.getMapa();
+        Posicion posicionInicialJugador = jugador.getPosicion();
+
+        mapa.setearOcupanteEn(new CeldaVacia(), posicionInicialJugador.getPosicionArriba());
+        mapa.setearOcupanteEn(new CeldaVacia(), posicionInicialJugador.getPosicionAbajo());
+        mapa.setearOcupanteEn(new CeldaVacia(), posicionInicialJugador.getPosicionDerecha());
+        mapa.setearOcupanteEn(new CeldaVacia(), posicionInicialJugador.getPosicionIzquierda());
+
+        jugador.moverArriba();
+        assertEquals(posicionInicialJugador.getPosicionArriba(), jugador.getPosicion());
+        jugador.moverAbajo();
+        jugador.moverAbajo();
+        assertEquals(posicionInicialJugador.getPosicionAbajo(), jugador.getPosicion());
+        jugador.moverArriba();
+        jugador.moverDerecha();
+        assertEquals(posicionInicialJugador.getPosicionDerecha(), jugador.getPosicion());
+        jugador.moverIzquierda();
+        jugador.moverIzquierda();
+        assertEquals(posicionInicialJugador.getPosicionIzquierda(), jugador.getPosicion());
 
     }
-
-    //Pruebas de Mapa
-    @Test
-    public void test01SePuedeOcuparUnCasilleroVacioDelTerreno(){
-
-    }
-
-    @Test
-    public void test02NoSePuedeOcuparUnCasilleroOcupadoDelTerreno(){
-
-    }
-
-    @Test
-    public void test03MaterialOPersonajePuedenOcuparUnCasilleroVacioDelTerreno(){
-
-    }
-
-    //Pruebas de Juego
-    @Test
-    public void test01SeIniciaElJuegoConElTerrenoInicializadoYElJugadorInicializado(){
-
-    }
+    
 }

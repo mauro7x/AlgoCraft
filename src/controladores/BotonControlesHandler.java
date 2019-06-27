@@ -6,8 +6,17 @@ import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Region;
+import javafx.scene.media.AudioClip;
+
+import java.io.File;
 
 public class BotonControlesHandler implements EventHandler<ActionEvent> {
+    private AudioClip sonidoBotonControles;
+
+    public BotonControlesHandler() {
+        sonidoBotonControles = new AudioClip(new File("src/media/sonidos/sonidoBotonAcercaDeSeleccionado.mp3").toURI().toString());
+        sonidoBotonControles.setVolume(0.5);
+    }
 
     @Override
     public void handle(ActionEvent actionEvent) {
@@ -26,6 +35,7 @@ public class BotonControlesHandler implements EventHandler<ActionEvent> {
         ImageView imageView = new ImageView(image);
         alert.setGraphic(imageView);
         alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+        sonidoBotonControles.play();
         alert.show();
     }
 }

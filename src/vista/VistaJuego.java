@@ -54,8 +54,12 @@ public class VistaJuego {
 
     private boolean sonidoCaminarDisponible = true;
     private boolean sonidoNoSePuedeMoverDisponible = true;
+    private boolean sonidoGolpearBloqueDisponible = true;
+    private boolean sonidoGolpearNadaDisponible = true;
     private AudioClip sonidoCaminar;
     private AudioClip sonidoNoSePuedeMover;
+    private AudioClip sonidoGolpearBloque;
+    private AudioClip sonidoGolpearNada;
 
     public VistaJuego(){
         cuadriculaMapa = new GridPane();
@@ -73,6 +77,12 @@ public class VistaJuego {
         sonidoNoSePuedeMover = new AudioClip(new File("src/media/sonidos/sonidoNoSePuedeMover.mp3").toURI().toString());
         sonidoNoSePuedeMover.setVolume(0.5);
 
+        sonidoGolpearBloque = new AudioClip(new File("src/media/sonidos/sonidoGolpearBloque.mp3").toURI().toString());
+        sonidoGolpearBloque.setVolume(0.5);
+
+        sonidoGolpearNada = new AudioClip(new File("src/media/sonidos/sonidoGolpearNada.mp3").toURI().toString());
+        sonidoGolpearNada.setVolume(0.5);
+
         new Timer().schedule(
                 new TimerTask() {
                     @Override
@@ -86,6 +96,22 @@ public class VistaJuego {
                     @Override
                     public void run() {
                         sonidoNoSePuedeMoverDisponible = true;
+                    }
+                }, 100, 100);
+
+        new Timer().schedule(
+                new TimerTask() {
+                    @Override
+                    public void run() {
+                        sonidoGolpearBloqueDisponible = true;
+                    }
+                }, 100, 100);
+
+        new Timer().schedule(
+                new TimerTask() {
+                    @Override
+                    public void run() {
+                        sonidoGolpearNadaDisponible = true;
                     }
                 }, 100, 100);
         
@@ -345,6 +371,20 @@ public class VistaJuego {
         if(sonidoNoSePuedeMoverDisponible){
             sonidoNoSePuedeMover.play();
             sonidoNoSePuedeMoverDisponible = false;
+        }
+    }
+
+    public void hacerSonidoGolpearBloque(){
+        if(sonidoGolpearBloqueDisponible){
+            sonidoGolpearBloque.play();
+            sonidoGolpearBloqueDisponible = false;
+        }
+    }
+
+    public void hacerSonidoGolpearNada(){
+        if(sonidoGolpearNadaDisponible){
+            sonidoGolpearNada.play();
+            sonidoGolpearNadaDisponible = false;
         }
     }
 

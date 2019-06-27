@@ -9,11 +9,11 @@ public class OrientacionDerecha implements Orientacion {
     private static String imagen = "jugadorDerecha";
 
     @Override
-    public void golpear(Herramienta herramientaActual) {
+    public boolean golpear(Herramienta herramientaActual) {
         Jugador jugador = Juego.getJuego().getJugador();
-        if(jugador.noTieneHerramientas()){return;}
+        if(jugador.noTieneHerramientas()){return false;}
         OcupanteDeCelda bloqueDerecha = Juego.getJuego().getMapa().obtenerBloqueDerechaDelJugador(jugador);
-        herramientaActual.golpear(bloqueDerecha);
+        return herramientaActual.golpear(bloqueDerecha);
     }
 
     @Override

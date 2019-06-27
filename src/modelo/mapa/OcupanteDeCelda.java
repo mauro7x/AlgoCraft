@@ -10,7 +10,7 @@ public interface OcupanteDeCelda {
 
     void actualizarPosicion(Posicion posicion);
 
-    void serGolpeadoPor(Herramienta herramienta);
+    boolean serGolpeadoPor(Herramienta herramienta);
 
     String obtenerImagen();
 }

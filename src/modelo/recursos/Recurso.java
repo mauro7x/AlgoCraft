@@ -16,7 +16,7 @@ public abstract class Recurso implements OcupanteDeCelda {
         return durabilidad;
     }
 
-    public abstract void serGolpeadoPor(Herramienta herramienta);
+    public abstract boolean serGolpeadoPor(Herramienta herramienta);
 
     public abstract void agregarRecursoAlInventario();
 

@@ -19,10 +19,12 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 
+import javafx.scene.media.AudioClip;
 import modelo.Juego;
 import modelo.herramientas.*;
 import modelo.jugador.InventarioMateriales;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.function.Supplier;
 
@@ -56,6 +58,8 @@ public class VistaConstructor {
     
     private String materialActual = "Vacio";
 
+    private AudioClip sonidoHerramientaConstruida;
+
     private Lighting efectoSeleccion;
 
     public VistaConstructor(VistaJuego vistaJuego) {
@@ -84,6 +88,10 @@ public class VistaConstructor {
         cargarCodigosConstructor();
 
         resultado = "Vacio";
+
+        sonidoHerramientaConstruida = new AudioClip(new File("src/media/sonidos/sonidoHerramientaConstruida.mp3").toURI().toString());
+        sonidoHerramientaConstruida.setVolume(0.5);
+
 
         efectoSeleccion = new Lighting();
         efectoSeleccion.setDiffuseConstant(1.0);
@@ -338,6 +346,7 @@ public class VistaConstructor {
             idConstruccion = Juego.getJuego().getConstructor().construir(receta);
             if(idConstruccion != 0){
                 vaciarMaterialesDispuestos();
+                sonidoHerramientaConstruida.play();
                 resultado = Integer.toString(0);
             }
         }

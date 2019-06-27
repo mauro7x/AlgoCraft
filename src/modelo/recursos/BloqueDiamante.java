@@ -18,8 +18,9 @@ public class BloqueDiamante extends Recurso {
     }
 
     @Override
-    public void serGolpeadoPor(Herramienta herramienta) {
+    public boolean serGolpeadoPor(Herramienta herramienta) {
         herramienta.golpear(this);
+        return true;
     }
 
     @Override

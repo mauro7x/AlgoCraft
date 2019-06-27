@@ -44,7 +44,7 @@ public class Jugador implements OcupanteDeCelda {
     }
 
     @Override
-    public void serGolpeadoPor(Herramienta herramienta) {
+    public boolean serGolpeadoPor(Herramienta herramienta) {
         throw new RuntimeException("Jugador no puede ser golpeado por nadie");
     }
 
@@ -90,9 +90,7 @@ public class Jugador implements OcupanteDeCelda {
         herramientas.cambiarAHerramientaAnterior();
     }
 
-    public void golpear(){
-        this.orientacion.golpear(herramientas.getHerramientaActual());
-    }
+    public boolean golpear(){ return this.orientacion.golpear(herramientas.getHerramientaActual()); }
 
     public InventarioMateriales getInventarioMateriales(){ return this.materiales; }
 

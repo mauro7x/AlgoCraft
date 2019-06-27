@@ -56,8 +56,14 @@ public class ControlesTecladoHandler implements EventHandler<KeyEvent> {
             vistaJuego.actualizarInventarioHerramientas();
         }
         if(keyEvent.getCode() == KeyCode.SPACE){
-            System.out.println("Golpeando");
-            juego.getJugador().golpear();
+            boolean golpeoUnBloque = juego.getJugador().golpear();
+            if (golpeoUnBloque){
+                System.out.println("Golpeando");
+                vistaJuego.hacerSonidoGolpearBloque();
+            }
+            else{
+                vistaJuego.hacerSonidoGolpearNada();
+            };
             vistaJuego.actualizarInventario();
             vistaJuego.dibujarMapa();
             vistaJuego.actualizarInventarioHerramientas();

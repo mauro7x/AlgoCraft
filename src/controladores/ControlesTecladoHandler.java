@@ -3,8 +3,10 @@ package controladores;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
 import modelo.Juego;
 import vista.VistaJuego;
+import vista.VistaPausa;
 
 public class ControlesTecladoHandler implements EventHandler<KeyEvent> {
 
@@ -75,6 +77,10 @@ public class ControlesTecladoHandler implements EventHandler<KeyEvent> {
 
         if(keyEvent.getCode() == KeyCode.C){
             constructorHandler.accionar();
+        }
+
+        if(keyEvent.getCode() == KeyCode.ESCAPE){
+            VistaPausa.mostrar();
         }
     }
 }

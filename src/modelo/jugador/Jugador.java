@@ -53,21 +53,33 @@ public class Jugador implements OcupanteDeCelda {
         return orientacion.obtenerImagen();
     }
 
-    public void moverArriba(){
+    public boolean moverArriba(){
+        Posicion posicionJugador = this.getPosicion();
         this.orientacion = new OrientacionArriba();
         Juego.getJuego().moverJugadorArriba(this);
+        if (posicionJugador.equals(this.getPosicion())){ return false; };
+        return true;
     }
-    public void moverAbajo(){
+    public boolean moverAbajo(){
+        Posicion posicionJugador = this.getPosicion();
         this.orientacion = new OrientacionAbajo();
         Juego.getJuego().moverJugadorAbajo(this);
+        if (posicionJugador.equals(this.getPosicion())){ return false; };
+        return true;
     }
-    public void moverIzquierda(){
+    public boolean moverIzquierda(){
+        Posicion posicionJugador = this.getPosicion();
         this.orientacion = new OrientacionIzquierda();
         Juego.getJuego().moverJugadorIzquierda(this);
+        if (posicionJugador.equals(this.getPosicion())){ return false; };
+        return true;
     }
-    public void moverDerecha(){
+    public boolean moverDerecha(){
+        Posicion posicionJugador = this.getPosicion();
         this.orientacion = new OrientacionDerecha();
         Juego.getJuego().moverJugadorDerecha(this);
+        if (posicionJugador.equals(this.getPosicion())){ return false; };
+        return true;
     }
 
     public void cambiarAHerramientaSiguiente(){

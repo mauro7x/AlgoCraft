@@ -24,23 +24,27 @@ public class ControlesTecladoHandler implements EventHandler<KeyEvent> {
         Juego juego = Juego.getJuego();
 
         if(keyEvent.getCode() == KeyCode.W || keyEvent.getCode() == KeyCode.UP){
-            juego.getJugador().moverArriba();
-            vistaJuego.hacerSonidoCaminar();
+            boolean seMovioElJugador = juego.getJugador().moverArriba();
+            if (seMovioElJugador){vistaJuego.hacerSonidoCaminar();}
+            else { vistaJuego.hacerSonidoNoSePuedeMover();};
             vistaJuego.dibujarMapa();
         }
         if(keyEvent.getCode() == KeyCode.S || keyEvent.getCode() == KeyCode.DOWN){
-            juego.getJugador().moverAbajo();
-            vistaJuego.hacerSonidoCaminar();
+            boolean seMovioElJugador = juego.getJugador().moverAbajo();
+            if (seMovioElJugador){vistaJuego.hacerSonidoCaminar();}
+            else { vistaJuego.hacerSonidoNoSePuedeMover();};
             vistaJuego.dibujarMapa();
         }
         if(keyEvent.getCode() == KeyCode.A || keyEvent.getCode() == KeyCode.LEFT){
-            juego.getJugador().moverIzquierda();
-            vistaJuego.hacerSonidoCaminar();
+            boolean seMovioElJugador = juego.getJugador().moverIzquierda();
+            if (seMovioElJugador){vistaJuego.hacerSonidoCaminar();}
+            else { vistaJuego.hacerSonidoNoSePuedeMover();};
             vistaJuego.dibujarMapa();
         }
         if(keyEvent.getCode() == KeyCode.D || keyEvent.getCode() == KeyCode.RIGHT){
-            juego.getJugador().moverDerecha();
-            vistaJuego.hacerSonidoCaminar();
+            boolean seMovioElJugador = juego.getJugador().moverDerecha();
+            if (seMovioElJugador){vistaJuego.hacerSonidoCaminar();}
+            else { vistaJuego.hacerSonidoNoSePuedeMover();};
             vistaJuego.dibujarMapa();
         }
         if(keyEvent.getCode() == KeyCode.Q){

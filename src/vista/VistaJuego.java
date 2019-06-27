@@ -53,7 +53,9 @@ public class VistaJuego {
     private BotonConstructorHandler constructorHandler;
 
     private boolean sonidoCaminarDisponible = true;
+    private boolean sonidoNoSePuedeMoverDisponible = true;
     private AudioClip sonidoCaminar;
+    private AudioClip sonidoNoSePuedeMover;
 
     public VistaJuego(){
         cuadriculaMapa = new GridPane();
@@ -67,13 +69,25 @@ public class VistaJuego {
 
         sonidoCaminar = new AudioClip(new File("src/media/sonidos/sonidoPasto.mp3").toURI().toString());
         sonidoCaminar.setVolume(0.5);
+
+        sonidoNoSePuedeMover = new AudioClip(new File("src/media/sonidos/sonidoNoSePuedeMover.mp3").toURI().toString());
+        sonidoNoSePuedeMover.setVolume(0.5);
+
         new Timer().schedule(
                 new TimerTask() {
                     @Override
                     public void run() {
                         sonidoCaminarDisponible = true;
                     }
-                }, 500, 500);
+                }, 200, 200);
+
+        new Timer().schedule(
+                new TimerTask() {
+                    @Override
+                    public void run() {
+                        sonidoNoSePuedeMoverDisponible = true;
+                    }
+                }, 100, 100);
         
         imagenes = new HashMap<>();
         cargarImagenes();
@@ -324,6 +338,13 @@ public class VistaJuego {
         if(sonidoCaminarDisponible){
             sonidoCaminar.play();
             sonidoCaminarDisponible = false;
+        }
+    }
+
+    public void hacerSonidoNoSePuedeMover(){
+        if(sonidoNoSePuedeMoverDisponible){
+            sonidoNoSePuedeMover.play();
+            sonidoNoSePuedeMoverDisponible = false;
         }
     }
 

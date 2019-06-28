@@ -32,6 +32,6 @@ public class BloquePiedra extends Recurso {
     @Override
     public void agregarRecursoAlInventario(){
         Juego.getJuego().getJugador().getInventarioMateriales().agregarPiedra();
-        Juego.getJuego().imprimirPorConsola("+1 Piedra");
+        Juego.getJuego().notificar("+1 Piedra");
     }
 }

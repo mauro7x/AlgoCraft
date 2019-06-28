@@ -24,7 +24,7 @@ public class InventarioHerramientas{
     public void guardar(Herramienta herramienta){
         this.herramientas.add(herramienta);
         this.cantidadDeHerramientas += 1;
-        Juego.getJuego().imprimirPorConsola("Herramienta construida.");
+        Juego.getJuego().notificar("Herramienta construida.");
     }
 
     public void eliminarHerramientaActual(){
@@ -32,7 +32,7 @@ public class InventarioHerramientas{
         this.herramientas.remove(herramientaActual);
         this.cantidadDeHerramientas -= 1;
         this.cambiarAHerramientaSiguiente();
-        Juego.getJuego().imprimirPorConsola("Herramienta rota.");
+        Juego.getJuego().notificar("Herramienta rota.");
     }
 
     public void cambiarAHerramientaSiguiente(){

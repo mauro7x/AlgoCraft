@@ -3,7 +3,6 @@ package controladores;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.stage.Stage;
 import modelo.Juego;
 import vista.VistaJuego;
 import vista.VistaPausa;
@@ -73,7 +72,7 @@ public class ControlesTecladoHandler implements EventHandler<KeyEvent> {
             juego.resetearMapa();
             vistaJuego.dibujarMapa();
             vistaJuego.hacerSonidoCambiarMapa();
-            juego.imprimirPorConsola("Nuevo mapa generado.");
+            juego.notificar("Nuevo mapa generado.");
         }
 
         if(keyEvent.getCode() == KeyCode.C){

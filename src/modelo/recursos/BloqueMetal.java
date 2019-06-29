@@ -34,6 +34,6 @@ public class BloqueMetal extends Recurso {
     @Override
     public void agregarRecursoAlInventario(){
         Juego.getJuego().getJugador().getInventarioMateriales().agregarMetal();
-        Juego.getJuego().imprimirPorConsola("+1 Metal");
+        Juego.getJuego().notificar("+1 Metal");
     }
 }

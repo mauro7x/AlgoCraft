@@ -8,7 +8,6 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -281,16 +280,13 @@ public class VistaJuego {
 
         actualizarInventario();
 
-        TextArea consola = new TextArea();
-        consola.setPrefRowCount(2);
-        consola.setPrefColumnCount(10);
-        consola.setEditable(false);
-        consola.setFocusTraversable(false);
-        consola.setMouseTransparent(true);
-        consola.setOpacity(0.6);
-        consola.setText("Bienvenido a AlgoCraft!\n");
-        consola.setStyle("-fx-font-weight: bold;");
-        Juego.getJuego().setConsola(consola);
+        Notificacion notificacion = new Notificacion();
+        notificacion.setFocusTraversable(false);
+        notificacion.setMouseTransparent(true);
+        notificacion.setOpacity(1);
+        notificacion.setText("Bienvenido a AlgoCraft!\n");
+        notificacion.setStyle("-fx-font-weight: bold; -fx-text-fill: #000000; -fx-font-size:13;");
+        Juego.getJuego().setNotificacion(notificacion);
 
         ColumnConstraints espacioInventario = new ColumnConstraints();
 
@@ -306,7 +302,7 @@ public class VistaJuego {
 
         inventario.add(itemsInventario,0,0);
         inventario.add(itemsInventarioHerramientas,1,0);
-        inventario.add(consola,2,0);
+        inventario.add(notificacion,2,0);
 
         BackgroundImage fondo = new BackgroundImage(new Image("media/hud.jpg",70,70,false,true),
                 BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,

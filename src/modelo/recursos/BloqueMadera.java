@@ -1,6 +1,5 @@
 package modelo.recursos;
 
-import javafx.scene.text.Text;
 import modelo.Juego;
 import modelo.herramientas.Herramienta;
 import modelo.mapa.Posicion;
@@ -32,6 +31,6 @@ public class BloqueMadera extends Recurso {
     @Override
     public void agregarRecursoAlInventario(){
         Juego.getJuego().getJugador().getInventarioMateriales().agregarMadera();
-        Juego.getJuego().imprimirPorConsola("+1 Madera");
+        Juego.getJuego().notificar("+1 Madera");
     }
 }

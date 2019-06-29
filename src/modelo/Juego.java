@@ -1,10 +1,10 @@
 package modelo;
 
-import javafx.scene.control.TextArea;
-import javafx.scene.text.TextFlow;
+
 import modelo.jugador.Jugador;
 import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;
+import vista.Notificacion;
 
 public class Juego {
     private static Juego juego = new Juego();
@@ -15,7 +15,7 @@ public class Juego {
     private Constructor constructor;
     private Mapa mapa;
     private Jugador jugador;
-    private TextArea consola = null;
+    private Notificacion notificacion = null;
 
     public static Juego getJuego() {
         return juego;
@@ -73,13 +73,13 @@ public class Juego {
         mapa.moverJugadorDerecha(jugador);
     }
 
-    public void setConsola(TextArea consola){
-        this.consola = consola;
+    public void setNotificacion(Notificacion consola){
+        this.notificacion = consola;
     }
 
-    public void imprimirPorConsola(String texto) {
-        if(consola != null){
-            consola.appendText(texto+"\n");
+    public void notificar(String texto) {
+        if(notificacion != null){
+            notificacion.escribir(texto+"\n");
         }
     }
 
